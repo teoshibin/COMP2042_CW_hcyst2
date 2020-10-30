@@ -1,4 +1,4 @@
-package p4_group_8_repo;
+package com.tsb.frogger.actors;
 
 import javafx.scene.image.Image;
 
@@ -12,11 +12,11 @@ public class End extends Actor{
 	public End(int x, int y) {
 		setX(x);
 		setY(y);
-		setImage(new Image("file:src/main/resources/images/scenes/End.png", 60, 60, true, true));
+		setImage(new Image("file:src/main/resources/images/world/End.png", 60, 60, true, true));
 	}
 	
 	public void setEnd() {
-		setImage(new Image("file:src/main/resources/images/scenes/FrogEnd.png", 70, 70, true, true));
+		setImage(new Image("file:src/main/resources/images/world/FrogEnd.png", 70, 70, true, true));
 		activated = true;
 	}
 	
