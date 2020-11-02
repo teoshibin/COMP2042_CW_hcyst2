@@ -24,4 +24,14 @@ task myJavadocs(type: Javadoc) {
     source = sourceSets.main.allJava
 }
 
-mainClassName = 'com.tsb.frogger.core.Main'
+sourceSets.main {
+    java {
+        srcDir 'src/main/java'
+    }
+    resources {
+        srcDirs = ['src/main/java', 'src/main/resources']
+        exclude "**/*.java"
+    }
+}
+
+mainClassName = 'com.tsb.frogger.core.Launcher'

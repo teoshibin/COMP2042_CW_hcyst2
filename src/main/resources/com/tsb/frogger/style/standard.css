@@ -1,0 +1,22 @@
+
+
+#MenuPane{
+     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/MenuBackground.jpg');
+     -fx-background-size: 600 800;
+     -fx-background-position: center center;
+}
+
+.btn{
+    -fx-background-color: #4ae340;
+    -fx-background-radius: 30px;
+    -fx-border-color: black;
+    -fx-border-radius: 30px;
+    -fx-border-width: 3px;
+    -fx-border-color: black;
+}
+
+.btn:hover {
+    -fx-background-color: #4fff45;
+    -fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+}
