@@ -1,42 +1,34 @@
 package com.tsb.frogger.world;
 
-import java.io.File;
 
-import javafx.scene.media.Media;
+import com.tsb.frogger.core.Sound;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * MyStage class
+ */
 public class MyStage extends World {
-	MediaPlayer mediaPlayer;
+
+	/**
+	 * act method
+	 * @param now
+	 */
 	@Override
 	public void act(long now) {
-		
 	}
-	
-	public MyStage() {
-		
-//		mediaPlayer.play();
-//		mediaPlayer.setOnEndOfMedia(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				mediaPlayer.seek(Duration.ZERO);
-//				
-//			}
-//			
-//		});
-//		mediaPlayer.play();
-	}
-	
+
+	/**
+	 * play background music
+	 */
 	public void playMusic() {
-		String musicFile = "src/main/resources/com/tsb/frogger/sounds/MainBGM.mp3";
-		Media sound = new Media(new File(musicFile).toURI().toString());
-		mediaPlayer = new MediaPlayer(sound);
-		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-	    mediaPlayer.play();
+		Sound.playMusic();
 	}
-	
+
+	/**
+	 * stop background music
+	 */
 	public void stopMusic() {
-		mediaPlayer.stop();
+		Sound.stopMusic();
 	}
 
 }

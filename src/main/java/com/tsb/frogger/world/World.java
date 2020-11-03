@@ -15,13 +15,21 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
-
+/**
+ * World class to change event handler
+ */
 public abstract class World extends Pane {
     private AnimationTimer timer;
-    
+
+    /**
+     * world constructor
+     */
     public World() {
-    	
-    	sceneProperty().addListener(new ChangeListener<Scene>() {
+
+        /**
+         * create new Change listener
+         */
+        sceneProperty().addListener(new ChangeListener<Scene>() {
 
 			@Override
 			public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
@@ -64,6 +72,9 @@ public abstract class World extends Pane {
 		});
     }
 
+    /**
+     * create animation timer
+     */
     public void createTimer() {
         timer = new AnimationTimer() {
             @Override
@@ -74,20 +85,30 @@ public abstract class World extends Pane {
                 for (Actor anActor: actors) {
                 	anActor.act(now);
                 }
-      
+
             }
         };
     }
 
+    /**
+     * create and start animation timer
+     */
     public void start() {
     	createTimer();
         timer.start();
     }
 
+    /**
+     * stop timer
+     */
     public void stop() {
         timer.stop();
     }
-    
+
+    /**
+     * add actor method
+     * @param actor actor
+     */
     public void add(Actor actor) {
         getChildren().add(actor);
     }
@@ -106,5 +127,9 @@ public abstract class World extends Pane {
         return someArray;
     }
 
+    /**
+     * act method
+     * @param now
+     */
     public abstract void act(long now);
 }
