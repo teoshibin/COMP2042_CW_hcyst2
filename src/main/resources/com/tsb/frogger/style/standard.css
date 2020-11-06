@@ -1,22 +1,193 @@
+/*----------------------------------------------------------------------------*/
+/*------------------------------- Class css ----------------------------------*/
+/*----------------------------------------------------------------------------*/
 
+/*
+class font css
+*/
+.main-font{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 18px;
+}
 
-#MenuPane{
+/*
+class background image
+*/
+.pane{
      -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/MenuBackground.jpg');
      -fx-background-size: 600 800;
      -fx-background-position: center center;
 }
 
+/*
+class listview css
+*/
+.listview{
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 5px;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #bdffd9;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #e3ffef;
+}
+
+.list-view .list-cell:selected:odd,
+.list-view .list-cell:selected:even {
+    -fx-background-color: #4dff99;
+}
+
+/* listview scrollbar */
+.listview .scroll-bar:horizontal,
+.listview .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.listview .increment-button,
+.listview .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+}
+
+/* scrollbar track (middle bar) CSS class  */
+.listview .scroll-bar:horizontal .track,
+.listview .scroll-bar:vertical .track {
+     -fx-background-color: #bdffd9;
+	 -fx-border-color:transparent;
+	 -fx-background-radius: 0em;
+	 -fx-border-radius:2em;
+}
+
+/* scrollbar thumb (inner bar) css */
+.listview .scroll-bar:horizontal .thumb,
+.listview .scroll-bar:vertical .thumb {
+    -fx-background-color: #7fa18e;
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 2em;
+}
+
+/* remove scrollbar inc dev arrow */
+.listview .scroll-bar .increment-arrow,
+.listview .scroll-bar .decrement-arrow {
+	-fx-shape: " ";
+	-fx-padding:0;
+}
+
+/*
+class textField css
+*/
+.textfield{
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 3px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #e3ffef;
+}
+
+/*
+class button css
+*/
 .btn{
     -fx-background-color: #4ae340;
     -fx-background-radius: 30px;
     -fx-border-color: black;
     -fx-border-radius: 30px;
     -fx-border-width: 3px;
-    -fx-border-color: black;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 50px;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
 }
 
+.donebtn{
+    -fx-background-color: #e6df17;
+}
+
+.cancelbtn{
+    -fx-background-color: #de9c00;
+}
+
+.deletebtn{
+    -fx-background-color: #db3400;
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- id css -----------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+/*
+id button css
+*/
+#playbtn{
+    -fx-pref-width: 200px;
+    -fx-pref-height: 60px;
+    -fx-font-size: 28px;
+}
+
+#addbtn{
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-font-size: 19px;
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------- class event css -------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+/*
+class button event css
+*/
 .btn:hover {
     -fx-background-color: #4fff45;
     -fx-scale-y: 1.1;
     -fx-scale-x: 1.1;
 }
+
+.donebtn:hover {
+    -fx-background-color: #fff817;
+}
+
+.cancelbtn:hover {
+    -fx-background-color: #ffb300;
+}
+
+.deletebtn:hover {
+    -fx-background-color: #ff3c00;
+}
+
+/*
+class scrollbar thumb event (inner bar) css
+*/
+.listview .scroll-bar .thumb:hover,
+.listview .scroll-bar .thumb:pressed {
+    -fx-background-color: #93baa4;
+}
+
+
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ id event css --------------------------------*/
+/*----------------------------------------------------------------------------*/
+
+/*
+id button event css
+*/
+
+
+
+
+
+
+
+

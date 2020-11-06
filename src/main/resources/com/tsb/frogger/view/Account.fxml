@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="accountpane" prefHeight="800.0" prefWidth="600.0" styleClass="pane" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.AccountController">
+   <VBox alignment="CENTER" layoutX="100.0" prefHeight="800.0" prefWidth="400.0">
+      <HBox alignment="CENTER" prefHeight="80.0" prefWidth="400.0">
+         <Label fx:id="usernamelabel" styleClass="main-font" text="Username">
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin>
+         </Label>
+         <TextField fx:id="usernametextfield" styleClass="textfield" />
+         <Button id="addbtn" fx:id="addbtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" prefHeight="30.0" prefWidth="98.0" text="Add">
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+            <styleClass>
+               <String fx:value="btn" />
+               <String fx:value="main-font" />
+            </styleClass>
+         </Button>
+      </HBox>
+      <ListView fx:id="usernamelistview" prefHeight="250.0" prefWidth="300.0" styleClass="listview" />
+      <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="400.0">
+         <Label fx:id="hintlabel" styleClass="main-font" text="Select username to Enter.">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+            <padding>
+               <Insets left="5.0" />
+            </padding>
+         </Label>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="66.0" prefWidth="250.0">
+         <Button id="editbtn" fx:id="editbtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" prefHeight="40.0" prefWidth="100.0" text="Edit">
+            <HBox.margin>
+               <Insets left="17.0" right="8.0" />
+            </HBox.margin>
+            <styleClass>
+               <String fx:value="btn" />
+               <String fx:value="main-font" />
+            </styleClass>
+         </Button>
+         <Button fx:id="deletebtn" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" prefHeight="40.0" prefWidth="100.0" text="Delete">
+            <HBox.margin>
+               <Insets left="8.0" right="17.0" />
+            </HBox.margin>
+            <styleClass>
+               <String fx:value="deletebtn" />
+               <String fx:value="btn" />
+               <String fx:value="main-font" />
+            </styleClass>
+         </Button>
+      </HBox>
+      <Button id="enterbtn" fx:id="enterbtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" prefHeight="40.0" prefWidth="100.0" text="Enter">
+         <styleClass>
+            <String fx:value="btn" />
+            <String fx:value="main-font" />
+         </styleClass>
+      </Button>
+   </VBox>
+</AnchorPane>

@@ -31,7 +31,7 @@ public class Launcher extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent menu = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
+        Parent menu = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
         Scene scene = new Scene(menu);
         scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
         primaryStage.setScene(scene);
