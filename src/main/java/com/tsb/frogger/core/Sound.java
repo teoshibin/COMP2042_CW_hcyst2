@@ -16,6 +16,7 @@ public class Sound {
     private static final String ErrorSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/error.mp3";
     private static final String SuccessSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/success.mp3";
     private static final String PageFlipSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/page-flip.mp3";
+    private static final String MenuMusicSource = "src/main/resources/com/tsb/frogger/sounds/MenuBGM.mp3";
 
 
     private static MediaPlayer mediaPlayer;
@@ -69,4 +70,22 @@ public class Sound {
     public static void stopMusic() {
         mediaPlayer.stop();
     }
+
+    /**
+     * play menu background music
+     */
+    public static void playMenuMusic() {
+        Media media = new Media(new File(MenuMusicSource).toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+    }
+
+    /**
+     * stop menu background music
+     */
+    public static void stopMenuMusic() {
+        mediaPlayer.stop();
+    }
+
 }

@@ -7,7 +7,11 @@ class font css
 */
 .main-font{
     -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 18px;
+    -fx-font-size: 22px;
+}
+
+.font-weight-bold {
+    -fx-font-weight: bold;
 }
 
 /*
@@ -17,6 +21,11 @@ class background image
      -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/MenuBackground.jpg');
      -fx-background-size: 600 800;
      -fx-background-position: center center;
+}
+
+.half-opaque-container {
+    -fx-background-color: rgba(179, 255, 188, 0.7);
+    -fx-background-radius: 30px;
 }
 
 /*

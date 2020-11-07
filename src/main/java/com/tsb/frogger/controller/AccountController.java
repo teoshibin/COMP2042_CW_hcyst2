@@ -1,6 +1,8 @@
 package com.tsb.frogger.controller;
 
+import com.tsb.frogger.core.GameFile;
 import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.world.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class AccountController implements Initializable {
@@ -34,7 +38,7 @@ public class AccountController implements Initializable {
     @FXML
     private Button enterbtn;
 
-    ObservableList<String> userList = FXCollections.observableArrayList("Guest");
+    ObservableList<String> userList;
     int holdIndex;
     String username;
 
@@ -88,22 +92,47 @@ public class AccountController implements Initializable {
                 usernametextfield.setText("");
                 Sound.playPageFlipSound();
                 break;
-            case "Login":
+            case "Enter":
                 Pane menupane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
                 accountpane.getChildren().setAll(menupane);
+                System.out.println(usernamelistview.getItems().toString());
                 break;
         }
+
+        GameFile.updateUsername(usernamelistview.getItems().subList(1, usernamelistview.getItems().size()).toString());
     }
 
     /**
      * initialize account page gui
-     * @param location
-     * @param resources
+     * @param location location
+     * @param resources resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO: 11/7/2020 load usernames from file
+
+        //create file if not exist
+        GameFile.createFile();
+
+        //read data
+        String data = GameFile.readUsername();
+
+        if(data.length() > 2){
+            //remove "[","]" split into string array
+            String[] dataArray = data.substring(1, data.length()-1).split(", ");
+            //convert array into array list
+            ArrayList<String> dataList = new ArrayList<String>(Arrays.asList(dataArray));
+            //add preset username
+            dataList.add(0, "Guest");
+            //convert array list to observable list
+            userList = FXCollections.observableArrayList(dataList);
+        } else {
+            userList = FXCollections.observableArrayList("Guest");
+        }
+
+        //assign list to GUI
         usernamelistview.setItems(userList);
+
+        Sound.playMenuMusic();
     }
 
     /**
@@ -114,6 +143,10 @@ public class AccountController implements Initializable {
         Sound.playBtnSound();
     }
 
+    /**
+     * change gui when enter username edit mode
+     * @param bool edit mode state
+     */
     private void editMode(boolean bool){
         if (bool){
             addbtn.setText("Done");
@@ -129,4 +162,6 @@ public class AccountController implements Initializable {
             deletebtn.getStyleClass().add("deletebtn");
         }
     }
+
+
 }

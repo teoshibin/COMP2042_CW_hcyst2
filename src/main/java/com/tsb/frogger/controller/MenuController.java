@@ -35,6 +35,7 @@ public class MenuController {
     public void handleBtnAction(ActionEvent actionEvent) {
         switch (((Button)actionEvent.getSource()).getText()){
             case "Play":
+                Sound.stopMenuMusic();
                 Game game = new Game(0);
                 Pane gamePane = game.Map;
                 game.start();
