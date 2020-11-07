@@ -2,8 +2,13 @@ package com.tsb.frogger.world;
 
 import com.tsb.frogger.actors.*;
 import javafx.animation.AnimationTimer;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+
+import java.io.IOException;
 
 /**
  * game class to generate different difficulty of game map
@@ -91,6 +96,26 @@ public class Game extends MyStage{
                 // add frogger character
                 animal = new Animal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
                 gamePane.add(animal);
+
+                // add home button
+                ImageView home = new ImageView("file:src/main/resources/com/tsb/frogger/images/misc/icon-house.png");
+                home.setFitHeight(30);
+                home.setFitWidth(30);
+                home.setLayoutX(15);
+                home.setLayoutY(15);
+                home.getStyleClass().add("homebtn");
+                home.setOnMouseClicked(event -> {
+                    gamePane.stopMusic();
+                    timer.stop();
+                    gamePane.stop();
+                    try {
+                        Pane menupane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
+                        gamePane.getChildren().setAll(menupane);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                gamePane.getChildren().add(home);
 
                 //start obstacles movement
                 gamePane.start();

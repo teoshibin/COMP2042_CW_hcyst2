@@ -5,7 +5,7 @@ This will be a reimplementation and refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
 <p align="center">
-  <img src="src/main/resources/Unused/arcade.png" />
+  <img src="src/main/resources/com/tsb/frogger/images/misc/arcade.png" />
 </p>
 
 ## Installation
@@ -23,3 +23,6 @@ W | UP
 A | LEFT
 S | DOWN
 D | RIGHT
+
+## Credits
+- Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
