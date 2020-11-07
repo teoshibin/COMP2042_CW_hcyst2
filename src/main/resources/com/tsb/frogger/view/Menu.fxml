@@ -59,7 +59,7 @@
                   <String fx:value="main-font" />
                </styleClass>
             </Button>
-            <Button fx:id="quitBtn" alignment="CENTER" layoutX="35.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" prefHeight="50.0" prefWidth="150.0" text="Quit" textAlignment="CENTER">
+            <Button fx:id="backBtn" alignment="CENTER" layoutX="35.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" prefHeight="50.0" prefWidth="150.0" text="Back" textAlignment="CENTER">
                <font>
                   <Font name="Comic Sans MS Bold" size="22.0" />
                </font>

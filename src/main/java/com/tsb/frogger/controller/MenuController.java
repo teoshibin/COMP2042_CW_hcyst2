@@ -4,11 +4,14 @@ import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.world.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Main menu controller for menu gui
@@ -32,7 +35,7 @@ public class MenuController {
      * @param actionEvent button event
      */
     @FXML
-    public void handleBtnAction(ActionEvent actionEvent) {
+    public void handleBtnAction(ActionEvent actionEvent) throws IOException {
         switch (((Button)actionEvent.getSource()).getText()){
             case "Play":
                 Sound.stopMenuMusic();
@@ -49,6 +52,10 @@ public class MenuController {
                 break;
             case "Credits":
                 // TODO: 11/3/2020
+                break;
+            case "Back":
+                Pane accountpane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+                menuPane.getChildren().setAll(accountpane);
                 break;
             case "Quit":
                 Stage stage = (Stage) quitBtn.getScene().getWindow();

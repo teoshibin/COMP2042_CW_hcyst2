@@ -95,7 +95,6 @@ public class AccountController implements Initializable {
             case "Enter":
                 Pane menupane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
                 accountpane.getChildren().setAll(menupane);
-                System.out.println(usernamelistview.getItems().toString());
                 break;
         }
 
