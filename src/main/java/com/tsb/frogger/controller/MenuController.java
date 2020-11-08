@@ -50,12 +50,13 @@ public class MenuController {
             case "Options":
                 // TODO: 11/3/2020
                 break;
-            case "Credits":
-                // TODO: 11/3/2020
+            case "Info":
+                Pane infoPane = FXMLLoader.load(getClass().getResource("../view/Info.fxml"));
+                menuPane.getChildren().setAll(infoPane);
                 break;
             case "Back":
-                Pane accountpane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-                menuPane.getChildren().setAll(accountpane);
+                Pane accountPane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+                menuPane.getChildren().setAll(accountPane);
                 break;
             case "Quit":
                 Stage stage = (Stage) quitBtn.getScene().getWindow();

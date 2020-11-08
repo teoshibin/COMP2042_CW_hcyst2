@@ -2,7 +2,6 @@ package com.tsb.frogger.actors;
 
 import com.tsb.frogger.world.Game;
 import com.tsb.frogger.world.MyStage;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -17,13 +16,13 @@ public class HomeBtn extends Actor {
         setImage(new Image(imageLink, 32, 32, true, true));
         setLayoutX(15);
         setLayoutY(15);
-        getStyleClass().add("homebtn");
+        getStyleClass().add("homeBtn");
 
         setOnMouseClicked(event -> {
             game.stop();
             try {
-                Pane menupane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                gamePane.getChildren().setAll(menupane);
+                Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
+                gamePane.getChildren().setAll(menuPane);
             } catch (IOException e) {
                 e.printStackTrace();
             }

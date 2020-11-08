@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.view.Credit">
-
+<AnchorPane fx:id="infoPane" onMouseEntered="#enterBtn" prefHeight="800.0" prefWidth="600.0" styleClass="pane" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.InfoController">
+   <children>
+      <HBox alignment="CENTER" layoutX="50.0" layoutY="222.0" prefHeight="471.0" prefWidth="500.0" styleClass="half-opaque-container">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="409.0" prefWidth="434.0">
+               <children>
+                  <Label prefHeight="43.0" prefWidth="50.0" text="Info" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                     </styleClass></Label>
+                  <TextArea editable="false" prefHeight="61.0" prefWidth="434.0" styleClass="textArea" text="Your goal is to help the frog to cross the road.&#10;Obstacles and traps are in the way, so try to avoid them." wrapText="true">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor></TextArea>
+                  <Label prefHeight="45.0" prefWidth="87.0" text="Controls" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="main-font" />
+                        <String fx:value="font-weight-bold" />
+                     </styleClass>
+                  </Label>
+                  <VBox prefHeight="245.0" prefWidth="434.0">
+                     <children>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="169.0" styleClass="main-font" text="Frog Movement" />
+                        <TextArea editable="false" prefHeight="84.0" prefWidth="434.0" styleClass="textArea" text="W - UP&#10;A - LEFT&#10;S - DOWN&#10;D - RIGHT" wrapText="true">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor></TextArea>
+                        <Label layoutX="10.0" layoutY="43.0" prefHeight="36.0" prefWidth="169.0" styleClass="main-font" text="Gameplay" />
+                        <TextArea editable="false" layoutX="10.0" layoutY="75.0" prefHeight="77.0" prefWidth="434.0" styleClass="textArea" text="ESC - PAUSE / RESUME / OPTION" wrapText="true">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor></TextArea>
+                     </children>
+                  </VBox>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" text="Back">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="main-font" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </VBox>
+         </children></HBox>
+   </children>
 </AnchorPane>

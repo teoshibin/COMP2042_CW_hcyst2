@@ -128,6 +128,35 @@ class button css
     -fx-background-color: #db3400;
 }
 
+.textArea .content {
+    -fx-background-color: transparent;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-border-radius: 15px;
+}
+
+.textArea {
+    -fx-background-color: rgba(78, 252, 3, 0.8);
+    -fx-background-radius: 15px;
+    -fx-background-insets: 0px;
+}
+
+.textArea .scroll-bar:vertical:disabled {
+    -fx-opacity: 0;
+}
+
+.textArea .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.textArea .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.textArea .scroll-pane .content{
+    -fx-background-color: transparent;
+}
 
 
 /*----------------------------------------------------------------------------*/
@@ -176,7 +205,12 @@ class button event css
     -fx-background-color: #ff3c00;
 }
 
-.homebtn:hover{
+.homeBtn:hover{
+    -fx-scale-y: 1.2;
+    -fx-scale-x: 1.2;
+}
+
+.settingBtn:hover{
     -fx-scale-y: 1.2;
     -fx-scale-x: 1.2;
 }
