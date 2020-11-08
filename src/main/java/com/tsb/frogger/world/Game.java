@@ -88,8 +88,12 @@ public class Game extends MyStage{
                 gamePane.add(animal);
 
                 // add home button
-                HomeBtn homeBtn = new HomeBtn("file:src/main/resources/com/tsb/frogger/images/misc/icon-house.png", gamePane, this);
+                HomeBtn homeBtn = new HomeBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-house.png", gamePane, this);
                 gamePane.add(homeBtn);
+
+                // add setting button
+                SettingBtn settingBtn = new SettingBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png");
+                gamePane.add(settingBtn);
 
                 //start obstacles movement
                 gamePane.start();
