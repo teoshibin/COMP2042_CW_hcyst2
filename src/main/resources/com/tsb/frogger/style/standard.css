@@ -28,6 +28,15 @@ class background image
     -fx-background-radius: 30px;
 }
 
+.opaque-container {
+    -fx-background-color: rgba(179, 255, 188, 1);
+    -fx-background-radius: 30px;
+}
+
+.black-container {
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+}
+
 /*
 class listview css
 */

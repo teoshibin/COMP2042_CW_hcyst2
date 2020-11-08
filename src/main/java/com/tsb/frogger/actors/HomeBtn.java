@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.world.Game;
 import com.tsb.frogger.world.MyStage;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,9 @@ public class HomeBtn extends Actor {
             game.stop();
             try {
                 Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
+                gamePane.getChildren().clear();
                 gamePane.getChildren().setAll(menuPane);
+                Sound.playMenuMusic();
             } catch (IOException e) {
                 e.printStackTrace();
             }

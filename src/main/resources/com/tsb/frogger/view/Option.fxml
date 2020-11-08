@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.view.Option">
-
+<AnchorPane fx:id="optionPane" prefHeight="800.0" prefWidth="600.0" styleClass="black-container" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.OptionController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="95.0" layoutY="216.0" prefHeight="369.0" prefWidth="411.0" styleClass="opaque-container">
+         <children>
+            <Label prefHeight="43.0" prefWidth="69.0" text="Option">
+               <styleClass>
+                  <String fx:value="main-font" />
+                  <String fx:value="font-weight-bold" />
+               </styleClass>
+            </Label>
+            <VBox alignment="CENTER" prefHeight="256.0" prefWidth="411.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="411.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="120.0" styleClass="main-font" text="Music" />
+                        <Slider prefHeight="14.0" prefWidth="205.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="411.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="120.0" styleClass="main-font" text="Sound fx" />
+                        <Slider prefHeight="14.0" prefWidth="205.0" />
+                     </children>
+                  </HBox>
+               </children></VBox>
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Back">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="main-font" />
+               </styleClass>
+            </Button>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

@@ -48,7 +48,9 @@ public class MenuController {
                 // TODO: 11/3/2020
                 break;
             case "Options":
-                // TODO: 11/3/2020
+                Pane optionPane = FXMLLoader.load(getClass().getResource("../view/Option.fxml"));
+                menuPane.getChildren().add(optionPane);
+                OptionController.setParentPane(menuPane);
                 break;
             case "Info":
                 Pane infoPane = FXMLLoader.load(getClass().getResource("../view/Info.fxml"));

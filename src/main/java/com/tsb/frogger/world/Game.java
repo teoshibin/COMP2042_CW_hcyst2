@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 /**
  * game class to generate different difficulty of game map
@@ -92,7 +93,7 @@ public class Game extends MyStage{
                 gamePane.add(homeBtn);
 
                 // add setting button
-                SettingBtn settingBtn = new SettingBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png");
+                SettingBtn settingBtn = new SettingBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png", gamePane, this);
                 gamePane.add(settingBtn);
 
                 //start obstacles movement
@@ -143,6 +144,19 @@ public class Game extends MyStage{
         gamePane.stop();
         timer.stop();
         animal.noMove = true;
+    }
+
+    public void pause(){
+        System.out.println("Pause game timer");
+        gamePane.stop();
+        timer.stop();
+        animal.noMove = true;
+    }
+
+    public void resume(){
+        System.out.println("resume game timer");
+        timer.start();
+        animal.noMove = false;
     }
 
     /**
