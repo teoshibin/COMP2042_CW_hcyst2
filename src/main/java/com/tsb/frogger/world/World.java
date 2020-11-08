@@ -73,7 +73,7 @@ public abstract class World extends Pane {
     }
 
     /**
-     * create animation timer
+     * create animation timer for actors (obstacles)
      */
     public void createTimer() {
         timer = new AnimationTimer() {

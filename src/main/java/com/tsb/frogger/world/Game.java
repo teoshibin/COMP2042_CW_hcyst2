@@ -19,23 +19,13 @@ public class Game extends MyStage{
     Animal animal;
     AnimationTimer timer;
 
-    public Pane Map;
-
-    /**
-     * game constructor
-     * create game map based on difficulty
-     * @param difficulty game difficulty
-     */
-    public Game(int difficulty){
-        Map = setPane(difficulty);
-    }
 
     /**
      * actual method of creating game map
      * @param difficulty game difficulty
      * @return gamePane an object Pane that contains all information of the game map
      */
-    private Pane setPane(int difficulty){
+    public Pane getPane(int difficulty){
 
         // layout
         gamePane = new MyStage();
@@ -98,24 +88,8 @@ public class Game extends MyStage{
                 gamePane.add(animal);
 
                 // add home button
-                ImageView home = new ImageView("file:src/main/resources/com/tsb/frogger/images/misc/icon-house.png");
-                home.setFitHeight(30);
-                home.setFitWidth(30);
-                home.setLayoutX(15);
-                home.setLayoutY(15);
-                home.getStyleClass().add("homebtn");
-                home.setOnMouseClicked(event -> {
-                    gamePane.stopMusic();
-                    timer.stop();
-                    gamePane.stop();
-                    try {
-                        Pane menupane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                        gamePane.getChildren().setAll(menupane);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-                gamePane.getChildren().add(home);
+                HomeBtn homeBtn = new HomeBtn("file:src/main/resources/com/tsb/frogger/images/misc/icon-house.png", gamePane, this);
+                gamePane.add(homeBtn);
 
                 //start obstacles movement
                 gamePane.start();
@@ -124,7 +98,7 @@ public class Game extends MyStage{
     }
 
     /**
-     * creates animation timer
+     * creates animation timer for frogger character
      * check game winning state
      */
     public void createTimer() {
@@ -135,10 +109,7 @@ public class Game extends MyStage{
                     setNumber(animal.getPoints());
                 }
                 if (animal.getStop()) {
-                    System.out.print("STOP:");
-                    gamePane.stopMusic();
                     stop();
-                    gamePane.stop();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("You Have Won The Game!");
                     alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
@@ -153,10 +124,21 @@ public class Game extends MyStage{
      * play background music, creates animation timer and starts animation timer
      */
     public void start() {
-        System.out.println("starting");
+        System.out.println("starting game timer");
         gamePane.playMusic();
         createTimer();
         timer.start();
+    }
+
+    /**
+     * stop background music, stop obstacles timer
+     */
+    public void stop() {
+        System.out.println("stopping game timer");
+        gamePane.stopMusic();
+        gamePane.stop();
+        timer.stop();
+        animal.noMove = true;
     }
 
     /**

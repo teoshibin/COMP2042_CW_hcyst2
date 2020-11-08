@@ -21,7 +21,8 @@ public class Animal extends Actor {
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
-	boolean noMove = false;
+	public boolean noMove = false;
+//	boolean noMove = false;
 	double movement = 13.3333333*2;
 	double movementX = 10.666666*2;
 	int imgSize = 40;
