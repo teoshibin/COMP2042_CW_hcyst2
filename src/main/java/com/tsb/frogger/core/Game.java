@@ -15,34 +15,29 @@ import java.io.IOException;
  */
 public class Game{
 
-    MyStage gamePane;
-    Animal animal;
-    AnimationTimer timer;
-
+    private MyStage gamePane;
+    private Animal animal;
+    private AnimationTimer timer;
     private String username;
     private int level;
     private final Game currentGame = this;
+    public static final int MAX_LEVEL = 2;
 
     public Game(){
-        this.username = "Guest";
-        this.level = 0;
-    }
-
-    public Game(String username){
-        this.username = username;
-        this.level = 0;
+        setUsername("Guest");
+        setLevel(1);
     }
 
     public Game(String username, int level){
-        this.username = username;
-        this.level = level;
+        setUsername(username);
+        setLevel(level);
     }
 
     /**
      * actual method of creating game map
      * @return MyStage an object Pane that contains all information of the game map
      */
-    public Pane getPane(){
+    public Pane createPane(){
 
         // layout
         gamePane = new MyStage();
@@ -52,12 +47,8 @@ public class Game{
         gamePane.add(gameBackground);
 
         switch(level){
-            case 1:
-                // TODO: 11/3/2020
-                break;
             case 2:
                 // TODO: 11/3/2020
-                 break;
             default:
                 // add actors
                 gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 0, 166, 0.75));
@@ -132,8 +123,8 @@ public class Game{
                     setNumber(animal.getPoints());
                 }
                 if (animal.getStop()) {
-                    stop();
                     try{
+                        Game.this.stop();
                         VictoryController.setGame(currentGame);
                         Pane victoryPane = FXMLLoader.load(getClass().getResource("../view/Victory.fxml"));
                         gamePane.getChildren().add(victoryPane);
@@ -218,5 +209,9 @@ public class Game{
 
     public int getScore(){
         return animal.getPoints();
+    }
+
+    public MyStage getGamePane(){
+        return gamePane;
     }
 }

@@ -39,8 +39,8 @@ public class MenuController {
         switch (((Button)actionEvent.getSource()).getText()){
             case "Play":
                 Sound.stopMenuMusic();
-                Game game = new Game("Guest", 0);
-                Pane gamePane = game.getPane();
+                Game game = new Game("Guest", 1);
+                Pane gamePane = game.createPane();
                 game.start();
                 menuPane.getChildren().setAll(gamePane);
                 break;

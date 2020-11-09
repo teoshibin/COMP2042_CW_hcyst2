@@ -8,9 +8,9 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="600.0" styleClass="black-container" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.VictoryController">
    <children>
-      <VBox alignment="CENTER" layoutX="99.0" layoutY="191.0" prefHeight="426.0" prefWidth="402.0">
+      <VBox alignment="CENTER" layoutX="99.0" layoutY="191.0" prefHeight="367.0" prefWidth="402.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="354.0" prefWidth="356.0">
+            <VBox alignment="TOP_CENTER" prefHeight="314.0" prefWidth="356.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="50.0" />
                </VBox.margin>
@@ -82,19 +82,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER">
-                     <children>
-                        <Button mnemonicParsing="false" text="Details">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="main-font" />
-                           </styleClass>
-                        </Button>
-                     </children>
-                  </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="240.0" prefHeight="72.0" prefWidth="362.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Leave">
+                        <Button fx:id="leaveBtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#MouseEnter" text="Leave">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="main-font" />
@@ -104,7 +94,7 @@
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button layoutX="116.0" layoutY="10.0" mnemonicParsing="false" text="Continue">
+                        <Button fx:id="continueBtn" layoutX="116.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#MouseEnter" text="Continue">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="main-font" />
