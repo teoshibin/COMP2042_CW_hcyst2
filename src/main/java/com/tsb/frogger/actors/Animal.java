@@ -21,8 +21,8 @@ public class Animal extends Actor {
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
-	public boolean noMove = false;
-//	boolean noMove = false;
+//	public boolean noMove = false;
+	boolean noMove = false;
 	double movement = 13.3333333*2;
 	double movementX = 10.666666*2;
 	int imgSize = 40;
@@ -247,14 +247,20 @@ public class Animal extends Actor {
 			//setY(679.8+movement);
 		}
 	}
+
+	public void setNoMove(boolean noMove) {
+		this.noMove = noMove;
+	}
+
 	public boolean getStop() {
 		return end==5;
 	}
-	
+
 	public int getPoints() {
 		return points;
 	}
-	
+
+
 	public boolean changeScore() {
 		if (changeScore) {
 			changeScore = false;

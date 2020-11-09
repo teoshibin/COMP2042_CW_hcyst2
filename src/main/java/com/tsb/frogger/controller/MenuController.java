@@ -1,7 +1,7 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.world.Game;
+import com.tsb.frogger.core.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,8 +39,8 @@ public class MenuController {
         switch (((Button)actionEvent.getSource()).getText()){
             case "Play":
                 Sound.stopMenuMusic();
-                Game game = new Game();
-                Pane gamePane = game.getPane(0);
+                Game game = new Game("Guest", 0);
+                Pane gamePane = game.getPane();
                 game.start();
                 menuPane.getChildren().setAll(gamePane);
                 break;

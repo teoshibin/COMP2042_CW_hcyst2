@@ -1,6 +1,6 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.world.Game;
+import com.tsb.frogger.core.Game;
 import com.tsb.frogger.world.MyStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

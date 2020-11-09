@@ -2,7 +2,6 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.GameFile;
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.world.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

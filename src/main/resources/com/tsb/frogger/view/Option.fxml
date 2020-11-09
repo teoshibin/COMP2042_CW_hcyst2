@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="optionPane" prefHeight="800.0" prefWidth="600.0" styleClass="black-container" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.OptionController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="95.0" layoutY="216.0" prefHeight="369.0" prefWidth="411.0" styleClass="opaque-container">
+      <VBox alignment="TOP_CENTER" layoutX="95.0" layoutY="216.0" prefHeight="369.0" prefWidth="411.0">
          <children>
             <Label prefHeight="43.0" prefWidth="69.0" text="Option">
                <styleClass>
@@ -36,6 +36,10 @@
                </styleClass>
             </Button>
          </children>
+         <styleClass>
+            <String fx:value="opaque-container" />
+            <String fx:value="container-border" />
+         </styleClass>
       </VBox>
    </children>
 </AnchorPane>

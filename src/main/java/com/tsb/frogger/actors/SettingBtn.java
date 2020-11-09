@@ -1,7 +1,7 @@
 package com.tsb.frogger.actors;
 
 import com.tsb.frogger.controller.OptionController;
-import com.tsb.frogger.world.Game;
+import com.tsb.frogger.core.Game;
 import com.tsb.frogger.world.MyStage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;

@@ -1,32 +1,48 @@
-package com.tsb.frogger.world;
+package com.tsb.frogger.core;
 
 import com.tsb.frogger.actors.*;
+import com.tsb.frogger.controller.VictoryController;
+import com.tsb.frogger.world.MyStage;
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
+
 
 /**
  * game class to generate different difficulty of game map
  */
-public class Game extends MyStage{
+public class Game{
 
     MyStage gamePane;
     Animal animal;
     AnimationTimer timer;
 
+    private String username;
+    private int level;
+    private final Game currentGame = this;
+
+    public Game(){
+        this.username = "Guest";
+        this.level = 0;
+    }
+
+    public Game(String username){
+        this.username = username;
+        this.level = 0;
+    }
+
+    public Game(String username, int level){
+        this.username = username;
+        this.level = level;
+    }
 
     /**
      * actual method of creating game map
-     * @param difficulty game difficulty
-     * @return gamePane an object Pane that contains all information of the game map
+     * @return MyStage an object Pane that contains all information of the game map
      */
-    public Pane getPane(int difficulty){
+    public Pane getPane(){
 
         // layout
         gamePane = new MyStage();
@@ -35,13 +51,13 @@ public class Game extends MyStage{
         BackgroundImage gameBackground = new BackgroundImage("file:src/main/resources/com/tsb/frogger/images/world/gameBackground.png");
         gamePane.add(gameBackground);
 
-        switch(difficulty){
+        switch(level){
             case 1:
                 // TODO: 11/3/2020
                 break;
             case 2:
                 // TODO: 11/3/2020
-                break;
+                 break;
             default:
                 // add actors
                 gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 0, 166, 0.75));
@@ -102,6 +118,8 @@ public class Game extends MyStage{
         return gamePane;
     }
 
+
+
     /**
      * creates animation timer for frogger character
      * check game winning state
@@ -115,11 +133,19 @@ public class Game extends MyStage{
                 }
                 if (animal.getStop()) {
                     stop();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("You Have Won The Game!");
-                    alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
-                    alert.setContentText("Highest Possible Score: 800");
-                    alert.show();
+                    try{
+                        VictoryController.setGame(currentGame);
+                        Pane victoryPane = FXMLLoader.load(getClass().getResource("../view/Victory.fxml"));
+                        gamePane.getChildren().add(victoryPane);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                    alert.setTitle("You Have Won The Game!");
+//                    alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
+//                    alert.setContentText("Highest Possible Score: 800");
+//                    alert.show();
                 }
             }
         };
@@ -143,20 +169,20 @@ public class Game extends MyStage{
         gamePane.stopMusic();
         gamePane.stop();
         timer.stop();
-        animal.noMove = true;
+        animal.setNoMove(true);
     }
 
     public void pause(){
         System.out.println("Pause game timer");
         gamePane.stop();
         timer.stop();
-        animal.noMove = true;
+        animal.setNoMove(true);
     }
 
     public void resume(){
         System.out.println("resume game timer");
         timer.start();
-        animal.noMove = false;
+        animal.setNoMove(false);
     }
 
     /**
@@ -172,5 +198,25 @@ public class Game extends MyStage{
             gamePane.add(new Digit(k, 30, 360 - shift, 25));
             shift+=30;
         }
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getScore(){
+        return animal.getPoints();
     }
 }

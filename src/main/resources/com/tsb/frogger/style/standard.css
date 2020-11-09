@@ -37,6 +37,13 @@ class background image
     -fx-background-color: rgba(0, 0, 0, 0.7);
 }
 
+.container-border {
+    -fx-border-width: 3px;
+    -fx-border-color: black;
+    -fx-border-radius: 30px;
+    -fx-background-insets: 0px;
+}
+
 /*
 class listview css
 */

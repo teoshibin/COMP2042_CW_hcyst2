@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" styleClass="black-container" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.VictoryController">
+   <children>
+      <VBox alignment="CENTER" layoutX="99.0" layoutY="191.0" prefHeight="426.0" prefWidth="402.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="354.0" prefWidth="356.0">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="50.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="84.0" prefWidth="362.0">
+                     <children>
+                        <Label text="Highest Score: ">
+                           <styleClass>
+                              <String fx:value="main-font" />
+                              <String fx:value="font-weight-bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="highestScoreLabel" text="0" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="font-weight-bold" />
+                              <String fx:value="main-font" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="53.0">
+                     <children>
+                        <Label prefWidth="130.0" text="Username :">
+                           <styleClass>
+                              <String fx:value="main-font" />
+                              <String fx:value="font-weight-bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="usernameLabel" text="Guest" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="font-weight-bold" />
+                              <String fx:value="main-font" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="94.0">
+                     <children>
+                        <Label prefWidth="83.0" text="Level : ">
+                           <styleClass>
+                              <String fx:value="main-font" />
+                              <String fx:value="font-weight-bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="levelLabel" text="0" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="font-weight-bold" />
+                              <String fx:value="main-font" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER">
+                     <children>
+                        <Label text="Score : ">
+                           <styleClass>
+                              <String fx:value="main-font" />
+                              <String fx:value="font-weight-bold" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets bottom="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="scoreLabel" text="0" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="font-weight-bold" />
+                              <String fx:value="main-font" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button mnemonicParsing="false" text="Details">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="main-font" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="240.0" prefHeight="72.0" prefWidth="362.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Leave">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="main-font" />
+                              <String fx:value="deletebtn" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="116.0" layoutY="10.0" mnemonicParsing="false" text="Continue">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="main-font" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <styleClass>
+            <String fx:value="opaque-container" />
+            <String fx:value="container-border" />
+         </styleClass></VBox>
+      <ImageView fitHeight="211.0" fitWidth="402.0" layoutX="99.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/misc/victory.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
