@@ -1,7 +1,7 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.UsernameFile;
+import com.tsb.frogger.data.FileUsername;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +34,6 @@ public class AccountController implements Initializable {
     @FXML
     private Button enterbtn;
 
-//    private ArrayList<Player> users = GameFile.read();
     private int holdIndex;
 
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
@@ -42,7 +41,7 @@ public class AccountController implements Initializable {
 
         switch (((Button)actionEvent.getSource()).getText()){
             case "Add":
-                if(UsernameFile.addUsername(nameTextField.getText())){
+                if(FileUsername.addUsername(nameTextField.getText())){
                     nameTextField.setText("");
                     Sound.playSuccessSound();
                 } else {
@@ -50,7 +49,7 @@ public class AccountController implements Initializable {
                 }
                 break;
             case "Delete":
-                if(UsernameFile.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
+                if(FileUsername.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
                     Sound.playSuccessSound();
                 } else {
                     Sound.playErrorSound();
@@ -67,7 +66,7 @@ public class AccountController implements Initializable {
                 }
                 break;
             case "Done":
-                if(UsernameFile.editUsername(holdIndex, nameTextField.getText())){
+                if(FileUsername.editUsername(holdIndex, nameTextField.getText())){
                     Sound.playSuccessSound();
                 } else {
                     Sound.playErrorSound();
@@ -81,12 +80,13 @@ public class AccountController implements Initializable {
                 Sound.playPageFlipSound();
                 break;
             case "Enter":
+                MenuController.setSelectedUser(nameListView.getSelectionModel().getSelectedIndex());
                 Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
                 accountpane.getChildren().setAll(menuPane);
                 break;
         }
         //update listview
-        nameListView.setItems(UsernameFile.readUsername());
+        nameListView.setItems(FileUsername.readUsernames());
     }
 
     /**
@@ -97,28 +97,7 @@ public class AccountController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-//        //create file if not exist
-//        GameFile.createFile();
-//
-//        //read data
-//        String data = GameFile.readUsername();
-//
-//        if(data.length() > 2){
-//            //remove "[","]" split into string array
-//            String[] dataArray = data.substring(1, data.length()-1).split(", ");
-//            //convert array into array list
-//            ArrayList<String> dataList = new ArrayList<String>(Arrays.asList(dataArray));
-//            //add preset username
-//            dataList.add(0, "Guest");
-//            //convert array list to observable list
-//            userList = FXCollections.observableArrayList(dataList);
-//        } else {
-//            userList = FXCollections.observableArrayList("Guest");
-//        }
-
-
-        ObservableList<String> usernameItems = UsernameFile.readUsername();
+        ObservableList<String> usernameItems = FileUsername.readUsernames();
         System.out.println(usernameItems.toString());
         //assign list to GUI
         nameListView.setItems(usernameItems);

@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.ArrayList;
 
-public class UsernameFile extends GameFile{
+public class FileUsername extends FileGame {
 
     private static boolean checkDuplicate(ArrayList<Player> players, String name){
         for (Player player : players) {
@@ -15,7 +15,7 @@ public class UsernameFile extends GameFile{
         return false;
     }
 
-    public static ObservableList<String> readUsername(){
+    public static ObservableList<String> readUsernames(){
         ObservableList<String> nameList = FXCollections.observableArrayList();
         ArrayList<Player> players = read();
         if(players.size() > 0){
