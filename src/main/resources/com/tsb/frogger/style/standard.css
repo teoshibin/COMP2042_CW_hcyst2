@@ -14,6 +14,10 @@ class font css
     -fx-font-weight: bold;
 }
 
+.smaller-font-size{
+    -fx-font-size: 16px;
+}
+
 /*
 class background image
 */

@@ -2,23 +2,30 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.Game;
+import com.tsb.frogger.data.FileUsername;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Main menu controller for menu gui
  */
-public class MenuController {
+public class MenuController implements Initializable {
     @FXML
     public AnchorPane menuPane;
+    @FXML
+    public Label usernameLabel;
     @FXML
     private Button playBtn;
     @FXML
@@ -29,6 +36,8 @@ public class MenuController {
     private Button creditBtn;
     @FXML
     private Button quitBtn;
+
+    private static int player_index = 0;
 
     /**
      * handle main menu GUI button event
@@ -73,5 +82,14 @@ public class MenuController {
      */
     public void enterBtn(MouseEvent mouseEvent) {
         Sound.playBtnSound();
+    }
+
+    public static void setSelectedUser(int player_index){
+        MenuController.player_index = player_index;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        usernameLabel.setText(FileUsername.readUsernames().get(player_index));
     }
 }
