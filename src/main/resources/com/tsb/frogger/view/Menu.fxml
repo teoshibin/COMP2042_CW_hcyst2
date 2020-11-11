@@ -78,18 +78,17 @@
             <Image url="@../images/misc/MainLogo.png" />
          </image>
       </ImageView>
-      <Label layoutX="334.0" layoutY="754.0" text="Username : ">
+      <Label layoutX="373.0" layoutY="729.0" text="Username : ">
          <styleClass>
             <String fx:value="font-weight-bold" />
             <String fx:value="main-font" />
             <String fx:value="smaller-font-size" />
          </styleClass>
       </Label>
-      <Label fx:id="usernameLabel" layoutX="472.0" layoutY="754.0" prefHeight="32.0" prefWidth="120.0" text="Guest">
+      <Label fx:id="usernameLabel" layoutX="469.0" layoutY="729.0" prefHeight="23.0" prefWidth="121.0" text="Guest">
          <styleClass>
-            <String fx:value="font-weight-bold" />
             <String fx:value="main-font" />
-            <String fx:value=".smaller-font-size" />
+            <String fx:value="smaller-font-size" />
          </styleClass>
       </Label>
    </children>
