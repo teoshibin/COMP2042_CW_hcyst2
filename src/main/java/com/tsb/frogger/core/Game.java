@@ -6,7 +6,6 @@ import com.tsb.frogger.world.MyStage;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 
 
@@ -16,7 +15,8 @@ import java.io.IOException;
 public class Game{
 
     private MyStage gamePane;
-    private Animal animal;
+//    private Animal animal;
+    private GodAnimal animal;
     private AnimationTimer timer;
     private String username;
     private int level;
@@ -92,7 +92,12 @@ public class Game{
                 gamePane.add(new Digit(0, 30, 360, 25));
 
                 // add frogger character
-                animal = new Animal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
+//                animal = new Animal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
+//                gamePane.add(animal);
+
+                // add god frogger (uncomment to use god frogger)
+                animal = new GodAnimal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
+                animal.instantWin(600);
                 gamePane.add(animal);
 
                 // add home button

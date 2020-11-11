@@ -260,7 +260,6 @@ public class Animal extends Actor {
 		return points;
 	}
 
-
 	public boolean changeScore() {
 		if (changeScore) {
 			changeScore = false;

@@ -37,8 +37,6 @@ public class MenuController implements Initializable {
     @FXML
     private Button quitBtn;
 
-    private static int player_index = 0;
-
     /**
      * handle main menu GUI button event
      * @param actionEvent button event
@@ -84,12 +82,8 @@ public class MenuController implements Initializable {
         Sound.playBtnSound();
     }
 
-    public static void setSelectedUser(int player_index){
-        MenuController.player_index = player_index;
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameLabel.setText(FileUsername.readUsernames().get(player_index));
+        usernameLabel.setText(FileUsername.readUsernames().get(AccountController.getSelectedNameIndex()));
     }
 }

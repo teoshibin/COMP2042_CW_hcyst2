@@ -35,6 +35,7 @@ public class AccountController implements Initializable {
     private Button enterbtn;
 
     private int holdIndex;
+    private static int selectedNameIndex = 0;
 
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
 
@@ -80,29 +81,13 @@ public class AccountController implements Initializable {
                 Sound.playPageFlipSound();
                 break;
             case "Enter":
-                MenuController.setSelectedUser(nameListView.getSelectionModel().getSelectedIndex());
+                selectedNameIndex = nameListView.getSelectionModel().getSelectedIndex();
                 Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
                 accountpane.getChildren().setAll(menuPane);
                 break;
         }
         //update listview
         nameListView.setItems(FileUsername.readUsernames());
-    }
-
-    /**
-     * initialize account page gui
-     * @param location location
-     * @param resources resources
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        ObservableList<String> usernameItems = FileUsername.readUsernames();
-        System.out.println(usernameItems.toString());
-        //assign list to GUI
-        nameListView.setItems(usernameItems);
-
-        Sound.playMenuMusic();
     }
 
     /**
@@ -133,5 +118,23 @@ public class AccountController implements Initializable {
         }
     }
 
+    public static int getSelectedNameIndex() {
+        return selectedNameIndex;
+    }
 
+    /**
+     * initialize account page gui
+     * @param location location
+     * @param resources resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        ObservableList<String> usernameItems = FileUsername.readUsernames();
+        System.out.println(usernameItems.toString());
+        //assign list to GUI
+        nameListView.setItems(usernameItems);
+
+        Sound.playMenuMusic();
+    }
 }

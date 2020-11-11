@@ -28,14 +28,12 @@ public class Player implements Serializable {
         this.username = username;
     }
 
-    public void setHighest_scores(int level, int score){
-        if(level >= 0 && level <= Game.MAX_LEVEL){
-            highest_scores.set(level, score);
-        }
-    }
 
     public ArrayList<Integer> getHighest_scores(){
         return highest_scores;
     }
 
+    public void setHighest_scores(ArrayList<Integer> highest_scores) {
+        this.highest_scores = highest_scores;
+    }
 }
