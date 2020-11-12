@@ -11,7 +11,7 @@ public class MyStage extends World {
 
 	/**
 	 * act method
-	 * @param now
+	 * @param now timestamp of current time in nanosecond
 	 */
 	@Override
 	public void act(long now) {

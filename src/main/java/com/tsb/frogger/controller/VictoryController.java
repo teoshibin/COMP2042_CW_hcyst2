@@ -18,27 +18,61 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * victory controller for victory GUI
+ */
 public class VictoryController implements Initializable {
 
+    /**
+     * anchor pane
+     */
     @FXML
     public AnchorPane victoryPane;
+    /**
+     * image view
+     */
     @FXML
     public ImageView newImageView;
+    /**
+     * button
+     */
     @FXML
     private Button leaveBtn;
+    /**
+     * button
+     */
     @FXML
     private Button continueBtn;
+    /**
+     * label
+     */
     @FXML
     private Label highestScoreLabel;
+    /**
+     * label
+     */
     @FXML
     private Label usernameLabel;
+    /**
+     * label
+     */
     @FXML
     private Label levelLabel;
+    /**
+     * label
+     */
     @FXML
     private Label scoreLabel;
 
+    /**
+     * game object
+     */
     private static Game game;
 
+    /**
+     * handle action event
+     * @param actionEvent event
+     */
     public void handleBtnAction(ActionEvent actionEvent) {
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Leave", "Done" -> {
@@ -58,14 +92,27 @@ public class VictoryController implements Initializable {
         }
     }
 
+    /**
+     * mouse enter event
+     * @param mouseEvent event
+     */
     public void MouseEnter(MouseEvent mouseEvent) {
-        Sound.playBtnSound();
+        Sound.BtnSound();
     }
 
+    /**
+     * set game object
+     * @param game game object
+     */
     public static void setGame(Game game){
         VictoryController.game = game;
     }
 
+    /**
+     * init GUI
+     * @param location location
+     * @param resources resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         int playerIndex = AccountController.getSelectedNameIndex();

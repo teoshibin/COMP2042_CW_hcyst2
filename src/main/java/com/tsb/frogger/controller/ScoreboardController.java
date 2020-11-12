@@ -19,27 +19,61 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * scoreboard controller for scoreboard GUI
+ */
 public class ScoreboardController implements Initializable {
+    /**
+     * anchor pane
+     */
     @FXML
     private AnchorPane scoreBoardPane;
+    /**
+     * label
+     */
     @FXML
     private Label nameLabel;
+    /**
+     * label
+     */
     @FXML
     private Label levelLabel;
+    /**
+     * label
+     */
     @FXML
     private Label maxLevelLabel;
+    /**
+     * label
+     */
     @FXML
     private Label highestScoreLabel;
+    /**
+     * label
+     */
     @FXML
     private Label maxScoreLabel;
 
+    /**
+     * selected level
+     */
     private int selectedLevel = 1;
 
+    /**
+     * init GUI
+     * @param location location
+     * @param resources resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateInfo();
     }
 
+    /**
+     * handle action event
+     * @param actionEvent event
+     * @throws IOException exception
+     */
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Prev" -> {
@@ -62,10 +96,17 @@ public class ScoreboardController implements Initializable {
         updateInfo();
     }
 
+    /**
+     * mouse enter event
+     * @param mouseEvent event
+     */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playBtnSound();
+        Sound.BtnSound();
     }
 
+    /**
+     * update display info
+     */
     public void updateInfo(){
         nameLabel.setText(FileUsername.readUsernames().get(AccountController.getSelectedNameIndex()));
         levelLabel.setText(String.valueOf(selectedLevel));

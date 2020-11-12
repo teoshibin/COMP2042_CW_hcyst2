@@ -17,26 +17,61 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * account controller for GUI
+ */
 public class AccountController implements Initializable {
 
+    /**
+     * name text field
+     */
     @FXML
     public TextField nameTextField;
+    /**
+     * parent anchor pane
+     */
     @FXML
     private AnchorPane accountpane;
+    /**
+     * name list view
+     */
     @FXML
     private ListView<String> nameListView;
+    /**
+     * button
+     */
     @FXML
     private Button addbtn;
+    /**
+     * button
+     */
     @FXML
     private Button editbtn;
+    /**
+     * button
+     */
     @FXML
     private Button deletebtn;
+    /**
+     * button
+     */
     @FXML
     private Button enterbtn;
 
+    /**
+     * hold player index while editing
+     */
     private int holdIndex;
+    /**
+     * selected username player index
+     */
     private static int selectedNameIndex = 0;
 
+    /**
+     * handle button event
+     * @param actionEvent event
+     * @throws IOException exception
+     */
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
 
 
@@ -44,16 +79,16 @@ public class AccountController implements Initializable {
             case "Add":
                 if(FileUsername.addUsername(nameTextField.getText())){
                     nameTextField.setText("");
-                    Sound.playSuccessSound();
+                    Sound.SuccessSound();
                 } else {
-                    Sound.playErrorSound();
+                    Sound.ErrorSound();
                 }
                 break;
             case "Delete":
                 if(FileUsername.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
-                    Sound.playSuccessSound();
+                    Sound.SuccessSound();
                 } else {
-                    Sound.playErrorSound();
+                    Sound.ErrorSound();
                 }
                 break;
             case "Edit":
@@ -61,16 +96,16 @@ public class AccountController implements Initializable {
                 if(holdIndex > 0){
                     nameTextField.setText(nameListView.getSelectionModel().getSelectedItem());
                     editMode(true);
-                    Sound.playPageFlipSound();
+                    Sound.PageFlipSound();
                 } else {
-                    Sound.playErrorSound();
+                    Sound.ErrorSound();
                 }
                 break;
             case "Done":
                 if(FileUsername.editUsername(holdIndex, nameTextField.getText())){
-                    Sound.playSuccessSound();
+                    Sound.SuccessSound();
                 } else {
-                    Sound.playErrorSound();
+                    Sound.ErrorSound();
                 }
                 nameTextField.setText("");
                 editMode(false);
@@ -78,7 +113,7 @@ public class AccountController implements Initializable {
             case "Cancel":
                 editMode(false);
                 nameTextField.setText("");
-                Sound.playPageFlipSound();
+                Sound.PageFlipSound();
                 break;
             case "Enter":
                 selectedNameIndex = nameListView.getSelectionModel().getSelectedIndex();
@@ -95,7 +130,7 @@ public class AccountController implements Initializable {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playBtnSound();
+        Sound.BtnSound();
     }
 
     /**
@@ -118,6 +153,10 @@ public class AccountController implements Initializable {
         }
     }
 
+    /**
+     * get selected player username
+     * @return player index
+     */
     public static int getSelectedNameIndex() {
         return selectedNameIndex;
     }

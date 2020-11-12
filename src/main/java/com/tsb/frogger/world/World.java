@@ -12,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
@@ -19,6 +20,10 @@ import javafx.scene.layout.Pane;
  * World class to change event handler
  */
 public abstract class World extends Pane {
+
+    /**
+     * timer for obstacles
+     */
     private AnimationTimer timer;
 
     /**
@@ -26,9 +31,6 @@ public abstract class World extends Pane {
      */
     public World() {
 
-        /**
-         * create new Change listener
-         */
         sceneProperty().addListener(new ChangeListener<Scene>() {
 
 			@Override
@@ -113,10 +115,28 @@ public abstract class World extends Pane {
         getChildren().add(actor);
     }
 
+    /**
+     * add image view
+     * @param imageView image view
+     */
+    public void add(ImageView imageView){
+        getChildren().add(imageView);
+    }
+
+    /**
+     * remove actor
+     * @param actor actor
+     */
     public void remove(Actor actor) {
         getChildren().remove(actor);
     }
 
+    /**
+     * get object
+     * @param cls class
+     * @param <A> A
+     * @return arraylist
+     */
     public <A extends Actor> List<A> getObjects(Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();
         for (Node n: getChildren()) {
@@ -129,7 +149,7 @@ public abstract class World extends Pane {
 
     /**
      * act method
-     * @param now
+     * @param now timestamp of current time in nanosecond
      */
     public abstract void act(long now);
 }

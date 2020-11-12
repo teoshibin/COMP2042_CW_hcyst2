@@ -8,16 +8,34 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * option controller for option GUI
+ */
 public class OptionController {
 
-    public AnchorPane optionPane;
-    private static Pane parentPane;
+    /**
+     * game object
+     */
     private static Game game;
+    /**
+     * game parent node
+     */
     private static MyStage gamePane;
-
+    /**
+     * anchor pane
+     */
     @FXML
-    private Button backBtn;
+    public AnchorPane optionPane;
+    /**
+     * previous parent pane
+     */
+    @FXML
+    private static Pane parentPane;
 
+    /**
+     * handle action event
+     * @param actionEvent event
+     */
     public void handleBtnAction(ActionEvent actionEvent) {
         if(((Button)actionEvent.getSource()).getText().equals("Back")){
             parentPane.getChildren().remove(optionPane);
@@ -26,10 +44,19 @@ public class OptionController {
         }
     }
 
+    /**
+     * set parent node
+     * @param pane parent node
+     */
     public static void setParentPane(Pane pane){
         parentPane = pane;
     }
 
+    /**
+     * set game info
+     * @param gamePane game stage parent node
+     * @param game game object
+     */
     public static void setGameInfo(MyStage gamePane, Game game){
         OptionController.gamePane = gamePane;
         OptionController.game = game;

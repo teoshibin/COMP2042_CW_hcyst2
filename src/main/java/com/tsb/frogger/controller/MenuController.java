@@ -19,27 +19,49 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Main menu controller for menu gui
+ * Main menu controller for menu GUI
  */
 public class MenuController implements Initializable {
+    /**
+     * anchor pane
+     */
     @FXML
     public AnchorPane menuPane;
+    /**
+     * label
+     */
     @FXML
     public Label usernameLabel;
+    /**
+     * button
+     */
     @FXML
     private Button playBtn;
+    /**
+     * button
+     */
     @FXML
     private Button scoreBtn;
+    /**
+     * button
+     */
     @FXML
     private Button optionBtn;
+    /**
+     * button
+     */
     @FXML
     private Button creditBtn;
+    /**
+     * button
+     */
     @FXML
     private Button quitBtn;
 
     /**
      * handle main menu GUI button event
      * @param actionEvent button event
+     * @throws IOException exception
      */
     @FXML
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
@@ -81,7 +103,7 @@ public class MenuController implements Initializable {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playBtnSound();
+        Sound.BtnSound();
     }
 
     @Override

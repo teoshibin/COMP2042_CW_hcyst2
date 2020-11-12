@@ -11,21 +11,43 @@ import java.io.File;
  */
 public class Sound {
 
+    /**
+     * sound source
+     */
     private static final String btnSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/btn-pop.mp3";
+    /**
+     * sound source
+     */
     private static final String musicSource = "src/main/resources/com/tsb/frogger/sounds/MainBGM.mp3";
+    /**
+     * sound source
+     */
     private static final String ErrorSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/error.mp3";
+    /**
+     * sound source
+     */
     private static final String SuccessSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/success.mp3";
+    /**
+     * sound source
+     */
     private static final String PageFlipSoundSource = "file:src/main/resources/com/tsb/frogger/sounds/menu/page-flip.mp3";
+    /**
+     * sound source
+     */
     private static final String MenuMusicSource = "src/main/resources/com/tsb/frogger/sounds/MenuBGM.mp3";
-
-
+    /**
+     * media player
+     */
     private static MediaPlayer mediaPlayer;
+    /**
+     * audio clip
+     */
     private static AudioClip soundClip;
 
     /**
      * play mouse on enter button sound
      */
-    public static void playBtnSound(){
+    public static void BtnSound(){
         soundClip = new AudioClip(btnSoundSource);
         soundClip.play();
     }
@@ -33,7 +55,7 @@ public class Sound {
     /**
      * play error sound
      */
-    public static void playErrorSound(){
+    public static void ErrorSound(){
         soundClip = new AudioClip(ErrorSoundSource);
         soundClip.play();
     }
@@ -41,7 +63,7 @@ public class Sound {
     /**
      * play success sound
      */
-    public static void playSuccessSound(){
+    public static void SuccessSound(){
         soundClip = new AudioClip(SuccessSoundSource);
         soundClip.play();
     }
@@ -49,7 +71,7 @@ public class Sound {
     /**
      * play page flip
      */
-    public static void playPageFlipSound(){
+    public static void PageFlipSound(){
         soundClip = new AudioClip(PageFlipSoundSource);
         soundClip.play();
     }

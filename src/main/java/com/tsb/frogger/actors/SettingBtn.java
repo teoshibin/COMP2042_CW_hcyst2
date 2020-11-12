@@ -5,15 +5,22 @@ import com.tsb.frogger.core.Game;
 import com.tsb.frogger.world.MyStage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class SettingBtn extends Actor{
+/**
+ * setting button
+ */
+public class SettingBtn extends ImageView {
 
-    @Override
-    public void act(long now) {}
-
+    /**
+     * constructor
+     * @param imageLink image url
+     * @param gamePane parent node
+     * @param game game object
+     */
     public SettingBtn(String imageLink, MyStage gamePane, Game game) {
         setImage(new Image(imageLink, 32, 32, true, true));
         setLayoutX(553);
@@ -32,4 +39,5 @@ public class SettingBtn extends Actor{
             }
         });
     }
+
 }

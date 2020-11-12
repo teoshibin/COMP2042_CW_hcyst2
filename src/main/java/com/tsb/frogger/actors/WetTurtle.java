@@ -2,15 +2,42 @@ package com.tsb.frogger.actors;
 
 import javafx.scene.image.Image;
 
+/**
+ * wet turtle class
+ */
 public class WetTurtle extends Actor{
+	/**
+	 * image 1
+	 */
 	Image turtle1;
+	/**
+	 * image 2
+	 */
 	Image turtle2;
+	/**
+	 * image 3
+	 */
 	Image turtle3;
+	/**
+	 * image 4
+	 */
 	Image turtle4;
+	/**
+	 * wet turtle speed
+	 */
 	private int speed;
-	int i = 1;
-	boolean bool = true;
+
+//	int i = 1;
+//	boolean bool = true;
+	/**
+	 * turtle status
+	 */
 	boolean sunk = false;
+
+	/**
+	 * override act for the act of wet turtle
+	 * @param now timestamp of current time in nanosecond
+	 */
 	@Override
 	public void act(long now) {
 
@@ -37,6 +64,15 @@ public class WetTurtle extends Actor{
 		if (getX() < -75 && speed<0)
 			setX(600);
 	}
+
+	/**
+	 * constructor
+	 * @param xpos layout x
+	 * @param ypos layout y
+	 * @param s speed
+	 * @param w width
+	 * @param h height
+	 */
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
 		turtle1 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation1.png", w, h, true, true);
 		turtle2 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2Wet.png", w, h, true, true);
@@ -47,6 +83,11 @@ public class WetTurtle extends Actor{
 		speed = s;
 		setImage(turtle2);
 	}
+
+	/**
+	 * get status of turtle is under water
+	 * @return sunk boolean
+	 */
 	public boolean isSunk() {
 		return sunk;
 	}

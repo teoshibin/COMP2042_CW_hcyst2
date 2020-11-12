@@ -8,32 +8,108 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-
+/**
+ * frogger class
+ */
 public class Animal extends Actor {
+
+	/**
+	 * max score
+	 */
 	public static int MAX_SCORE = 800;
+	/**
+	 * image up
+	 */
 	Image imgW1;
+	/**
+	 * image left
+	 */
 	Image imgA1;
+	/**
+	 * image down
+	 */
 	Image imgS1;
+	/**
+	 * image right
+	 */
 	Image imgD1;
+	/**
+	 * image up 2
+	 */
 	Image imgW2;
+	/**
+	 * image left 2
+	 */
 	Image imgA2;
+	/**
+	 * image down 2
+	 */
 	Image imgS2;
+	/**
+	 * image right 2
+	 */
 	Image imgD2;
+	/**
+	 * score
+	 */
 	int points = 0;
+	/**
+	 * number of activated ends
+	 */
 	int end = 0;
+	/**
+	 * second frame animation boolean
+	 */
 	private boolean second = false;
-//	public boolean noMove = false;
+	/**
+	 * no move boolean
+	 */
 	boolean noMove = false;
+	/**
+	 * movement
+	 */
 	double movement = 13.3333333*2;
+	/**
+	 * movement x axis
+	 */
 	double movementX = 10.666666*2;
+	/**
+	 * image size
+	 */
 	int imgSize = 40;
+	/**
+	 * car death boolean
+	 */
 	boolean carDeath = false;
+	/**
+	 * water death boolean
+	 */
 	boolean waterDeath = false;
+	/**
+	 * stop boolean
+	 */
 	boolean stop = false;
+	/**
+	 * update score boolean
+	 */
 	boolean changeScore = false;
+	/**
+	 * car death counter
+	 */
 	int carD = 0;
+	/**
+	 * y layout location
+	 */
 	double w = 800;
+	/**
+	 * ends
+	 */
 	ArrayList<End> inter = new ArrayList<End>();
+
+	/**
+	 * frogger constructor
+	 * @param imageLink image url
+	 */
 	public Animal(String imageLink) {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		setX(300);
@@ -46,6 +122,7 @@ public class Animal extends Actor {
 		imgA2 = new Image("file:src/main/resources/com/tsb/frogger/images/frogger/froggerLeftJump.png", imgSize, imgSize, true, true);
 		imgS2 = new Image("file:src/main/resources/com/tsb/frogger/images/frogger/froggerDownJump.png", imgSize, imgSize, true, true);
 		imgD2 = new Image("file:src/main/resources/com/tsb/frogger/images/frogger/froggerRightJump.png", imgSize, imgSize, true, true);
+
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
 				if (noMove) {
@@ -132,7 +209,11 @@ public class Animal extends Actor {
 			
 		});
 	}
-	
+
+	/**
+	 * override solidify act method
+	 * @param now timestamp of current time in nanosecond
+	 */
 	@Override
 	public void act(long now) {
 		int bounds = 0;
@@ -249,18 +330,35 @@ public class Animal extends Actor {
 		}
 	}
 
+	/**
+	 * lock movement of frogger
+	 * @param noMove movement boolean
+	 */
 	public void setNoMove(boolean noMove) {
 		this.noMove = noMove;
 	}
 
+	/**
+	 * check all frogs are at the end
+	 * @return true if frogs at the end equals 5
+	 */
 	public boolean getStop() {
 		return end==5;
 	}
 
+	/**
+	 * get earned scores
+	 * @return scores
+	 */
 	public int getPoints() {
 		return points;
 	}
 
+	/**
+	 * method for updating score above game map
+	 * so that animation timer won't constantly update the score
+	 * @return new score available returns true, no score change return false
+	 */
 	public boolean changeScore() {
 		if (changeScore) {
 			changeScore = false;

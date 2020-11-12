@@ -14,20 +14,49 @@ import java.io.IOException;
  */
 public class Game{
 
+    /**
+     * game parent node
+     */
     private MyStage gamePane;
+    /**
+     * frogger
+     */
     private Animal animal;
 //    private GodAnimal animal;
+    /**
+     * frogger animation timer
+     */
     private AnimationTimer timer;
+    /**
+     * username
+     */
     private String username;
+    /**
+     * level
+     */
     private int level;
+    /**
+     * game object
+     */
     private final Game currentGame = this;
+    /**
+     * current max level
+     */
     public static final int MAX_LEVEL = 2;
 
+    /**
+     * constructor
+     */
     public Game(){
         setUsername("Guest");
         setLevel(1);
     }
 
+    /**
+     * constructor
+     * @param username username
+     * @param level initial level
+     */
     public Game(String username, int level){
         setUsername(username);
         setLevel(level);
@@ -137,12 +166,6 @@ public class Game{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-//                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.setTitle("You Have Won The Game!");
-//                    alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
-//                    alert.setContentText("Highest Possible Score: 800");
-//                    alert.show();
                 }
             }
         };
@@ -169,6 +192,9 @@ public class Game{
         animal.setNoMove(true);
     }
 
+    /**
+     * pause the game without exiting
+     */
     public void pause(){
         System.out.println("Pause game timer");
         gamePane.stop();
@@ -176,6 +202,9 @@ public class Game{
         animal.setNoMove(true);
     }
 
+    /**
+     * resume from pause
+     */
     public void resume(){
         System.out.println("resume game timer");
         timer.start();
@@ -197,26 +226,50 @@ public class Game{
         }
     }
 
+    /**
+     * get level
+     * @return level
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * set level
+     * @param level level
+     */
     public void setLevel(int level) {
         this.level = level;
     }
 
+    /**
+     * get username
+     * @return username
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * set username
+     * @param username username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * get scored points
+     * @return score
+     */
     public int getScore(){
         return animal.getPoints();
     }
 
+    /**
+     * get parent
+     * @return parent node
+     */
     public MyStage getGamePane(){
         return gamePane;
     }

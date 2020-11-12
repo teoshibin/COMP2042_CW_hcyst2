@@ -2,6 +2,7 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -14,8 +15,15 @@ import java.io.IOException;
  * info controller
  */
 public class InfoController {
-
+    /**
+     * button
+     */
+    @FXML
     public Button backBtn;
+    /**
+     * anchor pane
+     */
+    @FXML
     public AnchorPane infoPane;
 
     /**
@@ -35,6 +43,6 @@ public class InfoController {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playBtnSound();
+        Sound.BtnSound();
     }
 }

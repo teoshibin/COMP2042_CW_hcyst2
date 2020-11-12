@@ -8,8 +8,14 @@ import java.util.ArrayList;
  */
 class FileGame {
 
+    /**
+     * data path
+     */
     private static final String DATA_PATH = "src/main/resources/com/tsb/frogger/save/saveGame.ser";
 
+    /**
+     * create file if not exist
+     */
     static void createFile(){
         File file;
         try{
@@ -24,6 +30,10 @@ class FileGame {
         }
     }
 
+    /**
+     * write data
+     * @param users players
+     */
     static void write(ArrayList<Player> users){
         try{
             FileOutputStream fos = new FileOutputStream(DATA_PATH);
@@ -36,6 +46,10 @@ class FileGame {
         }
     }
 
+    /**
+     * read data
+     * @return players
+     */
     @SuppressWarnings("unchecked")
     static ArrayList<Player> read(){
         ArrayList<Player> users = null;
