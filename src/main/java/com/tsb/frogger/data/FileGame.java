@@ -11,7 +11,7 @@ class FileGame {
     /**
      * data path
      */
-    private static final String DATA_PATH = "src/main/resources/com/tsb/frogger/save/saveGame.ser";
+    private static String DATA_PATH = "src/main/resources/com/tsb/frogger/save/saveGame.ser";
 
     /**
      * create file if not exist
