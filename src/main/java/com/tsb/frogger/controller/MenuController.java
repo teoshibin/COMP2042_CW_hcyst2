@@ -47,12 +47,14 @@ public class MenuController implements Initializable {
             case "Play":
                 Sound.stopMenuMusic();
                 Game game = new Game("Guest", 1);
+                // TODO: 11/12/2020
                 Pane gamePane = game.createPane();
                 game.start();
                 menuPane.getChildren().setAll(gamePane);
                 break;
             case "Scores":
-                // TODO: 11/3/2020
+                Pane scorePane = FXMLLoader.load(getClass().getResource("../view/Scoreboard.fxml"));
+                menuPane.getChildren().setAll(scorePane);
                 break;
             case "Options":
                 Pane optionPane = FXMLLoader.load(getClass().getResource("../view/Option.fxml"));

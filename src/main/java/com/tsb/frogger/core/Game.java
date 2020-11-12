@@ -110,6 +110,7 @@ public class Game{
 
                 //start obstacles movement
                 gamePane.start();
+
         }
         return gamePane;
     }

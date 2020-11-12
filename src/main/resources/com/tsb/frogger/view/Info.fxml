@@ -7,9 +7,9 @@
 
 <AnchorPane fx:id="infoPane" onMouseEntered="#enterBtn" prefHeight="800.0" prefWidth="600.0" styleClass="pane" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.InfoController">
    <children>
-      <HBox alignment="CENTER" layoutX="50.0" layoutY="222.0" prefHeight="471.0" prefWidth="500.0" styleClass="half-opaque-container">
+      <HBox alignment="CENTER" layoutX="50.0" layoutY="222.0" prefHeight="370.0" prefWidth="500.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="409.0" prefWidth="434.0">
+            <VBox alignment="TOP_CENTER" prefHeight="402.0" prefWidth="434.0">
                <children>
                   <Label prefHeight="43.0" prefWidth="50.0" text="Info" textAlignment="CENTER">
                      <styleClass>
@@ -26,15 +26,10 @@
                         <String fx:value="font-weight-bold" />
                      </styleClass>
                   </Label>
-                  <VBox prefHeight="245.0" prefWidth="434.0">
+                  <VBox prefHeight="146.0" prefWidth="434.0">
                      <children>
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="169.0" styleClass="main-font" text="Frog Movement" />
                         <TextArea editable="false" prefHeight="84.0" prefWidth="434.0" styleClass="textArea" text="W - UP&#10;A - LEFT&#10;S - DOWN&#10;D - RIGHT" wrapText="true">
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor></TextArea>
-                        <Label layoutX="10.0" layoutY="43.0" prefHeight="36.0" prefWidth="169.0" styleClass="main-font" text="Gameplay" />
-                        <TextArea editable="false" layoutX="10.0" layoutY="75.0" prefHeight="77.0" prefWidth="434.0" styleClass="textArea" text="ESC - PAUSE / RESUME / OPTION" wrapText="true">
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
                            </cursor></TextArea>
@@ -48,6 +43,10 @@
                   </Button>
                </children>
             </VBox>
-         </children></HBox>
+         </children>
+         <styleClass>
+            <String fx:value="half-opaque-container" />
+            <String fx:value="container-border" />
+         </styleClass></HBox>
    </children>
 </AnchorPane>

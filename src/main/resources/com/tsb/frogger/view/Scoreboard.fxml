@@ -1,11 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.view.Scoreboard">
+<AnchorPane fx:id="scoreBoardPane" onMouseEntered="#enterBtn" prefHeight="800.0" prefWidth="600.0" styleClass="pane" stylesheets="@../style/standard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsb.frogger.controller.ScoreboardController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="107.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <VBox layoutX="85.0" layoutY="245.0" prefHeight="375.0" prefWidth="430.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="424.0" spacing="20.0">
+               <children>
+                  <Button fx:id="prevBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Prev">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font-weight-bold" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Next">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="430.0">
+               <children>
+                  <Label text="Username : ">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="nameLabel" styleClass="main-font" text="Guest" />
+               </children></HBox>
+            <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="430.0">
+               <children>
+                  <Label text="Level : ">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="levelLabel" styleClass="main-font" text="0" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="60.0">
+               <children>
+                  <Label text="(max level is ">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                        <String fx:value="smaller-font-size" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="maxLevelLabel" layoutX="158.0" layoutY="19.0" text="0">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                        <String fx:value="smaller-font-size" />
+                     </styleClass>
+                  </Label>
+                  <Label layoutX="146.0" layoutY="19.0" text=" )">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                        <String fx:value="smaller-font-size" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="430.0">
+               <children>
+                  <Label text="Highest Score : ">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="highestScoreLabel" styleClass="main-font" text="0" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="92.0" prefHeight="60.0" prefWidth="430.0">
+               <children>
+                  <Label text="(max score is ">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                        <String fx:value="smaller-font-size" />
+                     </styleClass>
+                  </Label>
+                  <Label fx:id="maxScoreLabel" layoutX="158.0" layoutY="19.0" text="0">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                        <String fx:value="smaller-font-size" />
+                     </styleClass>
+                  </Label>
+                  <Label layoutX="146.0" layoutY="19.0" text=" )">
+                     <styleClass>
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                        <String fx:value="font" />
+                        <String fx:value="smaller-font-size" />
+                     </styleClass>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="13.0" layoutY="246.0" prefHeight="65.0" prefWidth="424.0" spacing="20.0">
+               <children>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Back">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="font-weight-bold" />
+                        <String fx:value="main-font" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+         <styleClass>
+            <String fx:value="container-border" />
+            <String fx:value="half-opaque-container" />
+         </styleClass>
+      </VBox>
+      <ImageView fitHeight="212.0" fitWidth="467.0" layoutX="67.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/misc/pixelScoreboard.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
