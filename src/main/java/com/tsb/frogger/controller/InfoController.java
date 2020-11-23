@@ -1,6 +1,7 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.data.ConstantData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import java.io.IOException;
  * info controller
  */
 public class InfoController {
+
     /**
      * button
      */
@@ -43,6 +45,6 @@ public class InfoController {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.BtnSound();
+        Sound.playAudioClip(ConstantData.buttonSound);
     }
 }

@@ -2,8 +2,10 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Game;
 import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.data.ConstantData;
 import com.tsb.frogger.data.FileScore;
 import com.tsb.frogger.data.FileUsername;
+import com.tsb.frogger.data.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
@@ -24,20 +25,10 @@ import java.util.ResourceBundle;
 public class VictoryController implements Initializable {
 
     /**
-     * anchor pane
-     */
-    @FXML
-    public AnchorPane victoryPane;
-    /**
      * image view
      */
     @FXML
     public ImageView newImageView;
-    /**
-     * button
-     */
-    @FXML
-    private Button leaveBtn;
     /**
      * button
      */
@@ -65,11 +56,6 @@ public class VictoryController implements Initializable {
     private Label scoreLabel;
 
     /**
-     * game object
-     */
-    private static Game game;
-
-    /**
      * handle action event
      * @param actionEvent event
      */
@@ -78,16 +64,17 @@ public class VictoryController implements Initializable {
             case "Leave", "Done" -> {
                 try {
                     Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                    game.getGamePane().getChildren().setAll(menuPane);
+//                    RuntimeData.game.getGamePane().getChildren().setAll(menuPane);
+                    RuntimeData.pane.getChildren().setAll(menuPane);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Sound.stopMusic();
+                Sound.stopMediaPlayer();
             }
             case "Continue" -> {
-                game.setLevel(game.getLevel() + 1);
-                game.getGamePane().getChildren().setAll(game.createPane());
-                game.start();
+                RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
+                RuntimeData.pane.getChildren().setAll(RuntimeData.game.createPane());
+                RuntimeData.game.start();
             }
         }
     }
@@ -97,16 +84,16 @@ public class VictoryController implements Initializable {
      * @param mouseEvent event
      */
     public void MouseEnter(MouseEvent mouseEvent) {
-        Sound.BtnSound();
+        Sound.playAudioClip(ConstantData.buttonSound);
     }
 
     /**
      * set game object
      * @param game game object
      */
-    public static void setGame(Game game){
-        VictoryController.game = game;
-    }
+//    public static void setGame(Game game){
+//        VictoryController.game = game;
+//    }
 
     /**
      * init GUI
@@ -115,9 +102,9 @@ public class VictoryController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        int playerIndex = AccountController.getSelectedNameIndex();
-        int currentScore = game.getScore();
-        int currentLevel = game.getLevel();
+        int playerIndex = RuntimeData.selectedUsernameIndex;
+        int currentScore = RuntimeData.game.getScore();
+        int currentLevel = RuntimeData.game.getLevel();
         int previousHighScore = FileScore.readScore(playerIndex, currentLevel);
 
         usernameLabel.setText(FileUsername.readUsernames().get(playerIndex));
@@ -132,7 +119,7 @@ public class VictoryController implements Initializable {
             FileScore.writeScore(playerIndex, currentLevel, currentScore);
             newImageView.setVisible(true);
         }
-        if(game.getLevel() == Game.MAX_LEVEL){
+        if(RuntimeData.game.getLevel() == Game.MAX_LEVEL){
             continueBtn.setText("Done");
         }
     }

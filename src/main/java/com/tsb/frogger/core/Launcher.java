@@ -1,5 +1,6 @@
 package com.tsb.frogger.core;
 
+import com.tsb.frogger.data.RuntimeData;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,8 +32,8 @@ public class Launcher extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent menu = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-        Scene scene = new Scene(menu);
+        RuntimeData.pane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+        Scene scene = new Scene(RuntimeData.pane);
         scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Frogger");

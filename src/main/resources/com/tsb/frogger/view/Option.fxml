@@ -29,7 +29,7 @@
                      </children>
                   </HBox>
                </children></VBox>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Back">
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" text="Back">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="main-font" />

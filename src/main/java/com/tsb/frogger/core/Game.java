@@ -17,7 +17,7 @@ public class Game{
     /**
      * game parent node
      */
-    private MyStage gamePane;
+    public static MyStage gamePane;
     /**
      * frogger
      */
@@ -28,45 +28,36 @@ public class Game{
      */
     private AnimationTimer timer;
     /**
-     * username
-     */
-    private String username;
-    /**
      * level
      */
     private int level;
     /**
-     * game object
-     */
-    private final Game currentGame = this;
-    /**
      * current max level
      */
-    public static final int MAX_LEVEL = 2;
+    public static final int MAX_LEVEL = 5;
 
     /**
      * constructor
      */
     public Game(){
-        setUsername("Guest");
         setLevel(1);
+        gamePane = createPane();
     }
 
     /**
      * constructor
-     * @param username username
      * @param level initial level
      */
-    public Game(String username, int level){
-        setUsername(username);
+    public Game(int level){
         setLevel(level);
+        gamePane = createPane();
     }
 
     /**
      * actual method of creating game map
      * @return MyStage an object Pane that contains all information of the game map
      */
-    public Pane createPane(){
+    public MyStage createPane(){
 
         // layout
         gamePane = new MyStage();
@@ -76,8 +67,10 @@ public class Game{
         gamePane.add(gameBackground);
 
         switch(level){
+            case 5:
+            case 4:
+            case 3:
             case 2:
-                // TODO: 11/3/2020
             default:
                 // add actors
                 gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 0, 166, 0.75));
@@ -118,7 +111,7 @@ public class Game{
                 gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/truck2Right.png", 500, 540, 1, 200, 200));
 
                 // add scoreboard
-                gamePane.add(new Digit(0, 30, 360, 25));
+                gamePane.add(new Digit(0, 30, 400, 25));
 
                 // add frogger character
                 animal = new Animal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
@@ -130,11 +123,11 @@ public class Game{
 //                gamePane.add(animal);
 
                 // add home button
-                HomeBtn homeBtn = new HomeBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-house.png", gamePane, this);
+                HomeBtn homeBtn = new HomeBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-house.png");
                 gamePane.add(homeBtn);
 
                 // add setting button
-                SettingBtn settingBtn = new SettingBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png", gamePane, this);
+                SettingBtn settingBtn = new SettingBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png");
                 gamePane.add(settingBtn);
 
                 //start obstacles movement
@@ -160,7 +153,6 @@ public class Game{
                 if (animal.getStop()) {
                     try{
                         Game.this.stop();
-                        VictoryController.setGame(currentGame);
                         Pane victoryPane = FXMLLoader.load(getClass().getResource("../view/Victory.fxml"));
                         gamePane.getChildren().add(victoryPane);
                     } catch (IOException e) {
@@ -207,6 +199,7 @@ public class Game{
      */
     public void resume(){
         System.out.println("resume game timer");
+        gamePane.start();
         timer.start();
         animal.setNoMove(false);
     }
@@ -221,7 +214,7 @@ public class Game{
             int d = n / 10;
             int k = n - d * 10;
             n = d;
-            gamePane.add(new Digit(k, 30, 360 - shift, 25));
+            gamePane.add(new Digit(k, 30, 400 - shift, 25));
             shift+=30;
         }
     }
@@ -243,34 +236,10 @@ public class Game{
     }
 
     /**
-     * get username
-     * @return username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * set username
-     * @param username username
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
      * get scored points
      * @return score
      */
     public int getScore(){
         return animal.getPoints();
-    }
-
-    /**
-     * get parent
-     * @return parent node
-     */
-    public MyStage getGamePane(){
-        return gamePane;
     }
 }

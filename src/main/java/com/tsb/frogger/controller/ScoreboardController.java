@@ -3,8 +3,10 @@ package com.tsb.frogger.controller;
 import com.tsb.frogger.actors.Animal;
 import com.tsb.frogger.core.Game;
 import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.data.ConstantData;
 import com.tsb.frogger.data.FileScore;
 import com.tsb.frogger.data.FileUsername;
+import com.tsb.frogger.data.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,17 +103,17 @@ public class ScoreboardController implements Initializable {
      * @param mouseEvent event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.BtnSound();
+        Sound.playAudioClip(ConstantData.buttonSound);
     }
 
     /**
      * update display info
      */
     public void updateInfo(){
-        nameLabel.setText(FileUsername.readUsernames().get(AccountController.getSelectedNameIndex()));
+        nameLabel.setText(FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex));
         levelLabel.setText(String.valueOf(selectedLevel));
         maxLevelLabel.setText(String.valueOf(Game.MAX_LEVEL));
-        highestScoreLabel.setText(String.valueOf(FileScore.readScore(AccountController.getSelectedNameIndex(), selectedLevel)));
+        highestScoreLabel.setText(String.valueOf(FileScore.readScore(RuntimeData.selectedUsernameIndex, selectedLevel)));
         maxScoreLabel.setText(String.valueOf(Animal.MAX_SCORE));
     }
 

@@ -2,7 +2,9 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.Game;
+import com.tsb.frogger.data.ConstantData;
 import com.tsb.frogger.data.FileUsername;
+import com.tsb.frogger.data.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,31 +33,6 @@ public class MenuController implements Initializable {
      */
     @FXML
     public Label usernameLabel;
-    /**
-     * button
-     */
-    @FXML
-    private Button playBtn;
-    /**
-     * button
-     */
-    @FXML
-    private Button scoreBtn;
-    /**
-     * button
-     */
-    @FXML
-    private Button optionBtn;
-    /**
-     * button
-     */
-    @FXML
-    private Button creditBtn;
-    /**
-     * button
-     */
-    @FXML
-    private Button quitBtn;
 
     /**
      * handle main menu GUI button event
@@ -65,36 +41,30 @@ public class MenuController implements Initializable {
      */
     @FXML
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
-        switch (((Button)actionEvent.getSource()).getText()){
-            case "Play":
-                Sound.stopMenuMusic();
-                Game game = new Game("Guest", 1);
-                // TODO: 11/12/2020
-                Pane gamePane = game.createPane();
-                game.start();
-                menuPane.getChildren().setAll(gamePane);
-                break;
-            case "Scores":
+        // TODO: 11/12/2020
+        switch (((Button) actionEvent.getSource()).getText()) {
+            case "Play" -> {
+                Sound.stopMediaPlayer();
+                RuntimeData.game = new Game(1);
+                RuntimeData.game.start();
+                menuPane.getChildren().setAll(Game.gamePane);
+            }
+            case "Scores" -> {
                 Pane scorePane = FXMLLoader.load(getClass().getResource("../view/Scoreboard.fxml"));
                 menuPane.getChildren().setAll(scorePane);
-                break;
-            case "Options":
+            }
+            case "Options" -> {
                 Pane optionPane = FXMLLoader.load(getClass().getResource("../view/Option.fxml"));
                 menuPane.getChildren().add(optionPane);
-                OptionController.setParentPane(menuPane);
-                break;
-            case "Info":
+            }
+            case "Info" -> {
                 Pane infoPane = FXMLLoader.load(getClass().getResource("../view/Info.fxml"));
                 menuPane.getChildren().setAll(infoPane);
-                break;
-            case "Back":
+            }
+            case "Back" -> {
                 Pane accountPane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
                 menuPane.getChildren().setAll(accountPane);
-                break;
-            case "Quit":
-                Stage stage = (Stage) quitBtn.getScene().getWindow();
-                stage.close();
-                break;
+            }
         }
     }
 
@@ -103,11 +73,11 @@ public class MenuController implements Initializable {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.BtnSound();
+        Sound.playAudioClip(ConstantData.buttonSound);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameLabel.setText(FileUsername.readUsernames().get(AccountController.getSelectedNameIndex()));
+        usernameLabel.setText(RuntimeData.Username);
     }
 }

@@ -136,15 +136,15 @@ class button css
     -fx-font-weight: bold;
 }
 
-.donebtn{
+.doneBtn{
     -fx-background-color: #e6df17;
 }
 
-.cancelbtn{
+.cancelBtn{
     -fx-background-color: #de9c00;
 }
 
-.deletebtn{
+.deleteBtn{
     -fx-background-color: #db3400;
 }
 
@@ -213,15 +213,15 @@ class button event css
     -fx-scale-x: 1.1;
 }
 
-.donebtn:hover {
+.doneBtn:hover {
     -fx-background-color: #fff817;
 }
 
-.cancelbtn:hover {
+.cancelBtn:hover {
     -fx-background-color: #ffb300;
 }
 
-.deletebtn:hover {
+.deleteBtn:hover {
     -fx-background-color: #ff3c00;
 }
 
