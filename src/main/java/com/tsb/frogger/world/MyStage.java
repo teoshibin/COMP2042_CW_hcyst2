@@ -2,8 +2,7 @@ package com.tsb.frogger.world;
 
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import javafx.scene.media.MediaPlayer;
+import com.tsb.frogger.core.ConstantData;
 
 /**
  * MyStage class
@@ -22,7 +21,7 @@ public class MyStage extends World {
 	 * play background music
 	 */
 	public void playMusic() {
-		Sound.playMediaPlayer(ConstantData.gameMusic);
+		Sound.playMediaPlayer(ConstantData.MUSIC_FROGGER);
 	}
 
 	/**

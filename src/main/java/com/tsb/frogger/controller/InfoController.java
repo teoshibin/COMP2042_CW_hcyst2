@@ -1,7 +1,7 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
+import com.tsb.frogger.core.ConstantData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +15,11 @@ import java.io.IOException;
 /**
  * info controller
  */
-public class InfoController {
-
+public class InfoController implements ControlledScreen {
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
     /**
      * button
      */
@@ -35,8 +38,7 @@ public class InfoController {
      */
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
         if ("Back".equals(((Button) actionEvent.getSource()).getText())) {
-            Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-            infoPane.getChildren().setAll(menuPane);
+            myController.setScreen(ConstantData.SCREEN_MENU);
         }
     }
 
@@ -45,6 +47,15 @@ public class InfoController {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.buttonSound);
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+    }
+
+    /**
+     * set main screen controller
+     * @param screenPage screen page
+     */
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

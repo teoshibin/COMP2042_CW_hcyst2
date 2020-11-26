@@ -1,7 +1,6 @@
 package com.tsb.frogger.core;
 
 import com.tsb.frogger.actors.*;
-import com.tsb.frogger.controller.VictoryController;
 import com.tsb.frogger.world.MyStage;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -134,6 +133,9 @@ public class Game{
                 gamePane.start();
 
         }
+
+
+
         return gamePane;
     }
 

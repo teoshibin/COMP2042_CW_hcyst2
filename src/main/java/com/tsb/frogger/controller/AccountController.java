@@ -1,21 +1,19 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.FileUsername;
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.files.FileUsername;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,8 +21,11 @@ import java.util.ResourceBundle;
 /**
  * account controller for GUI
  */
-public class AccountController implements Initializable {
-
+public class AccountController implements Initializable, ControlledScreen{
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
     /**
      * name text field
      */
@@ -62,12 +63,9 @@ public class AccountController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         ObservableList<String> usernameItems = FileUsername.readUsernames();
-        //assign list to GUI
         nameListView.setItems(usernameItems);
-
-        Sound.playMediaPlayer(ConstantData.menuMusic);
+        Sound.playMediaPlayer(ConstantData.MUSIC_NATURE);
     }
 
     /**
@@ -82,16 +80,16 @@ public class AccountController implements Initializable {
             case "Add":
                 if(FileUsername.addUsername(nameTextField.getText())){
                     nameTextField.setText("");
-                    Sound.playAudioClip(ConstantData.successSound);
+                    Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
-                    Sound.playAudioClip(ConstantData.errorSound);
+                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
                 break;
             case "Delete":
                 if(FileUsername.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
-                    Sound.playAudioClip(ConstantData.successSound);
+                    Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
-                    Sound.playAudioClip(ConstantData.errorSound);
+                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
                 break;
             case "Edit":
@@ -99,16 +97,16 @@ public class AccountController implements Initializable {
                 if(holdIndex > 0){
                     nameTextField.setText(nameListView.getSelectionModel().getSelectedItem());
                     editMode(true);
-                    Sound.playAudioClip(ConstantData.pageFlipSound);
+                    Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
                 } else {
-                    Sound.playAudioClip(ConstantData.errorSound);
+                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
                 break;
             case "Done":
                 if(FileUsername.editUsername(holdIndex, nameTextField.getText())){
-                    Sound.playAudioClip(ConstantData.successSound);
+                    Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
-                    Sound.playAudioClip(ConstantData.errorSound);
+                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
                 nameTextField.setText("");
                 editMode(false);
@@ -116,13 +114,21 @@ public class AccountController implements Initializable {
             case "Cancel":
                 editMode(false);
                 nameTextField.setText("");
-                Sound.playAudioClip(ConstantData.pageFlipSound);
+                Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
                 break;
             case "Enter":
+                // save runtime data
                 RuntimeData.selectedUsernameIndex = nameListView.getSelectionModel().getSelectedIndex();
                 RuntimeData.Username = FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex);
-                Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                accountPane.getChildren().setAll(menuPane);
+                // load screens
+                myController.loadMarkdown(ConstantData.SCREEN_MENU, ConstantData.FXML_MENU);
+                myController.loadMarkdown(ConstantData.SCREEN_INFO, ConstantData.FXML_INFO);
+                myController.loadMarkdown(ConstantData.SCREEN_SCOREBOARD, ConstantData.FXML_SCOREBOARD);
+                myController.loadMarkdown(ConstantData.OVERLAY_OPTION, ConstantData.FXML_OPTION);
+                // set screen
+                myController.setScreen(ConstantData.SCREEN_MENU);
+//                Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
+//                accountPane.getChildren().setAll(menuPane);
                 break;
         }
         //update listview
@@ -134,7 +140,7 @@ public class AccountController implements Initializable {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.buttonSound);
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
     }
 
     /**
@@ -157,5 +163,12 @@ public class AccountController implements Initializable {
         }
     }
 
-
+    /**
+     * set main screen controller
+     * @param screenPage screen page
+     */
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
 }

@@ -1,9 +1,8 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.RuntimeData;
-import com.tsb.frogger.world.MyStage;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,8 +13,11 @@ import javafx.scene.layout.Pane;
 /**
  * option controller for option GUI
  */
-public class OptionController {
-
+public class OptionController implements ControlledScreen{
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
     /**
      * anchor pane
      */
@@ -28,14 +30,28 @@ public class OptionController {
      */
     public void handleBtnAction(ActionEvent actionEvent) {
         if(((Button)actionEvent.getSource()).getText().equals("Back")){
-            ((Pane)optionPane.getParent()).getChildren().remove(optionPane);
+//            ((Pane)optionPane.getParent()).getChildren().remove(optionPane);
+            myController.removeOverlay(ConstantData.OVERLAY_OPTION);
             if(RuntimeData.game != null){
                 RuntimeData.game.resume();
             }
         }
     }
 
+    /**
+     * play button pop up sound effect
+     * @param mouseEvent mouse event
+     */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.buttonSound);
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+    }
+
+    /**
+     * set main screen controller
+     * @param screenPage screen page
+     */
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

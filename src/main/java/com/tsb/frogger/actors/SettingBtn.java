@@ -1,8 +1,8 @@
 package com.tsb.frogger.actors;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,14 +28,15 @@ public class SettingBtn extends ImageView {
         setOnMouseClicked(event -> {
             try {
                 Pane optionPane = FXMLLoader.load(getClass().getResource("../view/Option.fxml"));
-                RuntimeData.pane.getChildren().add(optionPane);
-                RuntimeData.game.pause();
+                // TODO
+//                RuntimeData.pane.getChildren().add(optionPane);
+//                RuntimeData.game.pause();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
 
-        setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.buttonSound));
+        setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.SOUND_BUTTON));
     }
 
 }

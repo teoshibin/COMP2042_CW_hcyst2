@@ -1,8 +1,8 @@
 package com.tsb.frogger.actors;
 
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,16 +29,17 @@ public class HomeBtn extends ImageView {
             RuntimeData.game.stop();
             try {
                 Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                RuntimeData.pane.getChildren().clear();
-                RuntimeData.pane.getChildren().setAll(menuPane);
+                // TODO
+//                RuntimeData.pane.getChildren().clear();
+//                RuntimeData.pane.getChildren().setAll(menuPane);
                 Sound.stopMediaPlayer();
-                Sound.playMediaPlayer(ConstantData.menuMusic);
+                Sound.playMediaPlayer(ConstantData.MUSIC_NATURE);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
 
-        setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.buttonSound));
+        setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.SOUND_BUTTON));
     }
 
 }

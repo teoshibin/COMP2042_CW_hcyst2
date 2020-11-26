@@ -1,15 +1,12 @@
 package com.tsb.frogger.core;
 
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.controller.ScreensController;
 import javafx.application.Application;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -32,14 +29,29 @@ public class Launcher extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        RuntimeData.pane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-        Scene scene = new Scene(RuntimeData.pane);
-        scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
+
+        ScreensController mainContainer = new ScreensController();
+
+        mainContainer.loadMarkdown(ConstantData.SCREEN_ACCOUNT, ConstantData.FXML_ACCOUNT);
+
+        mainContainer.setScreen(ConstantData.SCREEN_ACCOUNT);
+
+//        RuntimeData.pane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
+//        Scene scene = new Scene(RuntimeData.pane);
+//        scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
+//
+//        FXMLLoader accountPaneLoader = new FXMLLoader(getClass().getResource("../view/Account.fxml"));
+//        Parent accountPane = accountPaneLoader.load();
+//        Scene accountScene = new Scene(accountPane);
+//
+        Group root = new Group();
+        root.getChildren().addAll(mainContainer);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Frogger");
+        primaryStage.setTitle(ConstantData.STAGE_TITLE);
         primaryStage.setResizable(false);
         primaryStage.setMaximized(false);
-        primaryStage.getIcons().add(new Image("file:src/main/resources/com/tsb/frogger/images/misc/icon-frogger-pixel-512x512.png"));
+        primaryStage.getIcons().add(new Image(ConstantData.IMAGE_FROGGER_ICON));
         primaryStage.show();
     }
 }

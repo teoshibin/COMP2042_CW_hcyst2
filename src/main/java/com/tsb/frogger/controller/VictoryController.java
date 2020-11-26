@@ -2,10 +2,10 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Game;
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.FileScore;
-import com.tsb.frogger.data.FileUsername;
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.files.FileScore;
+import com.tsb.frogger.files.FileUsername;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,16 +65,17 @@ public class VictoryController implements Initializable {
                 try {
                     Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
 //                    RuntimeData.game.getGamePane().getChildren().setAll(menuPane);
-                    RuntimeData.pane.getChildren().setAll(menuPane);
+                    // TODO
+//                    RuntimeData.pane.getChildren().setAll(menuPane);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 Sound.stopMediaPlayer();
             }
             case "Continue" -> {
-                RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
-                RuntimeData.pane.getChildren().setAll(RuntimeData.game.createPane());
-                RuntimeData.game.start();
+//                RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
+//                RuntimeData.pane.getChildren().setAll(RuntimeData.game.createPane());
+//                RuntimeData.game.start();
             }
         }
     }
@@ -84,7 +85,7 @@ public class VictoryController implements Initializable {
      * @param mouseEvent event
      */
     public void MouseEnter(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.buttonSound);
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
     }
 
     /**

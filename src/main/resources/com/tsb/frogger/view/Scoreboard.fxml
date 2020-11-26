@@ -12,14 +12,14 @@
          <children>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="424.0" spacing="20.0">
                <children>
-                  <Button fx:id="prevBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Prev">
+                  <Button fx:id="prevBtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseClicked="#clickBtn" onMouseEntered="#enterBtn" text="Prev">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="main-font" />
                         <String fx:value="font-weight-bold" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Next">
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseClicked="#clickBtn" onMouseEntered="#enterBtn" text="Next">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="font-weight-bold" />
@@ -124,7 +124,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="13.0" layoutY="246.0" prefHeight="65.0" prefWidth="424.0" spacing="20.0">
                <children>
-                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" text="Back">
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleBtnAction" onMouseEntered="#enterBtn" text="Back">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="font-weight-bold" />

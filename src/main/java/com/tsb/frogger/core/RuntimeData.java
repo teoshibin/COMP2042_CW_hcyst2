@@ -1,7 +1,6 @@
-package com.tsb.frogger.data;
+package com.tsb.frogger.core;
 
 import com.tsb.frogger.core.Game;
-import javafx.scene.layout.Pane;
 
 public class RuntimeData {
     /**
@@ -16,8 +15,4 @@ public class RuntimeData {
      * game object
      */
     public static Game game;
-    /**
-     * root node
-     */
-    public static Pane pane;
 }

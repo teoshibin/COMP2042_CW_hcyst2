@@ -3,10 +3,10 @@ package com.tsb.frogger.controller;
 import com.tsb.frogger.actors.Animal;
 import com.tsb.frogger.core.Game;
 import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.FileScore;
-import com.tsb.frogger.data.FileUsername;
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.files.FileScore;
+import com.tsb.frogger.files.FileUsername;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,11 @@ import java.util.ResourceBundle;
 /**
  * scoreboard controller for scoreboard GUI
  */
-public class ScoreboardController implements Initializable {
+public class ScoreboardController implements Initializable, ControlledScreen{
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
     /**
      * anchor pane
      */
@@ -91,8 +95,7 @@ public class ScoreboardController implements Initializable {
                 }
             }
             case "Back" -> {
-                Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                scoreBoardPane.getChildren().setAll(menuPane);
+                myController.setScreen(ConstantData.SCREEN_MENU);
             }
         }
         updateInfo();
@@ -103,7 +106,15 @@ public class ScoreboardController implements Initializable {
      * @param mouseEvent event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.buttonSound);
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+    }
+
+    /**
+     * mouse click event
+     * @param mouseEvent event
+     */
+    public void clickBtn(MouseEvent mouseEvent) {
+        Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
     }
 
     /**
@@ -117,5 +128,13 @@ public class ScoreboardController implements Initializable {
         maxScoreLabel.setText(String.valueOf(Animal.MAX_SCORE));
     }
 
+    /**
+     * set main screen controller
+     * @param screenPage screen page
+     */
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
+    }
 
 }

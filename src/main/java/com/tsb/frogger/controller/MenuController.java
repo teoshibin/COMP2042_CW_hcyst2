@@ -2,9 +2,8 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.Game;
-import com.tsb.frogger.data.ConstantData;
-import com.tsb.frogger.data.FileUsername;
-import com.tsb.frogger.data.RuntimeData;
+import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +21,11 @@ import java.util.ResourceBundle;
 /**
  * Main menu controller for menu GUI
  */
-public class MenuController implements Initializable {
+public class MenuController implements Initializable, ControlledScreen {
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
     /**
      * anchor pane
      */
@@ -50,20 +53,16 @@ public class MenuController implements Initializable {
                 menuPane.getChildren().setAll(Game.gamePane);
             }
             case "Scores" -> {
-                Pane scorePane = FXMLLoader.load(getClass().getResource("../view/Scoreboard.fxml"));
-                menuPane.getChildren().setAll(scorePane);
+                myController.setScreen(ConstantData.SCREEN_SCOREBOARD);
             }
             case "Options" -> {
-                Pane optionPane = FXMLLoader.load(getClass().getResource("../view/Option.fxml"));
-                menuPane.getChildren().add(optionPane);
+                myController.addOverlay(ConstantData.OVERLAY_OPTION);
             }
             case "Info" -> {
-                Pane infoPane = FXMLLoader.load(getClass().getResource("../view/Info.fxml"));
-                menuPane.getChildren().setAll(infoPane);
+                myController.setScreen(ConstantData.SCREEN_INFO);
             }
             case "Back" -> {
-                Pane accountPane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-                menuPane.getChildren().setAll(accountPane);
+                myController.setScreen(ConstantData.SCREEN_ACCOUNT);
             }
         }
     }
@@ -73,11 +72,20 @@ public class MenuController implements Initializable {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.buttonSound);
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         usernameLabel.setText(RuntimeData.Username);
+    }
+
+    /**
+     * set main screen controller
+     * @param screenPage screen page
+     */
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }
