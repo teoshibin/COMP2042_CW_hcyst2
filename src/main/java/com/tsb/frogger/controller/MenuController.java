@@ -50,7 +50,8 @@ public class MenuController implements Initializable, ControlledScreen {
                 Sound.stopMediaPlayer();
                 RuntimeData.game = new Game(1);
                 RuntimeData.game.start();
-                menuPane.getChildren().setAll(Game.gamePane);
+                myController.loadScreen(ConstantData.SCREEN_GAME, RuntimeData.game.gamePane, RuntimeData.game);
+                myController.setScreen(ConstantData.SCREEN_GAME);
             }
             case "Scores" -> {
                 myController.setScreen(ConstantData.SCREEN_SCOREBOARD);

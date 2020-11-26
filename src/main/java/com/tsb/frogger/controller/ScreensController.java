@@ -33,15 +33,20 @@ public class ScreensController extends Pane {
     /**
      * add screen to hashmap using id
      */
-    public void addScreen(String name, Node screen) {
+    private void addScreenToHash(String name, Node screen) {
         screens.put(name, screen);
     }
 
     /**
      * get screen from hashmap using id
      */
-    public Node getScreen(String name) {
+    private Node getScreenFromHash(String name) {
         return screens.get(name);
+    }
+
+    public void loadScreen(String name, Parent node, ControlledScreen myScreenController){
+        myScreenController.setScreenParent(this);
+        addScreenToHash(name, node);
     }
 
     /**
@@ -54,7 +59,7 @@ public class ScreensController extends Pane {
             Parent loadScreen = myLoader.load();
             ControlledScreen myScreenController = myLoader.getController();
             myScreenController.setScreenParent(this);
-            addScreen(name, loadScreen);
+            addScreenToHash(name, loadScreen);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -65,7 +70,7 @@ public class ScreensController extends Pane {
      * @param name screen id
      * @return success boolean
      */
-    public boolean unloadMarkdown(String name) {
+    public boolean unloadScreen(String name) {
         if (screens.remove(name) == null) {
             System.out.println("Screen didn't exist");
             return false;
@@ -79,7 +84,7 @@ public class ScreensController extends Pane {
      * @param name screen id
      */
     public void addOverlay(final String name){
-        getChildren().add(getScreen(name));
+        getChildren().add(getScreenFromHash(name));
     }
 
     /**
@@ -87,7 +92,7 @@ public class ScreensController extends Pane {
      * @param name screen id
      */
     public void removeOverlay(final String name){
-        getChildren().remove(getScreen(name));
+        getChildren().remove(getScreenFromHash(name));
     }
     
     /**
@@ -112,14 +117,14 @@ public class ScreensController extends Pane {
                         @Override
                         public void handle(ActionEvent t) {
                             getChildren().remove(0);
-                            getChildren().add(0, getScreen(name));
+                            getChildren().add(0, getScreenFromHash(name));
                             fadeIn(opacity);
                         }
                     }, new KeyValue(opacity, 0.0)));
             fade.play();
         } else {
             setOpacity(0.0);
-            getChildren().add(getScreen(name));       //no one else been displayed, then just show
+            getChildren().add(getScreenFromHash(name));       //no one else been displayed, then just show
             fadeIn(opacity);
         }
         return true;

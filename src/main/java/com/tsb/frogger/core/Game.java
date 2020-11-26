@@ -1,6 +1,8 @@
 package com.tsb.frogger.core;
 
 import com.tsb.frogger.actors.*;
+import com.tsb.frogger.controller.ControlledScreen;
+import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.world.MyStage;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +13,16 @@ import java.io.IOException;
 /**
  * game class to generate different difficulty of game map
  */
-public class Game{
+public class Game implements ControlledScreen {
 
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
     /**
      * game parent node
      */
-    public static MyStage gamePane;
+    public MyStage gamePane;
     /**
      * frogger
      */
@@ -62,7 +68,7 @@ public class Game{
         gamePane = new MyStage();
 
         // background image
-        BackgroundImage gameBackground = new BackgroundImage("file:src/main/resources/com/tsb/frogger/images/world/gameBackground.png");
+        BackgroundImage gameBackground = new BackgroundImage(ConstantData.IMAGE_GAME_BACKGROUND_A);
         gamePane.add(gameBackground);
 
         switch(level){
@@ -72,16 +78,16 @@ public class Game{
             case 2:
             default:
                 // add actors
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 0, 166, 0.75));
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 220, 166, 0.75));
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 440, 166, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 0, 166, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 220, 166, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 440, 166, 0.75));
 
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/logs.png", 300, 0, 276, -2));
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/logs.png", 300, 400, 276, -2));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_LONG_LOG, 300, 0, 276, -2));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_LONG_LOG, 300, 400, 276, -2));
 
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 50, 329, 0.75));
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 270, 329, 0.75));
-                gamePane.add(new Log("file:src/main/resources/com/tsb/frogger/images/objects/log3.png", 150, 490, 329, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 50, 329, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 270, 329, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 490, 329, 0.75));
 
                 gamePane.add(new Turtle(500, 376, -1, 130, 130));
                 gamePane.add(new Turtle(300, 376, -1, 130, 130));
@@ -96,18 +102,18 @@ public class Game{
                 gamePane.add(new End(141 + 141-13+141-13+1,96));
                 gamePane.add(new End(141 + 141-13+141-13+141-13+3,96));
 
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/truck1"+"Right.png", 0, 649, 1, 120, 120));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/truck1"+"Right.png", 300, 649, 1, 120, 120));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/truck1"+"Right.png", 600, 649, 1, 120, 120));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_A_RIGHT, 0, 649, 1, 120, 120));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_A_RIGHT, 300, 649, 1, 120, 120));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_A_RIGHT, 600, 649, 1, 120, 120));
 
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png", 100, 597, -1, 50, 50));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png", 250, 597, -1, 50, 50));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png", 400, 597, -1, 50, 50));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png", 550, 597, -1, 50, 50));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png", 500, 490, -5, 50, 50));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 100, 597, -1, 50, 50));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 250, 597, -1, 50, 50));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 400, 597, -1, 50, 50));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 550, 597, -1, 50, 50));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 500, 490, -5, 50, 50));
 
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/truck2Right.png", 0, 540, 1, 200, 200));
-                gamePane.add(new Obstacle("file:src/main/resources/com/tsb/frogger/images/objects/truck2Right.png", 500, 540, 1, 200, 200));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_B_RIGHT, 0, 540, 1, 200, 200));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_B_RIGHT, 500, 540, 1, 200, 200));
 
                 // add scoreboard
                 gamePane.add(new Digit(0, 30, 400, 25));
@@ -243,5 +249,14 @@ public class Game{
      */
     public int getScore(){
         return animal.getPoints();
+    }
+
+    /**
+     * set main screen controller
+     * @param screenPage screen page
+     */
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }
