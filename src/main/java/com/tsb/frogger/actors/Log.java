@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.ConstantData;
 import javafx.scene.image.Image;
 
 /**
@@ -19,10 +20,10 @@ public class Log extends Actor {
 	@Override
 	public void act(long now) {
 		move(speed , 0);
-		if (getX()>600 && speed>0)
+		if (getX()> ConstantData.SIZE_BACKGROUND[0] && speed>0)
 			setX(-180);
 		if (getX()<-300 && speed<0)
-			setX(700);
+			setX(640);
 	}
 
 	/**

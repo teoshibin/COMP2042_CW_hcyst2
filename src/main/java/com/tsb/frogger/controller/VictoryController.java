@@ -8,22 +8,19 @@ import com.tsb.frogger.files.FileUsername;
 import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
  * victory controller for victory GUI
  */
-public class VictoryController implements Initializable {
-
+public class VictoryController implements Initializable, ControlledScreen{
+    ScreensController myController;
     /**
      * image view
      */
@@ -62,20 +59,19 @@ public class VictoryController implements Initializable {
     public void handleBtnAction(ActionEvent actionEvent) {
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Leave", "Done" -> {
-                try {
-                    Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-//                    RuntimeData.game.getGamePane().getChildren().setAll(menuPane);
-                    // TODO
-//                    RuntimeData.pane.getChildren().setAll(menuPane);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                myController.removeOverlay(ConstantData.OVERLAY_VICTORY);
+                myController.setScreen(ConstantData.SCREEN_MENU);
+                myController.unloadScreen(ConstantData.SCREEN_GAME);
+                myController.unloadScreen(ConstantData.OVERLAY_VICTORY);
                 Sound.stopMediaPlayer();
+                Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
             }
             case "Continue" -> {
-//                RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
-//                RuntimeData.pane.getChildren().setAll(RuntimeData.game.createPane());
-//                RuntimeData.game.start();
+                RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
+                RuntimeData.game.gamePane = RuntimeData.game.createPane();
+                myController.removeOverlay(ConstantData.OVERLAY_VICTORY);
+                myController.unloadScreen(ConstantData.OVERLAY_VICTORY);
+                RuntimeData.game.start();
             }
         }
     }
@@ -87,14 +83,6 @@ public class VictoryController implements Initializable {
     public void MouseEnter(MouseEvent mouseEvent) {
         Sound.playAudioClip(ConstantData.SOUND_BUTTON);
     }
-
-    /**
-     * set game object
-     * @param game game object
-     */
-//    public static void setGame(Game game){
-//        VictoryController.game = game;
-//    }
 
     /**
      * init GUI
@@ -123,5 +111,10 @@ public class VictoryController implements Initializable {
         if(RuntimeData.game.getLevel() == Game.MAX_LEVEL){
             continueBtn.setText("Done");
         }
+    }
+
+    @Override
+    public void setScreenParent(ScreensController screenPage) {
+        myController = screenPage;
     }
 }

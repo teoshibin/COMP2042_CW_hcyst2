@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
@@ -19,7 +20,7 @@ public class HomeBtn extends ImageView {
      * constructor
      * @param imageLink image url
      */
-    public HomeBtn(String imageLink) {
+    public HomeBtn(String imageLink, ScreensController myController) {
         setImage(new Image(imageLink, 32, 32, true, true));
         setLayoutX(15);
         setLayoutY(15);
@@ -27,16 +28,9 @@ public class HomeBtn extends ImageView {
 
         setOnMouseClicked(event -> {
             RuntimeData.game.stop();
-            try {
-                Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-                // TODO
-//                RuntimeData.pane.getChildren().clear();
-//                RuntimeData.pane.getChildren().setAll(menuPane);
-                Sound.stopMediaPlayer();
-                Sound.playMediaPlayer(ConstantData.MUSIC_NATURE);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            RuntimeData.game = null;
+            myController.setScreen(ConstantData.SCREEN_MENU);
+            Sound.stopMediaPlayer();
         });
 
         setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.SOUND_BUTTON));

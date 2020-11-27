@@ -1,5 +1,7 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.controller.ControlledScreen;
+import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
@@ -14,29 +16,24 @@ import java.io.IOException;
  * setting button
  */
 public class SettingBtn extends ImageView {
-
     /**
      * constructor
      * @param imageLink image url\
      */
-    public SettingBtn(String imageLink) {
+    public SettingBtn(String imageLink, ScreensController myController) {
         setImage(new Image(imageLink, 32, 32, true, true));
-        setLayoutX(553);
+        setLayoutX(ConstantData.SIZE_BACKGROUND[0] - 15 - 32);
         setLayoutY(15);
         getStyleClass().add("settingBtn");
 
         setOnMouseClicked(event -> {
-            try {
-                Pane optionPane = FXMLLoader.load(getClass().getResource("../view/Option.fxml"));
-                // TODO
-//                RuntimeData.pane.getChildren().add(optionPane);
-//                RuntimeData.game.pause();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            myController.addOverlay(ConstantData.OVERLAY_OPTION);
+            RuntimeData.game.pause();
         });
 
-        setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.SOUND_BUTTON));
-    }
+        setOnMouseEntered(event -> {
+            Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        });
 
+    }
 }

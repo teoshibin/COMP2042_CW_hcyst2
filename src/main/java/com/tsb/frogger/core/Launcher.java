@@ -31,14 +31,12 @@ public class Launcher extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         ScreensController mainContainer = new ScreensController();
-
         mainContainer.loadMarkdown(ConstantData.SCREEN_ACCOUNT, ConstantData.FXML_ACCOUNT);
 
         mainContainer.setScreen(ConstantData.SCREEN_ACCOUNT);
 
 //        RuntimeData.pane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
 //        Scene scene = new Scene(RuntimeData.pane);
-//        scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
 //
 //        FXMLLoader accountPaneLoader = new FXMLLoader(getClass().getResource("../view/Account.fxml"));
 //        Parent accountPane = accountPaneLoader.load();
@@ -47,6 +45,7 @@ public class Launcher extends Application {
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle(ConstantData.STAGE_TITLE);
         primaryStage.setResizable(false);

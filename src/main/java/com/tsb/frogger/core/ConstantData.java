@@ -17,7 +17,7 @@ public class ConstantData {
     // FXML resources
     public static final String FXML_ACCOUNT = "../view/Account.fxml";
     public static final String FXML_MENU = "../view/Menu.fxml";
-//    public static final String FXML_GAME = "../view/Game.fxml";
+    //    public static final String FXML_GAME = "../view/Game.fxml";
     public static final String FXML_INFO = "../view/Info.fxml";
     public static final String FXML_SCOREBOARD = "../view/Scoreboard.fxml";
     public static final String FXML_OPTION = "../view/Option.fxml";
@@ -30,35 +30,113 @@ public class ConstantData {
     public static final String SOUND_PAGE_FLIP = "file:src/main/resources/com/tsb/frogger/sounds/menu/page-flip.mp3";
 
     // music resources
-    public static final String MUSIC_FROGGER = "src/main/resources/com/tsb/frogger/sounds/MainBGM.mp3";
-    public static final String MUSIC_NATURE = "src/main/resources/com/tsb/frogger/sounds/MenuBGM.mp3";
+    public static final String MUSIC_FROGGER = "src/main/resources/com/tsb/frogger/sounds/music/MainBGM.mp3";
+    public static final String MUSIC_NATURE = "src/main/resources/com/tsb/frogger/sounds/music/MenuBGM.mp3";
+    public static final String MUSIC_ARCADE = "src/main/resources/com/tsb/frogger/sounds/music/ArcadeBGM.mp3";
 
     // stage image resources
     public static final String IMAGE_FROGGER_ICON = "file:src/main/resources/com/tsb/frogger/images/misc/icon-frogger-pixel-512x512.png";
 
     //// game image resources
 
+    // GUI
+    public static final String IMAGE_ICON_HOME = "file:src/main/resources/com/tsb/frogger/images/world/icon-house.png";
+    public static final String IMAGE_ICON_GEAR = "file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png";
+
     // background map
     public static final String IMAGE_GAME_BACKGROUND_A = "file:src/main/resources/com/tsb/frogger/images/world/gameBackground.png";
     // log
-    public static final String IMAGE_GAME_SHORT_LOG = "file:src/main/resources/com/tsb/frogger/images/objects/log3.png";
-    public static final String IMAGE_GAME_MEDIUM_LOG = "file:src/main/resources/com/tsb/frogger/images/objects/log2.png";
-    public static final String IMAGE_GAME_LONG_LOG = "file:src/main/resources/com/tsb/frogger/images/objects/logs.png";
+    public static final String IMAGE_ACTOR_SHORT_LOG = "file:src/main/resources/com/tsb/frogger/images/objects/log3.png";
+    public static final String IMAGE_ACTOR_MEDIUM_LOG = "file:src/main/resources/com/tsb/frogger/images/objects/log2.png";
+    public static final String IMAGE_ACTOR_LONG_LOG = "file:src/main/resources/com/tsb/frogger/images/objects/logs.png";
     // truck
-    public static final String IMAGE_GAME_TRUCK_A_LEFT = "file:src/main/resources/com/tsb/frogger/images/objects/truck1Left.png";
-    public static final String IMAGE_GAME_TRUCK_A_RIGHT = "file:src/main/resources/com/tsb/frogger/images/objects/truck1Right.png";
-    public static final String IMAGE_GAME_TRUCK_B_LEFT = "file:src/main/resources/com/tsb/frogger/images/objects/truck2Left.png";
-    public static final String IMAGE_GAME_TRUCK_B_RIGHT = "file:src/main/resources/com/tsb/frogger/images/objects/truck2Right.png";
+    public static final String IMAGE_ACTOR_SHORT_TRUCK_LEFT = "file:src/main/resources/com/tsb/frogger/images/objects/truck1Left.png";
+    public static final String IMAGE_ACTOR_SHORT_TRUCK_RIGHT = "file:src/main/resources/com/tsb/frogger/images/objects/truck1Right.png";
+    public static final String IMAGE_ACTOR_LONG_TRUCK_LEFT = "file:src/main/resources/com/tsb/frogger/images/objects/truck2Left.png";
+    public static final String IMAGE_ACTOR_LONG_TRUCK_RIGHT = "file:src/main/resources/com/tsb/frogger/images/objects/truck2Right.png";
     // car
-    public static final String IMAGE_GAME_CAR_A_LEFT = "file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png";
-    public static final String IMAGE_GAME_CAR_A_RIGHT = "file:src/main/resources/com/tsb/frogger/images/objects/car1Right.png";
+    public static final String IMAGE_ACTOR_CAR_A_LEFT = "file:src/main/resources/com/tsb/frogger/images/objects/car1Left.png";
+    public static final String IMAGE_ACTOR_CAR_A_RIGHT = "file:src/main/resources/com/tsb/frogger/images/objects/car1Right.png";
     // turtle
-    public static final String IMAGE_GAME_TURTLE_1 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation1.png";
-    public static final String IMAGE_GAME_TURTLE_2 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2.png";
-    public static final String IMAGE_GAME_TURTLE_3 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation3.png";
-    public static final String IMAGE_GAME_WET_TURTLE_2 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2Wet.png";
-    public static final String IMAGE_GAME_WET_TURTLE_3 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation3Wet.png";
-    public static final String IMAGE_GAME_WET_TURTLE_4 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation4Wet.png";
+    public static final String IMAGE_ACTOR_TURTLE_1 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation1.png";
+    public static final String IMAGE_ACTOR_TURTLE_2 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2.png";
+    public static final String IMAGE_ACTOR_TURTLE_3 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation3.png";
+    public static final String IMAGE_ACTOR_WET_TURTLE_2 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2Wet.png";
+    public static final String IMAGE_ACTOR_WET_TURTLE_3 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation3Wet.png";
+    public static final String IMAGE_ACTOR_WET_TURTLE_4 = "file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation4Wet.png";
+    // end
+    public static final String IMAGE_ACTOR_END = "file:src/main/resources/com/tsb/frogger/images/world/End.png";
+    public static final String IMAGE_ACTOR_FROG_END = "file:src/main/resources/com/tsb/frogger/images/world/FrogEnd.png";
+    // frog
+    public static final String IMAGE_ACTOR_FROG_UP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png";
+    public static final String IMAGE_ACTOR_FROG_DOWN = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerDown.png";
+    public static final String IMAGE_ACTOR_FROG_LEFT = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerLeft.png";
+    public static final String IMAGE_ACTOR_FROG_RIGHT = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerRight.png";
+    public static final String IMAGE_ACTOR_FROG_UP_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerUpJump.png";
+    public static final String IMAGE_ACTOR_FROG_DOWN_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerDownJump.png";
+    public static final String IMAGE_ACTOR_FROG_LEFT_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerLeftJump.png";
+    public static final String IMAGE_ACTOR_FROG_RIGHT_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerRightJump.png";
+    public static final String IMAGE_ACTOR_FROG_CRASH_1 = "file:src/main/resources/com/tsb/frogger/images/frogger/cardeath1.png";
+    public static final String IMAGE_ACTOR_FROG_CRASH_2 = "file:src/main/resources/com/tsb/frogger/images/frogger/cardeath2.png";
+    public static final String IMAGE_ACTOR_FROG_CRASH_3 = "file:src/main/resources/com/tsb/frogger/images/frogger/cardeath3.png";
+    public static final String IMAGE_ACTOR_FROG_DROWNED_1 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath1.png";
+    public static final String IMAGE_ACTOR_FROG_DROWNED_2 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath2.png";
+    public static final String IMAGE_ACTOR_FROG_DROWNED_3 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath3.png";
+    public static final String IMAGE_ACTOR_FROG_DROWNED_4 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath4.png";
 
 
+    // game scale and layout pos
+    public static final double SCALE = 1;
+
+    // background image size
+    public static int[] SIZE_BACKGROUND = {540, 720};
+
+    // actor image size config
+    public static int SIZE_END = 54;
+    public static int SIZE_FROG_END = 63;
+    public static int SIZE_SHORT_LOG = 135;
+    public static int SIZE_MEDIUM_LOG = 200;
+    public static int SIZE_LONG_LOG = 270;
+    public static int SIZE_TURTLE = 117;
+    public static int SIZE_SHORT_TRUCK = 108;
+    public static int SIZE_LONG_TRUCK = 180;
+    public static int SIZE_CAR = 45;
+
+    // row = map number, col = sections in map, index 0 is end, last element is starting point
+    public static final int[][] LAYOUT_Y_ACTOR = {
+//            {96, 166, 217, 276, 329, 376, 433, 490, 540, 597, 649, 706, 756}, // old layout y
+            {88, 155, 195, 248, 291, 338, 390, 441, 486, 537, 584, 630, 655},
+    };
+
+    public static final int[][] LAYOUT_X_END = {
+            {12, 127, 242, 358, 472}
+    };
+
+    public static final int[] LAYOUT_X_FROG = {
+            252,
+    };
+
+
+//    // actor category
+//    public enum ActorCategory{
+//        END,
+//        SHORT_LOG,
+//        MEDIUM_LOG,
+//        LONG_LOG,
+//        TURTLE,
+//        WET_TURTLE,
+//        CAR,
+//        LONG_TRUCK,
+//        SHORT_TRUCK,
+//    }
+//
+//    // add object at map location
+//    public static final ActorCategory[][] GAME_LEVEL_ACTOR_ADD = {
+//            {},
+//    }
+//
+//    // special flag to set number of actors added or direction
+//    public static final int[][] GAME_LEVEL_ACTOR_FLAG = {
+//
+//    }
 }

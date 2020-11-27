@@ -117,6 +117,7 @@ public class AccountController implements Initializable, ControlledScreen{
                 Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
                 break;
             case "Enter":
+                Sound.stopMediaPlayer();
                 // save runtime data
                 RuntimeData.selectedUsernameIndex = nameListView.getSelectionModel().getSelectedIndex();
                 RuntimeData.Username = FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex);
@@ -127,8 +128,7 @@ public class AccountController implements Initializable, ControlledScreen{
                 myController.loadMarkdown(ConstantData.OVERLAY_OPTION, ConstantData.FXML_OPTION);
                 // set screen
                 myController.setScreen(ConstantData.SCREEN_MENU);
-//                Pane menuPane = FXMLLoader.load(getClass().getResource("../view/Menu.fxml"));
-//                accountPane.getChildren().setAll(menuPane);
+
                 break;
         }
         //update listview

@@ -49,9 +49,9 @@ public class MenuController implements Initializable, ControlledScreen {
             case "Play" -> {
                 Sound.stopMediaPlayer();
                 RuntimeData.game = new Game(1);
-                RuntimeData.game.start();
                 myController.loadScreen(ConstantData.SCREEN_GAME, RuntimeData.game.gamePane, RuntimeData.game);
                 myController.setScreen(ConstantData.SCREEN_GAME);
+                RuntimeData.game.start();
             }
             case "Scores" -> {
                 myController.setScreen(ConstantData.SCREEN_SCOREBOARD);
@@ -79,6 +79,7 @@ public class MenuController implements Initializable, ControlledScreen {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         usernameLabel.setText(RuntimeData.Username);
+        Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
     }
 
     /**

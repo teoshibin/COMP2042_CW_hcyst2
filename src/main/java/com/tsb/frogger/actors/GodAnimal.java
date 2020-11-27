@@ -9,8 +9,8 @@ public class GodAnimal extends Animal {
      * constructor
      * @param imageLink image url
      */
-    public GodAnimal(String imageLink) {
-        super(imageLink);
+    public GodAnimal(String imageLink, int layoutX, int layoutY) {
+        super(imageLink, layoutX, layoutY);
     }
 
     /**

@@ -102,6 +102,7 @@ public abstract class World extends Pane {
      * stop timer
      */
     public void stop() {
+        System.out.println("world timer stop");
         timer.stop();
     }
 

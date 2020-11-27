@@ -6,6 +6,8 @@ import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.world.MyStage;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
 
@@ -43,19 +45,12 @@ public class Game implements ControlledScreen {
 
     /**
      * constructor
-     */
-    public Game(){
-        setLevel(1);
-        gamePane = createPane();
-    }
-
-    /**
-     * constructor
      * @param level initial level
      */
     public Game(int level){
         setLevel(level);
-        gamePane = createPane();
+        gamePane = new MyStage();
+        createPane();
     }
 
     /**
@@ -64,12 +59,13 @@ public class Game implements ControlledScreen {
      */
     public MyStage createPane(){
 
-        // layout
-        gamePane = new MyStage();
-
         // background image
-        BackgroundImage gameBackground = new BackgroundImage(ConstantData.IMAGE_GAME_BACKGROUND_A);
-        gamePane.add(gameBackground);
+//        BackgroundImage gameBackground = new BackgroundImage(ConstantData.IMAGE_GAME_BACKGROUND_A);
+//        gamePane.add(gameBackground);
+        Image background = new Image(ConstantData.IMAGE_GAME_BACKGROUND_A, 540, 720, false,false);
+        ImageView imageView = new ImageView();
+        imageView.setImage(background);
+        gamePane.getChildren().add(imageView);
 
         switch(level){
             case 5:
@@ -78,74 +74,72 @@ public class Game implements ControlledScreen {
             case 2:
             default:
                 // add actors
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 0, 166, 0.75));
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 220, 166, 0.75));
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 440, 166, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, 0, ConstantData.LAYOUT_Y_ACTOR[0][1], 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, 198, ConstantData.LAYOUT_Y_ACTOR[0][1], 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, 396, ConstantData.LAYOUT_Y_ACTOR[0][1], 0.75));
 
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_LONG_LOG, 300, 0, 276, -2));
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_LONG_LOG, 300, 400, 276, -2));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_LONG_LOG, ConstantData.SIZE_LONG_LOG, 0, ConstantData.LAYOUT_Y_ACTOR[0][3], -2));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_LONG_LOG, ConstantData.SIZE_LONG_LOG, 360, ConstantData.LAYOUT_Y_ACTOR[0][3], -2));
 
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 50, 329, 0.75));
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 270, 329, 0.75));
-                gamePane.add(new Log(ConstantData.IMAGE_GAME_SHORT_LOG, 150, 490, 329, 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, 45, ConstantData.LAYOUT_Y_ACTOR[0][4], 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, 240, ConstantData.LAYOUT_Y_ACTOR[0][4], 0.75));
+                gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, 440, ConstantData.LAYOUT_Y_ACTOR[0][4], 0.75));
 
-                gamePane.add(new Turtle(500, 376, -1, 130, 130));
-                gamePane.add(new Turtle(300, 376, -1, 130, 130));
-                gamePane.add(new WetTurtle(700, 376, -1, 130, 130));
-                gamePane.add(new WetTurtle(600, 217, -1, 130, 130));
-                gamePane.add(new WetTurtle(400, 217, -1, 130, 130));
-                gamePane.add(new WetTurtle(200, 217, -1, 130, 130));
+                gamePane.add(new Turtle(100, ConstantData.LAYOUT_Y_ACTOR[0][2], -1, ConstantData.SIZE_TURTLE, ConstantData.SIZE_TURTLE));
+                gamePane.add(new Turtle(150, ConstantData.LAYOUT_Y_ACTOR[0][5], -1, ConstantData.SIZE_TURTLE, ConstantData.SIZE_TURTLE));
+                gamePane.add(new WetTurtle(500, ConstantData.LAYOUT_Y_ACTOR[0][2], -1, ConstantData.SIZE_TURTLE, ConstantData.SIZE_TURTLE));
+                gamePane.add(new WetTurtle(350, ConstantData.LAYOUT_Y_ACTOR[0][5], -1, ConstantData.SIZE_TURTLE, ConstantData.SIZE_TURTLE));
+                gamePane.add(new WetTurtle(500, ConstantData.LAYOUT_Y_ACTOR[0][5], -1, ConstantData.SIZE_TURTLE, ConstantData.SIZE_TURTLE));
+                gamePane.add(new WetTurtle(300, ConstantData.LAYOUT_Y_ACTOR[0][2], -1, ConstantData.SIZE_TURTLE, ConstantData.SIZE_TURTLE));
 
-                gamePane.add(new End(13,96));
-                gamePane.add(new End(141,96));
-                gamePane.add(new End(141 + 141-13,96));
-                gamePane.add(new End(141 + 141-13+141-13+1,96));
-                gamePane.add(new End(141 + 141-13+141-13+141-13+3,96));
+                gamePane.add(new End(ConstantData.LAYOUT_X_END[0][0], ConstantData.LAYOUT_Y_ACTOR[0][0]));
+                gamePane.add(new End(ConstantData.LAYOUT_X_END[0][1],ConstantData.LAYOUT_Y_ACTOR[0][0]));
+                gamePane.add(new End(ConstantData.LAYOUT_X_END[0][2],ConstantData.LAYOUT_Y_ACTOR[0][0]));
+                gamePane.add(new End(ConstantData.LAYOUT_X_END[0][3],ConstantData.LAYOUT_Y_ACTOR[0][0]));
+                gamePane.add(new End(ConstantData.LAYOUT_X_END[0][4],ConstantData.LAYOUT_Y_ACTOR[0][0]));
 
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_A_RIGHT, 0, 649, 1, 120, 120));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_A_RIGHT, 300, 649, 1, 120, 120));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_A_RIGHT, 600, 649, 1, 120, 120));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_SHORT_TRUCK_RIGHT, 0, ConstantData.LAYOUT_Y_ACTOR[0][10], 1, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_SHORT_TRUCK_RIGHT, 300, ConstantData.LAYOUT_Y_ACTOR[0][10], 1, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_SHORT_TRUCK_RIGHT, 500, ConstantData.LAYOUT_Y_ACTOR[0][10], 1, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
 
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 100, 597, -1, 50, 50));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 250, 597, -1, 50, 50));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 400, 597, -1, 50, 50));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 550, 597, -1, 50, 50));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_CAR_A_LEFT, 500, 490, -5, 50, 50));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_LEFT, 100, ConstantData.LAYOUT_Y_ACTOR[0][9], -1, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_LEFT, 250, ConstantData.LAYOUT_Y_ACTOR[0][9], -1, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_LEFT, 400, ConstantData.LAYOUT_Y_ACTOR[0][9], -1, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_LEFT, 200, ConstantData.LAYOUT_Y_ACTOR[0][7], -5, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_LEFT, 300, ConstantData.LAYOUT_Y_ACTOR[0][7], -5, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
 
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_B_RIGHT, 0, 540, 1, 200, 200));
-                gamePane.add(new Obstacle(ConstantData.IMAGE_GAME_TRUCK_B_RIGHT, 500, 540, 1, 200, 200));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_LONG_TRUCK_RIGHT, 0, ConstantData.LAYOUT_Y_ACTOR[0][8], 1, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_LONG_TRUCK_RIGHT, 500, ConstantData.LAYOUT_Y_ACTOR[0][8], 1, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
+
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_RIGHT, 100, ConstantData.LAYOUT_Y_ACTOR[0][11], 1, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_RIGHT, 250, ConstantData.LAYOUT_Y_ACTOR[0][11], 1, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+                gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_RIGHT, 400, ConstantData.LAYOUT_Y_ACTOR[0][11], 1, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
 
                 // add scoreboard
                 gamePane.add(new Digit(0, 30, 400, 25));
 
                 // add frogger character
-                animal = new Animal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
+                animal = new Animal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
                 gamePane.add(animal);
 
                 // add god frogger (uncomment to use god frogger)
-//                animal = new GodAnimal("file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png");
+//                animal = new GodAnimal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
 //                animal.instantWin(600);
 //                gamePane.add(animal);
 
-                // add home button
-                HomeBtn homeBtn = new HomeBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-house.png");
-                gamePane.add(homeBtn);
-
-                // add setting button
-                SettingBtn settingBtn = new SettingBtn("file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png");
-                gamePane.add(settingBtn);
-
-                //start obstacles movement
-                gamePane.start();
-
         }
-
-
-
         return gamePane;
     }
 
+    private void createUI(){
+        // add home button
+        HomeBtn homeBtn = new HomeBtn(ConstantData.IMAGE_ICON_HOME, myController);
+        gamePane.add(homeBtn);
 
+        // add setting button
+        SettingBtn settingBtn = new SettingBtn(ConstantData.IMAGE_ICON_GEAR, myController);
+        gamePane.add(settingBtn);
+    }
 
     /**
      * creates animation timer for frogger character
@@ -159,13 +153,9 @@ public class Game implements ControlledScreen {
                     setNumber(animal.getPoints());
                 }
                 if (animal.getStop()) {
-                    try{
-                        Game.this.stop();
-                        Pane victoryPane = FXMLLoader.load(getClass().getResource("../view/Victory.fxml"));
-                        gamePane.getChildren().add(victoryPane);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Game.this.stop();
+                    myController.loadMarkdown(ConstantData.OVERLAY_VICTORY, ConstantData.FXML_VICTORY);
+                    myController.addOverlay(ConstantData.OVERLAY_VICTORY);
                 }
             }
         };
@@ -176,6 +166,7 @@ public class Game implements ControlledScreen {
      */
     public void start() {
         System.out.println("starting game timer");
+        gamePane.start();
         gamePane.playMusic();
         createTimer();
         timer.start();
@@ -258,5 +249,6 @@ public class Game implements ControlledScreen {
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
+        createUI();
     }
 }

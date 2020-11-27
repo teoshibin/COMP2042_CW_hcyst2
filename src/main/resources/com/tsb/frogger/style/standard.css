@@ -21,9 +21,31 @@ class font css
 /*
 class background image
 */
+/*
 .pane{
      -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/MenuBackground.jpg');
      -fx-background-size: 600 800;
+     -fx-background-position: center center;
+}
+*/
+.flowerPane{
+     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/flowerBackground.jpg');
+     -fx-background-size: 540 720;
+     -fx-background-repeat: no-repeat;
+     -fx-background-position: center center;
+}
+
+.housePane{
+     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/houseBackground.jpg');
+     -fx-background-size: 540 720;
+     -fx-background-repeat: no-repeat;
+     -fx-background-position: center center;
+}
+
+.forestPane{
+     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/forestBackground.jpg');
+     -fx-background-size: 540 720;
+     -fx-background-repeat: no-repeat;
      -fx-background-position: center center;
 }
 
@@ -156,7 +178,7 @@ class button css
 }
 
 .textArea {
-    -fx-background-color: rgba(66, 245, 179, 0.8);
+    -fx-background-color: rgba(245, 182, 66, 0.8);
     -fx-background-radius: 15px;
     -fx-background-insets: 0px;
 }

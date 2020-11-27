@@ -30,7 +30,6 @@ public class OptionController implements ControlledScreen{
      */
     public void handleBtnAction(ActionEvent actionEvent) {
         if(((Button)actionEvent.getSource()).getText().equals("Back")){
-//            ((Pane)optionPane.getParent()).getChildren().remove(optionPane);
             myController.removeOverlay(ConstantData.OVERLAY_OPTION);
             if(RuntimeData.game != null){
                 RuntimeData.game.resume();

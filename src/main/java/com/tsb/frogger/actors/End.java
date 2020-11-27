@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.ConstantData;
 import javafx.scene.image.Image;
 
 /**
@@ -22,14 +23,14 @@ public class End extends Actor{
 	public End(int x, int y) {
 		setX(x);
 		setY(y);
-		setImage(new Image("file:src/main/resources/com/tsb/frogger/images/world/End.png", 60, 60, true, true));
+		setImage(new Image(ConstantData.IMAGE_ACTOR_END, ConstantData.SIZE_END, ConstantData.SIZE_END, true, true));
 	}
 
 	/**
 	 * set activated end image
 	 */
 	public void setEnd() {
-		setImage(new Image("file:src/main/resources/com/tsb/frogger/images/world/FrogEnd.png", 70, 70, true, true));
+		setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_END, ConstantData.SIZE_FROG_END, ConstantData.SIZE_FROG_END, true, true));
 		activated = true;
 	}
 

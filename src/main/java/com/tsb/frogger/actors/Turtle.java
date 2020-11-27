@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.ConstantData;
 import javafx.scene.image.Image;
 
 /**
@@ -44,10 +45,10 @@ public class Turtle extends Actor{
 				}
 			
 		move(speed , 0);
-		if (getX() > 600 && speed>0)
+		if (getX() > ConstantData.SIZE_BACKGROUND[1] && speed>0)
 			setX(-200);
-		if (getX() < -75 && speed<0)
-			setX(600);
+		if (getX() < -200 && speed<0)
+			setX(ConstantData.SIZE_BACKGROUND[1]);
 	}
 
 	/**
@@ -59,9 +60,9 @@ public class Turtle extends Actor{
 	 * @param h height
 	 */
 	public Turtle(int xpos, int ypos, int s, int w, int h) {
-		turtle1 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2.png", w, h, true, true);
-		turtle3 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation3.png", w, h, true, true);
+		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
+		turtle2 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_2, w, h, true, true);
+		turtle3 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_3, w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;

@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.ConstantData;
 import javafx.scene.image.Image;
 
 /**
@@ -59,10 +60,10 @@ public class WetTurtle extends Actor{
 				}
 			
 		move(speed , 0);
-		if (getX() > 600 && speed>0)
+		if (getX() > ConstantData.SIZE_BACKGROUND[1] && speed>0)
 			setX(-200);
-		if (getX() < -75 && speed<0)
-			setX(600);
+		if (getX() < -200 && speed<0)
+			setX(ConstantData.SIZE_BACKGROUND[1]);
 	}
 
 	/**
