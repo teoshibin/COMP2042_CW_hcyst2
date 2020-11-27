@@ -175,3 +175,7 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+/src/main/resources/com/tsb/frogger/save/saveGame.ser
+.idea/frogger.iml
+src/test/resources/
+/.idea/frogger.iml
