@@ -4,11 +4,9 @@ import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.ConstantData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -38,7 +36,7 @@ public class InfoController implements ControlledScreen {
      */
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
         if ("Back".equals(((Button) actionEvent.getSource()).getText())) {
-            myController.setScreen(ConstantData.SCREEN_MENU);
+            myController.setScreen(ConstantData.SCREEN_ID_MENU);
         }
     }
 

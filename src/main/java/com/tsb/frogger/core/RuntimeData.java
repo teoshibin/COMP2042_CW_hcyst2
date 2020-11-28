@@ -1,7 +1,5 @@
 package com.tsb.frogger.core;
 
-import com.tsb.frogger.core.Game;
-
 public class RuntimeData {
     /**
      * selected username once enter the account page

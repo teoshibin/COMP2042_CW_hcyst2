@@ -31,9 +31,9 @@ public class Launcher extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         ScreensController mainContainer = new ScreensController();
-        mainContainer.loadMarkdown(ConstantData.SCREEN_ACCOUNT, ConstantData.FXML_ACCOUNT);
+        mainContainer.loadMarkdown(ConstantData.SCREEN_ID_ACCOUNT, ConstantData.FXML_ACCOUNT);
 
-        mainContainer.setScreen(ConstantData.SCREEN_ACCOUNT);
+        mainContainer.setScreen(ConstantData.SCREEN_ID_ACCOUNT);
 
 //        RuntimeData.pane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
 //        Scene scene = new Scene(RuntimeData.pane);

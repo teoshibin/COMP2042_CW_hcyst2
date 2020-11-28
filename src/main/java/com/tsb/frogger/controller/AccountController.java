@@ -122,12 +122,12 @@ public class AccountController implements Initializable, ControlledScreen{
                 RuntimeData.selectedUsernameIndex = nameListView.getSelectionModel().getSelectedIndex();
                 RuntimeData.Username = FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex);
                 // load screens
-                myController.loadMarkdown(ConstantData.SCREEN_MENU, ConstantData.FXML_MENU);
-                myController.loadMarkdown(ConstantData.SCREEN_INFO, ConstantData.FXML_INFO);
-                myController.loadMarkdown(ConstantData.SCREEN_SCOREBOARD, ConstantData.FXML_SCOREBOARD);
-                myController.loadMarkdown(ConstantData.OVERLAY_OPTION, ConstantData.FXML_OPTION);
+                myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, ConstantData.FXML_MENU);
+                myController.loadMarkdown(ConstantData.SCREEN_ID_INFO, ConstantData.FXML_INFO);
+                myController.loadMarkdown(ConstantData.SCREEN_ID_SCOREBOARD, ConstantData.FXML_SCOREBOARD);
+                myController.loadMarkdown(ConstantData.OVERLAY_ID_OPTION, ConstantData.FXML_OPTION);
                 // set screen
-                myController.setScreen(ConstantData.SCREEN_MENU);
+                myController.setScreen(ConstantData.SCREEN_ID_MENU);
 
                 break;
         }

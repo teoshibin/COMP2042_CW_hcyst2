@@ -1,11 +1,9 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.core.Game;
-import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.*;
+import com.tsb.frogger.exceptions.LevelNotFoundException;
 import com.tsb.frogger.files.FileScore;
 import com.tsb.frogger.files.FileUsername;
-import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,18 +57,17 @@ public class VictoryController implements Initializable, ControlledScreen{
     public void handleBtnAction(ActionEvent actionEvent) {
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Leave", "Done" -> {
-                myController.removeOverlay(ConstantData.OVERLAY_VICTORY);
-                myController.setScreen(ConstantData.SCREEN_MENU);
-                myController.unloadScreen(ConstantData.SCREEN_GAME);
-                myController.unloadScreen(ConstantData.OVERLAY_VICTORY);
+                myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);
+                myController.setScreen(ConstantData.SCREEN_ID_MENU);
+                myController.unloadScreen(ConstantData.SCREEN_ID_GAME);
+                myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 Sound.stopMediaPlayer();
                 Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
             }
             case "Continue" -> {
                 RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
-                RuntimeData.game.gamePane = RuntimeData.game.createPane();
-                myController.removeOverlay(ConstantData.OVERLAY_VICTORY);
-                myController.unloadScreen(ConstantData.OVERLAY_VICTORY);
+                myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);
+                myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 RuntimeData.game.start();
             }
         }
@@ -108,7 +105,7 @@ public class VictoryController implements Initializable, ControlledScreen{
             FileScore.writeScore(playerIndex, currentLevel, currentScore);
             newImageView.setVisible(true);
         }
-        if(RuntimeData.game.getLevel() == Game.MAX_LEVEL){
+        if(RuntimeData.game.getLevel() == LevelSelector.MAX_LEVEL){
             continueBtn.setText("Done");
         }
     }

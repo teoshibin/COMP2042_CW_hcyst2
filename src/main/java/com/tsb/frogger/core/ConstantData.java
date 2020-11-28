@@ -6,18 +6,17 @@ public class ConstantData {
     public static final String STAGE_TITLE = "Frogger";
 
     // screen page id
-    public static final String SCREEN_ACCOUNT = "accountScreen";
-    public static final String SCREEN_MENU = "menuScreen";
-    public static final String SCREEN_GAME = "gameScreen";
-    public static final String SCREEN_INFO = "infoScreen";
-    public static final String SCREEN_SCOREBOARD = "scoreboardScreen";
-    public static final String OVERLAY_OPTION = "optionOverlay";
-    public static final String OVERLAY_VICTORY = "victoryOverlay";
+    public static final String SCREEN_ID_ACCOUNT = "accountScreen";
+    public static final String SCREEN_ID_MENU = "menuScreen";
+    public static final String SCREEN_ID_GAME = "gameScreen";
+    public static final String SCREEN_ID_INFO = "infoScreen";
+    public static final String SCREEN_ID_SCOREBOARD = "scoreboardScreen";
+    public static final String OVERLAY_ID_OPTION = "optionOverlay";
+    public static final String OVERLAY_ID_VICTORY = "victoryOverlay";
 
     // FXML resources
     public static final String FXML_ACCOUNT = "../view/Account.fxml";
     public static final String FXML_MENU = "../view/Menu.fxml";
-    //    public static final String FXML_GAME = "../view/Game.fxml";
     public static final String FXML_INFO = "../view/Info.fxml";
     public static final String FXML_SCOREBOARD = "../view/Scoreboard.fxml";
     public static final String FXML_OPTION = "../view/Option.fxml";

@@ -1,16 +1,11 @@
-package com.tsb.frogger.actors;
+package com.tsb.frogger.widgets;
 
-import com.tsb.frogger.controller.ControlledScreen;
 import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-
-import java.io.IOException;
 
 /**
  * setting button
@@ -27,7 +22,7 @@ public class SettingBtn extends ImageView {
         getStyleClass().add("settingBtn");
 
         setOnMouseClicked(event -> {
-            myController.addOverlay(ConstantData.OVERLAY_OPTION);
+            myController.addOverlay(ConstantData.OVERLAY_ID_OPTION);
             RuntimeData.game.pause();
         });
 

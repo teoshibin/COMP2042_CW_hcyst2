@@ -1,15 +1,11 @@
-package com.tsb.frogger.actors;
+package com.tsb.frogger.widgets;
 
 import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.core.Sound;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-
-import java.io.IOException;
 
 /**
  * home button
@@ -29,7 +25,7 @@ public class HomeBtn extends ImageView {
         setOnMouseClicked(event -> {
             RuntimeData.game.stop();
             RuntimeData.game = null;
-            myController.setScreen(ConstantData.SCREEN_MENU);
+            myController.setScreen(ConstantData.SCREEN_ID_MENU);
             Sound.stopMediaPlayer();
         });
 
