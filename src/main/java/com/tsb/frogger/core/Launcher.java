@@ -35,13 +35,6 @@ public class Launcher extends Application {
 
         mainContainer.setScreen(ConstantData.SCREEN_ID_ACCOUNT);
 
-//        RuntimeData.pane = FXMLLoader.load(getClass().getResource("../view/Account.fxml"));
-//        Scene scene = new Scene(RuntimeData.pane);
-//
-//        FXMLLoader accountPaneLoader = new FXMLLoader(getClass().getResource("../view/Account.fxml"));
-//        Parent accountPane = accountPaneLoader.load();
-//        Scene accountScene = new Scene(accountPane);
-//
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);

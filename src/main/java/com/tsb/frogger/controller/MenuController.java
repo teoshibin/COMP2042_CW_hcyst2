@@ -40,11 +40,11 @@ public class MenuController implements Initializable, ControlledScreen {
      * @param actionEvent button event
      */
     @FXML
-    public void handleBtnAction(ActionEvent actionEvent) {
+    public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Play" -> {
                 Sound.stopMediaPlayer();
-                RuntimeData.game = new Game(1);
+                RuntimeData.game = new Game(2);
                 RuntimeData.game.start();
                 myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.game.gamePane, RuntimeData.game);
                 myController.setScreen(ConstantData.SCREEN_ID_GAME);

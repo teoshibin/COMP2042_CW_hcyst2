@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.ConstantData;
 import javafx.scene.image.Image;
 
 /**
@@ -19,10 +20,10 @@ public class Obstacle extends Actor {
 	@Override
 	public void act(long now) {
 		move(speed , 0);
-		if (getX() > 600 && speed>0)
-			setX(-200);
-		if (getX() < -50 && speed<0)
-			setX(600);
+		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] && speed > 0)
+			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
+		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed < 0)
+			setX(ConstantData.ACTOR_MOVING_BOUND[1]);
 	}
 
 	/**

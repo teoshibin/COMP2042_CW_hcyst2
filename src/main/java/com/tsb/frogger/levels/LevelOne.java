@@ -1,6 +1,5 @@
 package com.tsb.frogger.levels;
 
-import com.tsb.frogger.actors.*;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.LoadComponents;
 import com.tsb.frogger.world.MyStage;
@@ -8,7 +7,7 @@ import com.tsb.frogger.world.MyStage;
 public class LevelOne implements LevelBase{
 
     @Override
-    public MyStage loadLevel(MyStage gamePane) {
+    public void loadLevel(MyStage gamePane) {
 
         // END 0
         // RIVER 1
@@ -52,6 +51,5 @@ public class LevelOne implements LevelBase{
         // ROAD 11
         // START 12
 
-        return gamePane;
     }
 }

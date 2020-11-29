@@ -20,10 +20,10 @@ public class Log extends Actor {
 	@Override
 	public void act(long now) {
 		move(speed , 0);
-		if (getX()> ConstantData.SIZE_BACKGROUND[0] && speed>0)
-			setX(-180);
-		if (getX()<-300 && speed<0)
-			setX(640);
+		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1])
+			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
+		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed < 0)
+			setX(ConstantData.ACTOR_MOVING_BOUND[1]);
 	}
 
 	/**
@@ -43,10 +43,10 @@ public class Log extends Actor {
 	}
 
 	/**
-	 * get the moving direction of the log
-	 * @return if left then true else false
+	 * get speed
+	 * @return speed
 	 */
-	public boolean getLeft() {
-		return speed < 0;
+	public double getSpeed() {
+		return speed;
 	}
 }

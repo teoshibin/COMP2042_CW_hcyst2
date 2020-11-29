@@ -54,7 +54,7 @@ public class VictoryController implements Initializable, ControlledScreen{
      * handle action event
      * @param actionEvent event
      */
-    public void handleBtnAction(ActionEvent actionEvent) {
+    public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Leave", "Done" -> {
                 myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);

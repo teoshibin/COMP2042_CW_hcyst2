@@ -101,6 +101,9 @@ public class ConstantData {
     public static int SIZE_LONG_TRUCK = 180;
     public static int SIZE_CAR = 45;
 
+    // actor moving bound
+    public static final int[] ACTOR_MOVING_BOUND = {-200,740};
+
     // row = map number, col = sections in map, index 0 is end, last element is starting point
     public static final int[][] LAYOUT_Y_ACTOR = {
 //            {96, 166, 217, 276, 329, 376, 433, 490, 540, 597, 649, 706, 756}, // old layout y
@@ -115,27 +118,4 @@ public class ConstantData {
             252,
     };
 
-
-//    // actor category
-//    public enum ActorCategory{
-//        END,
-//        SHORT_LOG,
-//        MEDIUM_LOG,
-//        LONG_LOG,
-//        TURTLE,
-//        WET_TURTLE,
-//        CAR,
-//        LONG_TRUCK,
-//        SHORT_TRUCK,
-//    }
-//
-//    // add object at map location
-//    public static final ActorCategory[][] GAME_LEVEL_ACTOR_ADD = {
-//            {},
-//    }
-//
-//    // special flag to set number of actors added or direction
-//    public static final int[][] GAME_LEVEL_ACTOR_FLAG = {
-//
-//    }
 }

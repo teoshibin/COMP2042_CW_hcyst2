@@ -45,9 +45,9 @@ public class Turtle extends Actor{
 				}
 			
 		move(speed , 0);
-		if (getX() > ConstantData.SIZE_BACKGROUND[1] && speed>0)
-			setX(-200);
-		if (getX() < -200 && speed<0)
+		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] && speed>0)
+			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
+		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed<0)
 			setX(ConstantData.SIZE_BACKGROUND[1]);
 	}
 
@@ -60,6 +60,7 @@ public class Turtle extends Actor{
 	 * @param h height
 	 */
 	public Turtle(int xpos, int ypos, int s, int w, int h) {
+		//TODO - make speed double
 		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
 		turtle2 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_2, w, h, true, true);
 		turtle3 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_3, w, h, true, true);
@@ -67,5 +68,9 @@ public class Turtle extends Actor{
 		setY(ypos);
 		speed = s;
 		setImage(turtle2);
+	}
+
+	public int getSpeed(){
+		return speed;
 	}
 }

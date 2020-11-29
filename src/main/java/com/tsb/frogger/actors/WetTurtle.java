@@ -60,9 +60,9 @@ public class WetTurtle extends Actor{
 				}
 			
 		move(speed , 0);
-		if (getX() > ConstantData.SIZE_BACKGROUND[1] && speed>0)
-			setX(-200);
-		if (getX() < -200 && speed<0)
+		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] && speed>0)
+			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
+		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed<0)
 			setX(ConstantData.SIZE_BACKGROUND[1]);
 	}
 
@@ -75,10 +75,11 @@ public class WetTurtle extends Actor{
 	 * @param h height
 	 */
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
-		turtle1 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation2Wet.png", w, h, true, true);
-		turtle3 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation3Wet.png", w, h, true, true);
-		turtle4 = new Image("file:src/main/resources/com/tsb/frogger/images/objects/TurtleAnimation4Wet.png", w, h, true, true);
+		//TODO make speed double
+		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
+		turtle2 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_2, w, h, true, true);
+		turtle3 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_3, w, h, true, true);
+		turtle4 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_4, w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;
@@ -91,5 +92,9 @@ public class WetTurtle extends Actor{
 	 */
 	public boolean isSunk() {
 		return sunk;
+	}
+
+	public int getSpeed(){
+		return speed;
 	}
 }

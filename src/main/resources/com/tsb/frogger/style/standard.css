@@ -6,7 +6,12 @@
 class font css
 */
 .main-font{
-    -fx-font-family: "Comic Sans MS";
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-font-size: 22px;
+}
+
+.inGame-font{
+    -fx-font-family: "Arial Black", Gadget, sans-serif;
     -fx-font-size: 22px;
 }
 
@@ -16,6 +21,10 @@ class font css
 
 .smaller-font-size{
     -fx-font-size: 16px;
+}
+
+.bigger-font-size{
+    -fx-font-size: 30px;
 }
 
 /*

@@ -2,19 +2,16 @@ package com.tsb.frogger.actors;
 
 import java.util.ArrayList;
 
-import com.sun.tools.jconsole.JConsoleContext;
 import com.tsb.frogger.core.ConstantData;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 /**
  * frogger class
  */
 public class Animal extends Actor {
-
 	/**
 	 * max score
 	 */
@@ -62,7 +59,7 @@ public class Animal extends Actor {
 	/**
 	 * second frame animation boolean
 	 */
-	private boolean second = false;
+	private boolean jumping = false;
 	/**
 	 * no move boolean
 	 */
@@ -70,7 +67,7 @@ public class Animal extends Actor {
 	/**
 	 * movement
 	 */
-	double movement = 23.999999;
+	double movementY = 23.999999;
 	/**
 	 * movement x axis
 	 */
@@ -88,34 +85,51 @@ public class Animal extends Actor {
 	 */
 	boolean waterDeath = false;
 	/**
-	 * stop boolean
-	 */
-	boolean stop = false;
-	/**
 	 * update score boolean
 	 */
 	boolean changeScore = false;
 	/**
 	 * car death counter
 	 */
-	int carD = 0;
+	int animationCounter = 0;
 	/**
 	 * y layout location
 	 */
-	double w = ConstantData.SIZE_BACKGROUND[1];
+	double maxDistancePerRound = ConstantData.SIZE_BACKGROUND[1];
 	/**
 	 * ends
 	 */
 	ArrayList<End> inter = new ArrayList<End>();
+	/**
+	 * frog layout x
+	 */
+	private final int frogLayoutX;
+	/**
+	 * frog layout y
+	 */
+	private final int frogLayoutY;
+	/**
+	 * frog direction
+	 */
+	private enum DIRECTION{
+		UP,
+		LEFT,
+		DOWN,
+		RIGHT,
+	}
+
 
 	/**
 	 * frogger constructor
 	 * @param imageLink image url
 	 */
 	public Animal(String imageLink, int layoutX, int layoutY) {
+
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
-		setX(layoutX);
-		setY(layoutY + movement);
+		frogLayoutX = layoutX;
+		frogLayoutY = layoutY;
+		resetFrogLocation();
+
 		imgW1 = new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true);
 		imgA1 = new Image(ConstantData.IMAGE_ACTOR_FROG_LEFT, imgSize, imgSize, true, true);
 		imgS1 = new Image(ConstantData.IMAGE_ACTOR_FROG_DOWN, imgSize, imgSize, true, true);
@@ -125,212 +139,191 @@ public class Animal extends Actor {
 		imgS2 = new Image(ConstantData.IMAGE_ACTOR_FROG_DOWN_JUMP, imgSize, imgSize, true, true);
 		imgD2 = new Image(ConstantData.IMAGE_ACTOR_FROG_RIGHT_JUMP, imgSize, imgSize, true, true);
 
-		// handle key event
+		// handle on key press
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
-				if (noMove) {
-					
+				if (!noMove && jumping) {
+					switch (event.getCode()) {
+						case W -> {
+							frogMove(DIRECTION.UP);
+							changeScore = false;
+						}
+						case A -> frogMove(DIRECTION.LEFT);
+						case S -> frogMove(DIRECTION.DOWN);
+						case D -> frogMove(DIRECTION.RIGHT);
+					}
 				}
-				else {
-				if (second) {
-					if (event.getCode() == KeyCode.W) {	  
-		                move(0, -movement);
-		                changeScore = false;
-		                setImage(imgW1);
-		                second = false;
-		            }
-		            else if (event.getCode() == KeyCode.A) {	            	
-		            	 move(-movementX, 0);
-		            	 setImage(imgA1);
-		            	 second = false;
-		            }
-		            else if (event.getCode() == KeyCode.S) {	            	
-		            	 move(0, movement);
-		            	 setImage(imgS1);
-		            	 second = false;
-		            }
-		            else if (event.getCode() == KeyCode.D) {	            	
-		            	 move(movementX, 0);
-		            	 setImage(imgD1);
-		            	 second = false;
-		            }
-				}
-				else if (event.getCode() == KeyCode.W) {	            	
-	                move(0, -movement);
-	                setImage(imgW2);
-	                second = true;
-	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
-	            	 setImage(imgA2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
-	            	 setImage(imgS2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
-	            	 setImage(imgD2);
-	            	 second = true;
-	            }
-	        }
 			}
-		});	
+		});
+
+		// handle on key release
 		setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
-				if (noMove) {}
-				else {
-				if (event.getCode() == KeyCode.W) {	  
-					if (getY() < w) {
-						changeScore = true;
-						w = getY();
-						points+=10;
+				if (!noMove && !jumping){
+					switch (event.getCode()){
+						case W -> {
+							if (getY() < maxDistancePerRound && getY() > ConstantData.LAYOUT_Y_ACTOR[0][1]) {
+								changeScore = true;
+								maxDistancePerRound = getY();
+								points += 10;
+							}
+							frogMove(DIRECTION.UP);
+						}
+						case A -> frogMove(DIRECTION.LEFT);
+						case S -> frogMove(DIRECTION.DOWN);
+						case D -> frogMove(DIRECTION.RIGHT);
 					}
-	                move(0, -movement);
-	                setImage(imgW1);
-	                second = false;
-	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
-	            	 setImage(imgA1);
-	            	 second = false;
-	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
-	            	 setImage(imgS1);
-	            	 second = false;
-	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
-	            	 setImage(imgD1);
-	            	 second = false;
-	            }
-	        }
+				}
 			}
 			
 		});
 	}
 
 	/**
-	 * override solidify act method
+	 * frog behaviour every time frame
 	 * @param now timestamp of current time in nanosecond
 	 */
 	@Override
 	public void act(long now) {
-		int bounds = 0;
-		if (getY()<0 || getY()>ConstantData.SIZE_BACKGROUND[1]) {
-			setY(ConstantData.LAYOUT_Y_ACTOR[0][12] + movement);
+
+		//// bounding box related
+
+		// if frogger out of up or down bound
+		if (getY() < 0 || getY() > ConstantData.SIZE_BACKGROUND[1]) {
+			setY(ConstantData.LAYOUT_Y_ACTOR[0][12] + movementY);
 		}
+		// if frogger out of left bound
 		if (getX() < 0) {
 			move(movementX, 0);
 		}
-		if (carDeath) {
-			noMove = true;
-			if ((now)% 11 ==0) {
-				carD++;
-			}
-			if (carD==1) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_1, imgSize, imgSize, true, true));
-			}
-			if (carD==2) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_2, imgSize, imgSize, true, true));
-			}
-			if (carD==3) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_3, imgSize, imgSize, true, true));
-			}
-			if (carD == 4) {
-				setX(ConstantData.LAYOUT_X_FROG[0]);
-				setY(ConstantData.LAYOUT_Y_ACTOR[0][12]+movement);
-				carDeath = false;
-				carD = 0;
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
-				noMove = false;
-				if (points>50) {
-					points-=50;
-					changeScore = true;
-				}
-			}
-			
-		}
-		if (waterDeath) {
-			noMove = true;
-			if ((now)% 11 ==0) {
-				carD++;
-			}
-			if (carD==1) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_1, imgSize,imgSize , true, true));
-			}
-			if (carD==2) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_2, imgSize,imgSize , true, true));
-			}
-			if (carD==3) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_3, imgSize,imgSize , true, true));
-			}
-			if (carD == 4) {
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_4, imgSize,imgSize , true, true));
-			}
-			if (carD == 5) {
-				setX(ConstantData.LAYOUT_X_FROG[0]);
-				setY(ConstantData.LAYOUT_Y_ACTOR[0][12]+movement);
-				waterDeath = false;
-				carD = 0;
-				setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
-				noMove = false;
-				if (points>50) {
-					points-=50;
-					changeScore = true;
-				}
-			}
-			
-		}
-
-		// if frogger out of bound right bound
+		// if frogger out of right bound
 		if (getX()>(ConstantData.SIZE_BACKGROUND[0] - imgSize)) {
 			move(-movementX, 0);
 		}
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
-			carDeath = true;
+
+		//// death related
+
+		// crashed by car animation
+		if (carDeath) {
+			if ((now)% 11 ==0) {
+				animationCounter++;
+			}
+			switch (animationCounter){
+				case 1 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_1, imgSize, imgSize, true, true));
+				case 2 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_2, imgSize, imgSize, true, true));
+				case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_3, imgSize, imgSize, true, true));
+				case 4 -> {
+					setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
+					resetFrogLocation();
+					carDeath = false;
+					noMove = false;
+					animationCounter = 0;
+					reducePoints(50);
+				}
+			}
 		}
-		if (getX() == 216 && getY() == 74) {
-			stop = true;
+
+		// drowned in water animation
+		if (waterDeath) {
+			if ((now)% 11 ==0) {
+				animationCounter++;
+			}
+			switch (animationCounter){
+				case 1 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_1, imgSize,imgSize , true, true));
+				case 2 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_2, imgSize,imgSize , true, true));
+				case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_3, imgSize,imgSize , true, true));
+				case 4 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_4, imgSize,imgSize , true, true));
+				case 5 -> {
+					setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
+					resetFrogLocation();
+					waterDeath = false;
+					noMove = false;
+					animationCounter = 0;
+					reducePoints(50);
+				}
+			}
 		}
-		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			if(getIntersectingObjects(Log.class).get(0).getLeft())
-				move(-2,0);
-			else
-				move (.75,0);
-		}
-		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
-			move(-1,0);
-		}
-		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+
+		// if not dead check intersecting object
+		if(!noMove){
+			// if overlap with obstacles then dead
+			if (getIntersectingObjects(Obstacle.class).size() > 0) {
+				carDeath = true;
+				noMove = true;
+			// if overlap with log and not dead then frog move log speed
+			} else if (getIntersectingObjects(Log.class).size() > 0) {
+				move(getIntersectingObjects(Log.class).get(0).getSpeed(), 0);
+			// if overlap with turtle and not dead then frog move turtle speed
+			} else if (getIntersectingObjects(Turtle.class).size() > 0) {
+				move(getIntersectingObjects(Turtle.class).get(0).getSpeed(),0);
+			// if overlap with wet turtle and if is sunk then death else frog move wet turtle speed
+			} else if (getIntersectingObjects(WetTurtle.class).size() > 0) {
+				if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+					waterDeath = true;
+					noMove = true;
+				} else {
+					move(getIntersectingObjects(WetTurtle.class).get(0).getSpeed(),0);
+				}
+			// if overlap with end then add score respawn frog
+			} else if (getIntersectingObjects(End.class).size() > 0) {
+				// if end is activated frog drowned
+				if (getIntersectingObjects(End.class).get(0).isActivated()) {
+					waterDeath = true;
+					noMove = true;
+				} else {
+					points += 40;
+					changeScore = true;
+					maxDistancePerRound = ConstantData.SIZE_BACKGROUND[1];
+					getIntersectingObjects(End.class).get(0).setEnd();
+					end++;
+					resetFrogLocation();
+				}
+			// if frog go beyond layout Y then allow water death
+			} else if (getY()<372){
 				waterDeath = true;
-			} else {
-				move(-1,0);
+				noMove = true;
 			}
 		}
-		else if (getIntersectingObjects(End.class).size() >= 1) {
-			inter = (ArrayList<End>) getIntersectingObjects(End.class);
-			if (getIntersectingObjects(End.class).get(0).isActivated()) {
-				end--;
-				points-=50;
+	}
+
+	private void resetFrogLocation(){
+		setX(frogLayoutX);
+		setY(frogLayoutY + movementY);
+	}
+
+	private void frogMove(DIRECTION direction){
+		switch (direction) {
+			case UP -> {
+				move(0, -movementY);
+				setImage(checkJump() ? imgW2 : imgW1);
 			}
-			points+=50;
-			changeScore = true;
-			w=ConstantData.SIZE_BACKGROUND[1];
-			getIntersectingObjects(End.class).get(0).setEnd();
-			end++;
-			setX(ConstantData.LAYOUT_X_FROG[0]);
-			setY(ConstantData.LAYOUT_Y_ACTOR[0][12]+movement);
+			case LEFT -> {
+				move(-movementX, 0);
+				setImage(checkJump() ? imgA2 : imgA1);
+			}
+			case DOWN -> {
+				move(0, movementY);
+				setImage(checkJump() ? imgS2 : imgS1);
+			}
+			case RIGHT -> {
+				move(movementX, 0);
+				setImage(checkJump() ? imgD2 : imgD1);
+			}
 		}
-		else if (getY()<372){
-			waterDeath = true;
-			//setX(300);
-			//setY(679.8+movement);
+	}
+
+	private boolean checkJump(){
+		jumping = !jumping;
+		return !jumping;
+	}
+
+	private void reducePoints(int deltaPoints){
+		if(points >= deltaPoints){
+			points -= deltaPoints;
+		} else {
+			points = 0;
 		}
+		changeScore = true;
 	}
 
 	/**
@@ -362,13 +355,13 @@ public class Animal extends Actor {
 	 * so that animation timer won't constantly update the score
 	 * @return new score available returns true, no score change return false
 	 */
-	public boolean changeScore() {
+	public boolean updateScoreLabel() {
 		if (changeScore) {
 			changeScore = false;
 			return true;
+		} else {
+			return false;
 		}
-		return false;
-		
 	}
 	
 

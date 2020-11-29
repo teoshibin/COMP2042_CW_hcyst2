@@ -36,6 +36,10 @@ public class Game implements ControlledScreen {
      * level
      */
     private int level;
+    /**
+     * scoreboard
+     */
+    private Label scoreDisplay;
 
     /**
      * constructor
@@ -46,13 +50,17 @@ public class Game implements ControlledScreen {
         setLevel(level);
     }
 
-    public void load(){
+    public void load() throws LevelNotFoundException {
 
-        try {
-            gamePane = LoadComponents.load(level);
-        } catch (LevelNotFoundException e) {
-            e.printStackTrace();
-        }
+        gamePane = LoadComponents.load(level);
+
+        scoreDisplay = new Label();
+        scoreDisplay.setLayoutX(395);
+        scoreDisplay.setLayoutY(30);
+        scoreDisplay.getStyleClass().add("inGame-font");
+        scoreDisplay.getStyleClass().add("bigger-font-size");
+        scoreDisplay.setText("000");
+        gamePane.getChildren().add(scoreDisplay);
 
         animal = new Animal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
         gamePane.add(animal);
@@ -72,7 +80,7 @@ public class Game implements ControlledScreen {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (animal.changeScore()) {
+                if (animal.updateScoreLabel()) {
                     setNumber(animal.getPoints());
                 }
                 if (animal.getStop()) {
@@ -87,7 +95,7 @@ public class Game implements ControlledScreen {
     /**
      * play background music, creates animation timer and starts animation timer
      */
-    public void start() {
+    public void start() throws LevelNotFoundException {
         System.out.println("starting game timer");
         load();
         gamePane.start();
@@ -134,13 +142,15 @@ public class Game implements ControlledScreen {
      */
     public void setNumber(int n) {
         int shift = 0;
-        while (n > 0) {
-            int d = n / 10;
-            int k = n - d * 10;
-            n = d;
-            gamePane.add(new Digit(k, 30, 400 - shift, 25));
-            shift += 30;
-        }
+//        while (n > 0) {
+//            int d = n / 10;
+//            int k = n - d * 10;
+//            n = d;
+//            gamePane.add(new Digit(k, 30, 400 - shift, 40));
+//            shift += 30;
+//        }
+        String temp = "0".repeat(3 - String.valueOf(n).length()) + n;
+        scoreDisplay.setText(temp);
     }
 
     /**
