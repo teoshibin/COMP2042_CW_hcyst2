@@ -1,7 +1,7 @@
 package com.tsb.frogger.levels;
 
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.core.LoadComponents;
+import com.tsb.frogger.world.LoadComponents;
 import com.tsb.frogger.world.MyStage;
 
 public class LevelTwo implements LevelBase{

@@ -11,6 +11,7 @@ public class ConstantData {
     public static final String SCREEN_ID_GAME = "gameScreen";
     public static final String SCREEN_ID_INFO = "infoScreen";
     public static final String SCREEN_ID_SCOREBOARD = "scoreboardScreen";
+    public static final String SCREEN_ID_SELECT_LEVEL = "selectLevelScreen";
     public static final String OVERLAY_ID_OPTION = "optionOverlay";
     public static final String OVERLAY_ID_VICTORY = "victoryOverlay";
 
@@ -19,6 +20,7 @@ public class ConstantData {
     public static final String FXML_MENU = "../view/Menu.fxml";
     public static final String FXML_INFO = "../view/Info.fxml";
     public static final String FXML_SCOREBOARD = "../view/Scoreboard.fxml";
+    public static final String FXML_SELECT_LEVEL = "../view/SelectLevel.fxml";
     public static final String FXML_OPTION = "../view/Option.fxml";
     public static final String FXML_VICTORY = "../view/Victory.fxml";
 
@@ -102,7 +104,7 @@ public class ConstantData {
     public static int SIZE_CAR = 45;
 
     // actor moving bound
-    public static final int[] ACTOR_MOVING_BOUND = {-200,740};
+    public static final int[] ACTOR_MOVING_BOUND = {-270,810};
 
     // row = map number, col = sections in map, index 0 is end, last element is starting point
     public static final int[][] LAYOUT_Y_ACTOR = {
