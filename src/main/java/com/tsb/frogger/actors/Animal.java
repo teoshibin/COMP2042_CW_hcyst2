@@ -57,9 +57,9 @@ public class Animal extends Actor {
 	 */
 	int end = 0;
 	/**
-	 * second frame animation boolean
+	 * true when not jumping false when jumping
 	 */
-	private boolean jumping = false;
+	private boolean allowJumping = true;
 	/**
 	 * no move boolean
 	 */
@@ -101,6 +101,18 @@ public class Animal extends Actor {
 	 */
 	ArrayList<End> inter = new ArrayList<End>();
 	/**
+	 * extra points
+	 */
+	private int extraPoints = 60;
+	/**
+	 * new second
+	 */
+	private boolean newSecond = true;
+	/**
+	 * previous second
+	 */
+	private int previousSecond;
+	/**
 	 * frog layout x
 	 */
 	private final int frogLayoutX;
@@ -108,6 +120,10 @@ public class Animal extends Actor {
 	 * frog layout y
 	 */
 	private final int frogLayoutY;
+	/**
+	 * check if is started
+	 */
+	private boolean started = false;
 	/**
 	 * frog direction
 	 */
@@ -128,7 +144,7 @@ public class Animal extends Actor {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		frogLayoutX = layoutX;
 		frogLayoutY = layoutY;
-		resetFrogLocation();
+		resetFrog();
 
 		imgW1 = new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true);
 		imgA1 = new Image(ConstantData.IMAGE_ACTOR_FROG_LEFT, imgSize, imgSize, true, true);
@@ -142,7 +158,7 @@ public class Animal extends Actor {
 		// handle on key press
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
-				if (!noMove && jumping) {
+				if (!noMove && allowJumping) {
 					switch (event.getCode()) {
 						case W -> {
 							frogMove(DIRECTION.UP);
@@ -159,7 +175,7 @@ public class Animal extends Actor {
 		// handle on key release
 		setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
-				if (!noMove && !jumping){
+				if (!noMove && !allowJumping){
 					switch (event.getCode()){
 						case W -> {
 							if (getY() < maxDistancePerRound && getY() > ConstantData.LAYOUT_Y_ACTOR[0][1]) {
@@ -185,6 +201,8 @@ public class Animal extends Actor {
 	 */
 	@Override
 	public void act(long now) {
+
+		calculateExtraPoints(now);
 
 		//// bounding box related
 
@@ -214,11 +232,11 @@ public class Animal extends Actor {
 				case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_3, imgSize, imgSize, true, true));
 				case 4 -> {
 					setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
-					resetFrogLocation();
+					resetFrog();
 					carDeath = false;
 					noMove = false;
 					animationCounter = 0;
-					reducePoints(50);
+					reducePoints();
 				}
 			}
 		}
@@ -235,11 +253,11 @@ public class Animal extends Actor {
 				case 4 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_4, imgSize,imgSize , true, true));
 				case 5 -> {
 					setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
-					resetFrogLocation();
+					resetFrog();
 					waterDeath = false;
 					noMove = false;
 					animationCounter = 0;
-					reducePoints(50);
+					reducePoints();
 				}
 			}
 		}
@@ -271,12 +289,12 @@ public class Animal extends Actor {
 					waterDeath = true;
 					noMove = true;
 				} else {
-					points += 40;
+					points += extraPoints;
 					changeScore = true;
 					maxDistancePerRound = ConstantData.SIZE_BACKGROUND[1];
 					getIntersectingObjects(End.class).get(0).setEnd();
 					end++;
-					resetFrogLocation();
+					resetFrog();
 				}
 			// if frog go beyond layout Y then allow water death
 			} else if (getY()<372){
@@ -286,9 +304,27 @@ public class Animal extends Actor {
 		}
 	}
 
-	private void resetFrogLocation(){
+	private void calculateExtraPoints(long now){
+		int currentSecond =  (int)(now/Math.pow(10, 9));
+		if(newSecond){
+			previousSecond = currentSecond;
+			newSecond = false;
+			if(extraPoints > 0){
+				extraPoints--;
+			}
+		} else {
+			if (previousSecond < currentSecond){
+				newSecond = true;
+			}
+		}
+	}
+
+	private void resetFrog(){
 		setX(frogLayoutX);
 		setY(frogLayoutY + movementY);
+		allowJumping = true;
+		newSecond = true;
+		extraPoints = 60;
 	}
 
 	private void frogMove(DIRECTION direction){
@@ -313,13 +349,13 @@ public class Animal extends Actor {
 	}
 
 	private boolean checkJump(){
-		jumping = !jumping;
-		return !jumping;
+		allowJumping = !allowJumping;
+		return !allowJumping;
 	}
 
-	private void reducePoints(int deltaPoints){
-		if(points >= deltaPoints){
-			points -= deltaPoints;
+	private void reducePoints(){
+		if(points >= 50){
+			points -= 50;
 		} else {
 			points = 0;
 		}

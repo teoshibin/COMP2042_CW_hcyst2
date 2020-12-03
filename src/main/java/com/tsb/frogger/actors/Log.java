@@ -20,10 +20,6 @@ public class Log extends Actor {
 	@Override
 	public void act(long now) {
 		move(speed , 0);
-		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1])
-			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
-		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed < 0)
-			setX(ConstantData.ACTOR_MOVING_BOUND[1]);
 	}
 
 	/**

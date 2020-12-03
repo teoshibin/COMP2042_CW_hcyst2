@@ -11,7 +11,7 @@ public class Obstacle extends Actor {
 	/**
 	 * speed of obstacles
 	 */
-	private int speed;
+	private double speed;
 
 	/**
 	 * override act
@@ -20,10 +20,6 @@ public class Obstacle extends Actor {
 	@Override
 	public void act(long now) {
 		move(speed , 0);
-		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] && speed > 0)
-			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
-		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed < 0)
-			setX(ConstantData.ACTOR_MOVING_BOUND[1]);
 	}
 
 	/**
@@ -35,7 +31,7 @@ public class Obstacle extends Actor {
 	 * @param w width
 	 * @param h height
 	 */
-	public Obstacle(String imageLink, int xpos, int ypos, int s, int w, int h) {
+	public Obstacle(String imageLink, int xpos, int ypos, double s, int w, int h) {
 		setImage(new Image(imageLink, w,h, true, true));
 		setX(xpos);
 		setY(ypos);

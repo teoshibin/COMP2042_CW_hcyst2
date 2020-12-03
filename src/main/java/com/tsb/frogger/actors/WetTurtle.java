@@ -26,10 +26,11 @@ public class WetTurtle extends Actor{
 	/**
 	 * wet turtle speed
 	 */
-	private int speed;
-
-//	int i = 1;
-//	boolean bool = true;
+	private double speed;
+	/**
+	 * speed of sinking
+	 */
+	private double phaseChangeDelay;
 	/**
 	 * turtle status
 	 */
@@ -45,7 +46,6 @@ public class WetTurtle extends Actor{
 				if (now/900000000  % 4 ==0) {
 					setImage(turtle2);
 					sunk = false;
-					
 				}
 				else if (now/900000000 % 4 == 1) {
 					setImage(turtle1);
@@ -60,10 +60,6 @@ public class WetTurtle extends Actor{
 				}
 			
 		move(speed , 0);
-		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] && speed>0)
-			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
-		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed<0)
-			setX(ConstantData.SIZE_BACKGROUND[1]);
 	}
 
 	/**
@@ -74,8 +70,7 @@ public class WetTurtle extends Actor{
 	 * @param w width
 	 * @param h height
 	 */
-	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
-		//TODO make speed double
+	public WetTurtle(int xpos, int ypos, double s, int w, int h) {
 		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
 		turtle2 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_2, w, h, true, true);
 		turtle3 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_3, w, h, true, true);
@@ -94,7 +89,7 @@ public class WetTurtle extends Actor{
 		return sunk;
 	}
 
-	public int getSpeed(){
+	public double getSpeed(){
 		return speed;
 	}
 }

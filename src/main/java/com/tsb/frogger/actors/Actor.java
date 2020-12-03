@@ -1,5 +1,6 @@
 package com.tsb.frogger.actors;
 
+import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.world.World;
 import javafx.scene.image.ImageView;
 
@@ -16,7 +17,13 @@ public abstract class Actor extends ImageView{
      * @param dy distance y
      */
     public void move(double dx, double dy) {
-        setX(getX() + dx);
+        if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] - dx && dx > 0){
+            setX(ConstantData.ACTOR_MOVING_BOUND[0]);
+        } else if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] + dx && dx < 0){
+            setX(ConstantData.ACTOR_MOVING_BOUND[1]);
+        } else {
+            setX(getX() + dx);
+        }
         setY(getY() + dy);
     }
 

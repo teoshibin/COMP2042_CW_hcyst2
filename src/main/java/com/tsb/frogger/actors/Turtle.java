@@ -22,7 +22,7 @@ public class Turtle extends Actor{
 	/**
 	 * turtle speed
 	 */
-	private int speed;
+	private double speed;
 
 	/**
 	 * override act for turtle act
@@ -33,22 +33,15 @@ public class Turtle extends Actor{
 
 				if (now/900000000  % 3 ==0) {
 					setImage(turtle2);
-					
 				}
 				else if (now/900000000 % 3 == 1) {
 					setImage(turtle1);
-					
 				}
 				else if (now/900000000 %3 == 2) {
 					setImage(turtle3);
-					
 				}
 			
 		move(speed , 0);
-		if (getX() > ConstantData.ACTOR_MOVING_BOUND[1] && speed>0)
-			setX(ConstantData.ACTOR_MOVING_BOUND[0]);
-		if (getX() < ConstantData.ACTOR_MOVING_BOUND[0] && speed<0)
-			setX(ConstantData.SIZE_BACKGROUND[1]);
 	}
 
 	/**
@@ -59,8 +52,7 @@ public class Turtle extends Actor{
 	 * @param w width
 	 * @param h height
 	 */
-	public Turtle(int xpos, int ypos, int s, int w, int h) {
-		//TODO - make speed double
+	public Turtle(int xpos, int ypos, double s, int w, int h) {
 		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
 		turtle2 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_2, w, h, true, true);
 		turtle3 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_3, w, h, true, true);
@@ -70,7 +62,7 @@ public class Turtle extends Actor{
 		setImage(turtle2);
 	}
 
-	public int getSpeed(){
+	public double getSpeed(){
 		return speed;
 	}
 }
