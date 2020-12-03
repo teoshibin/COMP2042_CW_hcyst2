@@ -16,16 +16,22 @@
             </Label>
             <VBox alignment="CENTER" prefHeight="256.0" prefWidth="411.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="411.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="138.0" prefHeight="40.0" prefWidth="411.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="120.0" styleClass="main-font" text="Music" />
-                        <Slider prefHeight="14.0" prefWidth="205.0" />
+                        <Label prefHeight="32.0" prefWidth="165.0" styleClass="main-font" text="Master Volume" />
+                        <Slider fx:id="masterVolumeSlider" onMouseReleased="#handleOnRelease" prefHeight="14.0" prefWidth="205.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="411.0">
                      <children>
-                        <Label prefHeight="32.0" prefWidth="120.0" styleClass="main-font" text="Sound fx" />
-                        <Slider prefHeight="14.0" prefWidth="205.0" />
+                        <Label prefHeight="32.0" prefWidth="165.0" styleClass="main-font" text="Music Volume" />
+                        <Slider fx:id="musicVolumeSlider" onMouseReleased="#handleOnRelease" prefHeight="14.0" prefWidth="205.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="411.0">
+                     <children>
+                        <Label prefHeight="32.0" prefWidth="165.0" styleClass="main-font" text="Control Volume" />
+                        <Slider fx:id="controlVolumeSlider" onMouseReleased="#handleOnRelease" prefHeight="14.0" prefWidth="205.0" />
                      </children>
                   </HBox>
                </children></VBox>
