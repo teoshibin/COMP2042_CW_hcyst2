@@ -1,8 +1,8 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.files.FileUsername;
+import com.tsb.frogger.utils.files.FileUsername;
 import com.tsb.frogger.core.RuntimeData;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -65,7 +65,7 @@ public class AccountController implements Initializable, ControlledScreen{
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> usernameItems = FileUsername.readUsernames();
         nameListView.setItems(usernameItems);
-        Sound.playMediaPlayer(ConstantData.MUSIC_NATURE);
+        Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
     }
 
     /**
@@ -117,7 +117,6 @@ public class AccountController implements Initializable, ControlledScreen{
                 Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
                 break;
             case "Enter":
-                Sound.stopMediaPlayer();
                 // save runtime data
                 RuntimeData.selectedUsernameIndex = nameListView.getSelectionModel().getSelectedIndex();
                 RuntimeData.Username = FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex);
@@ -125,6 +124,7 @@ public class AccountController implements Initializable, ControlledScreen{
                 myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, ConstantData.FXML_MENU);
                 myController.loadMarkdown(ConstantData.SCREEN_ID_INFO, ConstantData.FXML_INFO);
                 myController.loadMarkdown(ConstantData.SCREEN_ID_SCOREBOARD, ConstantData.FXML_SCOREBOARD);
+                myController.loadMarkdown(ConstantData.SCREEN_ID_SELECT_LEVEL, ConstantData.FXML_SELECT_LEVEL);
                 myController.loadMarkdown(ConstantData.OVERLAY_ID_OPTION, ConstantData.FXML_OPTION);
                 // set screen
                 myController.setScreen(ConstantData.SCREEN_ID_MENU);

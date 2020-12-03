@@ -3,7 +3,7 @@ package com.tsb.frogger.world;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tsb.frogger.actors.Actor;
+import com.tsb.frogger.world.actors.Actor;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

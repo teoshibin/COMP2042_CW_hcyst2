@@ -61,7 +61,7 @@ public class ScreensController extends Pane {
             myScreenController.setScreenParent(this);
             addScreenToHash(name, loadScreen);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

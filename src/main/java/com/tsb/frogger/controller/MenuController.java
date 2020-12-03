@@ -1,10 +1,10 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.core.Sound;
-import com.tsb.frogger.core.Game;
+import com.tsb.frogger.utils.sound.Sound;
+import com.tsb.frogger.world.Game;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.exceptions.LevelNotFoundException;
+import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,13 +42,7 @@ public class MenuController implements Initializable, ControlledScreen {
     @FXML
     public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {
         switch (((Button) actionEvent.getSource()).getText()) {
-            case "Play" -> {
-                Sound.stopMediaPlayer();
-                RuntimeData.game = new Game(2);
-                RuntimeData.game.start();
-                myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.game.gamePane, RuntimeData.game);
-                myController.setScreen(ConstantData.SCREEN_ID_GAME);
-            }
+            case "Play" -> myController.setScreen(ConstantData.SCREEN_ID_SELECT_LEVEL);
             case "Scores" -> myController.setScreen(ConstantData.SCREEN_ID_SCOREBOARD);
             case "Options" -> myController.addOverlay(ConstantData.OVERLAY_ID_OPTION);
             case "Info" -> myController.setScreen(ConstantData.SCREEN_ID_INFO);

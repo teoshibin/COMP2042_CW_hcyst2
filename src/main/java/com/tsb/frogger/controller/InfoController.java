@@ -1,6 +1,6 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

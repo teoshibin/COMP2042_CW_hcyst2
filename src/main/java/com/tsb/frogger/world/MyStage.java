@@ -1,7 +1,7 @@
 package com.tsb.frogger.world;
 
 
-import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
 
 /**

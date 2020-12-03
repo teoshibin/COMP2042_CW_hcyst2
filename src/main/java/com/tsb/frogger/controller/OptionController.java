@@ -1,18 +1,23 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.core.Sound;
+import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * option controller for option GUI
  */
-public class OptionController implements ControlledScreen{
+public class OptionController implements Initializable, ControlledScreen{
     /**
      * main screen controller
      */
@@ -22,6 +27,33 @@ public class OptionController implements ControlledScreen{
      */
     @FXML
     public AnchorPane optionPane;
+    /**
+     * master volume slider
+     */
+    @FXML
+    public Slider masterVolumeSlider;
+    /**
+     * music volume slider
+     */
+    @FXML
+    public Slider musicVolumeSlider;
+    /**
+     * control volume slider
+     */
+    @FXML
+    public Slider controlVolumeSlider;
+
+    /**
+     * init
+     * @param location loc
+     * @param resources res
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        masterVolumeSlider.setValue(Sound.getMasterVolume()*100);
+        controlVolumeSlider.setValue(Sound.getControlVolume()*100);
+        musicVolumeSlider.setValue(Sound.getMusicVolume()*100);
+    }
 
     /**
      * handle action event
@@ -45,6 +77,16 @@ public class OptionController implements ControlledScreen{
     }
 
     /**
+     * handle slider on release
+     * @param mouseEvent mouse event
+     */
+    public void handleOnRelease(MouseEvent mouseEvent) {
+        Sound.setMasterVolume(masterVolumeSlider.getValue()/100);
+        Sound.setControlVolume(controlVolumeSlider.getValue()/100);
+        Sound.setMusicVolume(musicVolumeSlider.getValue()/100);
+    }
+
+    /**
      * set main screen controller
      * @param screenPage screen page
      */
@@ -52,4 +94,5 @@ public class OptionController implements ControlledScreen{
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
+
 }

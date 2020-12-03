@@ -20,9 +20,9 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media']
 }
 
-//task myJavadocs(type: Javadoc) {
-//    source = sourceSets.main.allJava
-//}
+task myJavadocs(type: Javadoc) {
+    source = sourceSets.main.allJava
+}
 
 //sourceSets.main {
 //    java {
