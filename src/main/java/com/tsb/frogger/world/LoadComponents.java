@@ -161,7 +161,7 @@ public class LoadComponents {
      * @param layoutY layout position Y
      * @param speed speed
      */
-    public static void addLongTruck(int layoutX, int layoutY, int speed){
+    public static void addLongTruck(int layoutX, int layoutY, double speed){
         if (speed > 0){
             gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_LONG_TRUCK_RIGHT, layoutX, layoutY, speed, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
         } else {

@@ -4,7 +4,7 @@ import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.world.LoadComponents;
 import com.tsb.frogger.world.MyStage;
 
-public class LevelOne implements LevelBase{
+public class Level_001 implements LevelBase{
 
     @Override
     public void loadLevel(MyStage gamePane) {
@@ -35,32 +35,27 @@ public class LevelOne implements LevelBase{
         // RIVER 5
         // GRASS 6
         // ROAD 7
-        LoadComponents.addCar(-150, ConstantData.LAYOUT_Y_ACTOR[0][7], 0.75);
-        LoadComponents.addShortTruck(180, ConstantData.LAYOUT_Y_ACTOR[0][7], 0.75);
-        LoadComponents.addCar(380, ConstantData.LAYOUT_Y_ACTOR[0][7], 0.75);
-        LoadComponents.addShortTruck(480, ConstantData.LAYOUT_Y_ACTOR[0][7], 0.75);
-        LoadComponents.addCar(680, ConstantData.LAYOUT_Y_ACTOR[0][7], 0.75);
-        LoadComponents.addShortTruck(780, ConstantData.LAYOUT_Y_ACTOR[0][7], 0.75);
+        LoadComponents.addCar(-150, ConstantData.LAYOUT_Y_ACTOR[0][7], 1);
+        LoadComponents.addShortTruck(50, ConstantData.LAYOUT_Y_ACTOR[0][7], 1);
+        LoadComponents.addCar(200, ConstantData.LAYOUT_Y_ACTOR[0][7], 1);
+        LoadComponents.addCar(580, ConstantData.LAYOUT_Y_ACTOR[0][7], 1);
+        LoadComponents.addShortTruck(780, ConstantData.LAYOUT_Y_ACTOR[0][7], 1);
 
         LoadComponents.addCar( -250, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
         LoadComponents.addCar(-160, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
-        LoadComponents.addCar(340, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
-        LoadComponents.addCar(560, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
-        LoadComponents.addCar( 770, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
+        LoadComponents.addCar(320, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
+        LoadComponents.addCar( 660, ConstantData.LAYOUT_Y_ACTOR[0][8], -1);
 
         LoadComponents.addShortTruck(-150, ConstantData.LAYOUT_Y_ACTOR[0][9], -0.75);
         LoadComponents.addCar(0, ConstantData.LAYOUT_Y_ACTOR[0][9], -0.75);
         LoadComponents.addShortTruck(200, ConstantData.LAYOUT_Y_ACTOR[0][9], -0.75);
         LoadComponents.addCar(350, ConstantData.LAYOUT_Y_ACTOR[0][9], -0.75);
-        LoadComponents.addShortTruck(500, ConstantData.LAYOUT_Y_ACTOR[0][9], -0.75);
         LoadComponents.addCar(770, ConstantData.LAYOUT_Y_ACTOR[0][9], -0.75);
 
         LoadComponents.addCar(-200, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
-        LoadComponents.addCar(0, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
-        LoadComponents.addCar(300, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
-        LoadComponents.addCar(500, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
-        LoadComponents.addCar(700, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
-        LoadComponents.addCar(800, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
+        LoadComponents.addCar(160, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
+        LoadComponents.addCar(450, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
+        LoadComponents.addCar(780, ConstantData.LAYOUT_Y_ACTOR[0][10], 0.75);
 
         LoadComponents.addShortTruck(-100, ConstantData.LAYOUT_Y_ACTOR[0][11], -1);
         LoadComponents.addCar(300, ConstantData.LAYOUT_Y_ACTOR[0][11], -1);
@@ -68,6 +63,5 @@ public class LevelOne implements LevelBase{
         LoadComponents.addCar(800, ConstantData.LAYOUT_Y_ACTOR[0][11], -1);
         // ROAD 11
         // START 12
-
     }
 }
