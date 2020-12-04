@@ -26,7 +26,7 @@ public class HomeBtn extends ImageView {
             RuntimeData.game.stop();
             RuntimeData.game = null;
             myController.setScreen(ConstantData.SCREEN_ID_MENU);
-            Sound.stopMediaPlayer();
+            Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
         });
 
         setOnMouseEntered(event -> Sound.playAudioClip(ConstantData.SOUND_BUTTON));

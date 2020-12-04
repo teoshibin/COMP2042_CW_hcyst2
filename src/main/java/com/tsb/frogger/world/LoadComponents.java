@@ -32,7 +32,7 @@ public class LoadComponents {
         addBackground(ConstantData.IMAGE_GAME_BACKGROUND_A);
 
         // set Labels
-        addLabels();
+        addLabels(level);
 
         // set ending points
         for (int i = 0; i < 5; i++) {
@@ -48,15 +48,33 @@ public class LoadComponents {
     /**
      * add scoreboard
      */
-    public static void addLabels(){
-        // add label
-        Label myLabel = new Label();
-        myLabel.setLayoutX(390);
-        myLabel.setLayoutY(5);
-        myLabel.setText("SCORE");
-        myLabel.getStyleClass().add("main-font");
-        myLabel.getStyleClass().add("font-weight-bold");
-        gamePane.getChildren().add(myLabel);
+    public static void addLabels(int level){
+        // add score label
+        Label scoreLabel = new Label();
+        scoreLabel.setLayoutX(390);
+        scoreLabel.setLayoutY(5);
+        scoreLabel.setText("SCORE");
+        scoreLabel.getStyleClass().add("main-font");
+        scoreLabel.getStyleClass().add("font-weight-bold");
+        gamePane.getChildren().add(scoreLabel);
+
+        // add level label
+        Label levelLabel = new Label();
+        levelLabel.setLayoutX(75);
+        levelLabel.setLayoutY(5);
+        levelLabel.setText("Level");
+        levelLabel.getStyleClass().add("main-font");
+        levelLabel.getStyleClass().add("font-weight-bold");
+        gamePane.getChildren().add(levelLabel);
+
+        // add level value
+        Label valueLabel = new Label();
+        valueLabel.setLayoutX(70);
+        valueLabel.setLayoutY(30);
+        valueLabel.setText("0".repeat(3 - String.valueOf(level).length()) + level);
+        valueLabel.getStyleClass().add("inGame-font");
+        valueLabel.getStyleClass().add("bigger-font-size");
+        gamePane.getChildren().add(valueLabel);
     }
 
     /**

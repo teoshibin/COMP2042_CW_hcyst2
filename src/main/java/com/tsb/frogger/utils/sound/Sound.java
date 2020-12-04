@@ -45,9 +45,7 @@ public class Sound {
      * @param path audio path
      */
     public static void playMediaPlayer(String path) {
-            System.out.println("Here1");
         if(mediaPlayer == null || (!mediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))){
-            System.out.println("Here2");
             Media media = new Media(new File(path).toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
