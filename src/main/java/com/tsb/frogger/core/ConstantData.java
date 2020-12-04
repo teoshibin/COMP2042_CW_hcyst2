@@ -29,10 +29,11 @@ public class ConstantData {
     public static final String SOUND_ERROR = "file:src/main/resources/com/tsb/frogger/sounds/ui/error.mp3";
     public static final String SOUND_SUCCESS = "file:src/main/resources/com/tsb/frogger/sounds/ui/success.mp3";
     public static final String SOUND_PAGE_FLIP = "file:src/main/resources/com/tsb/frogger/sounds/ui/page-flip.mp3";
+    public static final String SOUND_CLICK_ON = "file:src/main/resources/com/tsb/frogger/sounds/ui/click-on.mp3";
+    public static final String SOUND_CLICK_OFF = "file:src/main/resources/com/tsb/frogger/sounds/ui/click-off.mp3";
 
     // music resources
     public static final String MUSIC_FROGGER = "src/main/resources/com/tsb/frogger/sounds/music/MainBGM.mp3";
-    public static final String MUSIC_NATURE = "src/main/resources/com/tsb/frogger/sounds/music/MenuBGM.mp3";
     public static final String MUSIC_ARCADE = "src/main/resources/com/tsb/frogger/sounds/music/ArcadeBGM.mp3";
 
     // stage image resources

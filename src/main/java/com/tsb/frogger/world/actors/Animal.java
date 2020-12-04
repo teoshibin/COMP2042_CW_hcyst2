@@ -1,12 +1,11 @@
 package com.tsb.frogger.world.actors;
 
-import java.util.ArrayList;
-
 import com.tsb.frogger.core.ConstantData;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 /**
  * frogger class
@@ -15,7 +14,7 @@ public class Animal extends Actor {
 	/**
 	 * max score
 	 */
-	public static int MAX_SCORE = 800;
+	public static int MAX_SCORE = 900;
 	/**
 	 * image up
 	 */
@@ -61,6 +60,10 @@ public class Animal extends Actor {
 	 */
 	private boolean allowJumping = true;
 	/**
+	 * store previous key
+	 */
+	private KeyCode previousKey;
+	/**
 	 * no move boolean
 	 */
 	boolean noMove = false;
@@ -97,10 +100,6 @@ public class Animal extends Actor {
 	 */
 	double maxDistancePerRound = ConstantData.SIZE_BACKGROUND[1];
 	/**
-	 * ends
-	 */
-	ArrayList<End> inter = new ArrayList<End>();
-	/**
 	 * extra points
 	 */
 	private int extraPoints = 60;
@@ -120,10 +119,6 @@ public class Animal extends Actor {
 	 * frog layout y
 	 */
 	private final int frogLayoutY;
-	/**
-	 * check if is started
-	 */
-	private boolean started = false;
 	/**
 	 * frog direction
 	 */
@@ -158,7 +153,7 @@ public class Animal extends Actor {
 		// handle on key press
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){
-				if (!noMove && allowJumping) {
+				if (!noMove && allowJumping && previousKey == null) {
 					switch (event.getCode()) {
 						case W -> {
 							frogMove(DIRECTION.UP);
@@ -168,6 +163,7 @@ public class Animal extends Actor {
 						case S -> frogMove(DIRECTION.DOWN);
 						case D -> frogMove(DIRECTION.RIGHT);
 					}
+					previousKey = event.getCode();
 				}
 			}
 		});
@@ -175,7 +171,7 @@ public class Animal extends Actor {
 		// handle on key release
 		setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
-				if (!noMove && !allowJumping){
+				if (!noMove && !allowJumping && previousKey == event.getCode()){
 					switch (event.getCode()){
 						case W -> {
 							if (getY() < maxDistancePerRound && getY() > ConstantData.LAYOUT_Y_ACTOR[0][1]) {
@@ -189,6 +185,7 @@ public class Animal extends Actor {
 						case S -> frogMove(DIRECTION.DOWN);
 						case D -> frogMove(DIRECTION.RIGHT);
 					}
+					previousKey = null;
 				}
 			}
 			
@@ -325,6 +322,7 @@ public class Animal extends Actor {
 		allowJumping = true;
 		newSecond = true;
 		extraPoints = 60;
+		previousKey = null;
 	}
 
 	private void frogMove(DIRECTION direction){

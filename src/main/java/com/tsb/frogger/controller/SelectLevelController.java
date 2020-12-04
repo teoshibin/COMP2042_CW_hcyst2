@@ -7,19 +7,22 @@ import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.Game;
 import com.tsb.frogger.world.LevelSelector;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SelectLevelController implements Initializable, ControlledScreen{
+
     ScreensController myController;
+
     @FXML
     public ComboBox<String> dropDown;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,8 +45,22 @@ public class SelectLevelController implements Initializable, ControlledScreen{
         }
     }
 
+    public void enterBtn(MouseEvent mouseEvent) {
+        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+    }
+
+    public void onHiding(Event event) {
+        Sound.playAudioClip(ConstantData.SOUND_CLICK_OFF);
+    }
+
+    public void onShowing(Event event) {
+        Sound.playAudioClip(ConstantData.SOUND_CLICK_ON);
+    }
+
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
+
+
 }

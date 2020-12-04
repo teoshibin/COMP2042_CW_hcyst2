@@ -40,19 +40,19 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <ComboBox fx:id="dropDown" prefHeight="50.0" prefWidth="188.0" />
+                        <ComboBox fx:id="dropDown" onHiding="#onHiding" onShowing="#onShowing" prefHeight="50.0" prefWidth="237.0" visibleRowCount="5" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleBtnEvent" text="Back">
+                        <Button mnemonicParsing="false" onAction="#handleBtnEvent" onMouseEntered="#enterBtn" text="Back">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="main-font" />
                               <String fx:value="font-weight-bold" />
                            </styleClass>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleBtnEvent" text="Select">
+                        <Button mnemonicParsing="false" onAction="#handleBtnEvent" onMouseEntered="#enterBtn" text="Select">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="main-font" />
