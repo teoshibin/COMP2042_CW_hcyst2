@@ -35,29 +35,31 @@ public class WetTurtle extends Actor{
 	 * turtle status
 	 */
 	boolean sunk = false;
-
+	/**
+	 * different sinking time
+	 */
+	private final int sinking_shift = (int)Math.floor(Math.random()*10);
 	/**
 	 * override act for the act of wet turtle
 	 * @param now timestamp of current time in nanosecond
 	 */
 	@Override
 	public void act(long now) {
+		long sinkingTime = ((now + sinking_shift*1000000000)/1000000000) % 4;
 
-				if (now/900000000  % 4 ==0) {
-					setImage(turtle2);
-					sunk = false;
-				}
-				else if (now/900000000 % 4 == 1) {
-					setImage(turtle1);
-					sunk = false;
-				}
-				else if (now/900000000 %4 == 2) {
-					setImage(turtle3);
-					sunk = false;
-				} else if (now/900000000 %4 == 3) {
-					setImage(turtle4);
-					sunk = true;
-				}
+		if (sinkingTime ==0) {
+			setImage(turtle2);
+			sunk = false;
+		} else if (sinkingTime == 1) {
+			setImage(turtle1);
+			sunk = false;
+		} else if (sinkingTime == 2) {
+			setImage(turtle3);
+			sunk = false;
+		} else if (sinkingTime == 3) {
+			setImage(turtle4);
+			sunk = true;
+		}
 			
 		move(speed , 0);
 	}
