@@ -32,7 +32,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 ```
 
 ```
-[Back to table of content](#contant)  
+[Back to content](#content)  
 
 ## Usage
 
@@ -48,6 +48,8 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     A | LEFT
     S | DOWN
     D | RIGHT
+    
+[Back to content](#content)  
     
 ### How to create new level
 1. Find [com.tsb.frogger.world.levels](src/main/java/com/tsb/frogger/world/levels) package.  
@@ -146,7 +148,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 7. **Extra note** :  
     Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
     
-[Back to table of content](#contant)  
+[Back to content](#content)  
 
 ## Features
 ### Gameplay
@@ -163,7 +165,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 ### Modifications
 - Create new level easily without messing with inner logic
 
-[Back to table of content](#contant)  
+[Back to content](#content)  
 
 ## Implementations
 ### Views
@@ -213,7 +215,7 @@ This framework allows new fxml screens to be added easily.
 - Fixed fast frog movement bug for long pressed key
 - Fixed a bug where all wet turtles sink into water at the same time
 
-[Back to table of content](#contant)  
+[Back to content](#content)  
 
 ## Design Patterns
 - **Factory**  
@@ -225,14 +227,14 @@ This framework allows new fxml screens to be added easily.
 - **Facade**  
   Used in the Game class, where it wraps a complicated subsystem with a simpler interface.
 
-[Back to table of content](#contant)  
+[Back to content](#content)  
 
 ## Credits
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 
-[Back to table of content](#contant)  
+[Back to content](#content)  
 
 ## License
 
-[Back to table of content](#contant)  
+[Back to content](#content)  
