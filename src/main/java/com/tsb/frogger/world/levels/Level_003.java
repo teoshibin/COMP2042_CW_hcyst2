@@ -2,11 +2,10 @@ package com.tsb.frogger.world.levels;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.world.LoadComponents;
-import com.tsb.frogger.world.MyStage;
 
 public class Level_003 implements LevelBase{
     @Override
-    public void loadLevel(MyStage gamePane) {
+    public void loadLevel() {
         // bound -270 810
         // END 0
         // RIVER 1

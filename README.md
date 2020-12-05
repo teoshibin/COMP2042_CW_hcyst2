@@ -1,6 +1,6 @@
 # Frogger :frog:
 
-[frogger](https://en.wikipedia.org/wiki/Frogger) is an arcade game developed  in 1980's by [Konami](https://en.wikipedia.org/wiki/Konami) a japanese company.
+[frogger](https://en.wikipedia.org/wiki/Frogger) is an arcade game developed in the 1980s by [Konami](https://en.wikipedia.org/wiki/Konami) a japanese company.
 This will be a refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
@@ -18,7 +18,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     - [Gameplay](#gameplay)
     - [Modifications](#modifications)
 - [Implementations](#implementations)
-    - [GUI](#gui)
+    - [GUI](#views)
         - [GUI Hierarchy](#gui-hierarchy)
     - [Controllers](#controllers)
         - [Controllers Hierarchy](#controllers-hierarchy)
@@ -142,6 +142,9 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
    [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
    
+7. **Extra note** :  
+    Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
+
 ## Features
 ### Gameplay
 - Create personal account username for high score storing
@@ -206,7 +209,14 @@ This framework allows new fxml screens to be added easily.
 - Fixed a bug where all wet turtles sink into water at the same time
 
 ## Design Patterns
+- **Factory**  
+  Used in level base (interface) and levels (class) where the interface act as the general level and levelSelector instantiate one of the selected level (sub-class)
 
+- **Singleton**  
+  Used across this project such as Sound class, FileGame class etc.
+
+- **Facade**  
+  Used in the Game class, where it wraps a complicated subsystem with a simpler interface.
 
 ## Credits
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>

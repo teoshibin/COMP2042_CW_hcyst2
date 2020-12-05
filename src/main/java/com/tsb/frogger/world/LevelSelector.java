@@ -23,7 +23,7 @@ public class LevelSelector {
      *
      * @param level level value
      */
-    public static void selectLevel(MyStage gamePane, int level) throws LevelNotFoundException {
+    public static void selectLevel(int level) throws LevelNotFoundException {
         LevelBase myLevel;
         switch (level) {
             case 1 -> myLevel = new Level_001();
@@ -33,6 +33,6 @@ public class LevelSelector {
             case 5 -> myLevel = new Level_005();
             default -> throw new LevelNotFoundException("Level not found or Unlinked level, please check linking in LevelSelector");
         }
-        Objects.requireNonNull(myLevel).loadLevel(gamePane);
+        Objects.requireNonNull(myLevel).loadLevel();
     }
 }

@@ -40,7 +40,7 @@ public class LoadComponents {
         }
 
         // load obstacle based on levels
-        LevelSelector.selectLevel(gamePane, level);
+        LevelSelector.selectLevel(level);
 
         return gamePane;
     }
