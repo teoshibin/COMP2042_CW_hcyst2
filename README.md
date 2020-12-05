@@ -12,7 +12,8 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - [Installation](#installation)
 - [Usage](#usage)
     - [How to play](#how-to-play)
-    - [Controls](#controls)
+        - [Controls](#controls)
+    - [How to create new level](#how-to-create-new-level)
 - [Features](#installation)
     - [Gameplay](#gameplay)
     - [Modifications](#modifications)
@@ -48,25 +49,24 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     D | RIGHT
     
 ### How to create new level
-1. Find com.tsb.frogger.world.levels package
-2. Create a new class e.g. Level_100.java in this package
-3. All level designing will be written in this loadLevel method
+1. Find [com.tsb.frogger.world.levels](src/main/java/com/tsb/frogger/world/levels) package.  
+2. Create a new class e.g. Level_999.java in this package
+    This class implements LevelBase, and the level designing will be written in this loadLevel method
     ```java
     package com.tsb.frogger.world.levels;
     
     import com.tsb.frogger.core.ConstantData;
     import com.tsb.frogger.world.LoadComponents;
-    import com.tsb.frogger.world.MyStage;
     
-    public class Level_100 implements LevelBase{
+    public class Level_999 implements LevelBase{
     
         @Override
         public void loadLevel() {
-            //load components here
+            // <- load components here
         }
     }
     ```
-4. now adding actors, for example adding a long log
+3. Now add some actors. For example adding a long log.  
    
     ```java
     // LoadComponents.addActor(layout x, layout y, moving direction & speed);
@@ -112,6 +112,35 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    </td>
    </tr>
    </table>
+   
+4. Now navigate to [com.tsb.frogger.world](src/main/java/com/tsb/frogger/world) open [LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java).
+    ```java
+    public class LevelSelector {
+    
+        public static final int MAX_LEVEL = 5; // <- add one into this value 
+                                               // e.g. 6
+    
+        public static void selectLevel(MyStage gamePane, int level) throws LevelNotFoundException {
+            LevelBase myLevel;
+            switch (level) {
+                case 1 -> myLevel = new Level_001();
+                case 2 -> myLevel = new Level_002();
+                case 3 -> myLevel = new Level_003();
+                case 4 -> myLevel = new Level_004();
+                case 5 -> myLevel = new Level_005();
+                // <- add your level here 
+                // e.g. case 6 -> myLevel = new Level_999();
+                default -> throw new LevelNotFoundException("Level not found or Unlinked level, please check linking in LevelSelector");
+            }
+            Objects.requireNonNull(myLevel).loadLevel(gamePane);
+        }
+    }
+    ```
+5. Done !  
+
+6. For better understanding  
+   [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
+   [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
    
 ## Features
 ### Gameplay
