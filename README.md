@@ -14,11 +14,11 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     - [How to play](#how-to-play)
         - [Controls](#controls)
     - [How to create new level](#how-to-create-new-level)
-- [Features](#installation)
+- [Features](#features)
     - [Gameplay](#gameplay)
     - [Modifications](#modifications)
 - [Implementations](#implementations)
-    - [GUI](#views)
+    - [Views](#views)
         - [GUI Hierarchy](#gui-hierarchy)
     - [Controllers](#controllers)
         - [Controllers Hierarchy](#controllers-hierarchy)
@@ -32,6 +32,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 ```
 
 ```
+[Back to table of content](#contant)  
 
 ## Usage
 
@@ -144,6 +145,8 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    
 7. **Extra note** :  
     Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
+    
+[Back to table of content](#contant)  
 
 ## Features
 ### Gameplay
@@ -159,6 +162,8 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 
 ### Modifications
 - Create new level easily without messing with inner logic
+
+[Back to table of content](#contant)  
 
 ## Implementations
 ### Views
@@ -208,6 +213,8 @@ This framework allows new fxml screens to be added easily.
 - Fixed fast frog movement bug for long pressed key
 - Fixed a bug where all wet turtles sink into water at the same time
 
+[Back to table of content](#contant)  
+
 ## Design Patterns
 - **Factory**  
   Used in level base (interface) and levels (class) where the interface act as the general level and levelSelector instantiate one of the selected level (sub-class)
@@ -218,8 +225,14 @@ This framework allows new fxml screens to be added easily.
 - **Facade**  
   Used in the Game class, where it wraps a complicated subsystem with a simpler interface.
 
+[Back to table of content](#contant)  
+
 ## Credits
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 
+[Back to table of content](#contant)  
+
 ## License
+
+[Back to table of content](#contant)  
