@@ -1,6 +1,7 @@
 package com.tsb.frogger.world.actors;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
@@ -222,18 +223,21 @@ public class Animal extends Actor {
 		if (carDeath) {
 			if ((now)% 11 ==0) {
 				animationCounter++;
-			}
-			switch (animationCounter){
-				case 1 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_1, imgSize, imgSize, true, true));
-				case 2 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_2, imgSize, imgSize, true, true));
-				case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_3, imgSize, imgSize, true, true));
-				case 4 -> {
-					setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
-					resetFrog();
-					carDeath = false;
-					noMove = false;
-					animationCounter = 0;
-					reducePoints();
+				switch (animationCounter){
+					case 1 -> {
+						setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_1, imgSize, imgSize, true, true));
+						Sound.playAudioClip(ConstantData.SOUND_QUACK);
+					}
+					case 2 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_2, imgSize, imgSize, true, true));
+					case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_3, imgSize, imgSize, true, true));
+					case 4 -> {
+						setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
+						resetFrog();
+						carDeath = false;
+						noMove = false;
+						animationCounter = 0;
+						reducePoints();
+					}
 				}
 			}
 		}
@@ -242,19 +246,22 @@ public class Animal extends Actor {
 		if (waterDeath) {
 			if ((now)% 11 ==0) {
 				animationCounter++;
-			}
-			switch (animationCounter){
-				case 1 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_1, imgSize,imgSize , true, true));
-				case 2 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_2, imgSize,imgSize , true, true));
-				case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_3, imgSize,imgSize , true, true));
-				case 4 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_4, imgSize,imgSize , true, true));
-				case 5 -> {
-					setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
-					resetFrog();
-					waterDeath = false;
-					noMove = false;
-					animationCounter = 0;
-					reducePoints();
+				switch (animationCounter){
+					case 1 -> {
+						setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_1, imgSize,imgSize , true, true));
+						Sound.playAudioClip(ConstantData.SOUND_QUACK);
+					}
+					case 2 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_2, imgSize,imgSize , true, true));
+					case 3 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_3, imgSize,imgSize , true, true));
+					case 4 -> setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_4, imgSize,imgSize , true, true));
+					case 5 -> {
+						setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true));
+						resetFrog();
+						waterDeath = false;
+						noMove = false;
+						animationCounter = 0;
+						reducePoints();
+					}
 				}
 			}
 		}

@@ -18,7 +18,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     - [Gameplay](#gameplay)
     - [Modifications](#modifications)
 - [Implementations](#implementations)
-    - [GUI](#views)
+    - [Views](#views)
         - [GUI Hierarchy](#gui-hierarchy)
     - [Controllers](#controllers)
         - [Controllers Hierarchy](#controllers-hierarchy)

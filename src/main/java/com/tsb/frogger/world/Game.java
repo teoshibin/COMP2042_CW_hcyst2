@@ -1,6 +1,7 @@
 package com.tsb.frogger.world;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.actors.*;
 import com.tsb.frogger.controller.ControlledScreen;
 import com.tsb.frogger.controller.ScreensController;
@@ -69,8 +70,8 @@ public class Game implements ControlledScreen {
 //        animal = new GodAnimal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
 //        animal.instantWin(600);
 //        gamePane.add(animal);
-    // TODO - ADD HEALTH FOR FROGGER
-    // TODO - ADD TIME COUNT DOWN
+        // TODO - ADD HEALTH FOR FROGGER
+        // TODO - ADD TIME COUNT DOWN
     }
 
     /**
@@ -88,6 +89,7 @@ public class Game implements ControlledScreen {
                     Game.this.stop();
                     myController.loadMarkdown(ConstantData.OVERLAY_ID_VICTORY, ConstantData.FXML_VICTORY);
                     myController.addOverlay(ConstantData.OVERLAY_ID_VICTORY);
+                    Sound.playAudioClip(ConstantData.SOUND_KACHING);
                 }
             }
         };
