@@ -14,7 +14,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     - [How to play](#how-to-play)
         - [Controls](#controls)
     - [How to create new level](#how-to-create-new-level)
-- [Features](#installation)
+- [Features](#features)
     - [Gameplay](#gameplay)
     - [Modifications](#modifications)
 - [Implementations](#implementations)
@@ -32,6 +32,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 ```
 
 ```
+[Back to content](#content)  
 
 ## Usage
 
@@ -47,6 +48,8 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     A | LEFT
     S | DOWN
     D | RIGHT
+    
+[Back to content](#content)  
     
 ### How to create new level
 1. Find [com.tsb.frogger.world.levels](src/main/java/com/tsb/frogger/world/levels) package.  
@@ -142,8 +145,9 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
    [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
    
-7. **Extra note** :  
-    Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
+   >**Note** : Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
+    
+[Back to content](#content)  
 
 ## Features
 ### Gameplay
@@ -208,6 +212,8 @@ This framework allows new fxml screens to be added easily.
 - Fixed fast frog movement bug for long pressed key
 - Fixed a bug where all wet turtles sink into water at the same time
 
+[Back to content](#content)  
+
 ## Design Patterns
 - **Factory**  
   Used in level base (interface) and levels (class) where the interface act as the general level and levelSelector instantiate one of the selected level (sub-class)
@@ -223,3 +229,5 @@ This framework allows new fxml screens to be added easily.
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 
 ## License
+
+[Back to content](#content)  
