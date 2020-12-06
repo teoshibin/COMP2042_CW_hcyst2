@@ -145,8 +145,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
    [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
    
-7. **Extra note** :  
-    Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
+   >**Note** : Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
     
 [Back to content](#content)  
 
@@ -164,8 +163,6 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 
 ### Modifications
 - Create new level easily without messing with inner logic
-
-[Back to content](#content)  
 
 ## Implementations
 ### Views
@@ -227,13 +224,9 @@ This framework allows new fxml screens to be added easily.
 - **Facade**  
   Used in the Game class, where it wraps a complicated subsystem with a simpler interface.
 
-[Back to content](#content)  
-
 ## Credits
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
-
-[Back to content](#content)  
 
 ## License
 
