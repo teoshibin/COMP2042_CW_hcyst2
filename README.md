@@ -5,7 +5,7 @@ This will be a refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
 <p align="center">
-  <img src="src/main/resources/com/tsb/frogger/images/misc/game_picture.png" />
+  <img src="screenshots/game_picture.png" />
 </p>
 
 ## Content

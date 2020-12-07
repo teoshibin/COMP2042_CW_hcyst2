@@ -72,6 +72,8 @@ public class VictoryController implements Initializable, ControlledScreen{
                 myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);
                 myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 RuntimeData.game.start();
+                myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.game.gamePane, RuntimeData.game);
+                myController.setScreen(ConstantData.SCREEN_ID_GAME);
             }
         }
     }
