@@ -29,6 +29,10 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - [License](#license)
 
 ## Installation
+1. Clone this repo
+2. Unzip the folder
+3. In command prompt use `cd $YOUR_PATH` navigate into cloned folder
+4. type in `gradlew run` to build and run the game
 
 [Back to content](#content)  
 
