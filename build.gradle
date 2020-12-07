@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.tsb'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 repositories {
     mavenCentral()
@@ -20,6 +20,8 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media']
 }
 
+mainClassName = 'com.tsb.frogger.core.Launcher'
+
 task myJavadocs(type: Javadoc) {
     source = sourceSets.main.allJava
 }
@@ -33,5 +35,3 @@ task myJavadocs(type: Javadoc) {
 //        exclude "**/*.java"
 //    }
 //}
-
-mainClassName = 'com.tsb.frogger.core.Launcher'

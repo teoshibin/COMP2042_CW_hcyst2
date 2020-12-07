@@ -29,9 +29,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - [License](#license)
 
 ## Installation
-```
 
-```
 [Back to content](#content)  
 
 ## Usage
