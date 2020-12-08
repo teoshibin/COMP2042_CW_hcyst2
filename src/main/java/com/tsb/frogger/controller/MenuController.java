@@ -1,10 +1,9 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.utils.sound.Sound;
-import com.tsb.frogger.world.Game;
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
+import com.tsb.frogger.utils.files.datamanager.UsernameManager;
+import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -60,7 +59,7 @@ public class MenuController implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameLabel.setText(RuntimeData.Username);
+        usernameLabel.setText(UsernameManager.getSelectedUsername());
         Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
     }
 

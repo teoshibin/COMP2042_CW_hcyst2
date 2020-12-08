@@ -1,12 +1,10 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.files.datamanager.UsernameManager;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
 import com.tsb.frogger.world.actors.Animal;
-import com.tsb.frogger.core.*;
-import com.tsb.frogger.utils.files.FileScore;
-import com.tsb.frogger.utils.files.FileUsername;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -119,10 +117,10 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * update display info
      */
     public void updateInfo(){
-        nameLabel.setText(FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex));
+        nameLabel.setText(UsernameManager.getSelectedUsername());
         levelLabel.setText(String.valueOf(selectedLevel));
         maxLevelLabel.setText(String.valueOf(LevelSelector.MAX_LEVEL));
-        highestScoreLabel.setText(String.valueOf(FileScore.readScore(RuntimeData.selectedUsernameIndex, selectedLevel)));
+        //TODO savegame read all players score based on level
         maxScoreLabel.setText(String.valueOf(Animal.MAX_SCORE));
     }
 

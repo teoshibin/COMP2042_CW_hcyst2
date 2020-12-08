@@ -15,14 +15,17 @@ public class ConstantData {
     public static final String OVERLAY_ID_OPTION = "optionOverlay";
     public static final String OVERLAY_ID_VICTORY = "victoryOverlay";
 
+    // Save File Path
+    public static final String SAVE_FILE_PATH = "saveGame.ser";
+
     // FXML resources
-    public static final String FXML_ACCOUNT = "../view/Account.fxml";
-    public static final String FXML_MENU = "../view/Menu.fxml";
-    public static final String FXML_INFO = "../view/Info.fxml";
-    public static final String FXML_SCOREBOARD = "../view/Scoreboard.fxml";
-    public static final String FXML_SELECT_LEVEL = "../view/SelectLevel.fxml";
-    public static final String FXML_OPTION = "../view/Option.fxml";
-    public static final String FXML_VICTORY = "../view/Victory.fxml";
+    public static final String FXML_ACCOUNT = "/com/tsb/frogger/view/Account.fxml";
+    public static final String FXML_MENU = "/com/tsb/frogger/view/Menu.fxml";
+    public static final String FXML_INFO = "/com/tsb/frogger/view/Info.fxml";
+    public static final String FXML_SCOREBOARD = "/com/tsb/frogger/view/Scoreboard.fxml";
+    public static final String FXML_SELECT_LEVEL = "/com/tsb/frogger/view/SelectLevel.fxml";
+    public static final String FXML_OPTION = "/com/tsb/frogger/view/Option.fxml";
+    public static final String FXML_VICTORY = "/com/tsb/frogger/view/Victory.fxml";
 
     // sound resources
     public static final String SOUND_BUTTON = "file:src/main/resources/com/tsb/frogger/sounds/ui/btn-pop.mp3";

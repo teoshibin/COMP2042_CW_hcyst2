@@ -1,10 +1,8 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.utils.files.FileUsername;
-import com.tsb.frogger.core.RuntimeData;
-import javafx.collections.ObservableList;
+import com.tsb.frogger.utils.files.datamanager.UsernameManager;
+import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,8 +61,7 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> usernameItems = FileUsername.readUsernames();
-        nameListView.setItems(usernameItems);
+        nameListView.setItems(UsernameManager.getObservableListUsername());
         Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
     }
 
@@ -75,24 +72,23 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
 
-
         switch (((Button)actionEvent.getSource()).getText()){
-            case "Add":
-                if(FileUsername.addUsername(nameTextField.getText())){
+            case "Add" -> {
+                if (UsernameManager.addUsername(nameTextField.getText())) {
                     nameTextField.setText("");
                     Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
                     Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
-                break;
-            case "Delete":
-                if(FileUsername.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
+            }
+            case "Delete"->{
+                if(UsernameManager.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
                     Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
                     Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
-                break;
-            case "Edit":
+            }
+            case "Edit"->{
                 holdIndex = nameListView.getSelectionModel().getSelectedIndex();
                 if(holdIndex > 0){
                     nameTextField.setText(nameListView.getSelectionModel().getSelectedItem());
@@ -101,25 +97,25 @@ public class AccountController implements Initializable, ControlledScreen{
                 } else {
                     Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
-                break;
-            case "Done":
-                if(FileUsername.editUsername(holdIndex, nameTextField.getText())){
+            }
+            case "Done"->{
+                if (UsernameManager.updateUsername(holdIndex, nameTextField.getText())){
                     Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
                     Sound.playAudioClip(ConstantData.SOUND_ERROR);
                 }
                 nameTextField.setText("");
                 editMode(false);
-                break;
-            case "Cancel":
+            }
+            case "Cancel"->{
                 editMode(false);
                 nameTextField.setText("");
                 Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
-                break;
-            case "Enter":
+            }
+            case "Enter"->{
                 // save runtime data
-                RuntimeData.selectedUsernameIndex = nameListView.getSelectionModel().getSelectedIndex();
-                RuntimeData.Username = FileUsername.readUsernames().get(RuntimeData.selectedUsernameIndex);
+                UsernameManager.setSelectedUsernameIndex(nameListView.getSelectionModel().getSelectedIndex());
+
                 // load screens
                 myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, ConstantData.FXML_MENU);
                 myController.loadMarkdown(ConstantData.SCREEN_ID_INFO, ConstantData.FXML_INFO);
@@ -128,11 +124,10 @@ public class AccountController implements Initializable, ControlledScreen{
                 myController.loadMarkdown(ConstantData.OVERLAY_ID_OPTION, ConstantData.FXML_OPTION);
                 // set screen
                 myController.setScreen(ConstantData.SCREEN_ID_MENU);
-
-                break;
+            }
         }
         //update listview
-        nameListView.setItems(FileUsername.readUsernames());
+        nameListView.setItems(UsernameManager.getObservableListUsername());
     }
 
     /**

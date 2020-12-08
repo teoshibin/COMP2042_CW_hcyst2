@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /**
  * Main game window class
  */
@@ -25,20 +23,25 @@ public class Launcher extends Application {
     /**
      * Load main menu window
      * @param primaryStage main window
-     * @throws IOException fail to load fxml exception
      */
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
 
+        //init all runtime data
+        RuntimeData.init();
+
+        //main screen controller
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadMarkdown(ConstantData.SCREEN_ID_ACCOUNT, ConstantData.FXML_ACCOUNT);
-
         mainContainer.setScreen(ConstantData.SCREEN_ID_ACCOUNT);
 
+        // root node
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("../style/standard.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/tsb/frogger/style/standard.css").toExternalForm());
+
+        // main stage
         primaryStage.setScene(scene);
         primaryStage.setTitle(ConstantData.STAGE_TITLE);
         primaryStage.setResizable(false);

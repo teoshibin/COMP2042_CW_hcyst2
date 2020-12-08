@@ -68,7 +68,7 @@ public class Game implements ControlledScreen {
 
         //god frogger (uncomment to use god frogger)
 //        animal = new GodAnimal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
-//        animal.instantWin(600);
+//        animal.instantWin(800);
 //        gamePane.add(animal);
         // TODO - ADD HEALTH FOR FROGGER
         // TODO - ADD TIME COUNT DOWN
@@ -99,7 +99,7 @@ public class Game implements ControlledScreen {
      * play background music, creates animation timer and starts animation timer
      */
     public void start() throws LevelNotFoundException {
-        System.out.println("starting game timer");
+//        System.out.println("starting game timer");
         load();
         gamePane.start();
         gamePane.playMusic();
@@ -111,7 +111,7 @@ public class Game implements ControlledScreen {
      * stop background music, stop obstacles timer
      */
     public void stop() {
-        System.out.println("stopping game timer");
+//        System.out.println("stopping game timer");
         gamePane.stopMusic();
         gamePane.stop();
         timer.stop();
@@ -122,7 +122,7 @@ public class Game implements ControlledScreen {
      * pause the game without exiting
      */
     public void pause() {
-        System.out.println("Pause game timer");
+//        System.out.println("Pause game timer");
         gamePane.stop();
         timer.stop();
         animal.setNoMove(true);
@@ -132,7 +132,7 @@ public class Game implements ControlledScreen {
      * resume from pause
      */
     public void resume() {
-        System.out.println("resume game timer");
+//        System.out.println("resume game timer");
         gamePane.start();
         timer.start();
         animal.setNoMove(false);

@@ -1,10 +1,10 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.core.*;
+import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
-import com.tsb.frogger.utils.files.FileScore;
-import com.tsb.frogger.utils.files.FileUsername;
+import com.tsb.frogger.utils.files.datamanager.ScoreManager;
+import com.tsb.frogger.utils.files.datamanager.UsernameManager;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
 import javafx.event.ActionEvent;
@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -93,23 +95,18 @@ public class VictoryController implements Initializable, ControlledScreen{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        int playerIndex = RuntimeData.selectedUsernameIndex;
-        int currentScore = RuntimeData.game.getScore();
-        int currentLevel = RuntimeData.game.getLevel();
-        int previousHighScore = FileScore.readScore(playerIndex, currentLevel);
 
-        usernameLabel.setText(FileUsername.readUsernames().get(playerIndex));
-        levelLabel.setText(Integer.toString(currentLevel));
-        scoreLabel.setText(Integer.toString(currentScore));
+        usernameLabel.setText(UsernameManager.getSelectedUsername());
+        levelLabel.setText(Integer.toString(RuntimeData.game.getLevel()));
+        scoreLabel.setText(Integer.toString(RuntimeData.game.getScore()));
 
-        if(currentScore <= previousHighScore){
-            highestScoreLabel.setText(Integer.toString(previousHighScore));
-            newImageView.setVisible(false);
-        } else {
-            highestScoreLabel.setText(Integer.toString(currentScore));
-            FileScore.writeScore(playerIndex, currentLevel, currentScore);
-            newImageView.setVisible(true);
+        try {
+            newImageView.setVisible(ScoreManager.updateScore());
+            highestScoreLabel.setText(String.valueOf(ScoreManager.getCurrentLevelHighScore()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         if(RuntimeData.game.getLevel() == LevelSelector.MAX_LEVEL){
             continueBtn.setText("Done");
         }

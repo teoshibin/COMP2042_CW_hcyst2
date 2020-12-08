@@ -1,4 +1,4 @@
-package com.tsb.frogger.utils.files;
+package com.tsb.frogger.utils.files.datastructure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ public class Player implements Serializable {
     /**
      * highest score list
      */
-    private ArrayList<Integer> highest_scores;
+    private ArrayList<Integer> highScores;
 
     /**
      * constructor
      */
     public Player() {
-        this.username = "Guest";
-        highest_scores = new ArrayList<>();
+        username = "Guest";
+        highScores = new ArrayList<>();
     }
 
     /**
@@ -32,7 +32,7 @@ public class Player implements Serializable {
      */
     public Player(String username) {
         this.username = username;
-        highest_scores = new ArrayList<>();
+        highScores = new ArrayList<>();
     }
 
     /**
@@ -55,15 +55,24 @@ public class Player implements Serializable {
      * get all level highest scores from this user
      * @return list of highest scores
      */
-    public ArrayList<Integer> getHighest_scores(){
-        return highest_scores;
+    public ArrayList<Integer> getHighScores(){
+        return highScores;
     }
 
     /**
      * set all level highest scores for this user
-     * @param highest_scores list of highest scores
+     * @param highScores list of highest scores
      */
-    public void setHighest_scores(ArrayList<Integer> highest_scores) {
-        this.highest_scores = highest_scores;
+    public void setHighScores(ArrayList<Integer> highScores) {
+        this.highScores = highScores;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "username='" + username + '\'' +
+                ", highest_scores=" + highScores +
+                '}';
+    }
+
 }
