@@ -58,7 +58,6 @@ public class Sound {
      * stop all music
      */
     public static void stopMediaPlayer() {
-        mediaPlayer.stop();
         mediaPlayer.dispose();
     }
 

@@ -1,7 +1,7 @@
-package com.tsb.frogger.utils.files.datamanager;
+package com.tsb.frogger.utils.data.datamanager;
 
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.utils.files.datastructure.Player;
+import com.tsb.frogger.utils.data.datastructure.Player;
 
 import java.util.ArrayList;
 

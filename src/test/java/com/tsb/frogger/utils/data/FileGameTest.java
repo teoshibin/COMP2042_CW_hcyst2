@@ -1,4 +1,4 @@
-package com.tsb.frogger.utils.files;
+package com.tsb.frogger.utils.data;
 
 import org.junit.Test;
 

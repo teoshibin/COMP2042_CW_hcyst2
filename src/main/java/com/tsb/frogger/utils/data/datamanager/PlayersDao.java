@@ -1,6 +1,6 @@
-package com.tsb.frogger.utils.files.datamanager;
+package com.tsb.frogger.utils.data.datamanager;
 
-import com.tsb.frogger.utils.files.datastructure.Player;
+import com.tsb.frogger.utils.data.datastructure.Player;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -144,8 +144,8 @@
                <children>
                   <TableView fx:id="scoreboardTable" prefHeight="263.0">
                     <columns>
-                      <TableColumn editable="false" prefWidth="180.0" text="Username" />
-                      <TableColumn editable="false" prefWidth="180.0" text="High Score" />
+                      <TableColumn fx:id="usernameColumn" editable="false" prefWidth="180.0" text="Username" />
+                      <TableColumn fx:id="highScoreColumn" editable="false" prefWidth="180.0" text="High Score" />
                     </columns>
                   </TableView>
                </children>

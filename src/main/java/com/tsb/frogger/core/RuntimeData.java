@@ -1,8 +1,8 @@
 package com.tsb.frogger.core;
 
-import com.tsb.frogger.utils.files.datastructure.Player;
-import com.tsb.frogger.utils.files.filemanager.SaveGameManager;
-import com.tsb.frogger.utils.files.datastructure.SavedData;
+import com.tsb.frogger.utils.data.datastructure.Player;
+import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
+import com.tsb.frogger.utils.data.datastructure.SavedData;
 import com.tsb.frogger.world.Game;
 import com.tsb.frogger.world.LevelSelector;
 

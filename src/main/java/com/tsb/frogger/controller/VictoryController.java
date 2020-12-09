@@ -3,8 +3,8 @@ package com.tsb.frogger.controller;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
-import com.tsb.frogger.utils.files.datamanager.PlayersDao;
-import com.tsb.frogger.utils.files.datamanager.PlayersDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.PlayersDao;
+import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
 import javafx.event.ActionEvent;
@@ -75,6 +75,7 @@ public class VictoryController implements Initializable, ControlledScreen{
                 myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 Sound.stopMediaPlayer();
                 Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
+                RuntimeData.game = null;
             }
             case "Continue" -> {
                 RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);

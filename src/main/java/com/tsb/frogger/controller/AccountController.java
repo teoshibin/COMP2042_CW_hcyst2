@@ -2,9 +2,9 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.utils.files.datamanager.Convertor;
-import com.tsb.frogger.utils.files.datamanager.PlayersDao;
-import com.tsb.frogger.utils.files.datamanager.PlayersDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.Convertor;
+import com.tsb.frogger.utils.data.datamanager.PlayersDao;
+import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

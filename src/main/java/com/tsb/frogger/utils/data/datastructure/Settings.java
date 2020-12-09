@@ -1,4 +1,4 @@
-package com.tsb.frogger.utils.files.datastructure;
+package com.tsb.frogger.utils.data.datastructure;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
-package com.tsb.frogger.utils.files.filemanager;
+package com.tsb.frogger.utils.data.filemanager;
 
-import com.tsb.frogger.utils.files.datastructure.SavedData;
+import com.tsb.frogger.utils.data.datastructure.SavedData;
 
 import java.io.IOException;
 import java.io.Serializable;

@@ -1,9 +1,9 @@
-package com.tsb.frogger.utils.files.datamanager;
+package com.tsb.frogger.utils.data.datamanager;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.utils.files.datastructure.Player;
-import com.tsb.frogger.utils.files.filemanager.SaveGameManager;
+import com.tsb.frogger.utils.data.datastructure.Player;
+import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +36,10 @@ public class PlayersDaoImpl implements PlayersDao {
 
     @Override
     public Integer getHighScore(int index, int level){
-        return getPlayer(index).getHighScores().get(level - 1);
+        if (getPlayer(index).getHighScores().size() > level - 1){
+            return getPlayer(index).getHighScores().get(level - 1);
+        }
+        return 0;
     }
 
     @Override
@@ -50,9 +53,9 @@ public class PlayersDaoImpl implements PlayersDao {
 
     @Override
     public ArrayList<Integer> getAllHighScores(int level){
-        ArrayList<Integer> allHighScores = new ArrayList<Integer>();
-        for (Player player : getAllPlayers()){
-            allHighScores.add(player.getHighScores().get(level - 1));
+        ArrayList<Integer> allHighScores = new ArrayList<>();
+        for (int i = 0; i < getAllPlayers().size(); i++) {
+            allHighScores.add(getHighScore(i, level));
         }
         return  allHighScores;
     }

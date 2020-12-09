@@ -1,6 +1,6 @@
-package com.tsb.frogger.utils.files;
+package com.tsb.frogger.utils.data;
 
-import com.tsb.frogger.utils.files.datastructure.Player;
+import com.tsb.frogger.utils.data.datastructure.Player;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
  * frogger class
  */
 public class Animal extends Actor {
+	//TODO death animation causing extreme lag
 	/**
 	 * max score
 	 */

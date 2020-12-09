@@ -1,4 +1,4 @@
-package com.tsb.frogger.utils.files.filemanager;
+package com.tsb.frogger.utils.data.filemanager;
 
 import java.io.*;
 import java.nio.file.Files;
