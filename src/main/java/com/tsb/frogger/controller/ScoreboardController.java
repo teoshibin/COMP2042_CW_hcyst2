@@ -1,7 +1,9 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.utils.files.datamanager.UsernameManager;
+import com.tsb.frogger.core.RuntimeData;
+import com.tsb.frogger.utils.files.datamanager.PlayersDao;
+import com.tsb.frogger.utils.files.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
 import com.tsb.frogger.world.actors.Animal;
@@ -10,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -25,6 +28,15 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * main screen controller
      */
     ScreensController myController;
+    /**
+     * data access object
+     */
+    PlayersDao playersDao = new PlayersDaoImpl();
+    /**
+     * table view
+     */
+    @FXML
+    public TableView scoreboardTable;
     /**
      * anchor pane
      */
@@ -117,7 +129,9 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * update display info
      */
     public void updateInfo(){
-        nameLabel.setText(UsernameManager.getSelectedUsername());
+        nameLabel.setText(
+                playersDao.getPlayer(RuntimeData.selectedPlayerIndex).getUsername()
+        );
         levelLabel.setText(String.valueOf(selectedLevel));
         maxLevelLabel.setText(String.valueOf(LevelSelector.MAX_LEVEL));
         //TODO savegame read all players score based on level

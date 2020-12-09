@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.NoSuchFileException;
 
-public class SaveGameManager extends SerialManager {
+public class SaveGameManager extends FileManager {
 
     public static SavedData loadGame(String filename) throws IOException, ClassNotFoundException {
         SavedData loadedData;

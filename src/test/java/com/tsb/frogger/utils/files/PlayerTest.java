@@ -1,16 +1,17 @@
 package com.tsb.frogger.utils.files;
 
+import com.tsb.frogger.utils.files.datastructure.Player;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
 
     private final String expected = "testing123456";
-    private ArrayList<Integer> expected1 = new ArrayList<>();
+    private final ArrayList<Integer> expected1 = new ArrayList<>();
     private Player player;
 
     @Before
@@ -36,10 +37,10 @@ public class PlayerTest {
     }
 
     @Test
-    public void getSetHighest_scores() {
+    public void setHighScores() {
         player = new Player();
-        player.setHighest_scores(expected1);
-        ArrayList<Integer> output = player.getHighest_scores();
+        player.setHighScores(expected1);
+        ArrayList<Integer> output = player.getHighScores();
         assertEquals(expected1, output);
     }
 }

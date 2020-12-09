@@ -3,8 +3,8 @@ package com.tsb.frogger.controller;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
-import com.tsb.frogger.utils.files.datamanager.ScoreManager;
-import com.tsb.frogger.utils.files.datamanager.UsernameManager;
+import com.tsb.frogger.utils.files.datamanager.PlayersDao;
+import com.tsb.frogger.utils.files.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
 import javafx.event.ActionEvent;
@@ -23,7 +23,14 @@ import java.util.ResourceBundle;
  * victory controller for victory GUI
  */
 public class VictoryController implements Initializable, ControlledScreen{
+    /**
+     * screen controller
+     */
     ScreensController myController;
+    /**
+     * data access object
+     */
+    PlayersDao playersDao = new PlayersDaoImpl();
     /**
      * image view
      */
@@ -96,13 +103,23 @@ public class VictoryController implements Initializable, ControlledScreen{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        usernameLabel.setText(UsernameManager.getSelectedUsername());
+        usernameLabel.setText(playersDao.getPlayer(RuntimeData.selectedPlayerIndex).getUsername());
         levelLabel.setText(Integer.toString(RuntimeData.game.getLevel()));
         scoreLabel.setText(Integer.toString(RuntimeData.game.getScore()));
 
         try {
-            newImageView.setVisible(ScoreManager.updateScore());
-            highestScoreLabel.setText(String.valueOf(ScoreManager.getCurrentLevelHighScore()));
+            newImageView.setVisible(
+                    playersDao.updatePlayer(
+                            RuntimeData.selectedPlayerIndex,
+                            RuntimeData.game.getLevel(),
+                            RuntimeData.game.getScore()
+                    )
+            );
+            highestScoreLabel.setText(
+                    String.valueOf(
+                            playersDao.getHighScore(RuntimeData.selectedPlayerIndex, RuntimeData.game.getLevel())
+                    )
+            );
         } catch (IOException e) {
             e.printStackTrace();
         }

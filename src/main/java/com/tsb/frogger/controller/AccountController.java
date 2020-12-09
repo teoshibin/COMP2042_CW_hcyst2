@@ -1,7 +1,10 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.utils.files.datamanager.UsernameManager;
+import com.tsb.frogger.core.RuntimeData;
+import com.tsb.frogger.utils.files.datamanager.Convertor;
+import com.tsb.frogger.utils.files.datamanager.PlayersDao;
+import com.tsb.frogger.utils.files.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +27,14 @@ public class AccountController implements Initializable, ControlledScreen{
      * main screen controller
      */
     ScreensController myController;
+    /**
+     * data access object
+     */
+    PlayersDao playersDao = new PlayersDaoImpl();
+    /**
+     * data convertor
+     */
+    Convertor convertor = new Convertor();
     /**
      * name text field
      */
@@ -61,7 +72,7 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        nameListView.setItems(UsernameManager.getObservableListUsername());
+        nameListView.setItems(convertor.convertArrayListToObservableList(playersDao.getAllUsernames()));
         Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
     }
 
@@ -74,7 +85,7 @@ public class AccountController implements Initializable, ControlledScreen{
 
         switch (((Button)actionEvent.getSource()).getText()){
             case "Add" -> {
-                if (UsernameManager.addUsername(nameTextField.getText())) {
+                if (playersDao.addPlayer(nameTextField.getText())) {
                     nameTextField.setText("");
                     Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
@@ -82,7 +93,8 @@ public class AccountController implements Initializable, ControlledScreen{
                 }
             }
             case "Delete"->{
-                if(UsernameManager.deleteUsername(nameListView.getSelectionModel().getSelectedIndex())){
+                if(playersDao.deletePlayer(nameListView.getSelectionModel().getSelectedIndex())){
+                    nameListView.getSelectionModel().select(0);
                     Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
                     Sound.playAudioClip(ConstantData.SOUND_ERROR);
@@ -99,7 +111,7 @@ public class AccountController implements Initializable, ControlledScreen{
                 }
             }
             case "Done"->{
-                if (UsernameManager.updateUsername(holdIndex, nameTextField.getText())){
+                if (playersDao.updatePlayer(holdIndex, nameTextField.getText())){
                     Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
                 } else {
                     Sound.playAudioClip(ConstantData.SOUND_ERROR);
@@ -114,7 +126,7 @@ public class AccountController implements Initializable, ControlledScreen{
             }
             case "Enter"->{
                 // save runtime data
-                UsernameManager.setSelectedUsernameIndex(nameListView.getSelectionModel().getSelectedIndex());
+                RuntimeData.selectedPlayerIndex = nameListView.getSelectionModel().getSelectedIndex();
 
                 // load screens
                 myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, ConstantData.FXML_MENU);
@@ -127,7 +139,7 @@ public class AccountController implements Initializable, ControlledScreen{
             }
         }
         //update listview
-        nameListView.setItems(UsernameManager.getObservableListUsername());
+        nameListView.setItems(convertor.convertArrayListToObservableList(playersDao.getAllUsernames()));
     }
 
     /**

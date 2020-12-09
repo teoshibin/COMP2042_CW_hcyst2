@@ -1,8 +1,10 @@
 package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
-import com.tsb.frogger.utils.files.datamanager.UsernameManager;
+import com.tsb.frogger.utils.files.datamanager.PlayersDao;
+import com.tsb.frogger.utils.files.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +25,10 @@ public class MenuController implements Initializable, ControlledScreen {
      * main screen controller
      */
     ScreensController myController;
+    /**
+     * data access object
+     */
+    PlayersDao playersDao = new PlayersDaoImpl();
     /**
      * anchor pane
      */
@@ -59,7 +65,9 @@ public class MenuController implements Initializable, ControlledScreen {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameLabel.setText(UsernameManager.getSelectedUsername());
+        usernameLabel.setText(
+                playersDao.getPlayer(RuntimeData.selectedPlayerIndex).getUsername()
+        );
         Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
     }
 
