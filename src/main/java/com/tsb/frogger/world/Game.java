@@ -1,15 +1,16 @@
 package com.tsb.frogger.world;
 
-import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.utils.sound.Sound;
-import com.tsb.frogger.world.actors.*;
 import com.tsb.frogger.controller.ControlledScreen;
 import com.tsb.frogger.controller.ScreensController;
+import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
+import com.tsb.frogger.utils.sound.Sound;
+import com.tsb.frogger.world.actors.Animal;
 import com.tsb.frogger.world.widgets.HomeBtn;
 import com.tsb.frogger.world.widgets.SettingBtn;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 
 /**
  * game class to generate different difficulty of game map
@@ -41,7 +42,10 @@ public class Game implements ControlledScreen {
      * scoreboard
      */
     private Label scoreDisplay;
-
+    /**
+     * progress bar denoting time remaining for extra score
+     */
+    private ProgressBar timeBar;
     /**
      * constructor
      *
@@ -55,13 +59,11 @@ public class Game implements ControlledScreen {
 
         gamePane = LoadComponents.load(level);
 
-        scoreDisplay = new Label();
-        scoreDisplay.setLayoutX(395);
-        scoreDisplay.setLayoutY(30);
-        scoreDisplay.getStyleClass().add("inGame-font");
-        scoreDisplay.getStyleClass().add("bigger-font-size");
-        scoreDisplay.setText("000");
+        scoreDisplay = LoadComponents.getScoreOutputLabel();
         gamePane.getChildren().add(scoreDisplay);
+
+        timeBar = LoadComponents.getTimeBar();
+        gamePane.getChildren().add(timeBar);
 
         animal = new Animal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
         gamePane.add(animal);
@@ -142,6 +144,16 @@ public class Game implements ControlledScreen {
     public void setNumber(int n) {
         String temp = "0".repeat(3 - String.valueOf(n).length()) + n;
         scoreDisplay.setText(temp);
+    }
+
+    /**
+     * set time bar remaining time
+     *
+     * @param remaining remaining time
+     * @param total initial time
+     */
+    public void setTimeBar(int remaining, int total){
+        timeBar.setProgress((double)remaining/total);
     }
 
     /**

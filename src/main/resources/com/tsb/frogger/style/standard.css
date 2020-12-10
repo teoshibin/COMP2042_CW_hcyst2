@@ -366,3 +366,19 @@
     -fx-background: -fx-control-inner-background-alt ;
     -fx-background-color: -fx-table-cell-border-color, #bdffd9;
 }
+
+.orange-bar {
+    -fx-accent: orange;
+}
+
+.progress-bar {
+    -fx-border-radius: 4px;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+}
+
+.progress-bar > .track {
+    -fx-background-color: white;
+    -fx-background-insets: 0px;
+    -fx-background-radius: 4px;
+}

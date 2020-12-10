@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
  * wet turtle class
  */
 public class WetTurtle extends Actor{
+	//TODO OPTIMIZE SINK ANIMATION
 	/**
 	 * image 1
 	 */

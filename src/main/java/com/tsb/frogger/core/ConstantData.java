@@ -1,6 +1,7 @@
 package com.tsb.frogger.core;
 
 public class ConstantData {
+    //TODO change all path to getclass getresource
 
     // stage title
     public static final String STAGE_TITLE = "Frogger";
@@ -51,6 +52,7 @@ public class ConstantData {
     // GUI
     public static final String IMAGE_ICON_HOME = "file:src/main/resources/com/tsb/frogger/images/world/icon-house.png";
     public static final String IMAGE_ICON_GEAR = "file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png";
+    public static final String IMAGE_ICON_ALARM_CLOCK = "/com/tsb/frogger/images/world/alarm-clock.png";
 
     // background map
     public static final String IMAGE_GAME_BACKGROUND_A = "file:src/main/resources/com/tsb/frogger/images/world/gameBackground.png";

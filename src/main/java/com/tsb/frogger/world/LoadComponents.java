@@ -4,8 +4,10 @@ import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.world.actors.*;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
 
 /**
  * class contains static methods for loading gamePane components
@@ -51,7 +53,7 @@ public class LoadComponents {
     public static void addLabels(int level){
         // add score label
         Label scoreLabel = new Label();
-        scoreLabel.setLayoutX(390);
+        scoreLabel.setLayoutX(395);
         scoreLabel.setLayoutY(5);
         scoreLabel.setText("SCORE");
         scoreLabel.getStyleClass().add("main-font");
@@ -75,6 +77,38 @@ public class LoadComponents {
         valueLabel.getStyleClass().add("inGame-font");
         valueLabel.getStyleClass().add("bigger-font-size");
         gamePane.getChildren().add(valueLabel);
+
+        ImageView alarmClock = new ImageView(
+                new Image(LoadComponents.class.getResource(ConstantData.IMAGE_ICON_ALARM_CLOCK).toExternalForm(),
+                        30, 30, true, true)
+        );
+        alarmClock.setLayoutX(350);
+        alarmClock.setLayoutY(37);
+        gamePane.getChildren().add(alarmClock);
+    }
+
+    static Label getScoreOutputLabel(){
+        Label scoreOutputLabel = new Label();
+        scoreOutputLabel.setLayoutX(400);
+        scoreOutputLabel.setLayoutY(30);
+        scoreOutputLabel.getStyleClass().add("inGame-font");
+        scoreOutputLabel.getStyleClass().add("bigger-font-size");
+        scoreOutputLabel.setText("000");
+        return scoreOutputLabel;
+    }
+
+    static ProgressBar getTimeBar(){
+        ProgressBar progressBar = new ProgressBar(1);
+        progressBar.setLayoutX(150);
+        progressBar.setLayoutY(44);
+        progressBar.setPrefSize(195, 20);
+        progressBar.getStyleClass().add("orange-bar");
+        Rotate rotate = new Rotate();
+        rotate.setPivotX(progressBar.getPrefWidth()/2);
+        rotate.setPivotY(progressBar.getPrefHeight()/2);
+        rotate.setAngle(180);
+        progressBar.getTransforms().add(rotate);
+        return progressBar;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.tsb.frogger.world.actors;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -315,7 +316,7 @@ public class Animal extends Actor {
 					resetFrog();
 					reducePoints();
 					noMove = false;
-				}, new KeyValue(imageProperty(), imgA1))
+				}, new KeyValue(imageProperty(), imgW1))
 		);
 	}
 
@@ -329,7 +330,7 @@ public class Animal extends Actor {
 					resetFrog();
 					reducePoints();
 					noMove = false;
-				}, new KeyValue(imageProperty(), imgA1))
+				}, new KeyValue(imageProperty(), imgW1))
 		);
 	}
 
@@ -345,7 +346,7 @@ public class Animal extends Actor {
 					@Override
 					public void handle(ActionEvent event) {
 						extraScores--;
-						System.out.println(extraScores);
+						RuntimeData.game.setTimeBar(extraScores, MAX_EXTRA_SCORE);
 					}
 				})
 		);
@@ -356,6 +357,7 @@ public class Animal extends Actor {
 	private void resetFrog(){
 		setX(frogLayoutX);
 		setY(frogLayoutY + movementY);
+//		setImage(imgA1);
 		frogStatus = FROG_STATUS.ALIVE;
 		extraScores = MAX_EXTRA_SCORE;
 		if (extraScoresTimer != null){
