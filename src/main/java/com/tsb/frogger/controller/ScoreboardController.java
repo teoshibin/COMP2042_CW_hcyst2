@@ -174,6 +174,9 @@ public class ScoreboardController implements Initializable, ControlledScreen{
         scoreboardTable.getSortOrder().add(highScoreColumn);
         // sort
         scoreboardTable.sort();
+
+        // resize width
+        scoreboardTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     /**

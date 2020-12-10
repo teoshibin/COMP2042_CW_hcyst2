@@ -23,19 +23,22 @@
     -fx-scale-x: 1.1;
 }
 
-#playbtn{
+.playBtn{
     -fx-pref-width: 200px;
     -fx-pref-height: 60px;
     -fx-font-size: 28px;
 }
 
-#addbtn{
+.addBtn{
     -fx-pref-width: 100px;
     -fx-pref-height: 40px;
     -fx-font-size: 19px;
+    -fx-background-color: #4ae340;
 }
 
 .doneBtn{
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
     -fx-background-color: #e6df17;
 }
 
@@ -99,21 +102,21 @@
 /* background image */
 
 .flowerPane{
-     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/flowerBackground.jpg');
+     -fx-background-image:url('/com/tsb/frogger/images/misc/flowerBackground.jpg');
      -fx-background-size: 540 720;
      -fx-background-repeat: no-repeat;
      -fx-background-position: center center;
 }
 
 .housePane{
-     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/houseBackground.jpg');
+     -fx-background-image:url('/com/tsb/frogger/images/misc/houseBackground.jpg');
      -fx-background-size: 540 720;
      -fx-background-repeat: no-repeat;
      -fx-background-position: center center;
 }
 
 .forestPane{
-     -fx-background-image:url('file:src/main/resources/com/tsb/frogger/images/misc/forestBackground.jpg');
+     -fx-background-image:url('/com/tsb/frogger/images/misc/forestBackground.jpg');
      -fx-background-size: 540 720;
      -fx-background-repeat: no-repeat;
      -fx-background-position: center center;
@@ -223,7 +226,7 @@
 
 /* textField and text area */
 
-.textfield{
+.textField{
     -fx-border-color: black;
     -fx-border-radius: 5px;
     -fx-border-width: 3px;
@@ -271,7 +274,7 @@
     -fx-padding: 0px 10px 0px 20px;
 }
 
-.combo-box: showing {
+.combo-box:showing {
     -fx-background-color: #c8ed6b;
 }
 
@@ -282,7 +285,7 @@
     -fx-alignment: CENTER;
 }
 
-.combo-box .combo-box-popup .list-view {
+.comb-obox .combo-box-popup .list-view {
     -fx-padding: 3px 2px 3px 0px;
     -fx-border-color: black;
     -fx-border-radius: 5px;
@@ -295,13 +298,71 @@
     -fx-scale-y: 1.5;
 }
 
+.table-view{
+    -fx-background-color: transparent;
+    -fx-padding: 0px 3px 3px 3px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 3px;
+    -fx-border-color: black;
+}
 
+.table-view:focused{
+    -fx-background-color: transparent;
+}
 
+.table-view:row-selection {
+    -fx-background-radius: 5px;
+    -fx-background-color: #81ffa4;
+}
 
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
 
+.table-view .column-header-background .label {
+    -fx-font-family: "Comic Sans MS", cursive, sans-serif;
+    -fx-background-color: transparent;
+}
 
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
 
+.table-view .table-column {
+    -fx-alignment: CENTER;
+}
 
+.table-view .filler {
+    -fx-background-color: transparent;
+}
 
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #e3ffef;
+    -fx-padding: 0px;
+}
 
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #bdffd9;
+    -fx-padding: 0px;
+}
 
+.table-row-cell:selected {
+    -fx-background-color: -fx-table-cell-border-color, #e3ffef;
+    -fx-padding: 0px;
+}
+
+.table-row-cell:odd:selected {
+    -fx-background-color: -fx-table-cell-border-color, #bdffd9;
+    -fx-padding: 0px;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background: -fx-control-inner-background ;
+    -fx-background-color: -fx-table-cell-border-color, #e3ffef ;
+    -fx-background-insets: 0, 0 0 0 0 ;
+    -fx-table-cell-border-color: transparent;
+}
+.table-row-cell:odd:filled:selected {
+    -fx-background: -fx-control-inner-background-alt ;
+    -fx-background-color: -fx-table-cell-border-color, #bdffd9;
+}

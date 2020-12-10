@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,11 +39,6 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     @FXML
     public TextField nameTextField;
-    /**
-     * parent anchor pane
-     */
-    @FXML
-    private AnchorPane accountPane;
     /**
      * name list view
      */
@@ -156,17 +150,25 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     private void editMode(boolean bool){
         if (bool){
-            addBtn.setText("Done");
-            addBtn.getStyleClass().add("doneBtn");
-            deleteBtn.setText("Cancel");
-            deleteBtn.getStyleClass().remove("deleteBtn");
-            deleteBtn.getStyleClass().add("cancelBtn");
+            if (addBtn.getStyleClass().get(3).equals("addBtn")){
+                addBtn.setText("Done");
+                addBtn.getStyleClass().remove("addBtn");
+                addBtn.getStyleClass().add("doneBtn");
+
+                deleteBtn.setText("Cancel");
+                deleteBtn.getStyleClass().remove("deleteBtn");
+                deleteBtn.getStyleClass().add("cancelBtn");
+            }
         } else {
-            addBtn.setText("Add");
-            addBtn.getStyleClass().remove("doneBtn");
-            deleteBtn.setText("Delete");
-            deleteBtn.getStyleClass().remove("cancelBtn");
-            deleteBtn.getStyleClass().add("deleteBtn");
+            if (!addBtn.getStyleClass().get(3).equals("addBtn")){
+                addBtn.setText("Add");
+                addBtn.getStyleClass().remove("doneBtn");
+                addBtn.getStyleClass().add("addBtn");
+
+                deleteBtn.setText("Delete");
+                deleteBtn.getStyleClass().remove("cancelBtn");
+                deleteBtn.getStyleClass().add("deleteBtn");
+            }
         }
     }
 
