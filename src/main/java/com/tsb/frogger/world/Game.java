@@ -75,7 +75,7 @@ public class Game implements ControlledScreen {
     }
 
     /**
-     * creates animation timer for frogger character
+     * creates animation timer for win check
      * check game winning state
      */
     public void createTimer() {
@@ -83,9 +83,9 @@ public class Game implements ControlledScreen {
             @Override
             public void handle(long now) {
                 if (animal.updateScoreLabel()) {
-                    setNumber(animal.getPoints());
+                    setNumber(animal.getScores());
                 }
-                if (animal.getStop()) {
+                if (animal.getWin()) {
                     Game.this.stop();
                     myController.loadMarkdown(ConstantData.OVERLAY_ID_VICTORY, ConstantData.FXML_VICTORY);
                     myController.addOverlay(ConstantData.OVERLAY_ID_VICTORY);
@@ -99,7 +99,6 @@ public class Game implements ControlledScreen {
      * play background music, creates animation timer and starts animation timer
      */
     public void start() throws LevelNotFoundException {
-//        System.out.println("starting game timer");
         load();
         gamePane.start();
         gamePane.playMusic();
@@ -111,31 +110,28 @@ public class Game implements ControlledScreen {
      * stop background music, stop obstacles timer
      */
     public void stop() {
-//        System.out.println("stopping game timer");
         gamePane.stopMusic();
         gamePane.stop();
         timer.stop();
-        animal.setNoMove(true);
+        animal.pause();
     }
 
     /**
      * pause the game without exiting
      */
     public void pause() {
-//        System.out.println("Pause game timer");
         gamePane.stop();
         timer.stop();
-        animal.setNoMove(true);
+        animal.pause();
     }
 
     /**
      * resume from pause
      */
     public void resume() {
-//        System.out.println("resume game timer");
         gamePane.start();
         timer.start();
-        animal.setNoMove(false);
+        animal.resume();
     }
 
     /**
@@ -172,7 +168,7 @@ public class Game implements ControlledScreen {
      * @return score
      */
     public int getScore() {
-        return animal.getPoints();
+        return animal.getScores();
     }
 
     /**

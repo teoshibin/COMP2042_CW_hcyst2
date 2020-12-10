@@ -36,6 +36,8 @@ public class ConstantData {
     public static final String SOUND_CLICK_OFF = "file:src/main/resources/com/tsb/frogger/sounds/ui/click-off.mp3";
     public static final String SOUND_QUACK = "file:src/main/resources/com/tsb/frogger/sounds/game/quack.mp3";
     public static final String SOUND_KACHING = "file:src/main/resources/com/tsb/frogger/sounds/game/ka-ching.mp3";
+    public static final String SOUND_CRASHED = "/com/tsb/frogger/sounds/game/crashed.x-wav";
+    public static final String SOUND_DROWNED = "/com/tsb/frogger/sounds/game/drowned.mp3";
 
     // music resources
     public static final String MUSIC_FROGGER = "src/main/resources/com/tsb/frogger/sounds/music/MainBGM.mp3";

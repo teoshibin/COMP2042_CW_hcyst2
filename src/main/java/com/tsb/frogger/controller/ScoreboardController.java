@@ -23,7 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -34,11 +33,15 @@ public class ScoreboardController implements Initializable, ControlledScreen{
     /**
      * main screen controller
      */
-    ScreensController myController;
+    private ScreensController myController;
     /**
      * data access object
      */
-    PlayersDao playersDao = new PlayersDaoImpl();
+    private final PlayersDao playersDao = new PlayersDaoImpl();
+    /**
+     * selected level
+     */
+    private int selectedLevel = 1;
     /**
      * table view
      */
@@ -86,12 +89,8 @@ public class ScoreboardController implements Initializable, ControlledScreen{
     private Label maxScoreLabel;
 
     /**
-     * selected level
-     */
-    private int selectedLevel = 1;
-
-    /**
      * init GUI
+     *
      * @param location location
      * @param resources resources
      */
@@ -102,6 +101,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
 
     /**
      * handle action event
+     *
      * @param actionEvent event
      * @throws IOException exception
      */
@@ -128,6 +128,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
 
     /**
      * mouse enter event
+     *
      * @param mouseEvent event
      */
     public void enterBtn(MouseEvent mouseEvent) {
@@ -136,6 +137,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
 
     /**
      * mouse click event
+     *
      * @param mouseEvent event
      */
     public void clickBtn(MouseEvent mouseEvent) {
@@ -144,6 +146,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
 
     /**
      * update display info
+     *
      */
     public void updateInfo(){
         // set username
@@ -173,27 +176,23 @@ public class ScoreboardController implements Initializable, ControlledScreen{
         scoreboardTable.sort();
     }
 
+    /**
+     * fetch data from player data access object, create table content and convert it into observable list
+     *
+     * @return observable list of table content
+     */
     public ObservableList<TableViewPlayer> getTableViewPlayer(){
         Convertor convertor = new Convertor();
         ObservableList<TableViewPlayer> tableViewPlayers = FXCollections.observableArrayList();
-        try {
-            tableViewPlayers.addAll(
-                convertor.convertToObservableListZipTwo(
-                    TableViewPlayer.class,
-                    String.class,
-                    Integer.class,
-                    playersDao.getAllUsernames(),
-                    playersDao.getAllHighScores(selectedLevel)
-                )
-            );
-        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        tableViewPlayers.addAll(convertor.convertToObservableListZipTwo(
+                TableViewPlayer.class, String.class, Integer.class, playersDao.getAllUsernames(), playersDao.getAllHighScores(selectedLevel))
+        );
         return tableViewPlayers;
     }
 
     /**
      * set main screen controller
+     *
      * @param screenPage screen page
      */
     @Override

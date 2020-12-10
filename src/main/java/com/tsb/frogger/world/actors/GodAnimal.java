@@ -19,7 +19,7 @@ public class GodAnimal extends Animal {
      */
     public void instantWin(int score) {
         end = 5;
-        points = score;
+        scores = score;
     }
 
 }

@@ -13,7 +13,7 @@ public class Sound {
     /**
      * music volume
      */
-    private static double musicVolume = 0.7;
+    private static double musicVolume = 0.5;
     /**
      * control volume
      */
