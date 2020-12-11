@@ -1,6 +1,8 @@
 package com.tsb.frogger.world.actors;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import javafx.scene.image.Image;
 
 /**
@@ -21,16 +23,18 @@ public class End extends Actor{
 	 * @param y layout y
 	 */
 	public End(int x, int y) {
+		PropertiesDao pd = new PropertiesDaoImpl();
 		setX(x);
 		setY(y);
-		setImage(new Image(ConstantData.IMAGE_ACTOR_END, ConstantData.SIZE_END, ConstantData.SIZE_END, true, true));
+		setImage(new Image(pd.getExternal("image.actor.end.deactivated"), ConstantData.SIZE_END, ConstantData.SIZE_END, true, true));
 	}
 
 	/**
 	 * set activated end image
 	 */
 	public void setEnd() {
-		setImage(new Image(ConstantData.IMAGE_ACTOR_FROG_END, ConstantData.SIZE_FROG_END, ConstantData.SIZE_FROG_END, true, true));
+		PropertiesDao pd = new PropertiesDaoImpl();
+		setImage(new Image(pd.getExternal("image.actor.end.activated"), ConstantData.SIZE_FROG_END, ConstantData.SIZE_FROG_END, true, true));
 		activated = true;
 	}
 

@@ -2,9 +2,7 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.utils.data.datamanager.Convertor;
-import com.tsb.frogger.utils.data.datamanager.PlayersDao;
-import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.*;
 import com.tsb.frogger.utils.data.datastructure.TableViewPlayer;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
@@ -20,7 +18,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,10 +31,6 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * main screen controller
      */
     private ScreensController myController;
-    /**
-     * data access object
-     */
-    private final PlayersDao playersDao = new PlayersDaoImpl();
     /**
      * selected level
      */
@@ -57,11 +50,6 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      */
     @FXML
     public TableColumn<TableViewPlayer, Integer> highScoreColumn;
-    /**
-     * anchor pane
-     */
-    @FXML
-    private AnchorPane scoreBoardPane;
     /**
      * label
      */
@@ -119,9 +107,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
                     selectedLevel = 1;
                 }
             }
-            case "Back" -> {
-                myController.setScreen(ConstantData.SCREEN_ID_MENU);
-            }
+            case "Back" -> myController.setScreen(ConstantData.SCREEN_ID_MENU);
         }
         updateInfo();
     }
@@ -132,7 +118,8 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * @param mouseEvent event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
     }
 
     /**
@@ -141,7 +128,8 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * @param mouseEvent event
      */
     public void clickBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.pageFlip"));
     }
 
     /**
@@ -149,6 +137,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      *
      */
     public void updateInfo(){
+        PlayersDao playersDao = new PlayersDaoImpl();
         // set username
         nameLabel.setText(playersDao.getUsername(RuntimeData.selectedPlayerIndex));
         // set current level page
@@ -185,10 +174,20 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * @return observable list of table content
      */
     public ObservableList<TableViewPlayer> getTableViewPlayer(){
+        // instantiate dao
+        PlayersDao playersDao = new PlayersDaoImpl();
+        // instantiate convertor object
         Convertor convertor = new Convertor();
+        // create empty list and assign a converted zipped arraylist into it
         ObservableList<TableViewPlayer> tableViewPlayers = FXCollections.observableArrayList();
-        tableViewPlayers.addAll(convertor.convertToObservableListZipTwo(
-                TableViewPlayer.class, String.class, Integer.class, playersDao.getAllUsernames(), playersDao.getAllHighScores(selectedLevel))
+        tableViewPlayers.addAll(
+                convertor.convertToObservableListZipTwo(
+                        TableViewPlayer.class,
+                        String.class,
+                        Integer.class,
+                        playersDao.getAllUsernames(),
+                        playersDao.getAllHighScores(selectedLevel)
+                )
         );
         return tableViewPlayers;
     }

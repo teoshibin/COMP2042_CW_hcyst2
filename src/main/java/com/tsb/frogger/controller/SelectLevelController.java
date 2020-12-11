@@ -2,6 +2,8 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.Game;
@@ -46,15 +48,18 @@ public class SelectLevelController implements Initializable, ControlledScreen{
     }
 
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
     }
 
     public void onHiding(Event event) {
-        Sound.playAudioClip(ConstantData.SOUND_CLICK_OFF);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.click.off"));
     }
 
     public void onShowing(Event event) {
-        Sound.playAudioClip(ConstantData.SOUND_CLICK_ON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.click.on"));
     }
 
     @Override

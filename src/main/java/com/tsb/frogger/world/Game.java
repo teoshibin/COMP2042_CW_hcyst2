@@ -3,6 +3,8 @@ package com.tsb.frogger.world;
 import com.tsb.frogger.controller.ControlledScreen;
 import com.tsb.frogger.controller.ScreensController;
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.actors.Animal;
@@ -56,6 +58,7 @@ public class Game implements ControlledScreen {
     }
 
     public void load() throws LevelNotFoundException {
+        PropertiesDao pd = new PropertiesDaoImpl();
 
         gamePane = LoadComponents.load(level);
 
@@ -65,15 +68,18 @@ public class Game implements ControlledScreen {
         timeBar = LoadComponents.getTimeBar();
         gamePane.getChildren().add(timeBar);
 
-        animal = new Animal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
+        animal = new Animal(
+                pd.getExternal("image.actor.frog.up"),
+                ConstantData.LAYOUT_X_FROG[0],
+                ConstantData.LAYOUT_Y_ACTOR[0][12]
+        );
         gamePane.add(animal);
 
         //god frogger (uncomment to use god frogger)
-//        animal = new GodAnimal(ConstantData.IMAGE_ACTOR_FROG_UP, ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
+//        animal = new GodAnimal(pd.getExternal("image.actor.frog.up"), ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
 //        animal.instantWin(800);
 //        gamePane.add(animal);
         // TODO - ADD HEALTH FOR FROGGER
-        // TODO - ADD TIME COUNT DOWN
     }
 
     /**
@@ -81,6 +87,7 @@ public class Game implements ControlledScreen {
      * check game winning state
      */
     public void createTimer() {
+        PropertiesDao pd = new PropertiesDaoImpl();
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -89,9 +96,9 @@ public class Game implements ControlledScreen {
                 }
                 if (animal.getWin()) {
                     Game.this.stop();
-                    myController.loadMarkdown(ConstantData.OVERLAY_ID_VICTORY, ConstantData.FXML_VICTORY);
+                    myController.loadMarkdown(ConstantData.OVERLAY_ID_VICTORY, pd.getName("fxml.victory"));
                     myController.addOverlay(ConstantData.OVERLAY_ID_VICTORY);
-                    Sound.playAudioClip(ConstantData.SOUND_KACHING);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.kaChing"));
                 }
             }
         };
@@ -195,11 +202,12 @@ public class Game implements ControlledScreen {
     }
 
     private void createUserControl(){
+        PropertiesDao pd = new PropertiesDaoImpl();
         // add home button
-        gamePane.add(new HomeBtn(ConstantData.IMAGE_ICON_HOME, myController));
+        gamePane.add(new HomeBtn(pd.getExternal("image.icon.house"), myController));
 
         // add setting button
-        gamePane.add(new SettingBtn(ConstantData.IMAGE_ICON_GEAR, myController));
+        gamePane.add(new SettingBtn(pd.getExternal("image.icon.gear"), myController));
 
     }
 }

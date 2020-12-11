@@ -2,6 +2,8 @@ package com.tsb.frogger.world.actors;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -16,6 +18,10 @@ import javafx.util.Duration;
  * frog class
  */
 public class Animal extends Actor {
+	/**
+	 * assets dao
+	 */
+	PropertiesDao pd;
 	/**
 	 * max score
 	 */
@@ -165,6 +171,7 @@ public class Animal extends Actor {
 	 * @param imageLink image url
 	 */
 	public Animal(String imageLink, int layoutX, int layoutY) {
+		pd = new PropertiesDaoImpl();
 
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		frogLayoutX = layoutX;
@@ -172,23 +179,23 @@ public class Animal extends Actor {
 
 		resetFrog();
 
-		imgW1 = new Image(ConstantData.IMAGE_ACTOR_FROG_UP, imgSize, imgSize, true, true);
-		imgA1 = new Image(ConstantData.IMAGE_ACTOR_FROG_LEFT, imgSize, imgSize, true, true);
-		imgS1 = new Image(ConstantData.IMAGE_ACTOR_FROG_DOWN, imgSize, imgSize, true, true);
-		imgD1 = new Image(ConstantData.IMAGE_ACTOR_FROG_RIGHT, imgSize, imgSize, true, true);
-		imgW2 = new Image(ConstantData.IMAGE_ACTOR_FROG_UP_JUMP, imgSize, imgSize, true, true);
-		imgA2 = new Image(ConstantData.IMAGE_ACTOR_FROG_LEFT_JUMP, imgSize, imgSize, true, true);
-		imgS2 = new Image(ConstantData.IMAGE_ACTOR_FROG_DOWN_JUMP, imgSize, imgSize, true, true);
-		imgD2 = new Image(ConstantData.IMAGE_ACTOR_FROG_RIGHT_JUMP, imgSize, imgSize, true, true);
+		imgW1 = new Image(pd.getExternal("image.actor.frog.up"), imgSize, imgSize, true, true);
+		imgA1 = new Image(pd.getExternal("image.actor.frog.left"), imgSize, imgSize, true, true);
+		imgS1 = new Image(pd.getExternal("image.actor.frog.down"), imgSize, imgSize, true, true);
+		imgD1 = new Image(pd.getExternal("image.actor.frog.right"), imgSize, imgSize, true, true);
+		imgW2 = new Image(pd.getExternal("image.actor.frog.up.jump"), imgSize, imgSize, true, true);
+		imgA2 = new Image(pd.getExternal("image.actor.frog.left.jump"), imgSize, imgSize, true, true);
+		imgS2 = new Image(pd.getExternal("image.actor.frog.down.jump"), imgSize, imgSize, true, true);
+		imgD2 = new Image(pd.getExternal("image.actor.frog.right.jump"), imgSize, imgSize, true, true);
 
-		crashDeath1 = new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_1, imgSize, imgSize, true, true);
-		crashDeath2 = new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_2, imgSize, imgSize, true, true);
-		crashDeath3 = new Image(ConstantData.IMAGE_ACTOR_FROG_CRASH_3, imgSize, imgSize, true, true);
+		crashDeath1 = new Image(pd.getExternal("image.actor.frog.crash.1"), imgSize, imgSize, true, true);
+		crashDeath2 = new Image(pd.getExternal("image.actor.frog.crash.2"), imgSize, imgSize, true, true);
+		crashDeath3 = new Image(pd.getExternal("image.actor.frog.crash.3"), imgSize, imgSize, true, true);
 
-		drownDeath1 = new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_1, imgSize, imgSize, true, true);
-		drownDeath2 = new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_2, imgSize, imgSize, true, true);
-		drownDeath3 = new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_3, imgSize, imgSize, true, true);
-		drownDeath4 = new Image(ConstantData.IMAGE_ACTOR_FROG_DROWNED_4, imgSize, imgSize, true, true);
+		drownDeath1 = new Image(pd.getExternal("image.actor.frog.drown.1"), imgSize, imgSize, true, true);
+		drownDeath2 = new Image(pd.getExternal("image.actor.frog.drown.2"), imgSize, imgSize, true, true);
+		drownDeath3 = new Image(pd.getExternal("image.actor.frog.drown.3"), imgSize, imgSize, true, true);
+		drownDeath4 = new Image(pd.getExternal("image.actor.frog.drown.4"), imgSize, imgSize, true, true);
 
 		// handle on key press
 		setOnKeyPressed(event -> {
@@ -294,13 +301,13 @@ public class Animal extends Actor {
 			}
 			case CRASHED -> {
 				frogStatus = FROG_STATUS.AnimatingDeath;
-				Sound.playAudioClip(getClass().getResource(ConstantData.SOUND_CRASHED).toExternalForm());
+				Sound.playAudioClip(pd.getExternal("sound.clip.actor.frog.crashed"));
 				Timeline crashedAnimation = createCrashDeathTimeline();
 				crashedAnimation.play();
 			}
 			case DROWNED -> {
 				frogStatus = FROG_STATUS.AnimatingDeath;
-				Sound.playAudioClip(getClass().getResource(ConstantData.SOUND_DROWNED).toExternalForm());
+				Sound.playAudioClip(pd.getExternal("sound.clip.actor.frog.drowned"));
 				Timeline drownedAnimation = createDrownedDeathTimeline();
 				drownedAnimation.play();
 			}

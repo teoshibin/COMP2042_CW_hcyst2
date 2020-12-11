@@ -2,9 +2,7 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.utils.data.datamanager.Convertor;
-import com.tsb.frogger.utils.data.datamanager.PlayersDao;
-import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.*;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,18 +20,15 @@ import java.util.ResourceBundle;
  * account controller for GUI
  */
 public class AccountController implements Initializable, ControlledScreen{
+    //TODO fix enter game while in edit mode
+    /**
+     * hold player index while editing
+     */
+    private int holdIndex;
     /**
      * main screen controller
      */
     ScreensController myController;
-    /**
-     * data access object
-     */
-    PlayersDao playersDao = new PlayersDaoImpl();
-    /**
-     * data convertor
-     */
-    Convertor convertor = new Convertor();
     /**
      * name text field
      */
@@ -54,10 +49,6 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     @FXML
     private Button deleteBtn;
-    /**
-     * hold player index while editing
-     */
-    private int holdIndex;
 
     /**
      * initialize account page gui
@@ -66,8 +57,12 @@ public class AccountController implements Initializable, ControlledScreen{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        PlayersDao playersDao = new PlayersDaoImpl();
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Convertor convertor = new Convertor();
         nameListView.setItems(convertor.convertArrayListToObservableList(playersDao.getAllUsernames()));
-        Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
+        nameListView.getSelectionModel().select(0);
+        Sound.playMediaPlayer(pd.getExternal("sound.music.arcade"));
     }
 
     /**
@@ -76,22 +71,24 @@ public class AccountController implements Initializable, ControlledScreen{
      * @throws IOException exception
      */
     public void handleBtnAction(ActionEvent actionEvent) throws IOException {
-
+        PlayersDao playersDao = new PlayersDaoImpl();
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Convertor convertor = new Convertor();
         switch (((Button)actionEvent.getSource()).getText()){
             case "Add" -> {
                 if (playersDao.addPlayer(nameTextField.getText())) {
                     nameTextField.setText("");
-                    Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.success"));
                 } else {
-                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
             }
             case "Delete"->{
                 if(playersDao.deletePlayer(nameListView.getSelectionModel().getSelectedIndex())){
                     nameListView.getSelectionModel().select(0);
-                    Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.success"));
                 } else {
-                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
             }
             case "Edit"->{
@@ -99,16 +96,16 @@ public class AccountController implements Initializable, ControlledScreen{
                 if(holdIndex > 0){
                     nameTextField.setText(nameListView.getSelectionModel().getSelectedItem());
                     editMode(true);
-                    Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.pageFlip"));
                 } else {
-                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
             }
             case "Done"->{
                 if (playersDao.updatePlayer(holdIndex, nameTextField.getText())){
-                    Sound.playAudioClip(ConstantData.SOUND_SUCCESS);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.success"));
                 } else {
-                    Sound.playAudioClip(ConstantData.SOUND_ERROR);
+                    Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
                 nameTextField.setText("");
                 editMode(false);
@@ -116,18 +113,18 @@ public class AccountController implements Initializable, ControlledScreen{
             case "Cancel"->{
                 editMode(false);
                 nameTextField.setText("");
-                Sound.playAudioClip(ConstantData.SOUND_PAGE_FLIP);
+                Sound.playAudioClip(pd.getExternal("sound.clip.ui.pageFlip"));
             }
             case "Enter"->{
                 // save runtime data
                 RuntimeData.selectedPlayerIndex = nameListView.getSelectionModel().getSelectedIndex();
 
                 // load screens
-                myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, ConstantData.FXML_MENU);
-                myController.loadMarkdown(ConstantData.SCREEN_ID_INFO, ConstantData.FXML_INFO);
-                myController.loadMarkdown(ConstantData.SCREEN_ID_SCOREBOARD, ConstantData.FXML_SCOREBOARD);
-                myController.loadMarkdown(ConstantData.SCREEN_ID_SELECT_LEVEL, ConstantData.FXML_SELECT_LEVEL);
-                myController.loadMarkdown(ConstantData.OVERLAY_ID_OPTION, ConstantData.FXML_OPTION);
+                myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, pd.getName("fxml.menu"));
+                myController.loadMarkdown(ConstantData.SCREEN_ID_INFO, pd.getName("fxml.info"));
+                myController.loadMarkdown(ConstantData.SCREEN_ID_SCOREBOARD, pd.getName("fxml.scoreboard"));
+                myController.loadMarkdown(ConstantData.SCREEN_ID_SELECT_LEVEL, pd.getName("fxml.selectLevel"));
+                myController.loadMarkdown(ConstantData.OVERLAY_ID_OPTION, pd.getName("fxml.option"));
                 // set screen
                 myController.setScreen(ConstantData.SCREEN_ID_MENU);
             }
@@ -141,7 +138,8 @@ public class AccountController implements Initializable, ControlledScreen{
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
     }
 
     /**

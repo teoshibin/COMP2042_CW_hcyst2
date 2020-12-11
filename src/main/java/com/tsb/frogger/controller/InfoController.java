@@ -1,5 +1,7 @@
 package com.tsb.frogger.controller;
 
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
 import javafx.event.ActionEvent;
@@ -45,7 +47,8 @@ public class InfoController implements ControlledScreen {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
     }
 
     /**

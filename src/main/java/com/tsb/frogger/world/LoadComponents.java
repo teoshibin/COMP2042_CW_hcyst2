@@ -1,6 +1,8 @@
 package com.tsb.frogger.world;
 
 import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.world.actors.*;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import javafx.scene.control.Label;
@@ -27,11 +29,13 @@ public class LoadComponents {
      */
     public static MyStage load(int level) throws LevelNotFoundException {
 
+        PropertiesDao pd = new PropertiesDaoImpl();
+
         // create new game pane
         gamePane = new MyStage();
 
         // set background
-        addBackground(ConstantData.IMAGE_GAME_BACKGROUND_A);
+        addBackground(pd.getExternal("image.background.world"));
 
         // set Labels
         addLabels(level);
@@ -78,8 +82,9 @@ public class LoadComponents {
         valueLabel.getStyleClass().add("bigger-font-size");
         gamePane.getChildren().add(valueLabel);
 
+        PropertiesDao pd = new PropertiesDaoImpl();
         ImageView alarmClock = new ImageView(
-                new Image(LoadComponents.class.getResource(ConstantData.IMAGE_ICON_ALARM_CLOCK).toExternalForm(),
+                new Image(pd.getExternal("image.icon.clock"),
                         30, 30, true, true)
         );
         alarmClock.setLayoutX(350);
@@ -138,7 +143,8 @@ public class LoadComponents {
      * @param speed speed
      */
     public static void addShortLog(int layoutX, int layoutY, double speed){
-        gamePane.add(new Log(ConstantData.IMAGE_ACTOR_SHORT_LOG, ConstantData.SIZE_SHORT_LOG, layoutX, layoutY, speed));
+        PropertiesDao pd = new PropertiesDaoImpl();
+        gamePane.add(new Log(pd.getExternal("image.actor.log.short"), ConstantData.SIZE_SHORT_LOG, layoutX, layoutY, speed));
     }
     /**
      * add medium log actor
@@ -147,7 +153,8 @@ public class LoadComponents {
      * @param speed speed
      */
     public static void addMediumLog(int layoutX, int layoutY, double speed){
-        gamePane.add(new Log(ConstantData.IMAGE_ACTOR_MEDIUM_LOG, ConstantData.SIZE_MEDIUM_LOG, layoutX, layoutY, speed));
+        PropertiesDao pd = new PropertiesDaoImpl();
+        gamePane.add(new Log(pd.getExternal("image.actor.log.medium"), ConstantData.SIZE_MEDIUM_LOG, layoutX, layoutY, speed));
     }
     /**
      * add long log actor
@@ -156,7 +163,8 @@ public class LoadComponents {
      * @param speed speed
      */
     public static void addLongLog(int layoutX, int layoutY, double speed){
-        gamePane.add(new Log(ConstantData.IMAGE_ACTOR_LONG_LOG, ConstantData.SIZE_LONG_LOG, layoutX, layoutY, speed));
+        PropertiesDao pd = new PropertiesDaoImpl();
+        gamePane.add(new Log(pd.getExternal("image.actor.log.long"), ConstantData.SIZE_LONG_LOG, layoutX, layoutY, speed));
     }
     /**
      * add turtle actor
@@ -183,10 +191,11 @@ public class LoadComponents {
      * @param speed speed
      */
     public static void addShortTruck(int layoutX, int layoutY, double speed){
+        PropertiesDao pd = new PropertiesDaoImpl();
         if (speed > 0){
-            gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_SHORT_TRUCK_RIGHT, layoutX, layoutY, speed, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
+            gamePane.add(new Obstacle(pd.getExternal("image.actor.truck.right.short"), layoutX, layoutY, speed, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
         } else {
-            gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_SHORT_TRUCK_LEFT, layoutX, layoutY, speed, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
+            gamePane.add(new Obstacle(pd.getExternal("image.actor.truck.left.short"), layoutX, layoutY, speed, ConstantData.SIZE_SHORT_TRUCK, ConstantData.SIZE_SHORT_TRUCK));
         }
     }
     /**
@@ -196,10 +205,11 @@ public class LoadComponents {
      * @param speed speed
      */
     public static void addLongTruck(int layoutX, int layoutY, double speed){
+        PropertiesDao pd = new PropertiesDaoImpl();
         if (speed > 0){
-            gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_LONG_TRUCK_RIGHT, layoutX, layoutY, speed, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
+            gamePane.add(new Obstacle(pd.getExternal("image.actor.truck.right.long"), layoutX, layoutY, speed, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
         } else {
-            gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_LONG_TRUCK_LEFT, layoutX, layoutY, speed, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
+            gamePane.add(new Obstacle(pd.getExternal("image.actor.truck.left.long"), layoutX, layoutY, speed, ConstantData.SIZE_LONG_TRUCK, ConstantData.SIZE_LONG_TRUCK));
         }
     }
     /**
@@ -209,10 +219,11 @@ public class LoadComponents {
      * @param speed speed
      */
     public static void addCar(int layoutX, int layoutY, double speed){
+        PropertiesDao pd = new PropertiesDaoImpl();
         if (speed > 0){
-            gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_RIGHT, layoutX, layoutY, speed, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+            gamePane.add(new Obstacle(pd.getExternal("image.actor.car.right"), layoutX, layoutY, speed, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
         } else {
-            gamePane.add(new Obstacle(ConstantData.IMAGE_ACTOR_CAR_A_LEFT, layoutX, layoutY, speed, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
+            gamePane.add(new Obstacle(pd.getExternal("image.actor.car.left"), layoutX, layoutY, speed, ConstantData.SIZE_CAR, ConstantData.SIZE_CAR));
         }
     }
 

@@ -53,13 +53,13 @@ public class ScreensController extends Pane {
      *  load fxml using id and resource path
      *  add loaded fxml pane into hashmap
      */
-    public void loadMarkdown(String name, String resource) {
+    public void loadMarkdown(String id, String name) {
         try {
-            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
+            FXMLLoader myLoader = new FXMLLoader(getClass().getResource(name));
             Parent loadScreen = myLoader.load();
             ControlledScreen myScreenController = myLoader.getController();
             myScreenController.setScreenParent(this);
-            addScreenToHash(name, loadScreen);
+            addScreenToHash(id, loadScreen);
         } catch (Exception e) {
             e.printStackTrace();
         }

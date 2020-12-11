@@ -1,12 +1,11 @@
 package com.tsb.frogger.core;
 
-import com.tsb.frogger.utils.data.datastructure.Player;
-import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
 import com.tsb.frogger.utils.data.datastructure.SavedData;
+import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
 import com.tsb.frogger.world.Game;
-import com.tsb.frogger.world.LevelSelector;
 
 import java.io.IOException;
+import java.util.Properties;
 
 public class RuntimeData {
     /**
@@ -21,24 +20,26 @@ public class RuntimeData {
      * game object
      */
     public static Game game;
+    /**
+     * loaded assets path
+     */
+    public static Properties assets;
 
-    public static void init(){
+    public static void init(String SaveFileName, String assetsFileName){
+
         try {
-            gameData = SaveGameManager.loadGame(ConstantData.SAVE_FILE_PATH);
-            rectifyScores();
-            System.out.println("loaded game data:");
-            System.out.println(gameData);
+            assets = SaveGameManager.loadAssets(assetsFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            gameData = SaveGameManager.loadGame(SaveFileName);
+            System.out.println("\nloaded game data:");
+            System.out.println(gameData + "\n");
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void rectifyScores() throws IOException {
-        for (Player player : gameData.allPlayers){
-            while(player.getHighScores().size() > LevelSelector.MAX_LEVEL){
-                player.getHighScores().remove(player.getHighScores().size() - 1);
-            }
-        }
-        SaveGameManager.saveGame(gameData, ConstantData.SAVE_FILE_PATH);
-    }
 }

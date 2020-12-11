@@ -1,7 +1,6 @@
 package com.tsb.frogger.core;
 
 public class ConstantData {
-    //TODO change all path to getclass getresource
 
     // stage title
     public static final String STAGE_TITLE = "Frogger";
@@ -18,83 +17,7 @@ public class ConstantData {
 
     // Save File Path
     public static final String SAVE_FILE_PATH = "saveGame.ser";
-
-    // FXML resources
-    public static final String FXML_ACCOUNT = "/com/tsb/frogger/view/Account.fxml";
-    public static final String FXML_MENU = "/com/tsb/frogger/view/Menu.fxml";
-    public static final String FXML_INFO = "/com/tsb/frogger/view/Info.fxml";
-    public static final String FXML_SCOREBOARD = "/com/tsb/frogger/view/Scoreboard.fxml";
-    public static final String FXML_SELECT_LEVEL = "/com/tsb/frogger/view/SelectLevel.fxml";
-    public static final String FXML_OPTION = "/com/tsb/frogger/view/Option.fxml";
-    public static final String FXML_VICTORY = "/com/tsb/frogger/view/Victory.fxml";
-
-    // sound resources
-    public static final String SOUND_BUTTON = "file:src/main/resources/com/tsb/frogger/sounds/ui/btn-pop.mp3";
-    public static final String SOUND_ERROR = "file:src/main/resources/com/tsb/frogger/sounds/ui/error.mp3";
-    public static final String SOUND_SUCCESS = "file:src/main/resources/com/tsb/frogger/sounds/ui/success.mp3";
-    public static final String SOUND_PAGE_FLIP = "file:src/main/resources/com/tsb/frogger/sounds/ui/page-flip.mp3";
-    public static final String SOUND_CLICK_ON = "file:src/main/resources/com/tsb/frogger/sounds/ui/click-on.mp3";
-    public static final String SOUND_CLICK_OFF = "file:src/main/resources/com/tsb/frogger/sounds/ui/click-off.mp3";
-    public static final String SOUND_QUACK = "file:src/main/resources/com/tsb/frogger/sounds/game/quack.mp3";
-    public static final String SOUND_KACHING = "file:src/main/resources/com/tsb/frogger/sounds/game/ka-ching.mp3";
-    public static final String SOUND_CRASHED = "/com/tsb/frogger/sounds/game/crashed.x-wav";
-    public static final String SOUND_DROWNED = "/com/tsb/frogger/sounds/game/drowned.mp3";
-
-    // music resources
-    public static final String MUSIC_FROGGER = "src/main/resources/com/tsb/frogger/sounds/music/MainBGM.mp3";
-    public static final String MUSIC_ARCADE = "src/main/resources/com/tsb/frogger/sounds/music/ArcadeBGM.mp3";
-
-    // stage image resources
-    public static final String IMAGE_FROGGER_ICON = "file:src/main/resources/com/tsb/frogger/images/misc/icon-frogger-pixel-512x512.png";
-
-    //// game image resources
-
-    // GUI
-    public static final String IMAGE_ICON_HOME = "file:src/main/resources/com/tsb/frogger/images/world/icon-house.png";
-    public static final String IMAGE_ICON_GEAR = "file:src/main/resources/com/tsb/frogger/images/world/icon-gear.png";
-    public static final String IMAGE_ICON_ALARM_CLOCK = "/com/tsb/frogger/images/world/alarm-clock.png";
-
-    // background map
-    public static final String IMAGE_GAME_BACKGROUND_A = "file:src/main/resources/com/tsb/frogger/images/world/gameBackground.png";
-    // log
-    public static final String IMAGE_ACTOR_SHORT_LOG = "file:src/main/resources/com/tsb/frogger/images/actors/log3.png";
-    public static final String IMAGE_ACTOR_MEDIUM_LOG = "file:src/main/resources/com/tsb/frogger/images/actors/log2.png";
-    public static final String IMAGE_ACTOR_LONG_LOG = "file:src/main/resources/com/tsb/frogger/images/actors/logs.png";
-    // truck
-    public static final String IMAGE_ACTOR_SHORT_TRUCK_LEFT = "file:src/main/resources/com/tsb/frogger/images/actors/truck1Left.png";
-    public static final String IMAGE_ACTOR_SHORT_TRUCK_RIGHT = "file:src/main/resources/com/tsb/frogger/images/actors/truck1Right.png";
-    public static final String IMAGE_ACTOR_LONG_TRUCK_LEFT = "file:src/main/resources/com/tsb/frogger/images/actors/truck2Left.png";
-    public static final String IMAGE_ACTOR_LONG_TRUCK_RIGHT = "file:src/main/resources/com/tsb/frogger/images/actors/truck2Right.png";
-    // car
-    public static final String IMAGE_ACTOR_CAR_A_LEFT = "file:src/main/resources/com/tsb/frogger/images/actors/car1Left.png";
-    public static final String IMAGE_ACTOR_CAR_A_RIGHT = "file:src/main/resources/com/tsb/frogger/images/actors/car1Right.png";
-    // turtle
-    public static final String IMAGE_ACTOR_TURTLE_1 = "file:src/main/resources/com/tsb/frogger/images/actors/TurtleAnimation1.png";
-    public static final String IMAGE_ACTOR_TURTLE_2 = "file:src/main/resources/com/tsb/frogger/images/actors/TurtleAnimation2.png";
-    public static final String IMAGE_ACTOR_TURTLE_3 = "file:src/main/resources/com/tsb/frogger/images/actors/TurtleAnimation3.png";
-    public static final String IMAGE_ACTOR_WET_TURTLE_2 = "file:src/main/resources/com/tsb/frogger/images/actors/TurtleAnimation2Wet.png";
-    public static final String IMAGE_ACTOR_WET_TURTLE_3 = "file:src/main/resources/com/tsb/frogger/images/actors/TurtleAnimation3Wet.png";
-    public static final String IMAGE_ACTOR_WET_TURTLE_4 = "file:src/main/resources/com/tsb/frogger/images/actors/TurtleAnimation4Wet.png";
-    // end
-    public static final String IMAGE_ACTOR_END = "file:src/main/resources/com/tsb/frogger/images/actors/End.png";
-    public static final String IMAGE_ACTOR_FROG_END = "file:src/main/resources/com/tsb/frogger/images/actors/FrogEnd.png";
-    // frog
-    public static final String IMAGE_ACTOR_FROG_UP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerUp.png";
-    public static final String IMAGE_ACTOR_FROG_DOWN = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerDown.png";
-    public static final String IMAGE_ACTOR_FROG_LEFT = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerLeft.png";
-    public static final String IMAGE_ACTOR_FROG_RIGHT = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerRight.png";
-    public static final String IMAGE_ACTOR_FROG_UP_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerUpJump.png";
-    public static final String IMAGE_ACTOR_FROG_DOWN_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerDownJump.png";
-    public static final String IMAGE_ACTOR_FROG_LEFT_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerLeftJump.png";
-    public static final String IMAGE_ACTOR_FROG_RIGHT_JUMP = "file:src/main/resources/com/tsb/frogger/images/frogger/froggerRightJump.png";
-    public static final String IMAGE_ACTOR_FROG_CRASH_1 = "file:src/main/resources/com/tsb/frogger/images/frogger/cardeath1.png";
-    public static final String IMAGE_ACTOR_FROG_CRASH_2 = "file:src/main/resources/com/tsb/frogger/images/frogger/cardeath2.png";
-    public static final String IMAGE_ACTOR_FROG_CRASH_3 = "file:src/main/resources/com/tsb/frogger/images/frogger/cardeath3.png";
-    public static final String IMAGE_ACTOR_FROG_DROWNED_1 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath1.png";
-    public static final String IMAGE_ACTOR_FROG_DROWNED_2 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath2.png";
-    public static final String IMAGE_ACTOR_FROG_DROWNED_3 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath3.png";
-    public static final String IMAGE_ACTOR_FROG_DROWNED_4 = "file:src/main/resources/com/tsb/frogger/images/frogger/waterdeath4.png";
-
+    public static final String ASSETS_FILE_PATH = "/com/tsb/frogger/assets.properties";
 
     // game scale and layout pos
     public static final double SCALE = 1;

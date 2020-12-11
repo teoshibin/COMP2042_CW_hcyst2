@@ -1,12 +1,14 @@
 package com.tsb.frogger.world.actors;
 
-import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import javafx.scene.image.Image;
 
 /**
  * turtle class
  */
 public class Turtle extends Actor{
+	//TODO OPTIMIZE ANIMATION
 	/**
 	 * image 1
 	 */
@@ -53,9 +55,10 @@ public class Turtle extends Actor{
 	 * @param h height
 	 */
 	public Turtle(int xpos, int ypos, double s, int w, int h) {
-		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
-		turtle2 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_2, w, h, true, true);
-		turtle3 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_3, w, h, true, true);
+		PropertiesDao pd = new PropertiesDaoImpl();
+		turtle1 = new Image(pd.getExternal("image.actor.turtle.1"), w, h, true, true);
+		turtle2 = new Image(pd.getExternal("image.actor.turtle.2"), w, h, true, true);
+		turtle3 = new Image(pd.getExternal("image.actor.turtle.3"), w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;

@@ -1,18 +1,13 @@
 package com.tsb.frogger.world;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.tsb.frogger.world.actors.Actor;
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * World class to change event handler
@@ -29,47 +24,32 @@ public abstract class World extends Pane {
      */
     public World() {
 
-        sceneProperty().addListener(new ChangeListener<Scene>() {
+        sceneProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                newValue.setOnKeyReleased(event -> {
+                    if(getOnKeyReleased() != null)
+                        getOnKeyReleased().handle(event);
+                    List<Actor> myActors = getObjects(Actor.class);
+                    for (Actor anActor: myActors) {
+                        if (anActor.getOnKeyReleased() != null) {
+                            anActor.getOnKeyReleased().handle(event);
+                        }
+                    }
+                });
 
-			@Override
-			public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-				if (newValue != null) {
-					newValue.setOnKeyReleased(new EventHandler<KeyEvent>() {
+                newValue.setOnKeyPressed(event -> {
+                    if(getOnKeyPressed() != null)
+                        getOnKeyPressed().handle(event);
+                    List<Actor> myActors = getObjects(Actor.class);
+                    for (Actor anActor: myActors) {
+                        if (anActor.getOnKeyPressed() != null) {
+                            anActor.getOnKeyPressed().handle(event);
+                        }
+                    }
+                });
+            }
 
-						@Override
-						public void handle(KeyEvent event) {
-							if(getOnKeyReleased() != null) 
-								getOnKeyReleased().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
-								if (anActor.getOnKeyReleased() != null) {
-									anActor.getOnKeyReleased().handle(event);
-								}
-							}
-						}
-						
-					});
-					
-					newValue.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-						@Override
-						public void handle(KeyEvent event) {
-							if(getOnKeyPressed() != null) 
-								getOnKeyPressed().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
-								if (anActor.getOnKeyPressed() != null) {
-									anActor.getOnKeyPressed().handle(event);
-								}
-							}
-						}
-						
-					});
-				}
-				
-			}
-    		
-		});
+        });
     }
 
     /**
@@ -122,21 +102,14 @@ public abstract class World extends Pane {
     }
 
     /**
-     * remove actor
-     * @param actor actor
-     */
-    public void remove(Actor actor) {
-        getChildren().remove(actor);
-    }
-
-    /**
      * get object
      * @param cls class
      * @param <A> A
      * @return arraylist
      */
+    @SuppressWarnings("unchecked")
     public <A extends Actor> List<A> getObjects(Class<A> cls) {
-        ArrayList<A> someArray = new ArrayList<A>();
+        ArrayList<A> someArray = new ArrayList<>();
         for (Node n: getChildren()) {
             if (cls.isInstance(n)) {
                 someArray.add((A)n);

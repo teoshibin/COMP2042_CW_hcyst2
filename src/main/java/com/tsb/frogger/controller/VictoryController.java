@@ -2,6 +2,8 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.data.datamanager.PlayersDao;
 import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
@@ -27,10 +29,6 @@ public class VictoryController implements Initializable, ControlledScreen{
      * screen controller
      */
     ScreensController myController;
-    /**
-     * data access object
-     */
-    PlayersDao playersDao = new PlayersDaoImpl();
     /**
      * image view
      */
@@ -67,6 +65,7 @@ public class VictoryController implements Initializable, ControlledScreen{
      * @param actionEvent event
      */
     public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {
+        PropertiesDao pd = new PropertiesDaoImpl();
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Leave", "Done" -> {
                 myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);
@@ -74,7 +73,7 @@ public class VictoryController implements Initializable, ControlledScreen{
                 myController.unloadScreen(ConstantData.SCREEN_ID_GAME);
                 myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 Sound.stopMediaPlayer();
-                Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
+                Sound.playMediaPlayer(pd.getExternal("sound.music.arcade"));
                 RuntimeData.game = null;
             }
             case "Continue" -> {
@@ -93,7 +92,8 @@ public class VictoryController implements Initializable, ControlledScreen{
      * @param mouseEvent event
      */
     public void MouseEnter(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
     }
 
     /**
@@ -103,12 +103,14 @@ public class VictoryController implements Initializable, ControlledScreen{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        PlayersDao playersDao = new PlayersDaoImpl();
 
         usernameLabel.setText(playersDao.getPlayer(RuntimeData.selectedPlayerIndex).getUsername());
         levelLabel.setText(Integer.toString(RuntimeData.game.getLevel()));
         scoreLabel.setText(Integer.toString(RuntimeData.game.getScore()));
 
         try {
+            // display NEW if successfully updated new high score
             newImageView.setVisible(
                     playersDao.updatePlayer(
                             RuntimeData.selectedPlayerIndex,

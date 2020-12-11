@@ -2,6 +2,8 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.data.datamanager.PlayersDao;
 import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
@@ -25,10 +27,6 @@ public class MenuController implements Initializable, ControlledScreen {
      * main screen controller
      */
     ScreensController myController;
-    /**
-     * data access object
-     */
-    PlayersDao playersDao = new PlayersDaoImpl();
     /**
      * anchor pane
      */
@@ -60,15 +58,16 @@ public class MenuController implements Initializable, ControlledScreen {
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        Sound.playAudioClip(ConstantData.SOUND_BUTTON);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        usernameLabel.setText(
-                playersDao.getPlayer(RuntimeData.selectedPlayerIndex).getUsername()
-        );
-        Sound.playMediaPlayer(ConstantData.MUSIC_ARCADE);
+        PropertiesDao pd = new PropertiesDaoImpl();
+        PlayersDao playersDao = new PlayersDaoImpl();
+        usernameLabel.setText(playersDao.getUsername(RuntimeData.selectedPlayerIndex));
+        Sound.playMediaPlayer(pd.getExternal("sound.music.arcade"));
     }
 
     /**

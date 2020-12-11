@@ -1,6 +1,7 @@
 package com.tsb.frogger.world.actors;
 
-import com.tsb.frogger.core.ConstantData;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
+import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import javafx.scene.image.Image;
 
 /**
@@ -46,7 +47,7 @@ public class WetTurtle extends Actor{
 	 */
 	@Override
 	public void act(long now) {
-		long sinkingTime = ((now + sinking_shift*1000000000)/1000000000) % 4;
+		long sinkingTime = ((now + sinking_shift* 1000000000L)/1000000000) % 4;
 
 		if (sinkingTime ==0) {
 			setImage(turtle2);
@@ -74,10 +75,11 @@ public class WetTurtle extends Actor{
 	 * @param h height
 	 */
 	public WetTurtle(int xpos, int ypos, double s, int w, int h) {
-		turtle1 = new Image(ConstantData.IMAGE_ACTOR_TURTLE_1, w, h, true, true);
-		turtle2 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_2, w, h, true, true);
-		turtle3 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_3, w, h, true, true);
-		turtle4 = new Image(ConstantData.IMAGE_ACTOR_WET_TURTLE_4, w, h, true, true);
+		PropertiesDao pd = new PropertiesDaoImpl();
+		turtle1 = new Image(pd.getExternal("image.actor.wetTurtle.1"), w, h, true, true);
+		turtle2 = new Image(pd.getExternal("image.actor.wetTurtle.2"), w, h, true, true);
+		turtle3 = new Image(pd.getExternal("image.actor.wetTurtle.3"), w, h, true, true);
+		turtle4 = new Image(pd.getExternal("image.actor.wetTurtle.4"), w, h, true, true);
 		setX(xpos);
 		setY(ypos);
 		speed = s;
