@@ -91,6 +91,7 @@ public class Game implements ControlledScreen {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                // TODO remove timer win checking in game
                 if (animal.updateScoreLabel()) {
                     setNumber(animal.getScores());
                 }
@@ -105,42 +106,38 @@ public class Game implements ControlledScreen {
     }
 
     /**
-     * play background music, creates animation timer and starts animation timer
+     * start the game
+     * load required components and start all timers
      */
     public void start() throws LevelNotFoundException {
         load();
-        gamePane.start();
-        gamePane.playMusic();
         createTimer();
         timer.start();
+        gamePane.start();
     }
 
     /**
-     * stop background music, stop obstacles timer
+     * completely stop the game
      */
     public void stop() {
-        gamePane.stopMusic();
-        gamePane.stop();
         timer.stop();
-        animal.pause();
+        gamePane.stop();
     }
 
     /**
-     * pause the game without exiting
+     * pause the game
      */
     public void pause() {
-        gamePane.stop();
         timer.stop();
-        animal.pause();
+        gamePane.pause();
     }
 
     /**
      * resume from pause
      */
     public void resume() {
-        gamePane.start();
         timer.start();
-        animal.resume();
+        gamePane.start();
     }
 
     /**

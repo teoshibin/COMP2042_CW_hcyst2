@@ -10,19 +10,16 @@ import com.tsb.frogger.utils.sound.Sound;
  */
 public class MyStage extends World {
 
-	/**
-	 * play background music
-	 */
-	public void playMusic() {
+	@Override
+	public void start() {
+		super.start();
 		PropertiesDao pd = new PropertiesDaoImpl();
 		Sound.playMediaPlayer(pd.getExternal("sound.music.frogger"));
 	}
 
-	/**
-	 * stop background music
-	 */
-	public void stopMusic() {
+	@Override
+	public void stop() {
+		super.stop();
 		Sound.stopMediaPlayer();
 	}
-
 }

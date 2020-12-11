@@ -17,7 +17,7 @@ import javafx.util.Duration;
 /**
  * frog class
  */
-public class Animal extends Actor {
+public class Animal extends ActingActor implements AnimatingActor {
 	/**
 	 * assets dao
 	 */
@@ -25,11 +25,11 @@ public class Animal extends Actor {
 	/**
 	 * max score
 	 */
-	public static int MAX_SCORE = 900;
+	public static final int MAX_SCORE = 900;
 	/**
 	 * timer score
 	 */
-	private static int MAX_EXTRA_SCORE = 60;
+	private static final int MAX_EXTRA_SCORE = 60;
 	/**
 	 * score
 	 */
@@ -441,14 +441,22 @@ public class Animal extends Actor {
 		}
 	}
 
+	@Override
 	public void pause(){
 		extraScoresTimer.pause();
 		noMove = true;
 	}
 
+	@Override
 	public void resume(){
 		extraScoresTimer.play();
 		noMove = false;
+	}
+
+	@Override
+	public void stop() {
+		extraScoresTimer.stop();
+		noMove = true;
 	}
 
 }

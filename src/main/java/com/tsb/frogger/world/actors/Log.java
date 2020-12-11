@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * log class
  */
-public class Log extends Actor {
+public class Log extends ActingActor {
 
 	/**
 	 * speed of log

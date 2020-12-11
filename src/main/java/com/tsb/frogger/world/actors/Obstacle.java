@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 /**
  * obstacle class
  */
-public class Obstacle extends Actor {
+public class Obstacle extends ActingActor {
 
 	/**
 	 * speed of obstacles

@@ -8,14 +8,12 @@ import javafx.scene.image.Image;
 /**
  * end class
  */
-public class End extends Actor{
+public class End extends IntersectingActor{
 
 	/**
 	 * activated ends
 	 */
 	boolean activated = false;
-	@Override
-	public void act(long now) {}
 
 	/**
 	 * constructor

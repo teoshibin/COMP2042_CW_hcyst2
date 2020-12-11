@@ -7,8 +7,8 @@ import javafx.scene.image.Image;
 /**
  * turtle class
  */
-public class Turtle extends Actor{
-	//TODO OPTIMIZE ANIMATION
+public class Turtle extends ActingActor{
+	//TODO change this to complete actor
 	/**
 	 * image 1
 	 */
