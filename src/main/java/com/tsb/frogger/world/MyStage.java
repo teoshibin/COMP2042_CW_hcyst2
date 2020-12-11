@@ -11,14 +11,6 @@ import com.tsb.frogger.utils.sound.Sound;
 public class MyStage extends World {
 
 	/**
-	 * act method
-	 * @param now timestamp of current time in nanosecond
-	 */
-	@Override
-	public void act(long now) {
-	}
-
-	/**
 	 * play background music
 	 */
 	public void playMusic() {

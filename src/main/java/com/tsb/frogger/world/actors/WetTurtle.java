@@ -30,10 +30,6 @@ public class WetTurtle extends Actor{
 	 */
 	private double speed;
 	/**
-	 * speed of sinking
-	 */
-	private double phaseChangeDelay;
-	/**
 	 * turtle status
 	 */
 	boolean sunk = false;

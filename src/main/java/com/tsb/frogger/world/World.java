@@ -59,7 +59,6 @@ public abstract class World extends Pane {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                act(now);
                 List<Actor> actors = getObjects(Actor.class);
                 
                 for (Actor anActor: actors) {
@@ -117,10 +116,4 @@ public abstract class World extends Pane {
         }
         return someArray;
     }
-
-    /**
-     * act method
-     * @param now timestamp of current time in nanosecond
-     */
-    public abstract void act(long now);
 }

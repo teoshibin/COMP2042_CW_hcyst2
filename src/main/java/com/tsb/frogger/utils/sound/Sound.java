@@ -4,8 +4,6 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
-
 /**
  * manage all sound effects and musics
  */
@@ -42,11 +40,11 @@ public class Sound {
     /**
      * play music
      *
-     * @param path audio path
+     * @param filepath audio path
      */
-    public static void playMediaPlayer(String path) {
+    public static void playMediaPlayer(String filepath) {
         if(mediaPlayer == null || (!mediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))){
-            Media media = new Media(new File(path).toURI().toString());
+            Media media = new Media(filepath);
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
             mediaPlayer.setVolume(masterVolume * musicVolume);
