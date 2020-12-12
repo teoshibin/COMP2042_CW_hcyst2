@@ -6,7 +6,7 @@ import com.tsb.frogger.utils.data.datamanager.*;
 import com.tsb.frogger.utils.data.datastructure.TableViewPlayer;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.LevelSelector;
-import com.tsb.frogger.world.actors.Animal;
+import com.tsb.frogger.world.actors.Frog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -149,7 +149,7 @@ public class ScoreboardController implements Initializable, ControlledScreen{
                 String.valueOf(playersDao.getHighScore(RuntimeData.selectedPlayerIndex,selectedLevel))
         );
         // set max possible score
-        maxScoreLabel.setText(String.valueOf(Animal.MAX_SCORE));
+        maxScoreLabel.setText(String.valueOf(Frog.MAX_SCORE));
 
         // assign TableViewPlayer class variables into table
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));

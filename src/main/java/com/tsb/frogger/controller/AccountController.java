@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
  * account controller for GUI
  */
 public class AccountController implements Initializable, ControlledScreen{
-    //TODO fix enter game while in edit mode
     /**
      * hold player index while editing
      */
@@ -118,6 +117,10 @@ public class AccountController implements Initializable, ControlledScreen{
             case "Enter"->{
                 // save runtime data
                 RuntimeData.selectedPlayerIndex = nameListView.getSelectionModel().getSelectedIndex();
+
+                if (RuntimeData.selectedPlayerIndex < 0){
+                    RuntimeData.selectedPlayerIndex = 0;
+                }
 
                 // load screens
                 myController.loadMarkdown(ConstantData.SCREEN_ID_MENU, pd.getName("fxml.menu"));

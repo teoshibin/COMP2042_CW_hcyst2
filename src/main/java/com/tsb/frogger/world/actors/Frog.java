@@ -17,39 +17,7 @@ import javafx.util.Duration;
 /**
  * frog class
  */
-public class Animal extends ActingActor implements AnimatingActor {
-	/**
-	 * assets dao
-	 */
-	PropertiesDao pd;
-	/**
-	 * max score
-	 */
-	public static final int MAX_SCORE = 900;
-	/**
-	 * timer score
-	 */
-	private static final int MAX_EXTRA_SCORE = 60;
-	/**
-	 * score
-	 */
-	int scores = 0;
-	/**
-	 * update score boolean
-	 */
-	boolean changeScore = false;
-	/**
-	 * extra points
-	 */
-	private int extraScores = MAX_EXTRA_SCORE;
-	/**
-	 * timer for decreasing extra scores every period of time
-	 */
-	private Timeline extraScoresTimer;
-	/**
-	 * image size
-	 */
-	int imgSize = 36;
+public class Frog extends ActingActor implements AnimatingActor {
 	/**
 	 * image up
 	 */
@@ -111,6 +79,38 @@ public class Animal extends ActingActor implements AnimatingActor {
 	 */
 	Image drownDeath4;
 	/**
+	 * assets dao
+	 */
+	PropertiesDao pd;
+	/**
+	 * max score
+	 */
+	public static final int MAX_SCORE = 900;
+	/**
+	 * timer score
+	 */
+	private static final int MAX_EXTRA_SCORE = 60;
+	/**
+	 * score
+	 */
+	int scores = 0;
+	/**
+	 * update score boolean
+	 */
+	boolean changeScore = false;
+	/**
+	 * extra points
+	 */
+	private int extraScores = MAX_EXTRA_SCORE;
+	/**
+	 * timer for decreasing extra scores every period of time
+	 */
+	private Timeline extraScoresTimer;
+	/**
+	 * image size
+	 */
+	private static final int imgSize = 36;
+	/**
 	 * number of activated ends
 	 */
 	int end = 0;
@@ -159,6 +159,10 @@ public class Animal extends ActingActor implements AnimatingActor {
 		DOWN,
 		RIGHT,
 	}
+
+	/**
+	 * frog current status
+	 */
 	private enum FROG_STATUS{
 		ALIVE,
 		CRASHED,
@@ -170,7 +174,7 @@ public class Animal extends ActingActor implements AnimatingActor {
 	 * frog constructor
 	 * @param imageLink image url
 	 */
-	public Animal(String imageLink, int layoutX, int layoutY) {
+	public Frog(String imageLink, int layoutX, int layoutY) {
 		pd = new PropertiesDaoImpl();
 
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
@@ -271,7 +275,7 @@ public class Animal extends ActingActor implements AnimatingActor {
 						move(getIntersectingObjects(Turtle.class).get(0).getSpeed(),0);
 						// if overlap with wet turtle and if is sunk then death else frog move wet turtle speed
 					} else if (getIntersectingObjects(WetTurtle.class).size() > 0) {
-						if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+						if (getIntersectingObjects(WetTurtle.class).get(0).getSunk()) {
 							frogStatus = FROG_STATUS.DROWNED;
 							noMove = true;
 						} else {

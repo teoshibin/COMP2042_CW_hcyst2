@@ -7,7 +7,7 @@ import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.sound.Sound;
-import com.tsb.frogger.world.actors.Animal;
+import com.tsb.frogger.world.actors.Frog;
 import com.tsb.frogger.world.widgets.HomeBtn;
 import com.tsb.frogger.world.widgets.SettingBtn;
 import javafx.animation.AnimationTimer;
@@ -30,8 +30,8 @@ public class Game implements ControlledScreen {
     /**
      * frogger
      */
-    private Animal animal;
-//    private GodAnimal animal;
+    private Frog frog;
+//    private GodFrog frog;
     /**
      * frogger animation timer
      */
@@ -68,17 +68,17 @@ public class Game implements ControlledScreen {
         timeBar = LoadComponents.getTimeBar();
         gamePane.getChildren().add(timeBar);
 
-        animal = new Animal(
+        frog = new Frog(
                 pd.getExternal("image.actor.frog.up"),
                 ConstantData.LAYOUT_X_FROG[0],
                 ConstantData.LAYOUT_Y_ACTOR[0][12]
         );
-        gamePane.add(animal);
+        gamePane.add(frog);
 
         //god frogger (uncomment to use god frogger)
-//        animal = new GodAnimal(pd.getExternal("image.actor.frog.up"), ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
-//        animal.instantWin(800);
-//        gamePane.add(animal);
+//        frog = new GodFrog(pd.getExternal("image.actor.frog.up"), ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
+//        frog.instantWin(800);
+//        gamePane.add(frog);
         // TODO - ADD HEALTH FOR FROGGER
     }
 
@@ -92,10 +92,10 @@ public class Game implements ControlledScreen {
             @Override
             public void handle(long now) {
                 // TODO remove timer win checking in game
-                if (animal.updateScoreLabel()) {
-                    setNumber(animal.getScores());
+                if (frog.updateScoreLabel()) {
+                    setNumber(frog.getScores());
                 }
-                if (animal.getWin()) {
+                if (frog.getWin()) {
                     Game.this.stop();
                     myController.loadMarkdown(ConstantData.OVERLAY_ID_VICTORY, pd.getName("fxml.victory"));
                     myController.addOverlay(ConstantData.OVERLAY_ID_VICTORY);
@@ -184,7 +184,7 @@ public class Game implements ControlledScreen {
      * @return score
      */
     public int getScore() {
-        return animal.getScores();
+        return frog.getScores();
     }
 
     /**

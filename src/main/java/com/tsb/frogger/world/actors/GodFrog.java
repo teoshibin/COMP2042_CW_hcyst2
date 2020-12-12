@@ -3,13 +3,13 @@ package com.tsb.frogger.world.actors;
 /**
  * godlike version of animal (for debug purpose)
  */
-public class GodAnimal extends Animal {
+public class GodFrog extends Frog {
 
     /**
      * constructor
      * @param imageLink image url
      */
-    public GodAnimal(String imageLink, int layoutX, int layoutY) {
+    public GodFrog(String imageLink, int layoutX, int layoutY) {
         super(imageLink, layoutX, layoutY);
     }
 

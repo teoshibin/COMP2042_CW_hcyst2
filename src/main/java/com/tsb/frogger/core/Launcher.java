@@ -29,7 +29,7 @@ public class Launcher extends Application {
     public void start(Stage primaryStage) {
 
         //initialize game data and load assets
-        RuntimeData.init(ConstantData.SAVE_FILE_PATH, ConstantData.ASSETS_FILE_PATH);
+        RuntimeData.init(ConstantData.SAVE_FILE_PATH, ConstantData.ASSET_PROPERTY_PATH);
 
         PropertiesDao pd = new PropertiesDaoImpl();
 
@@ -46,7 +46,7 @@ public class Launcher extends Application {
 
         // main stage
         primaryStage.setScene(scene);
-        primaryStage.setTitle(ConstantData.STAGE_TITLE);
+        primaryStage.setTitle("Frogger");
         primaryStage.setResizable(false);
         primaryStage.setMaximized(false);
         primaryStage.getIcons().add(new Image(pd.getExternal("image.icon.frog")));
