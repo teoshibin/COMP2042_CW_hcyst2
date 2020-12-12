@@ -29,10 +29,19 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - [License](#license)
 
 ## Installation
+### Method 1
 1. Clone this repo
 2. Unzip the folder
 3. In command prompt use `cd $YOUR_PATH` navigate into cloned folder
 4. type in `gradlew run` to build and run the game
+### Method 2
+1. Download Released jar
+2. Download JavaFx
+3. In command prompt use `cd $YOUR_PATH` navigate into folder
+4. Run this code where specifying your own javafx/lib folder path into `$PATH_TO_JavaFX`:
+   ```shell
+   java --module-path {$PATH_TO_JavaFX} --add-modules javafx.controls,javafx.fxml,javafx.media -jar frogger-1.0.jar
+   ```
 
 [Back to content](#content)  
 
@@ -40,7 +49,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 
 ### How to play
 - Your main objective is to bring the frog back to its home, while not being ran over by trucks or drowned on its way home.
-- Numbers of respawn chance will be given.
+- Numbers of respawn chances will be given.
 - Different score will be awarded based on time spent of each frog.
 
     #### Controls
@@ -157,14 +166,14 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - Browse personal high score
 - Show game info
 - Change Game settings
-- Select Level & play game
-- 10 levels is available
+- 5 levels are available
 - The higher the level is the harder the difficultly is
-- Extra points will be added based on time taken every round where maximum possible score is 900
+- Timer count down for extra fun
+- Extra points will be added based on time taken every round
 - Able to proceed to the next level after completing each level
 
 ### Modifications
-- Create new level easily without messing with inner logic
+- Create new level easily by extending class
 
 ## Implementations
 ### Views
@@ -192,21 +201,26 @@ This framework allows new fxml screens to be added easily.
 
 ### Major Changes
 - Added Sound class for audio clip playing and music playing
-- Added ConstantData class for assets path and game constant
-- Added RuntimeData class for runtime data references 
-- Added Player, FileGame, FileScore and FileUsername for the username and high score file reading and writing
+- Added ConstantData class for game constants
+- Added RuntimeData class for data references (game saves are loaded here)
+- Added Player, SavedGame, settings as serializable data object 
+- Added SaveGameManager that extends FileManager for the use of loading and storing player info
 - Added LevelNotFoundException a custom Exception class for error handling
 - Added Game, LoadComponents, LevelSelector and Launcher, refactored from the original main class.
 - Added LevelBase interface for linking up all custom-made levels.
-- Categorized assets into images, sounds, views (fxml assets), saves (serialized objects) and styles (css)
-- Categorized classes into packages of controllers, core, utils and worlds
-- Refactored Animal actor horrifying nested if conditions using switches
+- Added assets.properties as assets path storage
+- Added data access objects (DAO) for Player and assets
+- Categorized asset files into directories of images, sounds, views (fxml assets) and styles (css)
+- Categorized classes into package of controllers, core, utils and worlds
+- Refactored Actor class into IntersectingActor class, ActingActor class, AnimatingActor Interface
+- Refactored Turtle, WetTurtle and Frog to extends ActingActor and implements AnimatingActor capable of pausing individual animation timer while game puase
+- Refactored End actor to extends IntersectingActor and remove inherited unused methods
+- Refactored the rest of actors extend from ActingActor
 - Optimized in game score display from image view adding to label updating
 - Removed Digit actor
 - Removed Background actor and move its functionality to LoadComponents
 - Added GodAnimal actor that wins instantly for debugging purposes
 - Added several fxml screens with its controller controlled by an instance of ScreenController in Launcher
-- Linked all the functionalities from models to controller to views
 - Slightly shrink down the size of the window
 
 ### Bug Fixes
@@ -217,15 +231,29 @@ This framework allows new fxml screens to be added easily.
 [Back to content](#content)  
 
 ## Design Patterns
-- **Factory**  
-  Used in level base (interface) and levels (class) where the interface act as the general level and levelSelector instantiate one of the selected level (sub-class)
 
-- **Singleton**  
-  Used across this project such as Sound class, FileGame class etc.
+<p align="center">
+  <img src="UML/Package_frogger.png" />
+</p>   
 
-- **Facade**  
-  Used in the Game class, where it wraps a complicated subsystem with a simpler interface.
+- **MVC Pattern**  
+  Using models, views(fxml,css), controllers for the entire GUI
 
+- **Front Controller Pattern**  
+  ScreensController act as a centralized views request handling class and all other controllers are requested through ControlledClass Interface
+
+- **Factory Pattern**  
+  Used in level base (interface) and levels (class) where the interface act as the general level and levelSelector instantiate one of the level (sub-class) and cast it to level base
+
+- **Singleton Pattern**  
+  Used across this project such as Sound class, Convertor, Validator class etc.
+
+- **Facade Pattern**  
+  Used in the LoadComponents class, where it wraps a complicated subsystem (actors) with a simpler interface.
+  
+- **DAO Pattern**  
+  SaveGame Data structure Loaded from save file act as the data, uses PlayerDao implemented by PlayerDaoImpl to fetch data from SavedGame Data Structure
+  
 ## Credits
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
