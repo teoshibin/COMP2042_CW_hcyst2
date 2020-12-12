@@ -5,7 +5,7 @@ This will be a refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
 <p align="center">
-  <img src="screenshots/game_picture.png" />
+  <img src="screenshots/game_picture.png"  alt="In Game Screenshots"/>
 </p>
 
 ## Content
@@ -22,8 +22,8 @@ The focus of this repo will mainly be improving gameplay and adding features to 
         - [GUI Hierarchy](#gui-hierarchy)
     - [Controllers](#controllers)
         - [Controllers Hierarchy](#controllers-hierarchy)
-    - [Major Changes](#major-changes)
-    - [Bug Fixes](#bug-fixes)
+    - [Changes](#changes)
+    - [Fixes](#fixes)
 - [Design Patterns](#design-patterns)
 - [Credits](#credits)
 - [License](#license)
@@ -48,7 +48,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 ## Usage
 
 ### How to play
-- Your main objective is to bring the frog back to its home, while not being ran over by trucks or drowned on its way home.
+- Your main objective is to bring the frog back to its home, while not being run over by trucks or drowned on its way home.
 - Numbers of respawn chances will be given.
 - Different score will be awarded based on time spent of each frog.
 
@@ -90,7 +90,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     ```java
     ConstantData.LAYOUT_Y_ACTOR[0][index]
     ```
-    Here is all the available actors in table 1, simply replace above method with one of these e.g addShortLog.  
+    Here is all the available actors in table 1, simply replace above method with one of these e.g. addShortLog.  
     All possible index and corresponding location in the game is in table 2, assign shown index to above constant array for position.
       
    <table align="center">
@@ -156,7 +156,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
    [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
    
-   >**Note** : Removing levels will corrupt the save file, when it does simply remove the [saveGame.ser](src/main/resources/com/tsb/frogger/save) save file will do
+   >**Note** : Removing levels might corrupt the save file, when it does simply remove the old `saveGame.ser` save file
     
 [Back to content](#content)  
 
@@ -173,7 +173,9 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - Able to proceed to the next level after completing each level
 
 ### Modifications
-- Create new level easily by extending class
+- Create new level easily by extending class   
+
+[Back to content](#content)
 
 ## Implementations
 ### Views
@@ -199,31 +201,31 @@ This framework allows new fxml screens to be added easily.
             - Controller2
             - ...
 
-### Major Changes
-- Added Sound class for audio clip playing and music playing
-- Added ConstantData class for game constants
-- Added RuntimeData class for data references (game saves are loaded here)
-- Added Player, SavedGame, settings as serializable data object 
-- Added SaveGameManager that extends FileManager for the use of loading and storing player info
-- Added LevelNotFoundException a custom Exception class for error handling
-- Added Game, LoadComponents, LevelSelector and Launcher, refactored from the original main class.
-- Added LevelBase interface for linking up all custom-made levels.
-- Added assets.properties as assets path storage
-- Added data access objects (DAO) for Player and assets
-- Categorized asset files into directories of images, sounds, views (fxml assets) and styles (css)
-- Categorized classes into package of controllers, core, utils and worlds
-- Refactored Actor class into IntersectingActor class, ActingActor class, AnimatingActor Interface
-- Refactored Turtle, WetTurtle and Frog to extends ActingActor and implements AnimatingActor capable of pausing individual animation timer while game puase
-- Refactored End actor to extends IntersectingActor and remove inherited unused methods
-- Refactored the rest of actors extend from ActingActor
-- Optimized in game score display from image view adding to label updating
+### Changes
 - Removed Digit actor
 - Removed Background actor and move its functionality to LoadComponents
+- Added ConstantData class for game constants
+- Added RuntimeData class for data references (game saves are loaded here)
+- Added Game, LoadComponents, LevelSelector and Launcher, refactored from the original main class.
+- Added LevelBase interface for linking up all custom-made levels.
+- Added LevelNotFoundException a custom Exception class for error handling
+- Added Sound class for audio clip playing and music playing
+- Added SaveGameManager that extends FileManager for the use of loading and storing save file
+- Added Player, SavedGame, settings as serializable data object 
+- Added data access objects (DAO) for Player and assets
+- Added assets.properties as central assets' path storage
+- Categorized classes into package of controllers, core, utils and worlds
+- Categorized asset files into directories of images, sounds, views (fxml assets) and styles (css)
+- Refactored Actor class into IntersectingActor class, ActingActor class, AnimatingActor Interface
+- Refactored Turtle, WetTurtle and Frog to extends ActingActor and implements AnimatingActor
+- Refactored End actor to extends IntersectingActor and remove inherited unused methods
+- Refactored the rest of the actors extend from ActingActor
+- Refactored in game score display from image view appending to label updating
 - Added GodAnimal actor that wins instantly for debugging purposes
 - Added several fxml screens with its controller controlled by an instance of ScreenController in Launcher
 - Slightly shrink down the size of the window
 
-### Bug Fixes
+### Fixes
 - Fixed actor image view inconsistent shifting due to different image size of different actors
 - Fixed fast frog movement bug for long pressed key
 - Fixed a bug where all wet turtles sink into water at the same time
@@ -233,7 +235,7 @@ This framework allows new fxml screens to be added easily.
 ## Design Patterns
 
 <p align="center">
-  <img src="UML/Package_frogger.png" />
+  <img src="UML/Package_frogger.png"  alt="Class Diagram"/>
 </p>   
 
 - **MVC Pattern**  
@@ -253,7 +255,9 @@ This framework allows new fxml screens to be added easily.
   
 - **DAO Pattern**  
   SaveGame Data structure Loaded from save file act as the data, uses PlayerDao implemented by PlayerDaoImpl to fetch data from SavedGame Data Structure
-  
+
+[Back to content](#content)
+
 ## Credits
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
