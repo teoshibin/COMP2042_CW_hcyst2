@@ -107,6 +107,10 @@ public class Frog extends ActingActor implements AnimatingActor {
 	 */
 	private Timeline extraScoresTimer;
 	/**
+	 * death animation timeline
+	 */
+	private Timeline deathAnimation;
+	/**
 	 * image size
 	 */
 	private static final int imgSize = 36;
@@ -114,6 +118,10 @@ public class Frog extends ActingActor implements AnimatingActor {
 	 * number of activated ends
 	 */
 	int end = 0;
+	/**
+	 * health
+	 */
+	private int health = 10;
 	/**
 	 * true when not jumping false when jumping
 	 */
@@ -153,7 +161,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 	/**
 	 * frog direction
 	 */
-	private enum DIRECTION{
+	public enum DIRECTION{
 		UP,
 		LEFT,
 		DOWN,
@@ -172,16 +180,16 @@ public class Frog extends ActingActor implements AnimatingActor {
 
 	/**
 	 * frog constructor
-	 * @param imageLink image url
+	 *
+	 * @param direction initial direction
+	 * @param layoutX layout x
+	 * @param layoutY layout y
 	 */
-	public Frog(String imageLink, int layoutX, int layoutY) {
+	public Frog(DIRECTION direction, int layoutX, int layoutY, int health) {
+
+		this.health = health;
+
 		pd = new PropertiesDaoImpl();
-
-		setImage(new Image(imageLink, imgSize, imgSize, true, true));
-		frogLayoutX = layoutX;
-		frogLayoutY = layoutY;
-
-		resetFrog();
 
 		imgW1 = new Image(pd.getExternal("image.actor.frog.up"), imgSize, imgSize, true, true);
 		imgA1 = new Image(pd.getExternal("image.actor.frog.left"), imgSize, imgSize, true, true);
@@ -200,6 +208,18 @@ public class Frog extends ActingActor implements AnimatingActor {
 		drownDeath2 = new Image(pd.getExternal("image.actor.frog.drown.2"), imgSize, imgSize, true, true);
 		drownDeath3 = new Image(pd.getExternal("image.actor.frog.drown.3"), imgSize, imgSize, true, true);
 		drownDeath4 = new Image(pd.getExternal("image.actor.frog.drown.4"), imgSize, imgSize, true, true);
+
+		switch (direction){
+			case UP -> setImage(imgW1);
+			case DOWN -> setImage(imgS1);
+			case LEFT -> setImage(imgA1);
+			case RIGHT -> setImage(imgD1);
+		}
+
+		frogLayoutX = layoutX;
+		frogLayoutY = layoutY;
+
+		resetFrog();
 
 		// handle on key press
 		setOnKeyPressed(event -> {
@@ -306,14 +326,14 @@ public class Frog extends ActingActor implements AnimatingActor {
 			case CRASHED -> {
 				frogStatus = FROG_STATUS.AnimatingDeath;
 				Sound.playAudioClip(pd.getExternal("sound.clip.actor.frog.crashed"));
-				Timeline crashedAnimation = createCrashDeathTimeline();
-				crashedAnimation.play();
+				deathAnimation = createCrashDeathTimeline();
+				deathAnimation.play();
 			}
 			case DROWNED -> {
 				frogStatus = FROG_STATUS.AnimatingDeath;
 				Sound.playAudioClip(pd.getExternal("sound.clip.actor.frog.drowned"));
-				Timeline drownedAnimation = createDrownedDeathTimeline();
-				drownedAnimation.play();
+				deathAnimation = createDrownedDeathTimeline();
+				deathAnimation.play();
 			}
 		}
 	}
@@ -327,6 +347,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 					resetFrog();
 					reducePoints();
 					noMove = false;
+					health--;
 				}, new KeyValue(imageProperty(), imgW1))
 		);
 	}
@@ -341,6 +362,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 					resetFrog();
 					reducePoints();
 					noMove = false;
+					health--;
 				}, new KeyValue(imageProperty(), imgW1))
 		);
 	}
@@ -424,6 +446,19 @@ public class Frog extends ActingActor implements AnimatingActor {
 	}
 
 	/**
+	 * return true when ran out of health
+	 *
+	 * @return boolean
+	 */
+	public boolean getLose(){
+		return health <= 0;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	/**
 	 * get earned scores
 	 * @return scores
 	 */
@@ -449,18 +484,27 @@ public class Frog extends ActingActor implements AnimatingActor {
 	public void pause(){
 		extraScoresTimer.pause();
 		noMove = true;
+		if (frogStatus == FROG_STATUS.AnimatingDeath){
+			deathAnimation.pause();
+		}
 	}
 
 	@Override
 	public void resume(){
 		extraScoresTimer.play();
 		noMove = false;
+		if (frogStatus == FROG_STATUS.AnimatingDeath){
+			deathAnimation.play();
+		}
 	}
 
 	@Override
 	public void stop() {
 		extraScoresTimer.stop();
 		noMove = true;
+		if (frogStatus == FROG_STATUS.AnimatingDeath){
+			deathAnimation.stop();
+		}
 	}
 
 }

@@ -5,12 +5,8 @@ package com.tsb.frogger.world.actors;
  */
 public class GodFrog extends Frog {
 
-    /**
-     * constructor
-     * @param imageLink image url
-     */
-    public GodFrog(String imageLink, int layoutX, int layoutY) {
-        super(imageLink, layoutX, layoutY);
+    public GodFrog(DIRECTION direction, int layoutX, int layoutY, int health) {
+        super(direction, layoutX, layoutY, health);
     }
 
     /**

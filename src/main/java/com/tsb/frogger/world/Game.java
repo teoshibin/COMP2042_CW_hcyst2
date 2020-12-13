@@ -8,6 +8,7 @@ import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.world.actors.Frog;
+import com.tsb.frogger.world.widgets.HealthBar;
 import com.tsb.frogger.world.widgets.HomeBtn;
 import com.tsb.frogger.world.widgets.SettingBtn;
 import javafx.animation.AnimationTimer;
@@ -48,6 +49,8 @@ public class Game implements ControlledScreen {
      * progress bar denoting time remaining for extra score
      */
     private ProgressBar timeBar;
+
+    private HealthBar healthBar;
     /**
      * constructor
      *
@@ -69,17 +72,23 @@ public class Game implements ControlledScreen {
         gamePane.getChildren().add(timeBar);
 
         frog = new Frog(
-                pd.getExternal("image.actor.frog.up"),
+                Frog.DIRECTION.UP,
                 ConstantData.LAYOUT_X_FROG[0],
-                ConstantData.LAYOUT_Y_ACTOR[0][12]
+                ConstantData.LAYOUT_Y_ACTOR[0][12],
+                10
         );
         gamePane.add(frog);
+
+        //TODO move this to load component
+        healthBar = new HealthBar(pd.getExternal("image.icon.heart"), 160, 8, frog.getHealth(), 5);
+        healthBar.addStyleClass("main-font");
+        healthBar.addStyleClass("font-weight-bold");
+        gamePane.getChildren().add(healthBar);
 
         //god frogger (uncomment to use god frogger)
 //        frog = new GodFrog(pd.getExternal("image.actor.frog.up"), ConstantData.LAYOUT_X_FROG[0], ConstantData.LAYOUT_Y_ACTOR[0][12]);
 //        frog.instantWin(800);
 //        gamePane.add(frog);
-        // TODO - ADD HEALTH FOR FROGGER
     }
 
     /**
@@ -91,11 +100,11 @@ public class Game implements ControlledScreen {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                // TODO remove timer win checking in game
                 if (frog.updateScoreLabel()) {
                     setNumber(frog.getScores());
+                    healthBar.setHealth(frog.getHealth());
                 }
-                if (frog.getWin()) {
+                if (frog.getWin() || frog.getLose()) {
                     Game.this.stop();
                     myController.loadMarkdown(ConstantData.OVERLAY_ID_VICTORY, pd.getName("fxml.victory"));
                     myController.addOverlay(ConstantData.OVERLAY_ID_VICTORY);

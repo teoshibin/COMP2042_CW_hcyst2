@@ -55,6 +55,8 @@ public class LoadComponents {
      * add scoreboard
      */
     public static void addLabels(int level){
+        //TODO change all scattered labels into widgets
+
         // add score label
         Label scoreLabel = new Label();
         scoreLabel.setLayoutX(395);
@@ -88,7 +90,7 @@ public class LoadComponents {
                         30, 30, true, true)
         );
         alarmClock.setLayoutX(350);
-        alarmClock.setLayoutY(37);
+        alarmClock.setLayoutY(40);
         gamePane.getChildren().add(alarmClock);
     }
 
@@ -106,7 +108,7 @@ public class LoadComponents {
         ProgressBar progressBar = new ProgressBar(1);
         progressBar.setLayoutX(150);
         progressBar.setLayoutY(44);
-        progressBar.setPrefSize(195, 20);
+        progressBar.setPrefSize(195, 23);
         progressBar.getStyleClass().add("orange-bar");
         Rotate rotate = new Rotate();
         rotate.setPivotX(progressBar.getPrefWidth()/2);
