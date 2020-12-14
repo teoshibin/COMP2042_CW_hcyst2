@@ -7,10 +7,10 @@ import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.utils.game.ActorLoader;
-import com.tsb.frogger.graphics.world.MyStage;
-import com.tsb.frogger.graphics.actors.End;
-import com.tsb.frogger.graphics.actors.Frog;
-import com.tsb.frogger.graphics.widgets.*;
+import com.tsb.frogger.generation.world.MyStage;
+import com.tsb.frogger.generation.actors.End;
+import com.tsb.frogger.generation.actors.Frog;
+import com.tsb.frogger.generation.widgets.*;
 import javafx.animation.AnimationTimer;
 
 /**

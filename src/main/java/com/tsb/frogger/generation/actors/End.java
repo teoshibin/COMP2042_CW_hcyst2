@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.actors;
+package com.tsb.frogger.generation.actors;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;

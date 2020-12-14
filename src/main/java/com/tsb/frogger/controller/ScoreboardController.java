@@ -6,7 +6,7 @@ import com.tsb.frogger.utils.data.datamanager.*;
 import com.tsb.frogger.utils.data.datastructure.TableViewPlayer;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.utils.game.LevelSelector;
-import com.tsb.frogger.graphics.actors.Frog;
+import com.tsb.frogger.generation.actors.Frog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

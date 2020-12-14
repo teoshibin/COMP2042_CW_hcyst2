@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.actors;
+package com.tsb.frogger.generation.actors;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
@@ -469,7 +469,6 @@ public class Frog extends ActingActor implements AnimatingActor {
 	}
 
 
-	//TODO
 	public double getProgress(){
 		return (double)extraScores / MAX_EXTRA_SCORE;
 	}

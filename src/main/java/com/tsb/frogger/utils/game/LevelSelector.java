@@ -1,7 +1,7 @@
 package com.tsb.frogger.utils.game;
 
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
-import com.tsb.frogger.graphics.levels.*;
+import com.tsb.frogger.generation.levels.*;
 
 /**
  * link and load different classes of levels

@@ -4,8 +4,8 @@ import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
-import com.tsb.frogger.graphics.actors.*;
-import com.tsb.frogger.graphics.world.MyStage;
+import com.tsb.frogger.generation.actors.*;
+import com.tsb.frogger.generation.world.MyStage;
 
 /**
  * class contains static methods for loading gamePane components

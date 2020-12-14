@@ -1,9 +1,9 @@
-package com.tsb.frogger.graphics.actors;
+package com.tsb.frogger.generation.actors;
 
 import com.tsb.frogger.core.ConstantData;
 
 public abstract class ActingActor extends IntersectingActor{
-
+    //TODO ADD EAGLE ACTOR
     /**
      * move method for image
      * @param dx distance x

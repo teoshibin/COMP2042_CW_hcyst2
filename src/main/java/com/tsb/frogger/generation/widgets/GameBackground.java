@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.widgets;
+package com.tsb.frogger.generation.widgets;
 
 import com.tsb.frogger.core.ConstantData;
 import javafx.scene.image.Image;

@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.actors;
+package com.tsb.frogger.generation.actors;
 
 import javafx.scene.image.Image;
 

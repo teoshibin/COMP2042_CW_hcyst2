@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.levels;
+package com.tsb.frogger.generation.levels;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.utils.game.ActorLoader;

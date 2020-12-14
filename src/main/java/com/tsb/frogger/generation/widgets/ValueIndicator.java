@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.widgets;
+package com.tsb.frogger.generation.widgets;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

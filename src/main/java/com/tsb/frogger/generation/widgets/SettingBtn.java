@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.widgets;
+package com.tsb.frogger.generation.widgets;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
@@ -10,7 +10,6 @@ import javafx.scene.image.ImageView;
  * setting button
  */
 public class SettingBtn extends ImageView {
-    //TODO DONT PUT MOUSE HANDLING HERE
     /**
      * constructor
      * @param imageLink image url\

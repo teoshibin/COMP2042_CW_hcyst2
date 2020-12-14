@@ -1,4 +1,4 @@
-package com.tsb.frogger.graphics.widgets;
+package com.tsb.frogger.generation.widgets;
 
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
