@@ -102,7 +102,7 @@ public class Game implements ControlledScreen {
             public void handle(long now) {
                 if (frog.updateScoreLabel()) {
                     setNumber(frog.getScores());
-                    healthBar.setHealth(frog.getHealth());
+                    healthBar.updateHealth(frog.getHealth());
                 }
                 if (frog.getWin() || frog.getLose()) {
                     Game.this.stop();

@@ -121,7 +121,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 	/**
 	 * health
 	 */
-	private int health = 10;
+	private int health;
 	/**
 	 * true when not jumping false when jumping
 	 */
@@ -390,7 +390,6 @@ public class Frog extends ActingActor implements AnimatingActor {
 	private void resetFrog(){
 		setX(frogLayoutX);
 		setY(frogLayoutY + movementY);
-//		setImage(imgA1);
 		frogStatus = FROG_STATUS.ALIVE;
 		extraScores = MAX_EXTRA_SCORE;
 		if (extraScoresTimer != null){
