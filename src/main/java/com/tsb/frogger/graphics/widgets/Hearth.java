@@ -1,4 +1,4 @@
-package com.tsb.frogger.world.widgets;
+package com.tsb.frogger.graphics.widgets;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

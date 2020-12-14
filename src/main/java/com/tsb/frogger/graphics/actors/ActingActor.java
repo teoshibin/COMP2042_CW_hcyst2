@@ -1,4 +1,4 @@
-package com.tsb.frogger.world.actors;
+package com.tsb.frogger.graphics.actors;
 
 import com.tsb.frogger.core.ConstantData;
 

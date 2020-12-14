@@ -2,7 +2,7 @@ package com.tsb.frogger.utils.data.filemanager;
 
 import com.tsb.frogger.utils.data.datastructure.Player;
 import com.tsb.frogger.utils.data.datastructure.SavedData;
-import com.tsb.frogger.world.LevelSelector;
+import com.tsb.frogger.utils.game.LevelSelector;
 
 import java.io.IOException;
 import java.io.Serializable;

@@ -2,7 +2,7 @@ package com.tsb.frogger.core;
 
 import com.tsb.frogger.utils.data.datastructure.SavedData;
 import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
-import com.tsb.frogger.world.Game;
+import com.tsb.frogger.controller.GameController;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -19,7 +19,7 @@ public class RuntimeData {
     /**
      * game object
      */
-    public static Game game;
+    public static GameController gameController;
     /**
      * loaded assets path
      */

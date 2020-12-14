@@ -8,7 +8,7 @@ import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.data.datamanager.PlayersDao;
 import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
-import com.tsb.frogger.world.LevelSelector;
+import com.tsb.frogger.utils.game.LevelSelector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -74,14 +74,15 @@ public class VictoryController implements Initializable, ControlledScreen{
                 myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 Sound.stopMediaPlayer();
                 Sound.playMediaPlayer(pd.getExternal("sound.music.arcade"));
-                RuntimeData.game = null;
+                RuntimeData.gameController = null;
             }
             case "Continue" -> {
-                RuntimeData.game.setLevel(RuntimeData.game.getLevel() + 1);
+                int level = RuntimeData.gameController.getLevel();
+                RuntimeData.gameController = new GameController(level + 1);
                 myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);
                 myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
-                RuntimeData.game.start();
-                myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.game.gamePane, RuntimeData.game);
+                RuntimeData.gameController.start();
+                myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.gameController.gamePane, RuntimeData.gameController);
                 myController.setScreen(ConstantData.SCREEN_ID_GAME);
             }
         }
@@ -106,28 +107,28 @@ public class VictoryController implements Initializable, ControlledScreen{
         PlayersDao playersDao = new PlayersDaoImpl();
 
         usernameLabel.setText(playersDao.getPlayer(RuntimeData.selectedPlayerIndex).getUsername());
-        levelLabel.setText(Integer.toString(RuntimeData.game.getLevel()));
-        scoreLabel.setText(Integer.toString(RuntimeData.game.getScore()));
+        levelLabel.setText(Integer.toString(RuntimeData.gameController.getLevel()));
+        scoreLabel.setText(Integer.toString(RuntimeData.gameController.getScore()));
 
         try {
             // display NEW if successfully updated new high score
             newImageView.setVisible(
                     playersDao.updatePlayer(
                             RuntimeData.selectedPlayerIndex,
-                            RuntimeData.game.getLevel(),
-                            RuntimeData.game.getScore()
+                            RuntimeData.gameController.getLevel(),
+                            RuntimeData.gameController.getScore()
                     )
             );
             highestScoreLabel.setText(
                     String.valueOf(
-                            playersDao.getHighScore(RuntimeData.selectedPlayerIndex, RuntimeData.game.getLevel())
+                            playersDao.getHighScore(RuntimeData.selectedPlayerIndex, RuntimeData.gameController.getLevel())
                     )
             );
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        if(RuntimeData.game.getLevel() == LevelSelector.MAX_LEVEL){
+        if(RuntimeData.gameController.getLevel() == LevelSelector.MAX_LEVEL){
             continueBtn.setText("Done");
         }
     }

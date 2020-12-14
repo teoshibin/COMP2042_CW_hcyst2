@@ -1,4 +1,4 @@
-package com.tsb.frogger.world;
+package com.tsb.frogger.graphics.world;
 
 
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;

@@ -1,7 +1,6 @@
-package com.tsb.frogger.world.actors;
+package com.tsb.frogger.graphics.actors;
 
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.core.RuntimeData;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
@@ -379,7 +378,6 @@ public class Frog extends ActingActor implements AnimatingActor {
 					@Override
 					public void handle(ActionEvent event) {
 						extraScores--;
-						RuntimeData.game.setTimeBar(extraScores, MAX_EXTRA_SCORE);
 					}
 				})
 		);
@@ -453,6 +451,11 @@ public class Frog extends ActingActor implements AnimatingActor {
 		return health <= 0;
 	}
 
+	/**
+	 * get health
+	 *
+	 * @return health
+	 */
 	public int getHealth() {
 		return health;
 	}
@@ -463,6 +466,12 @@ public class Frog extends ActingActor implements AnimatingActor {
 	 */
 	public int getScores() {
 		return scores;
+	}
+
+
+	//TODO
+	public double getProgress(){
+		return (double)extraScores / MAX_EXTRA_SCORE;
 	}
 
 	/**

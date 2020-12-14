@@ -1,4 +1,4 @@
-package com.tsb.frogger.world.actors;
+package com.tsb.frogger.graphics.actors;
 
 /**
  * godlike version of animal (for debug purpose)

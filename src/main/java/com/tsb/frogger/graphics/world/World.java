@@ -1,8 +1,8 @@
-package com.tsb.frogger.world;
+package com.tsb.frogger.graphics.world;
 
-import com.tsb.frogger.world.actors.ActingActor;
-import com.tsb.frogger.world.actors.AnimatingActor;
-import com.tsb.frogger.world.actors.IntersectingActor;
+import com.tsb.frogger.graphics.actors.ActingActor;
+import com.tsb.frogger.graphics.actors.AnimatingActor;
+import com.tsb.frogger.graphics.actors.IntersectingActor;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

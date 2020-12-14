@@ -64,8 +64,8 @@ public class OptionController implements Initializable, ControlledScreen{
     public void handleBtnAction(ActionEvent actionEvent) {
         if(((Button)actionEvent.getSource()).getText().equals("Back")){
             myController.removeOverlay(ConstantData.OVERLAY_ID_OPTION);
-            if(RuntimeData.game != null){
-                RuntimeData.game.resume();
+            if(RuntimeData.gameController != null){
+                RuntimeData.gameController.resume();
             }
         }
     }

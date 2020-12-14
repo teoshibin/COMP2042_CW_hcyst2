@@ -63,14 +63,14 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 [Back to content](#content)  
     
 ### How to create new level
-1. Find [com.tsb.frogger.world.levels](src/main/java/com/tsb/frogger/world/levels) package.  
+1. Find [com.tsb.frogger.graphics.levels](src/main/java/com/tsb/frogger/world/levels) package.  
 2. Create a new class e.g. Level_999.java in this package
-    This class implements LevelBase, and the level designing will be written in this loadLevel method
+   This class implements LevelBase, and the level designing will be written in this loadLevel method
     ```java
-    package com.tsb.frogger.world.levels;
+    package com.tsb.frogger.graphics.levels;
     
     import com.tsb.frogger.core.ConstantData;
-    import com.tsb.frogger.world.LoadComponents;
+    import com.tsb.frogger.utils.game.ActorLoader;
     
     public class Level_999 implements LevelBase{
     
@@ -127,7 +127,7 @@ The focus of this repo will mainly be improving gameplay and adding features to 
    </tr>
    </table>
    
-4. Now navigate to [com.tsb.frogger.world](src/main/java/com/tsb/frogger/world) open [LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java).
+4. Now navigate to [com.tsb.frogger.graphics.world](src/main/java/com/tsb/frogger/world) open [LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java).
     ```java
     public class LevelSelector {
     

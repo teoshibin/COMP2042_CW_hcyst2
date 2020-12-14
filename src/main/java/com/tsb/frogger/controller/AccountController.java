@@ -19,20 +19,20 @@ import java.util.ResourceBundle;
 /**
  * account controller for GUI
  */
-public class AccountController implements Initializable, ControlledScreen{
-    /**
-     * hold player index while editing
-     */
-    private int holdIndex;
-    /**
-     * main screen controller
-     */
-    ScreensController myController;
+public class AccountController implements Initializable, ControlledScreen {
     /**
      * name text field
      */
     @FXML
     public TextField nameTextField;
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
+    /**
+     * hold player index while editing
+     */
+    private int holdIndex;
     /**
      * name list view
      */
@@ -51,7 +51,8 @@ public class AccountController implements Initializable, ControlledScreen{
 
     /**
      * initialize account page gui
-     * @param location location
+     *
+     * @param location  location
      * @param resources resources
      */
     @Override
@@ -66,6 +67,7 @@ public class AccountController implements Initializable, ControlledScreen{
 
     /**
      * handle button event
+     *
      * @param actionEvent event
      * @throws IOException exception
      */
@@ -73,7 +75,7 @@ public class AccountController implements Initializable, ControlledScreen{
         PlayersDao playersDao = new PlayersDaoImpl();
         PropertiesDao pd = new PropertiesDaoImpl();
         Convertor convertor = new Convertor();
-        switch (((Button)actionEvent.getSource()).getText()){
+        switch (((Button) actionEvent.getSource()).getText()) {
             case "Add" -> {
                 if (playersDao.addPlayer(nameTextField.getText())) {
                     nameTextField.setText("");
@@ -82,17 +84,17 @@ public class AccountController implements Initializable, ControlledScreen{
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
             }
-            case "Delete"->{
-                if(playersDao.deletePlayer(nameListView.getSelectionModel().getSelectedIndex())){
+            case "Delete" -> {
+                if (playersDao.deletePlayer(nameListView.getSelectionModel().getSelectedIndex())) {
                     nameListView.getSelectionModel().select(0);
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.success"));
                 } else {
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
             }
-            case "Edit"->{
+            case "Edit" -> {
                 holdIndex = nameListView.getSelectionModel().getSelectedIndex();
-                if(holdIndex > 0){
+                if (holdIndex > 0) {
                     nameTextField.setText(nameListView.getSelectionModel().getSelectedItem());
                     editMode(true);
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.pageFlip"));
@@ -100,8 +102,8 @@ public class AccountController implements Initializable, ControlledScreen{
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
                 }
             }
-            case "Done"->{
-                if (playersDao.updatePlayer(holdIndex, nameTextField.getText())){
+            case "Done" -> {
+                if (playersDao.updatePlayer(holdIndex, nameTextField.getText())) {
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.success"));
                 } else {
                     Sound.playAudioClip(pd.getExternal("sound.clip.ui.error"));
@@ -109,16 +111,16 @@ public class AccountController implements Initializable, ControlledScreen{
                 nameTextField.setText("");
                 editMode(false);
             }
-            case "Cancel"->{
+            case "Cancel" -> {
                 editMode(false);
                 nameTextField.setText("");
                 Sound.playAudioClip(pd.getExternal("sound.clip.ui.pageFlip"));
             }
-            case "Enter"->{
+            case "Enter" -> {
                 // save runtime data
                 RuntimeData.selectedPlayerIndex = nameListView.getSelectionModel().getSelectedIndex();
 
-                if (RuntimeData.selectedPlayerIndex < 0){
+                if (RuntimeData.selectedPlayerIndex < 0) {
                     RuntimeData.selectedPlayerIndex = 0;
                 }
 
@@ -137,21 +139,13 @@ public class AccountController implements Initializable, ControlledScreen{
     }
 
     /**
-     * play button pop up sound effect
-     * @param mouseEvent mouse event
-     */
-    public void enterBtn(MouseEvent mouseEvent) {
-        PropertiesDao pd = new PropertiesDaoImpl();
-        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
-    }
-
-    /**
      * change gui when enter username edit mode
+     *
      * @param bool edit mode state
      */
-    private void editMode(boolean bool){
-        if (bool){
-            if (addBtn.getStyleClass().get(3).equals("addBtn")){
+    private void editMode(boolean bool) {
+        if (bool) {
+            if (addBtn.getStyleClass().get(3).equals("addBtn")) {
                 addBtn.setText("Done");
                 addBtn.getStyleClass().remove("addBtn");
                 addBtn.getStyleClass().add("doneBtn");
@@ -161,7 +155,7 @@ public class AccountController implements Initializable, ControlledScreen{
                 deleteBtn.getStyleClass().add("cancelBtn");
             }
         } else {
-            if (!addBtn.getStyleClass().get(3).equals("addBtn")){
+            if (!addBtn.getStyleClass().get(3).equals("addBtn")) {
                 addBtn.setText("Add");
                 addBtn.getStyleClass().remove("doneBtn");
                 addBtn.getStyleClass().add("addBtn");
@@ -174,11 +168,23 @@ public class AccountController implements Initializable, ControlledScreen{
     }
 
     /**
+     * play button pop up sound effect
+     *
+     * @param mouseEvent mouse event
+     */
+    public void enterBtn(MouseEvent mouseEvent) {
+        PropertiesDao pd = new PropertiesDaoImpl();
+        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
+    }
+
+    /**
      * set main screen controller
+     *
      * @param screenPage screen page
      */
     @Override
     public void setScreenParent(ScreensController screenPage) {
         myController = screenPage;
     }
+
 }

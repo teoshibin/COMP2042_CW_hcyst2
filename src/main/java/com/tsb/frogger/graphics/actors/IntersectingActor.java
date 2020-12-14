@@ -1,6 +1,6 @@
-package com.tsb.frogger.world.actors;
+package com.tsb.frogger.graphics.actors;
 
-import com.tsb.frogger.world.World;
+import com.tsb.frogger.graphics.world.World;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;

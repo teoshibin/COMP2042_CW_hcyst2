@@ -6,8 +6,7 @@ import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
 import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.sound.Sound;
-import com.tsb.frogger.world.Game;
-import com.tsb.frogger.world.LevelSelector;
+import com.tsb.frogger.utils.game.LevelSelector;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -39,9 +38,11 @@ public class SelectLevelController implements Initializable, ControlledScreen{
             case "Back" -> myController.setScreen(ConstantData.SCREEN_ID_MENU);
             case "Select" -> {
                 Sound.stopMediaPlayer();
-                RuntimeData.game = new Game(dropDown.getSelectionModel().getSelectedIndex() + 1);
-                RuntimeData.game.start();
-                myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.game.gamePane, RuntimeData.game);
+                int level = dropDown.getSelectionModel().getSelectedIndex() + 1;
+
+                RuntimeData.gameController = new GameController(level);
+                RuntimeData.gameController.start();
+                myController.loadScreen(ConstantData.SCREEN_ID_GAME, RuntimeData.gameController.gamePane, RuntimeData.gameController);
                 myController.setScreen(ConstantData.SCREEN_ID_GAME);
             }
         }

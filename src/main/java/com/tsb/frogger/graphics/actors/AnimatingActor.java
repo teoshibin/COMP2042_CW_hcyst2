@@ -1,4 +1,4 @@
-package com.tsb.frogger.world.actors;
+package com.tsb.frogger.graphics.actors;
 
 public interface AnimatingActor {
     void pause();

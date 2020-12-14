@@ -24,10 +24,6 @@ import java.util.ResourceBundle;
  */
 public class MenuController implements Initializable, ControlledScreen {
     /**
-     * main screen controller
-     */
-    ScreensController myController;
-    /**
      * anchor pane
      */
     @FXML
@@ -37,6 +33,10 @@ public class MenuController implements Initializable, ControlledScreen {
      */
     @FXML
     public Label usernameLabel;
+    /**
+     * main screen controller
+     */
+    ScreensController myController;
 
     /**
      * handle main menu GUI button event

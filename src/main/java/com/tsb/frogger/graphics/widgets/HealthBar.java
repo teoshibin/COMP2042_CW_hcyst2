@@ -1,4 +1,4 @@
-package com.tsb.frogger.world.widgets;
+package com.tsb.frogger.graphics.widgets;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -57,6 +57,11 @@ public class HealthBar extends Region {
         setHealth(health);
 
         // styles
+        symbolLbl.getStyleClass().add("main-font");
+        symbolLbl.getStyleClass().add("font-weight-bold");
+        overflowHealthLbl.getStyleClass().add("main-font");
+        overflowHealthLbl.getStyleClass().add("font-weight-bold");
+
         innerLeft.setBackground(Background.EMPTY);
         innerLeft.setAlignment(Pos.CENTER_LEFT);
         innerLeft.setSpacing(5);
