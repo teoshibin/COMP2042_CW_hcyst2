@@ -7,9 +7,8 @@ import com.tsb.frogger.utils.game.LevelSelector;
 import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.NoSuchFileException;
-import java.util.Properties;
 
-public class SaveGameManager extends FileManager {
+public class SaveGameManager extends SerialManager {
 
     public static SavedData loadGame(String filename) throws IOException, ClassNotFoundException {
         SavedData loadedData;
@@ -24,10 +23,6 @@ public class SaveGameManager extends FileManager {
 
     public static void saveGame(Serializable data, String filename) throws IOException {
         saveSerialized(data, filename);
-    }
-
-    public static Properties loadAssets(String name) throws IOException {
-        return loadProperties(name);
     }
 
     private static SavedData createSaveFile(String filename) throws IOException {

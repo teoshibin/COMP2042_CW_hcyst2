@@ -1,8 +1,8 @@
 package com.tsb.frogger.core;
 
 import com.tsb.frogger.controller.ScreensController;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.AssetsDao;
+import com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -31,25 +31,25 @@ public class Launcher extends Application {
         //initialize game data and load assets
         RuntimeData.init(ConstantData.SAVE_FILE_PATH, ConstantData.ASSET_PROPERTY_PATH);
 
-        PropertiesDao pd = new PropertiesDaoImpl();
+        AssetsDao ad = new AssetsDaoImpl();
 
         //main screen controller
         ScreensController mainContainer = new ScreensController();
-        mainContainer.loadMarkdown(ConstantData.SCREEN_ID_ACCOUNT, pd.getName("fxml.account"));
+        mainContainer.loadMarkdown(ConstantData.SCREEN_ID_ACCOUNT, ad.getName("fxml.account"));
         mainContainer.setScreen(ConstantData.SCREEN_ID_ACCOUNT);
 
         // root node
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(pd.getExternal("style.css.standard"));
+        scene.getStylesheets().add(ad.getExternal("style.css.standard"));
 
         // main stage
         primaryStage.setScene(scene);
         primaryStage.setTitle("Frogger");
         primaryStage.setResizable(false);
         primaryStage.setMaximized(false);
-        primaryStage.getIcons().add(new Image(pd.getExternal("image.icon.frog")));
+        primaryStage.getIcons().add(new Image(ad.getExternal("image.icon.frog")));
         primaryStage.show();
     }
 }

@@ -2,8 +2,8 @@ package com.tsb.frogger.controller;
 
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.AssetsDao;
+import com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl;
 import com.tsb.frogger.utils.exceptions.LevelNotFoundException;
 import com.tsb.frogger.utils.data.datamanager.PlayersDao;
 import com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl;
@@ -65,7 +65,7 @@ public class VictoryController implements Initializable, ControlledScreen{
      * @param actionEvent event
      */
     public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {
-        PropertiesDao pd = new PropertiesDaoImpl();
+        AssetsDao ad = new AssetsDaoImpl();
         switch (((Button) actionEvent.getSource()).getText()) {
             case "Leave", "Done" -> {
                 myController.removeOverlay(ConstantData.OVERLAY_ID_VICTORY);
@@ -73,7 +73,7 @@ public class VictoryController implements Initializable, ControlledScreen{
                 myController.unloadScreen(ConstantData.SCREEN_ID_GAME);
                 myController.unloadScreen(ConstantData.OVERLAY_ID_VICTORY);
                 Sound.stopMediaPlayer();
-                Sound.playMediaPlayer(pd.getExternal("sound.music.arcade"));
+                Sound.playMediaPlayer(ad.getExternal("sound.music.arcade"));
                 RuntimeData.gameController = null;
             }
             case "Continue" -> {
@@ -93,8 +93,8 @@ public class VictoryController implements Initializable, ControlledScreen{
      * @param mouseEvent event
      */
     public void MouseEnter(MouseEvent mouseEvent) {
-        PropertiesDao pd = new PropertiesDaoImpl();
-        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
+        AssetsDao ad = new AssetsDaoImpl();
+        Sound.playAudioClip(ad.getExternal("sound.clip.ui.button"));
     }
 
     /**

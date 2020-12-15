@@ -1,7 +1,7 @@
 package com.tsb.frogger.controller;
 
-import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.AssetsDao;
+import com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import com.tsb.frogger.core.ConstantData;
 import com.tsb.frogger.core.RuntimeData;
@@ -75,8 +75,8 @@ public class OptionController implements Initializable, ControlledScreen{
      * @param mouseEvent mouse event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        PropertiesDao pd = new PropertiesDaoImpl();
-        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
+        AssetsDao ad = new AssetsDaoImpl();
+        Sound.playAudioClip(ad.getExternal("sound.clip.ui.button"));
     }
 
     /**

@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.openjfx.javafxplugin' version '0.0.9'
     id 'application'
+//    id 'edu.sc.seis.launch4j' version '2.4.9'
 }
 
 group 'com.tsb'
@@ -34,6 +35,28 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+
+//launch4j {
+////    headerType = "console"
+////    mainClassName = "$mainClassName"
+//    icon = "${projectDir}/icons/frogger.ico"
+//    bundledJrePath = "jdk-15.0.1+9-jre"
+//    bundledJre64Bit = true
+//}
+//
+//task packageExecutableDistribution(type: Zip) {
+//    archiveFileName = "frogger.zip"
+//    destinationDirectory = file("$buildDir/distExecutable")
+//    from "$buildDir/launch4j"
+//}
+//
+//task addJreToDistributable(type: Copy) {
+//    from zipTree("E:\\jre\\OpenJDK15U-jre_x64_windows_hotspot_15.0.1_9.zip")
+//    destinationDir = file("$buildDir/launch4j")
+//}
+//
+//packageExecutableDistribution.dependsOn createExe
+//packageExecutableDistribution.dependsOn addJreToDistributable
 
 //sourceSets.main {
 //    java {

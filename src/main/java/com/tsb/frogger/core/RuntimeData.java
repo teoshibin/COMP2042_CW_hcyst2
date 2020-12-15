@@ -1,8 +1,9 @@
 package com.tsb.frogger.core;
 
-import com.tsb.frogger.utils.data.datastructure.SavedData;
-import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
 import com.tsb.frogger.controller.GameController;
+import com.tsb.frogger.utils.data.datastructure.SavedData;
+import com.tsb.frogger.utils.data.filemanager.AssetsPropertiesManager;
+import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -28,7 +29,7 @@ public class RuntimeData {
     public static void init(String SaveFileName, String assetsFileName){
 
         try {
-            assets = SaveGameManager.loadAssets(assetsFileName);
+            assets = AssetsPropertiesManager.loadProperties(assetsFileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,8 +1,8 @@
 package com.tsb.frogger.generation.actors;
 
 import com.tsb.frogger.core.ConstantData;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.AssetsDao;
+import com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl;
 import com.tsb.frogger.utils.sound.Sound;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -80,7 +80,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 	/**
 	 * assets dao
 	 */
-	PropertiesDao pd;
+	AssetsDao ad;
 	/**
 	 * max score
 	 */
@@ -188,25 +188,25 @@ public class Frog extends ActingActor implements AnimatingActor {
 
 		this.health = health;
 
-		pd = new PropertiesDaoImpl();
+		ad = new AssetsDaoImpl();
 
-		imgW1 = new Image(pd.getExternal("image.actor.frog.up"), imgSize, imgSize, true, true);
-		imgA1 = new Image(pd.getExternal("image.actor.frog.left"), imgSize, imgSize, true, true);
-		imgS1 = new Image(pd.getExternal("image.actor.frog.down"), imgSize, imgSize, true, true);
-		imgD1 = new Image(pd.getExternal("image.actor.frog.right"), imgSize, imgSize, true, true);
-		imgW2 = new Image(pd.getExternal("image.actor.frog.up.jump"), imgSize, imgSize, true, true);
-		imgA2 = new Image(pd.getExternal("image.actor.frog.left.jump"), imgSize, imgSize, true, true);
-		imgS2 = new Image(pd.getExternal("image.actor.frog.down.jump"), imgSize, imgSize, true, true);
-		imgD2 = new Image(pd.getExternal("image.actor.frog.right.jump"), imgSize, imgSize, true, true);
+		imgW1 = new Image(ad.getExternal("image.actor.frog.up"), imgSize, imgSize, true, true);
+		imgA1 = new Image(ad.getExternal("image.actor.frog.left"), imgSize, imgSize, true, true);
+		imgS1 = new Image(ad.getExternal("image.actor.frog.down"), imgSize, imgSize, true, true);
+		imgD1 = new Image(ad.getExternal("image.actor.frog.right"), imgSize, imgSize, true, true);
+		imgW2 = new Image(ad.getExternal("image.actor.frog.up.jump"), imgSize, imgSize, true, true);
+		imgA2 = new Image(ad.getExternal("image.actor.frog.left.jump"), imgSize, imgSize, true, true);
+		imgS2 = new Image(ad.getExternal("image.actor.frog.down.jump"), imgSize, imgSize, true, true);
+		imgD2 = new Image(ad.getExternal("image.actor.frog.right.jump"), imgSize, imgSize, true, true);
 
-		crashDeath1 = new Image(pd.getExternal("image.actor.frog.crash.1"), imgSize, imgSize, true, true);
-		crashDeath2 = new Image(pd.getExternal("image.actor.frog.crash.2"), imgSize, imgSize, true, true);
-		crashDeath3 = new Image(pd.getExternal("image.actor.frog.crash.3"), imgSize, imgSize, true, true);
+		crashDeath1 = new Image(ad.getExternal("image.actor.frog.crash.1"), imgSize, imgSize, true, true);
+		crashDeath2 = new Image(ad.getExternal("image.actor.frog.crash.2"), imgSize, imgSize, true, true);
+		crashDeath3 = new Image(ad.getExternal("image.actor.frog.crash.3"), imgSize, imgSize, true, true);
 
-		drownDeath1 = new Image(pd.getExternal("image.actor.frog.drown.1"), imgSize, imgSize, true, true);
-		drownDeath2 = new Image(pd.getExternal("image.actor.frog.drown.2"), imgSize, imgSize, true, true);
-		drownDeath3 = new Image(pd.getExternal("image.actor.frog.drown.3"), imgSize, imgSize, true, true);
-		drownDeath4 = new Image(pd.getExternal("image.actor.frog.drown.4"), imgSize, imgSize, true, true);
+		drownDeath1 = new Image(ad.getExternal("image.actor.frog.drown.1"), imgSize, imgSize, true, true);
+		drownDeath2 = new Image(ad.getExternal("image.actor.frog.drown.2"), imgSize, imgSize, true, true);
+		drownDeath3 = new Image(ad.getExternal("image.actor.frog.drown.3"), imgSize, imgSize, true, true);
+		drownDeath4 = new Image(ad.getExternal("image.actor.frog.drown.4"), imgSize, imgSize, true, true);
 
 		switch (direction){
 			case UP -> setImage(imgW1);
@@ -311,7 +311,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 							scores += extraScores;
 							changeScore = true;
 							maxDistancePerRound = ConstantData.SIZE_BACKGROUND[1];
-							getIntersectingObjects(End.class).get(0).setEnd();
+							getIntersectingObjects(End.class).get(0).activate();
 							end++;
 							resetFrog();
 						}
@@ -324,13 +324,13 @@ public class Frog extends ActingActor implements AnimatingActor {
 			}
 			case CRASHED -> {
 				frogStatus = FROG_STATUS.AnimatingDeath;
-				Sound.playAudioClip(pd.getExternal("sound.clip.actor.frog.crashed"));
+				Sound.playAudioClip(ad.getExternal("sound.clip.actor.frog.crashed"));
 				deathAnimation = createCrashDeathTimeline();
 				deathAnimation.play();
 			}
 			case DROWNED -> {
 				frogStatus = FROG_STATUS.AnimatingDeath;
-				Sound.playAudioClip(pd.getExternal("sound.clip.actor.frog.drowned"));
+				Sound.playAudioClip(ad.getExternal("sound.clip.actor.frog.drowned"));
 				deathAnimation = createDrownedDeathTimeline();
 				deathAnimation.play();
 			}

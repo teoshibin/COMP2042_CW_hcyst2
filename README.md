@@ -32,13 +32,15 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 ### Method 1
 1. Clone this repo
 2. Unzip the folder
-3. In command prompt use `cd $YOUR_PATH` navigate into cloned folder
-4. type in `gradlew run` to build and run the game
+3. In your command prompt or your terminal use `cd $YOUR_PATH` navigate into cloned folder
+4. type in code `gradlew run` or `./gradlew run` depending on your OS to build and run the game
+
 ### Method 2
 1. Download Released jar
 2. Download JavaFx
 3. In command prompt use `cd $YOUR_PATH` navigate into folder
 4. Run this code where specifying your own javafx/lib folder path into `$PATH_TO_JavaFX`:
+
    ```shell
    java --module-path {$PATH_TO_JavaFX} --add-modules javafx.controls,javafx.fxml,javafx.media -jar frogger-1.0.jar
    ```
@@ -63,101 +65,9 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 [Back to content](#content)  
     
 ### How to create new level
-1. Find [com.tsb.frogger.generation.levels](src/main/java/com/tsb/frogger/world/levels) package.  
-2. Create a new class e.g. Level_999.java in this package
-   This class implements LevelBase, and the level designing will be written in this loadLevel method
-    ```java
-    package com.tsb.frogger.generation.levels;
-    
-    import com.tsb.frogger.core.ConstantData;
-    import com.tsb.frogger.utils.game.ActorLoader;
-    
-    public class Level_999 implements LevelBase{
-    
-        @Override
-        public void loadLevel() {
-            // <- load components here
-        }
-    }
-    ```
-3. Now add some actors. For example adding a long log.  
-   
-    ```java
-    // LoadComponents.addActor(layout x, layout y, moving direction & speed);
-    LoadComponents.addLongLog(0, ConstantData.LAYOUT_Y_ACTOR[0][1], -0.75);
-    ```
-    Layout x is fully customizable, however layout y is defined in constant as 
-    ```java
-    ConstantData.LAYOUT_Y_ACTOR[0][index]
-    ```
-    Here is all the available actors in table 1, simply replace above method with one of these e.g. addShortLog.  
-    All possible index and corresponding location in the game is in table 2, assign shown index to above constant array for position.
-      
-   <table align="center">
-   <tr>
-    <th>Table 1</th>
-    <th>Table 2</th>
-   </tr>
-   <tr>
-   <td>
-   
-   | Actors     | Type     |
-   |------------|----------|
-   | ShortLog   | pathway  |
-   | MediumLog  | pathway  |
-   | LongLog    | pathway  |
-   | WetTurtle  | both     |
-   | Turtle     | pathway  |
-   | Car        | obstacle |
-   | ShortTruck | obstacle |
-   | LongTruck  | obstacle |
-   
-   </td>
-   <td>
-   
-   | Index | Position |
-   |-------|----------|
-   | 0     | End      |
-   | 1~5   | River    |
-   | 6     | Grass    |
-   | 7~11  | Road     |
-   | 12    | Start    |
-   
-   </td>
-   </tr>
-   </table>
-   
-4. Now navigate to [com.tsb.frogger.generation.world](src/main/java/com/tsb/frogger/world) open [LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java).
-    ```java
-    public class LevelSelector {
-    
-        public static final int MAX_LEVEL = 5; // <- add one into this value 
-                                               // e.g. 6
-    
-        public static void selectLevel(MyStage gamePane, int level) throws LevelNotFoundException {
-            LevelBase myLevel;
-            switch (level) {
-                case 1 -> myLevel = new Level_001();
-                case 2 -> myLevel = new Level_002();
-                case 3 -> myLevel = new Level_003();
-                case 4 -> myLevel = new Level_004();
-                case 5 -> myLevel = new Level_005();
-                // <- add your level here 
-                // e.g. case 6 -> myLevel = new Level_999();
-                default -> throw new LevelNotFoundException("Level not found or Unlinked level, please check linking in LevelSelector");
-            }
-            Objects.requireNonNull(myLevel).loadLevel(gamePane);
-        }
-    }
-    ```
-5. Done !  
 
-6. For better understanding  
-   [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
-   [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
-   
-   >**Note** : Removing levels might corrupt the save file, when it does simply remove the old `saveGame.ser` save file
-    
+[Here](HowToAddLevel.md) is the method to add new levels
+
 [Back to content](#content)  
 
 ## Features

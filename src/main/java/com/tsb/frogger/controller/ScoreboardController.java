@@ -118,8 +118,8 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * @param mouseEvent event
      */
     public void enterBtn(MouseEvent mouseEvent) {
-        PropertiesDao pd = new PropertiesDaoImpl();
-        Sound.playAudioClip(pd.getExternal("sound.clip.ui.button"));
+        AssetsDao ad = new AssetsDaoImpl();
+        Sound.playAudioClip(ad.getExternal("sound.clip.ui.button"));
     }
 
     /**
@@ -128,8 +128,8 @@ public class ScoreboardController implements Initializable, ControlledScreen{
      * @param mouseEvent event
      */
     public void clickBtn(MouseEvent mouseEvent) {
-        PropertiesDao pd = new PropertiesDaoImpl();
-        Sound.playAudioClip(pd.getExternal("sound.clip.ui.pageFlip"));
+        AssetsDao ad = new AssetsDaoImpl();
+        Sound.playAudioClip(ad.getExternal("sound.clip.ui.pageFlip"));
     }
 
     /**

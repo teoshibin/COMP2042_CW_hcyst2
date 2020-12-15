@@ -1,7 +1,7 @@
 package com.tsb.frogger.generation.actors;
 
-import com.tsb.frogger.utils.data.datamanager.PropertiesDao;
-import com.tsb.frogger.utils.data.datamanager.PropertiesDaoImpl;
+import com.tsb.frogger.utils.data.datamanager.AssetsDao;
+import com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -46,11 +46,11 @@ public class WetTurtle extends ActingActor implements AnimatingActor{
 			setScaleY(-1);
 		}
 
-		PropertiesDao pd = new PropertiesDaoImpl();
-		Image turtle1 = new Image(pd.getExternal("image.actor.wetTurtle.1"), w, h, true, true);
-		Image turtle2 = new Image(pd.getExternal("image.actor.wetTurtle.2"), w, h, true, true);
-		Image turtle3 = new Image(pd.getExternal("image.actor.wetTurtle.3"), w, h, true, true);
-		Image turtle4 = new Image(pd.getExternal("image.actor.wetTurtle.4"), w, h, true, true);
+		AssetsDao ad = new AssetsDaoImpl();
+		Image turtle1 = new Image(ad.getExternal("image.actor.wetTurtle.1"), w, h, true, true);
+		Image turtle2 = new Image(ad.getExternal("image.actor.wetTurtle.2"), w, h, true, true);
+		Image turtle3 = new Image(ad.getExternal("image.actor.wetTurtle.3"), w, h, true, true);
+		Image turtle4 = new Image(ad.getExternal("image.actor.wetTurtle.4"), w, h, true, true);
 
 		// create different animation delay for each turtle (1.6 ~ 2.6 sec per image assuming speed equals to 1)
 		int delay = (int)((Math.round(Math.random() * 1000)/2 + 800)/Math.abs(speed/2));

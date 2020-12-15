@@ -4,7 +4,7 @@ import com.tsb.frogger.core.RuntimeData;
 
 import java.net.URL;
 
-public class PropertiesDaoImpl implements PropertiesDao {
+public class AssetsDaoImpl implements AssetsDao {
 
     @Override
     public String getName(String propertyKey) {
