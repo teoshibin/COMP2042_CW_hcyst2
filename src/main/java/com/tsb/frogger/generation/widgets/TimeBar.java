@@ -9,10 +9,26 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.transform.Rotate;
 
+/**
+ * time bar component
+ */
 public class TimeBar extends Region {
-
+    /**
+     * progress bar
+     */
     private final ProgressBar progressBar;
 
+    /**
+     * constructor
+     *
+     * @param imagePath icon image path
+     * @param layoutX layout x
+     * @param layoutY layout y
+     * @param imageSize icon image size
+     * @param barWidth bar width
+     * @param barHeight bar height
+     * @param flip bar flip direction
+     */
     public TimeBar(String imagePath, int layoutX, int layoutY, int imageSize,
                    int barWidth, int barHeight, boolean flip){
 
@@ -48,6 +64,11 @@ public class TimeBar extends Region {
         this.getChildren().addAll(outer);
     }
 
+    /**
+     * get progress bar
+     *
+     * @return progress bar
+     */
     public ProgressBar getProgressBar() {
         return progressBar;
     }

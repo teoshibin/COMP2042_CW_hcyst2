@@ -5,6 +5,9 @@ import com.tsb.frogger.utils.data.datastructure.Player;
 
 import java.util.ArrayList;
 
+/**
+ * validation class for input validation
+ */
 class Validator {
 
     /**

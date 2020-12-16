@@ -5,6 +5,9 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
+/**
+ * actor that intersect
+ */
 public abstract class IntersectingActor extends ImageView {
 
     /**

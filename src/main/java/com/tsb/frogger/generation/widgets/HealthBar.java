@@ -6,6 +6,9 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
+/**
+ * health bar for health display
+ */
 public class HealthBar extends Region {
 
     /**
@@ -120,7 +123,7 @@ public class HealthBar extends Region {
 
         innerLeft.getChildren().clear();
         for (int i = 0; i < Math.min(newHealth, maxIcon); i++){
-            innerLeft.getChildren().add(new Hearth(imagePath));
+            innerLeft.getChildren().add(new Heart(imagePath));
         }
         symbolLbl.setText(newHealth > maxIcon ? "+" : "");
         overflowHealthLbl.setText(difHealth > 0 ? String.valueOf(difHealth): "");
@@ -138,7 +141,7 @@ public class HealthBar extends Region {
     private void addHeart(int numHeart){
         if (numHeart > 0){
             for (int i = 0; i < numHeart; i++){
-                innerLeft.getChildren().add(new Hearth(imagePath));
+                innerLeft.getChildren().add(new Heart(imagePath));
             }
         } else if (numHeart < 0){
             for (int i = 0; i > numHeart; i--){

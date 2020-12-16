@@ -1,5 +1,8 @@
 package com.tsb.frogger.core;
 
+/**
+ * constant data
+ */
 public class ConstantData {
 
     // screen page id
@@ -31,7 +34,9 @@ public class ConstantData {
     public static final int SIZE_CAR = 45;
     public static final int SIZE_FROG = 36;
 
-    // actor moving bound
+    /**
+     * actor moving bound
+     */
     public static final int[] ACTOR_MOVING_BOUND = {-270,810};
 
     /**

@@ -1,0 +1,12 @@
+com.tsb.frogger.controller
+com.tsb.frogger.core
+com.tsb.frogger.generation.actors
+com.tsb.frogger.generation.levels
+com.tsb.frogger.generation.widgets
+com.tsb.frogger.generation.world
+com.tsb.frogger.utils.data.datamanager
+com.tsb.frogger.utils.data.datastructure
+com.tsb.frogger.utils.data.filemanager
+com.tsb.frogger.utils.exceptions
+com.tsb.frogger.utils.game
+com.tsb.frogger.utils.sound

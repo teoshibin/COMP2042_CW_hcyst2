@@ -9,14 +9,30 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.fail;
 
+/**
+ * convertor class testing
+ */
 public class ConvertorTest {
-
+    /**
+     * input 1
+     */
     ArrayList<Integer> input1;
+    /**
+     * input 2
+     */
     ArrayList<String> input2;
+    /**
+     * processed input 1 and input 2
+     */
     ArrayList<TestStructure> expected;
-
+    /**
+     * convertor instance
+     */
     Convertor convertor;
 
+    /**
+     * set up dummy value
+     */
     @Before
     public void setUp() {
         input1 = new ArrayList<>();
@@ -32,6 +48,9 @@ public class ConvertorTest {
 
     }
 
+    /**
+     * test zip two method
+     */
     @Test
     public void zipTwo() {
         ArrayList<TestStructure> result = convertor.zipTwo(TestStructure.class, Integer.class, String.class, input1, input2);
@@ -44,6 +63,9 @@ public class ConvertorTest {
         }
     }
 
+    /**
+     * test convert method
+     */
     @Test
     public void convertArrayListToObservableList() {
         ObservableList<Integer> result1 = convertor.convertArrayListToObservableList(input1);

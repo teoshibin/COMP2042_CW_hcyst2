@@ -16,13 +16,28 @@ public class ActorLoader {
      * temp MyStage for loading levels
      */
     private MyStage gamePane;
+    /**
+     * level
+     */
     private int level;
 
+    /**
+     * actor loader constructor
+     *
+     * @param gamePane game screen
+     * @param level level
+     */
     public ActorLoader(MyStage gamePane, int level) {
         this.gamePane = gamePane;
         this.level = level;
     }
 
+    /**
+     * load actor form selected level
+     *
+     * @return screen
+     * @throws LevelNotFoundException fail to load level
+     */
     public MyStage loadActors() throws LevelNotFoundException {
         return LevelSelector.selectLevel(this, level).gamePane;
     }

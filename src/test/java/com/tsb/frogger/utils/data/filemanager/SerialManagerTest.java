@@ -7,23 +7,30 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Properties;
 
 import static org.junit.Assert.fail;
 
+/**
+ * test file access serial manager class
+ */
 public class SerialManagerTest {
-
+    /**
+     * serializable testing data structure
+     */
     TestStructure saveData;
-    Properties p;
-    String[] keys;
-    String[] strings;
 
+    /**
+     * set up dummy data
+     */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         saveData = new TestStructure(9999,"something");
 
     }
 
+    /**
+     * save dummy data to file
+     */
     @Test
     public void saveSerialized() {
         try {
@@ -34,6 +41,9 @@ public class SerialManagerTest {
         }
     }
 
+    /**
+     * laod dummy data from file
+     */
     @Test
     public void loadSerialized() {
         try {
@@ -45,6 +55,9 @@ public class SerialManagerTest {
         }
     }
 
+    /**
+     * tear down remove created save file
+     */
     @After
     public void tearDown(){
         File file = new File("testSave.ser");

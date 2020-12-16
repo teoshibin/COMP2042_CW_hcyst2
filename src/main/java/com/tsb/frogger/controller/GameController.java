@@ -18,22 +18,60 @@ import javafx.animation.AnimationTimer;
  */
 public class GameController implements ControlledScreen {
 
+    /**
+     * main controller
+     */
     ScreensController myController;
+    /**
+     * game view
+     */
     public MyStage gamePane;
+    /**
+     * level
+     */
     private int level;
+    /**
+     * timer for win or lose checking and indicator updating
+     */
     private AnimationTimer timer;
+    /**
+     * frog player
+     */
     private Frog frog;
+    /**
+     * score indicator
+     */
     private ValueIndicator scoreIndicator;
+    /**
+     * time progress bar
+     */
     private TimeBar timeBar;
+    /**
+     * health bar
+     */
     private HealthBar healthBar;
+    /**
+     * home button
+     */
     private HomeBtn homeBtn;
+    /**
+     * setting button
+     */
     private SettingBtn settingBtn;
 
+    /**
+     * game controller constructor
+     *
+     * @param level level
+     */
     public GameController(int level) {
         this.level = level;
         load();
     }
 
+    /**
+     * load actors and UI into views
+     */
     public void load(){
         AssetsDao ad = new AssetsDaoImpl();
 
@@ -81,6 +119,9 @@ public class GameController implements ControlledScreen {
         gamePane.getChildren().add(healthBar);
     }
 
+    /**
+     * create timer
+     */
     public void createTimer() {
         AssetsDao ad = new AssetsDaoImpl();
         timer = new AnimationTimer() {
@@ -162,6 +203,9 @@ public class GameController implements ControlledScreen {
         return frog.getScores();
     }
 
+    /**
+     * set event handler for home button and gear button
+     */
     private void setEventHandler(){
         AssetsDao ad = new AssetsDaoImpl();
 

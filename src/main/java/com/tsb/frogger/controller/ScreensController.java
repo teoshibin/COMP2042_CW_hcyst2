@@ -32,6 +32,9 @@ public class ScreensController extends Pane {
 
     /**
      * add screen to hashmap using id
+     *
+     * @param name screen id
+     * @param screen screen
      */
     private void addScreenToHash(String name, Node screen) {
         screens.put(name, screen);
@@ -39,11 +42,21 @@ public class ScreensController extends Pane {
 
     /**
      * get screen from hashmap using id
+     *
+     * @param name screen id
+     * @return screen
      */
     private Node getScreenFromHash(String name) {
         return screens.get(name);
     }
 
+    /**
+     * load screen without fxml
+     *
+     * @param name screen id
+     * @param node views
+     * @param myScreenController controller
+     */
     public void loadScreen(String name, Parent node, ControlledScreen myScreenController){
         myScreenController.setScreenParent(this);
         addScreenToHash(name, node);
@@ -52,6 +65,9 @@ public class ScreensController extends Pane {
     /**
      *  load fxml using id and resource path
      *  add loaded fxml pane into hashmap
+     *
+     * @param id screen id
+     * @param name fxml resource name
      */
     public void loadMarkdown(String id, String name) {
         try {
@@ -67,20 +83,18 @@ public class ScreensController extends Pane {
 
     /**
      * unload screen from hash
+     *
      * @param name screen id
-     * @return success boolean
      */
-    public boolean unloadScreen(String name) {
+    public void unloadScreen(String name) {
         if (screens.remove(name) == null) {
             System.out.println("Screen didn't exist");
-            return false;
-        } else {
-            return true;
         }
     }
 
     /**
      * add overlay
+     *
      * @param name screen id
      */
     public void addOverlay(final String name){
@@ -89,6 +103,7 @@ public class ScreensController extends Pane {
 
     /**
      * remove overlay
+     *
      * @param name screen id
      */
     public void removeOverlay(final String name){
@@ -98,11 +113,12 @@ public class ScreensController extends Pane {
     /**
      * display screen with predefined screen id
      * only loaded screen in hashmap will be loaded
+     *
      * @param name screen id
      * @return success true, fail false
      */
     public boolean setScreen(final String name) {
-        //screen is in hashmap
+        //screen is not in hashmap
         if (screens.get(name) == null) {
             System.out.println("screen hasn't been loaded!!! \n");
             return false;
@@ -130,6 +146,11 @@ public class ScreensController extends Pane {
         return true;
     }
 
+    /**
+     * fade in transition
+     *
+     * @param opacity opacity
+     */
     private void fadeIn(DoubleProperty opacity){
         Timeline fadeIn = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),

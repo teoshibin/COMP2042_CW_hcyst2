@@ -19,7 +19,10 @@ public class LevelSelector {
      * link newly added levels in here
      * kindly note that whenever a level is removed, save file wont be able to load
      *
+     * @param actorLoader actor loader instance
      * @param level level value
+     * @return actor loader
+     * @throws LevelNotFoundException fail to load level
      */
     public static ActorLoader selectLevel(ActorLoader actorLoader, int level) throws LevelNotFoundException {
         LevelBase myLevel;

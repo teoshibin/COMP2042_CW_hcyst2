@@ -63,6 +63,7 @@ public class VictoryController implements Initializable, ControlledScreen{
     /**
      * handle action event
      * @param actionEvent event
+     * @throws LevelNotFoundException fail to load level
      */
     public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {
         AssetsDao ad = new AssetsDaoImpl();

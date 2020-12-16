@@ -183,6 +183,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 	 * @param direction initial direction
 	 * @param layoutX layout x
 	 * @param layoutY layout y
+	 * @param health initial health
 	 */
 	public Frog(DIRECTION direction, int layoutX, int layoutY, int health) {
 
@@ -337,6 +338,11 @@ public class Frog extends ActingActor implements AnimatingActor {
 		}
 	}
 
+	/**
+	 * create crash death animation timeline
+	 *
+ 	 * @return timeline
+	 */
 	private Timeline createCrashDeathTimeline() {
 		return new Timeline(
 				new KeyFrame(new Duration(100), new KeyValue(imageProperty(), crashDeath1)),
@@ -351,6 +357,11 @@ public class Frog extends ActingActor implements AnimatingActor {
 		);
 	}
 
+	/**
+	 * create drowning death animation timeline
+	 *
+	 * @return timeline
+	 */
 	private Timeline createDrownedDeathTimeline() {
 		return new Timeline(
 				new KeyFrame(new Duration(100), new KeyValue(imageProperty(), drownDeath1)),
@@ -385,6 +396,9 @@ public class Frog extends ActingActor implements AnimatingActor {
 		return timeline;
 	}
 
+	/**
+	 * reset frog
+	 */
 	private void resetFrog(){
 		setX(frogLayoutX);
 		setY(frogLayoutY + movementY);
@@ -399,6 +413,11 @@ public class Frog extends ActingActor implements AnimatingActor {
 		previousKey = null;
 	}
 
+	/**
+	 * move frog and set image
+	 *
+	 * @param direction direction
+	 */
 	private void frogMove(DIRECTION direction){
 		switch (direction) {
 			case UP -> {
@@ -420,11 +439,19 @@ public class Frog extends ActingActor implements AnimatingActor {
 		}
 	}
 
+	/**
+	 * change key lock state
+	 *
+	 * @return previous state
+	 */
 	private boolean checkJump(){
 		allowJumping = !allowJumping;
 		return !allowJumping;
 	}
 
+	/**
+	 * reduce points
+	 */
 	private void reducePoints(){
 		if(scores >= 50){
 			scores -= 50;
@@ -462,13 +489,18 @@ public class Frog extends ActingActor implements AnimatingActor {
 
 	/**
 	 * get earned scores
+	 *
 	 * @return scores
 	 */
 	public int getScores() {
 		return scores;
 	}
 
-
+	/**
+	 * get progress of time remaining
+	 *
+	 * @return double 0 ~ 1
+	 */
 	public double getProgress(){
 		return (double)extraScores / MAX_EXTRA_SCORE;
 	}
@@ -476,6 +508,7 @@ public class Frog extends ActingActor implements AnimatingActor {
 	/**
 	 * method for updating score above game map
 	 * so that animation timer won't constantly update the score
+	 *
 	 * @return new score available returns true, no score change return false
 	 */
 	public boolean updateScoreLabel() {

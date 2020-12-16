@@ -8,12 +8,26 @@ import java.util.Properties;
 
 import static org.junit.Assert.*;
 
+/**
+ * property file accessing test
+ */
 public class PropertyManagerTest {
-
+    /**
+     * properties
+     */
     Properties p;
+    /**
+     * testing keys
+     */
     String[] keys;
+    /**
+     * testing values
+     */
     String[] strings;
 
+    /**
+     * set up dummy properties
+     */
     @Before
     public void setUp() {
 
@@ -34,6 +48,9 @@ public class PropertyManagerTest {
         }
     }
 
+    /**
+     * save properties into file
+     */
     @Test
     public void saveProperties() {
         try {
@@ -44,6 +61,9 @@ public class PropertyManagerTest {
         }
     }
 
+    /**
+     * load properties from file
+     */
     @Test
     public void loadProperties() {
         Properties result = null;

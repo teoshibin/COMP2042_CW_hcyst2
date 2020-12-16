@@ -41,6 +41,7 @@ public class MenuController implements Initializable, ControlledScreen {
     /**
      * handle main menu GUI button event
      * @param actionEvent button event
+     * @throws LevelNotFoundException fail to load level
      */
     @FXML
     public void handleBtnAction(ActionEvent actionEvent) throws LevelNotFoundException {

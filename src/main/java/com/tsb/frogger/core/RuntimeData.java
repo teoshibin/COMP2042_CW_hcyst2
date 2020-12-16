@@ -8,6 +8,9 @@ import com.tsb.frogger.utils.data.filemanager.SaveGameManager;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * store runtime data
+ */
 public class RuntimeData {
     /**
      * game data from save file
@@ -26,6 +29,14 @@ public class RuntimeData {
      */
     public static Properties assets;
 
+    /**
+     * init method
+     * load save game
+     * load assets properties
+     *
+     * @param SaveFileName save game file name
+     * @param assetsFileName assets properties file name
+     */
     public static void init(String SaveFileName, String assetsFileName){
 
         try {
