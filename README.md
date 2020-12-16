@@ -5,16 +5,16 @@ This will be a refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
 <p align="center" float="left">
-  <img src="screenshots/account_screen.png" width="130"/>
-  <img src="screenshots/menu_screen.png" width="130"/>
-  <img src="screenshots/level_selection_screen.png" width="130"/>
-  <img src="screenshots/scoreboard_screen.png" width="130"/>
+  <img src="screenshots/account_screen.png" width="179"/>
+  <img src="screenshots/menu_screen.png" width="179"/>
+  <img src="screenshots/level_selection_screen.png" width="179"/>
+  <img src="screenshots/scoreboard_screen.png" width="179"/>
 </p>
 <p align="center" float="left">
-  <img src="screenshots/info_screen.png" width="130"/>
-  <img src="screenshots/game_screen.png" width="130"/>
-  <img src="screenshots/option_overlay.png" width="130"/>
-  <img src="screenshots/victory_overlay.png" width="130"/>
+  <img src="screenshots/info_screen.png" width="179"/>
+  <img src="screenshots/game_screen.png" width="179"/>
+  <img src="screenshots/option_overlay.png" width="179"/>
+  <img src="screenshots/victory_overlay.png" width="179"/>
 </p>
 
 ## Content
