@@ -13,7 +13,7 @@
     public class Level_999 implements LevelBase{
     
         @Override
-        public void loadLevel() {
+        public ActorLoader loadLevel(ActorLoader al) {
             // <- load components here
         }
     }
@@ -21,8 +21,8 @@
 3. Now add some actors. For example adding a long log.
 
     ```java
-    // LoadComponents.addActor(layout x, layout y, moving direction & speed);
-    LoadComponents.addLongLog(0, ConstantData.LAYOUT_Y_ACTOR[0][1], -0.75);
+    // ActorLoader.addActor(layout x, layout y, moving direction & speed);
+    al.addLongLog(0, ConstantData.LAYOUT_Y_ACTOR[0][1], -0.75);
     ```
    Layout x is fully customizable, however layout y is defined in constant as
     ```java
@@ -72,7 +72,7 @@
         public static final int MAX_LEVEL = 5; // <- add one into this value 
                                                // e.g. 6
     
-        public static void selectLevel(MyStage gamePane, int level) throws LevelNotFoundException {
+        public static ActorLoader selectLevel(ActorLoader actorLoader, int level) throws LevelNotFoundException {
             LevelBase myLevel;
             switch (level) {
                 case 1 -> myLevel = new Level_001();
@@ -80,13 +80,10 @@
                 case 3 -> myLevel = new Level_003();
                 case 4 -> myLevel = new Level_004();
                 case 5 -> myLevel = new Level_005();
-                // <- add your level here 
-                // e.g. case 6 -> myLevel = new Level_999();
                 default -> throw new LevelNotFoundException("Level not found or Unlinked level, please check linking in LevelSelector");
             }
-            Objects.requireNonNull(myLevel).loadLevel(gamePane);
+            return myLevel.loadLevel(actorLoader);
         }
-    }
     ```
 5. Done !
 
@@ -95,5 +92,7 @@
    [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
 
    >**Note** : Removing levels might corrupt the save file, when it does simply remove the old `saveGame.ser` save file
+
+   >**Addition** : This method of loading levels can be further implemented using JSON to store levels instead of classes
 
 [Back to content](README.md#content)

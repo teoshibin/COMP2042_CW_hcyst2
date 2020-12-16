@@ -38,16 +38,12 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 
 [comment]: <> (- [License]&#40;#license&#41;)
 
-## JavaDoc   
-
-Click [Here](javadoc/index.html) to java doc page
-
 ## Installation
 ### Import
 1. Clone this repo
 2. Unzip the folder
 3. In your command prompt or your terminal use `cd $YOUR_PATH` navigate into cloned folder
-4. type in code `gradlew run` or `./gradlew run` depending on your OS to build and run the game
+4. Type in `gradlew run` or `./gradlew run` depending on your OS to build and run the game
 
 [comment]: <> (### Method 2)
 
