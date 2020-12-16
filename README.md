@@ -5,18 +5,16 @@ This will be a refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
 <p align="center" float="left">
-  <img src="screenshots/account_screen.png"/>
-  <img src="screenshots/menu_screen.png"/>
-  <img src="screenshots/level_selection_screen.png"/>
+  <img src="screenshots/account_screen.png" width="130"/>
+  <img src="screenshots/menu_screen.png" width="130"/>
+  <img src="screenshots/level_selection_screen.png" width="130"/>
+  <img src="screenshots/scoreboard_screen.png" width="130"/>
 </p>
 <p align="center" float="left">
-  <img src="screenshots/scoreboard_screen.png"/>
-  <img src="screenshots/info_screen.png"/>
-  <img src="screenshots/game_screen.png"/>
-</p>
-<p align="center" float="left">
-  <img src="screenshots/option_overlay.png"/>
-  <img src="screenshots/victory_overlay.png"/>
+  <img src="screenshots/info_screen.png" width="130"/>
+  <img src="screenshots/game_screen.png" width="130"/>
+  <img src="screenshots/option_overlay.png" width="130"/>
+  <img src="screenshots/victory_overlay.png" width="130"/>
 </p>
 
 ## Content
@@ -39,6 +37,10 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 - [Credits](#credits)
 
 [comment]: <> (- [License]&#40;#license&#41;)
+
+## JavaDoc   
+
+Click [Here](javadoc/index.html) to java doc page
 
 ## Installation
 ### Import
