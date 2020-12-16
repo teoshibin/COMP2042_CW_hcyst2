@@ -1,10 +1,11 @@
 
 # Adding new levels
 
-1. Find [com.tsb.frogger.generation.levels](src/main/java/com/tsb/frogger/world/levels) package.
-2. Create a new class e.g. Level_999.java in this package
+1. Find [com.tsb.frogger.generation.levels](src/main/java/com/tsb/frogger/generation/levels) package.
+2. Create a new class e.g. Level_999.java in this package. 
    This class implements LevelBase, and the level designing will be written in this loadLevel method
-    ```java
+    
+   ```java
     package com.tsb.frogger.generation.levels;
     
     import com.tsb.frogger.core.ConstantData;
@@ -18,16 +19,20 @@
         }
     }
     ```
+   
 3. Now add some actors. For example adding a long log.
 
     ```java
     // ActorLoader.addActor(layout x, layout y, moving direction & speed);
     al.addLongLog(0, ConstantData.LAYOUT_Y_ACTOR[0][1], -0.75);
     ```
+   
    Layout x is fully customizable, however layout y is defined in constant as
+   
     ```java
     ConstantData.LAYOUT_Y_ACTOR[0][index]
     ```
+   
    Here is all the available actors in table 1, simply replace above method with one of these e.g. addShortLog.  
    All possible index and corresponding location in the game is in table 2, assign shown index to above constant array for position.
 
@@ -88,8 +93,8 @@
 5. Done !
 
 6. For better understanding  
-   [See Example level](src/main/java/com/tsb/frogger/world/levels/Level_001.java)  
-   [See LevelSelector](src/main/java/com/tsb/frogger/world/LevelSelector.java)
+   [See Example level](src/main/java/com/tsb/frogger/generation/levels)  
+   [See LevelSelector](src/main/java/com/tsb/frogger/utils/game/LevelSelector.java)
 
    >**Note** : Removing levels might corrupt the save file, when it does simply remove the old `saveGame.ser` save file
 
