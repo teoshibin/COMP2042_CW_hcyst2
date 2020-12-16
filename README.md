@@ -4,8 +4,19 @@
 This will be a refurbished version of frogger.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
-<p align="center">
-  <img src="screenshots/game_picture.png"  alt="In Game Screenshots"/>
+<p align="center" float="left">
+  <img src="screenshots/account_screen.png"/>
+  <img src="screenshots/menu_screen.png"/>
+  <img src="screenshots/level_selection_screen.png"/>
+</p>
+<p align="center" float="left">
+  <img src="screenshots/scoreboard_screen.png"/>
+  <img src="screenshots/info_screen.png"/>
+  <img src="screenshots/game_screen.png"/>
+</p>
+<p align="center" float="left">
+  <img src="screenshots/option_overlay.png"/>
+  <img src="screenshots/victory_overlay.png"/>
 </p>
 
 ## Content
@@ -26,24 +37,31 @@ The focus of this repo will mainly be improving gameplay and adding features to 
     - [Fixes](#fixes)
 - [Design Patterns](#design-patterns)
 - [Credits](#credits)
-- [License](#license)
+
+[comment]: <> (- [License]&#40;#license&#41;)
 
 ## Installation
-### Method 1
+### Import
 1. Clone this repo
 2. Unzip the folder
 3. In your command prompt or your terminal use `cd $YOUR_PATH` navigate into cloned folder
 4. type in code `gradlew run` or `./gradlew run` depending on your OS to build and run the game
 
-### Method 2
-1. Download Released jar
-2. Download JavaFx
-3. In command prompt use `cd $YOUR_PATH` navigate into folder
-4. Run this code where specifying your own javafx/lib folder path into `$PATH_TO_JavaFX`:
+[comment]: <> (### Method 2)
 
-   ```shell
-   java --module-path {$PATH_TO_JavaFX} --add-modules javafx.controls,javafx.fxml,javafx.media -jar frogger-1.0.jar
-   ```
+[comment]: <> (1. Download Released jar)
+
+[comment]: <> (2. Download JavaFx)
+
+[comment]: <> (3. In command prompt use `cd $YOUR_PATH` navigate into folder)
+
+[comment]: <> (4. Run this code where specifying your own javafx/lib folder path into `$PATH_TO_JavaFX`:)
+
+[comment]: <> (   ```shell)
+
+[comment]: <> (   java --module-path {$PATH_TO_JavaFX} --add-modules javafx.controls,javafx.fxml,javafx.media -jar frogger-1.0.jar)
+
+[comment]: <> (   ```)
 
 [Back to content](#content)  
 
@@ -116,7 +134,7 @@ This framework allows new fxml screens to be added easily.
 - Removed Background actor and move its functionality to LoadComponents
 - Added ConstantData class for game constants
 - Added RuntimeData class for data references (game saves are loaded here)
-- Added Game, LoadComponents, LevelSelector and Launcher, refactored from the original main class.
+- Added Game, ActorLoader, LevelSelector and Launcher, refactored from the original main class.
 - Added LevelBase interface for linking up all custom-made levels.
 - Added LevelNotFoundException a custom Exception class for error handling
 - Added Sound class for audio clip playing and music playing
@@ -172,7 +190,8 @@ This framework allows new fxml screens to be added easily.
 - Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 - Icons made by <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com </a>
 
-## License
-All code found in this repository is licensed under
+[comment]: <> (## License)
 
-[Back to content](#content)  
+[comment]: <> (All code found in this repository is licensed under)
+
+[comment]: <> ([Back to content]&#40;#content&#41;  )
