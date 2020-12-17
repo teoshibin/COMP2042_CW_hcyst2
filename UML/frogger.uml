@@ -3,81 +3,88 @@
   <ID>JAVA</ID>
   <OriginalElement>com.tsb.frogger</OriginalElement>
   <nodes>
-    <node x="62.00000000000003" y="80.0">com.tsb.frogger.generation.actors.AnimatingActor</node>
-    <node x="567.0" y="730.0">com.tsb.frogger.generation.actors.Frog.FROG_STATUS</node>
+    <node x="0.0" y="805.0">com.tsb.frogger.generation.actors.Frog.FROG_STATUS</node>
     <node x="1340.0" y="580.0">com.tsb.frogger.generation.world.MyStage</node>
-    <node x="784.0" y="425.0">com.tsb.frogger.controller.AccountController</node>
+    <node x="84.00000000000003" y="80.0">com.tsb.frogger.generation.actors.AnimatingActor</node>
+    <node x="1224.0" y="425.0">com.tsb.frogger.controller.AccountController</node>
     <node x="0.0" y="655.0">com.tsb.frogger.utils.data.filemanager.AssetsPropertiesManager</node>
-    <node x="407.99999999999994" y="425.0">com.tsb.frogger.controller.OptionController</node>
-    <node x="460.0" y="170.0">com.tsb.frogger.generation.actors.Obstacle</node>
-    <node x="1102.0" y="730.0">com.tsb.frogger.generation.widgets.HealthBar</node>
-    <node x="0.0" y="730.0">com.tsb.frogger.utils.game.LevelSelector</node>
-    <node x="1267.0" y="730.0">com.tsb.frogger.generation.actors.Frog.DIRECTION</node>
+    <node x="820.0" y="730.0">com.tsb.frogger.utils.data.datamanager.ConvertorTest</node>
+    <node x="535.0" y="805.0">com.tsb.frogger.utils.data.datastructure.PlayerTest</node>
+    <node x="800.0" y="425.0">com.tsb.frogger.controller.OptionController</node>
+    <node x="464.0" y="170.0">com.tsb.frogger.generation.actors.Obstacle</node>
+    <node x="708.0" y="805.0">com.tsb.frogger.generation.widgets.HealthBar</node>
+    <node x="623.0" y="730.0">com.tsb.frogger.utils.game.LevelSelector</node>
+    <node x="873.0" y="805.0">com.tsb.frogger.generation.actors.Frog.DIRECTION</node>
     <node x="954.0" y="500.0">com.tsb.frogger.utils.data.datamanager.PlayersDao</node>
-    <node x="12.0" y="170.0">com.tsb.frogger.generation.actors.Frog</node>
+    <node x="272.0" y="170.0">com.tsb.frogger.generation.actors.Frog</node>
     <node x="1159.0" y="500.0">com.tsb.frogger.utils.data.datamanager.AssetsDao</node>
-    <node x="929.0" y="730.0">com.tsb.frogger.generation.widgets.SettingBtn</node>
-    <node x="1168.0" y="425.0">com.tsb.frogger.controller.SelectLevelController</node>
+    <node x="362.0" y="805.0">com.tsb.frogger.generation.widgets.SettingBtn</node>
+    <node x="383.99999999999994" y="425.0">com.tsb.frogger.controller.SelectLevelController</node>
     <node x="733.0" y="500.0">com.tsb.frogger.utils.data.filemanager.SerialManager</node>
-    <node x="386.0" y="730.0">com.tsb.frogger.core.RuntimeData</node>
-    <node x="252.00000000000003" y="170.0">com.tsb.frogger.generation.actors.Turtle</node>
-    <node x="1432.0" y="730.0">com.tsb.frogger.utils.data.datamanager.Convertor</node>
-    <node x="487.0" y="805.0">com.tsb.frogger.utils.data.datastructure.Settings</node>
-    <node x="1201.0" y="655.0">com.tsb.frogger.generation.widgets.GameBackground</node>
-    <node x="604.0" y="425.0">com.tsb.frogger.controller.GameController</node>
-    <node x="942.0" y="805.0">com.tsb.frogger.utils.data.datastructure.Player</node>
-    <node x="0.0" y="805.0">com.tsb.frogger.utils.data.datastructure.SavedData</node>
-    <node x="197.0" y="730.0">com.tsb.frogger.core.ConstantData</node>
-    <node x="775.0" y="655.0">com.tsb.frogger.utils.data.datastructure.TableViewPlayer</node>
-    <node x="368.0" y="170.0">com.tsb.frogger.generation.actors.Log</node>
+    <node x="1403.0" y="730.0">com.tsb.frogger.core.RuntimeData</node>
+    <node x="140.00000000000003" y="170.0">com.tsb.frogger.generation.actors.Turtle</node>
+    <node x="157.0" y="880.0">com.tsb.frogger.utils.data.datastructure.Settings</node>
+    <node x="1038.0" y="805.0">com.tsb.frogger.utils.data.datamanager.Convertor</node>
+    <node x="213.0" y="730.0">com.tsb.frogger.generation.widgets.GameBackground</node>
+    <node x="1428.0" y="425.0">com.tsb.frogger.controller.GameController</node>
+    <node x="612.0" y="880.0">com.tsb.frogger.utils.data.datastructure.Player</node>
+    <node x="1203.0" y="805.0">com.tsb.frogger.utils.data.datastructure.SavedData</node>
+    <node x="1214.0" y="730.0">com.tsb.frogger.core.ConstantData</node>
+    <node x="1017.0" y="730.0">com.tsb.frogger.utils.data.datastructure.TestStructure</node>
+    <node x="1249.0" y="655.0">com.tsb.frogger.utils.data.datastructure.TableViewPlayer</node>
+    <node x="372.0" y="170.0">com.tsb.frogger.generation.actors.Log</node>
     <node x="1143.0" y="580.0">com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl</node>
-    <node x="988.0" y="425.0">com.tsb.frogger.controller.InfoController</node>
-    <node x="1404.0" y="425.0">com.tsb.frogger.controller.VictoryController</node>
-    <node x="1083.0" y="805.0">com.tsb.frogger.generation.widgets.Heart</node>
-    <node x="644.0" y="805.0">com.tsb.frogger.generation.widgets.HomeBtn</node>
-    <node x="748.0" y="730.0">com.tsb.frogger.utils.game.ActorLoader</node>
-    <node x="294.0" y="0.0">com.tsb.frogger.generation.actors.IntersectingActor</node>
-    <node x="330.0" y="805.0">com.tsb.frogger.core.Launcher</node>
-    <node x="1406.0" y="655.0">com.tsb.frogger.generation.widgets.ValueIndicator</node>
-    <node x="180.0" y="425.0">com.tsb.frogger.controller.ScoreboardController</node>
-    <node x="725.0" y="580.0">com.tsb.frogger.utils.data.filemanager.SaveGameManager</node>
+    <node x="620.0" y="425.0">com.tsb.frogger.controller.InfoController</node>
+    <node x="180.0" y="425.0">com.tsb.frogger.controller.VictoryController</node>
+    <node x="753.0" y="880.0">com.tsb.frogger.generation.widgets.Heart</node>
+    <node x="314.0" y="880.0">com.tsb.frogger.generation.widgets.HomeBtn</node>
+    <node x="181.0" y="805.0">com.tsb.frogger.utils.game.ActorLoader</node>
+    <node x="302.0" y="0.0">com.tsb.frogger.generation.actors.IntersectingActor</node>
+    <node x="0.0" y="880.0">com.tsb.frogger.core.Launcher</node>
+    <node x="418.0" y="730.0">com.tsb.frogger.generation.widgets.ValueIndicator</node>
+    <node x="996.0" y="425.0">com.tsb.frogger.controller.ScoreboardController</node>
     <node x="938.0" y="580.0">com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl</node>
-    <node x="0.0" y="250.0">com.tsb.frogger.generation.actors.GodFrog</node>
-    <node x="692.0" y="325.0">com.tsb.frogger.controller.ControlledScreen</node>
-    <node x="988.0" y="655.0">com.tsb.frogger.utils.data.filemanager.PropertyManager</node>
-    <node x="165.0" y="805.0">com.tsb.frogger.utils.data.datamanager.Validator</node>
-    <node x="420.0" y="580.0">com.tsb.frogger.generation.levels.Level_001</node>
-    <node x="560.0" y="580.0">com.tsb.frogger.generation.levels.Level_005</node>
+    <node x="725.0" y="580.0">com.tsb.frogger.utils.data.filemanager.SaveGameManager</node>
+    <node x="1020.0" y="655.0">com.tsb.frogger.utils.data.filemanager.SerialManagerTest</node>
+    <node x="260.0" y="250.0">com.tsb.frogger.generation.actors.GodFrog</node>
+    <node x="706.0" y="325.0">com.tsb.frogger.controller.ControlledScreen</node>
+    <node x="0.0" y="730.0">com.tsb.frogger.utils.data.filemanager.PropertyManager</node>
+    <node x="1368.0" y="805.0">com.tsb.frogger.utils.data.datamanager.Validator</node>
+    <node x="560.0" y="580.0">com.tsb.frogger.generation.levels.Level_001</node>
+    <node x="280.0" y="580.0">com.tsb.frogger.generation.levels.Level_005</node>
     <node x="140.0" y="580.0">com.tsb.frogger.generation.levels.Level_004</node>
-    <node x="280.0" y="580.0">com.tsb.frogger.generation.levels.Level_003</node>
+    <node x="546.0" y="655.0">com.tsb.frogger.utils.data.filemanager.PropertyManagerTest</node>
+    <node x="420.0" y="580.0">com.tsb.frogger.generation.levels.Level_003</node>
     <node x="0.0" y="580.0">com.tsb.frogger.generation.levels.Level_002</node>
     <node x="0.0" y="425.0">com.tsb.frogger.controller.MenuController</node>
     <node x="277.0" y="655.0">com.tsb.frogger.utils.exceptions.LevelNotFoundException</node>
     <node x="280.0" y="500.0">com.tsb.frogger.generation.levels.LevelBase</node>
-    <node x="546.0" y="655.0">com.tsb.frogger.controller.ScreensController</node>
-    <node x="412.0" y="80.0">com.tsb.frogger.generation.actors.End</node>
-    <node x="1216.0" y="805.0">com.tsb.frogger.utils.sound.Sound</node>
-    <node x="793.0" y="805.0">com.tsb.frogger.generation.widgets.TimeBar</node>
-    <node x="256.0" y="80.0">com.tsb.frogger.generation.actors.ActingActor</node>
+    <node x="791.0" y="655.0">com.tsb.frogger.controller.ScreensController</node>
+    <node x="420.0" y="80.0">com.tsb.frogger.generation.actors.End</node>
+    <node x="886.0" y="880.0">com.tsb.frogger.utils.sound.Sound</node>
+    <node x="463.0" y="880.0">com.tsb.frogger.generation.widgets.TimeBar</node>
+    <node x="264.0" y="80.0">com.tsb.frogger.generation.actors.ActingActor</node>
     <node x="1348.0" y="500.0">com.tsb.frogger.generation.world.World</node>
-    <node x="112.00000000000003" y="170.0">com.tsb.frogger.generation.actors.WetTurtle</node>
+    <node x="0.0" y="170.0">com.tsb.frogger.generation.actors.WetTurtle</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.tsb.frogger.generation.actors.WetTurtle" target="com.tsb.frogger.generation.actors.AnimatingActor">
       <point x="-30.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
+      <point x="30.0" y="130.0" />
+      <point x="110.66666666666669" y="130.0" />
+      <point x="-53.33333333333334" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.Frog" target="com.tsb.frogger.generation.actors.AnimatingActor">
       <point x="-20.0" y="-15.0" />
-      <point x="32.0" y="130.0" />
-      <point x="88.66666666666669" y="130.0" />
-      <point x="-53.33333333333334" y="15.0" />
+      <point x="292.0" y="130.0" />
+      <point x="217.33333333333337" y="130.0" />
+      <point x="53.33333333333334" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.ActingActor" target="com.tsb.frogger.generation.actors.IntersectingActor">
       <point x="0.0" y="-15.0" />
-      <point x="324.0" y="55.0" />
-      <point x="340.0" y="55.0" />
+      <point x="332.0" y="55.0" />
+      <point x="348.0" y="55.0" />
       <point x="-46.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.GodFrog" target="com.tsb.frogger.generation.actors.Frog">
@@ -95,32 +102,30 @@
     <edge source="com.tsb.frogger.controller.MenuController" target="com.tsb.frogger.controller.ControlledScreen">
       <point x="0.0" y="-15.0" />
       <point x="80.0" y="375.0" />
-      <point x="703.0" y="375.0" />
+      <point x="717.0" y="375.0" />
       <point x="-77.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.WetTurtle" target="com.tsb.frogger.generation.actors.ActingActor">
       <point x="30.0" y="-15.0" />
-      <point x="202.00000000000003" y="150.0" />
-      <point x="296.80000000000007" y="150.0" />
-      <point x="-27.19999999999999" y="15.0" />
+      <point x="90.0" y="140.0" />
+      <point x="277.6" y="140.0" />
+      <point x="-54.39999999999998" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.End" target="com.tsb.frogger.generation.actors.IntersectingActor">
       <point x="0.0" y="-15.0" />
-      <point x="448.0" y="55.0" />
-      <point x="432.0" y="55.0" />
+      <point x="456.0" y="55.0" />
+      <point x="440.0" y="55.0" />
       <point x="46.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.controller.InfoController" target="com.tsb.frogger.controller.ControlledScreen">
       <point x="0.0" y="-15.0" />
-      <point x="1068.0" y="395.0" />
-      <point x="813.0" y="395.0" />
-      <point x="33.0" y="15.0" />
+      <point x="700.0" y="405.0" />
+      <point x="783.0" y="405.0" />
+      <point x="-11.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.Frog" target="com.tsb.frogger.generation.actors.ActingActor">
       <point x="20.0" y="-15.0" />
-      <point x="72.0" y="140.0" />
-      <point x="269.6" y="140.0" />
-      <point x="-54.39999999999998" y="15.0" />
+      <point x="0.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.levels.Level_002" target="com.tsb.frogger.generation.levels.LevelBase">
       <point x="0.0" y="-15.0" />
@@ -128,47 +133,45 @@
       <point x="292.0" y="550.0" />
       <point x="-48.0" y="15.0" />
     </edge>
+    <edge source="com.tsb.frogger.controller.ScoreboardController" target="com.tsb.frogger.controller.ControlledScreen">
+      <point x="0.0" y="-15.0" />
+      <point x="1100.0" y="395.0" />
+      <point x="827.0" y="395.0" />
+      <point x="33.0" y="15.0" />
+    </edge>
     <edge source="com.tsb.frogger.generation.levels.Level_004" target="com.tsb.frogger.generation.levels.LevelBase">
       <point x="0.0" y="-15.0" />
       <point x="200.0" y="560.0" />
       <point x="316.0" y="560.0" />
       <point x="-24.0" y="15.0" />
     </edge>
-    <edge source="com.tsb.frogger.controller.ScoreboardController" target="com.tsb.frogger.controller.ControlledScreen">
-      <point x="0.0" y="-15.0" />
-      <point x="284.0" y="385.0" />
-      <point x="725.0" y="385.0" />
-      <point x="-55.0" y="15.0" />
-    </edge>
     <edge source="com.tsb.frogger.generation.actors.Turtle" target="com.tsb.frogger.generation.actors.AnimatingActor">
       <point x="-24.0" y="-15.0" />
-      <point x="276.0" y="130.0" />
-      <point x="195.33333333333337" y="130.0" />
-      <point x="53.33333333333334" y="15.0" />
+      <point x="0.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.controller.AccountController" target="com.tsb.frogger.controller.ControlledScreen">
       <point x="0.0" y="-15.0" />
-      <point x="876.0" y="405.0" />
-      <point x="791.0" y="405.0" />
-      <point x="11.0" y="15.0" />
+      <point x="1316.0" y="385.0" />
+      <point x="849.0" y="385.0" />
+      <point x="55.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.Log" target="com.tsb.frogger.generation.actors.ActingActor">
       <point x="0.0" y="-15.0" />
-      <point x="404.0" y="150.0" />
-      <point x="351.20000000000005" y="150.0" />
+      <point x="408.0" y="150.0" />
+      <point x="359.20000000000005" y="150.0" />
       <point x="27.19999999999999" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.Obstacle" target="com.tsb.frogger.generation.actors.ActingActor">
       <point x="0.0" y="-15.0" />
-      <point x="516.0" y="140.0" />
-      <point x="378.4" y="140.0" />
+      <point x="520.0" y="140.0" />
+      <point x="386.4" y="140.0" />
       <point x="54.39999999999998" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.controller.OptionController" target="com.tsb.frogger.controller.ControlledScreen">
-      <point x="5.6843418860808015E-14" y="-15.0" />
-      <point x="496.0" y="395.0" />
-      <point x="747.0" y="395.0" />
-      <point x="-33.0" y="15.0" />
+      <point x="0.0" y="-15.0" />
+      <point x="888.0" y="405.0" />
+      <point x="805.0" y="405.0" />
+      <point x="11.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.utils.data.datamanager.AssetsDaoImpl" target="com.tsb.frogger.utils.data.datamanager.AssetsDao">
       <point x="0.0" y="-15.0" />
@@ -176,25 +179,25 @@
     </edge>
     <edge source="com.tsb.frogger.controller.VictoryController" target="com.tsb.frogger.controller.ControlledScreen">
       <point x="0.0" y="-15.0" />
-      <point x="1496.0" y="375.0" />
-      <point x="857.0" y="375.0" />
-      <point x="77.0" y="15.0" />
+      <point x="272.0" y="385.0" />
+      <point x="739.0" y="385.0" />
+      <point x="-55.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.controller.SelectLevelController" target="com.tsb.frogger.controller.ControlledScreen">
-      <point x="0.0" y="-15.0" />
-      <point x="1276.0" y="385.0" />
-      <point x="835.0" y="385.0" />
-      <point x="55.0" y="15.0" />
+      <point x="5.6843418860808015E-14" y="-15.0" />
+      <point x="492.0" y="395.0" />
+      <point x="761.0" y="395.0" />
+      <point x="-33.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.actors.Turtle" target="com.tsb.frogger.generation.actors.ActingActor">
       <point x="24.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
+      <point x="212.00000000000003" y="150.0" />
+      <point x="304.80000000000007" y="150.0" />
+      <point x="-27.19999999999999" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.generation.levels.Level_005" target="com.tsb.frogger.generation.levels.LevelBase">
       <point x="0.0" y="-15.0" />
-      <point x="620.0" y="550.0" />
-      <point x="388.0" y="550.0" />
-      <point x="48.0" y="15.0" />
+      <point x="0.0" y="15.0" />
     </edge>
     <edge source="com.tsb.frogger.utils.data.datamanager.PlayersDaoImpl" target="com.tsb.frogger.utils.data.datamanager.PlayersDao">
       <point x="0.0" y="-15.0" />
@@ -202,25 +205,27 @@
     </edge>
     <edge source="com.tsb.frogger.generation.levels.Level_001" target="com.tsb.frogger.generation.levels.LevelBase">
       <point x="0.0" y="-15.0" />
+      <point x="620.0" y="550.0" />
+      <point x="388.0" y="550.0" />
+      <point x="48.0" y="15.0" />
+    </edge>
+    <edge source="com.tsb.frogger.generation.levels.Level_003" target="com.tsb.frogger.generation.levels.LevelBase">
+      <point x="0.0" y="-15.0" />
       <point x="480.0" y="560.0" />
       <point x="364.0" y="560.0" />
       <point x="24.0" y="15.0" />
     </edge>
-    <edge source="com.tsb.frogger.generation.levels.Level_003" target="com.tsb.frogger.generation.levels.LevelBase">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
     <edge source="com.tsb.frogger.controller.GameController" target="com.tsb.frogger.controller.ControlledScreen">
       <point x="0.0" y="-15.0" />
-      <point x="684.0" y="405.0" />
-      <point x="769.0" y="405.0" />
-      <point x="-11.0" y="15.0" />
+      <point x="1508.0" y="375.0" />
+      <point x="871.0" y="375.0" />
+      <point x="77.0" y="15.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="641.5" y="637.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="167.0" y="165.5" />
   <SelectedNodes />
   <Categories />
-  <SCOPE>Production</SCOPE>
+  <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
 
