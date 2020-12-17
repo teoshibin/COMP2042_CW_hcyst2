@@ -2,6 +2,7 @@
 
 [frogger](https://en.wikipedia.org/wiki/Frogger) is an arcade game developed in the 1980s by [Konami](https://en.wikipedia.org/wiki/Konami) a japanese company.
 This will be a refurbished version of frogger.
+I'll will be using java 15 to for this application.
 The focus of this repo will mainly be improving gameplay and adding features to the game while still keeping the original theme intact.
 
 <p align="center" float="left">
@@ -37,23 +38,30 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 
 ## Installation
 ### Wihtout IDE
-1. Clone this repo
-2. Unzip the folder
-3. In your command prompt or your terminal use `cd $YOUR_PATH` navigate into cloned folder
-4. Type in `gradlew :run` or `./gradlew :run` depending on your OS to build and run the game, 
+1. Clone and unzip the folder
+2. In your command prompt or your terminal use `cd $YOUR_PATH` navigate into cloned folder
+3. Type in `gradlew :run` or `./gradlew :run` depending on your OS to build and run the game, 
    
    >**see also**   
    > [gradle command line interface](https://docs.gradle.org/current/userguide/command_line_interface.html)
     
 
 ### Import in Intellij
-1. Clone this repo
-2. Unzip the folder
-3. Navigate into the folder then open `build.gradle` using intellij and open as project   
+1. Clone and unzip the folder
+2. Navigate into the folder then open `build.gradle` using intellij and open as project   
+3. Run with gradle task UI on the right side
    
    >**see also**   
    >[import gradle project in intellij](https://www.jetbrains.com/help/idea/gradle.html#gradle_import_project_start)
 
+### Import in Eclipse
+1. Clone and unzip the folder
+2. In Eclipse import project with Existing gradle project option
+3. Click import on the import wizard
+4. Run with gradle task UI at the bottom
+   >**Note**   
+   > If error occur due to execution of gradle :compile task please restart the IDE
+   
 [comment]: <> (### Method 2)
 
 [comment]: <> (1. Download Released jar)
