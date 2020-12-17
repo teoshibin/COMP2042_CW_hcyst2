@@ -39,11 +39,17 @@ The focus of this repo will mainly be improving gameplay and adding features to 
 [comment]: <> (- [License]&#40;#license&#41;)
 
 ## Installation
-### Import
+### Wihtout IDE
 1. Clone this repo
 2. Unzip the folder
 3. In your command prompt or your terminal use `cd $YOUR_PATH` navigate into cloned folder
-4. Type in `gradlew run` or `./gradlew run` depending on your OS to build and run the game
+4. Type in `gradlew :run` or `./gradlew :run` depending on your OS to build and run the game, 
+   see also [gradle command line interface](https://docs.gradle.org/current/userguide/command_line_interface.html)
+
+### Intellij
+1. Clone this repo
+2. Unzip the folder
+3. Navigate into the folder then open `build.gradle` using intellij and open as project, see also [import gradle project in intellij](https://www.jetbrains.com/help/idea/gradle.html#gradle_import_project_start)
 
 [comment]: <> (### Method 2)
 
